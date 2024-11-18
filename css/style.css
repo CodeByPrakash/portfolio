@@ -344,6 +344,10 @@ h3.my-profession
     font-size: 20px;
     color: var(--text-black-700);
 }
+.section_of_portfolio
+{
+    font-family: "Poppins", sans-serif;
+}
 .home .home-img
 {
     flex: 0 0 40%;
