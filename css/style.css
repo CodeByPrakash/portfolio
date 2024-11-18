@@ -707,6 +707,7 @@ h3.my-profession
     filter: blur(0);
     opacity: 1;
     transition: .5s ease;
+    transform: scale(1.2);
 }
 
 
