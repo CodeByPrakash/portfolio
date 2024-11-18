@@ -58,6 +58,35 @@ body
 {
     box-sizing: border-box;
 }
+.row .social
+{
+    margin: 10px;
+    justify-content: space-evenly;
+    max-width: 100%;
+}
+.row .social a
+{
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+    color: var(--skin-color);
+    background: var(--text-black-700);
+    text-align: center;
+    padding: 12px 20px 10px 0;
+    border-radius: 20px;
+    transition: .5s ease;
+}
+.row .social a i
+{
+    transform: scale(1.2);
+    padding: 4px 10px 4px 20px;
+    overflow: hidden;
+}
+.row .social a:hover
+{
+    background: var(--skin-color);
+    color: var(--text-black-700);
+}
 .goHomeBtn
 {
     display: none;
@@ -882,4 +911,26 @@ h3.my-profession
         flex: 0 0 100%;
         max-width: 100%;
     }
+    .row .social
+{
+    margin: 0px;
+    justify-content: space-around;
+    max-width: 100%;
+}
+.row .social a
+{
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+    color: var(--skin-color);
+    background: var(--text-black-700);
+    padding: 10px 20px;
+    font-size: 24px;
+    border-radius: 30px;
+}
+.row .social a i
+{
+    padding-top: 5px ;
+}
 }
