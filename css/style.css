@@ -587,7 +587,7 @@ h3.my-profession
 .about .about-content .timeline .timeline-text a
 {
     text-decoration: none;
-    color: var(--text-black-700);
+    color: var(--skin-color);
     opacity: 0.95;
 }
 /* Searvice*/
