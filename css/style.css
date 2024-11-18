@@ -696,6 +696,7 @@ h3.my-profession
 {
     transition: .3s ease;
 }
+.row .portfolio-item .portfolio-img:hover > :not(:hover),
 .portfolio-img:hover img:not(:hover)
 {
     opacity: .5;
