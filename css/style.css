@@ -678,15 +678,8 @@ h3.my-profession
 {
     border: 4px solid var(--bg-black-100);
     border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
 }
-.portfolio .portfolio-item-inner .portfolio-img img:hover > :not(.portfolio .portfolio-img img:hover)
-{
-    filter: blur(5px);
-    opacity: 0.5;
 
-}
 /* .portfolio .portfolio-item-inner .portfolio-img img:hover > :not(:hover)
 {
     filter: blur(5px);
@@ -694,10 +687,18 @@ h3.my-profession
 } */
 .portfolio .portfolio-item-inner .portfolio-img img
 {
-    transition: .3s ease;
     width: 100%;
     display: block;
+    cursor: pointer;
+    transition: .3s ease;
 }
+.portfolio .portfolio-img img:hover > :not(:hover)
+{
+    filter: blur(5px);
+    opacity: 0.5;
+
+}
+
 /* Contact */
 .contact-title
 {
