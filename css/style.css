@@ -696,12 +696,18 @@ h3.my-profession
 {
     transition: .3s ease;
 }
-.row .portfolio-item .portfolio-img:hover > :not(:hover),
-.portfolio-img:hover img:not(:hover)
-{
-    opacity: .5;
+.row:hover .portfolio-item-inner {
     filter: blur(10px);
+    opacity: 0.5;
+    transition: .5s ease;
 }
+.row .portfolio-item-inner:hover
+{
+    filter: blur(0);
+    opacity: 1;
+    transition: .5s ease;
+}
+
 
 /* Contact */
 .contact-title
