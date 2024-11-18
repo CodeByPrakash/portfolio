@@ -10,6 +10,10 @@
     --bg-black-custome: #f5f3f3;
     --scroll-thumb:#f2f2fc;
 }
+html
+{
+    scroll-behavior: smooth;
+}
 body.dark
 {
     --bg-black-custome: #292929;
@@ -56,24 +60,22 @@ body
 }
 .goHomeBtn
 {
+    display: none;
     position: fixed;
     bottom: 0;
     right: 0;
     margin: 20px;
     z-index: 9999;
+    transition: .5s ease;
 }
 .goHomeBtn a
 {
     text-decoration: none;
-    color: var(--skin-color);
-    padding: 10px;
-    border-radius: 10px;
-    background: var(--text-black-700);
-}
-.goHomeBtn a i
-{
-    color: var(--skin-color);
+    background: var(--skin-color);
+    color: var(--text-black-700);
     font-size: 20px;
+    padding: 10px;
+    border-radius: 30px;
 }
 ul
 {
