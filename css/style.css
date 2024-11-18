@@ -681,8 +681,14 @@ h3.my-profession
     overflow: hidden;
     cursor: pointer;
 }
+.portfolio .portfolio-item-inner .portfolio-img img:hover > :not(:hover)
+{
+    filter: blur(5px);
+    opacity: 0.5;
+}
 .portfolio .portfolio-item-inner .portfolio-img img
 {
+    transition: .3s ease;
     width: 100%;
     display: block;
 }
