@@ -8,7 +8,7 @@
     --text-black-900: #302e4d;
     --text-black-700: #504e70;
     --bg-black-custome: #f5f3f3;
-    --scroll-thumb:#f2f2fc;
+    --scroll-thumb:rgba(0,0,0,0.1);
 }
 html
 {
@@ -22,7 +22,7 @@ body.dark
         --bg-black-50: #393939;
         --text-black-900: #ffffff;
         --text-black-700: #e9e9e9;
-        --scroll-thumb:#151515;
+        --scroll-thumb:rgba(0,0,0,0.1);
 }
 *{
     margin: 0;
