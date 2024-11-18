@@ -691,6 +691,7 @@ h3.my-profession
     display: block;
     cursor: pointer;
     opacity: 1;
+    border-radius: 10px;
 }
 .portfolio .portfolio-img
 {
