@@ -587,7 +587,7 @@ h3.my-profession
 .about .about-content .timeline .timeline-text a
 {
     text-decoration: none;
-    color: var(--bg-black-100);
+    color: var(--text-black-700);
 }
 /* Searvice*/
 .service .container
