@@ -117,7 +117,7 @@ window.addEventListener("scroll" , () => {
 });
 /* GoTo Home */
 // Get the button
-const goHomeBtn = document.getElementById('goHomeBtn');
+const goHomeBtn = document.querySelector('.goHomeBtn');
 
 // Function to show the button when scrolling
 window.onscroll = function() {
