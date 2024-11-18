@@ -76,6 +76,11 @@ ul
     font-family: "Poppins", sans-serif;
     padding-left: 270px;
 }
+.padd-10
+{
+    padding-left:10px;
+    padding-right: 10px;
+}
 .padd-15
 {
     padding-left: 15px;
