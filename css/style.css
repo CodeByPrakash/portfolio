@@ -681,7 +681,7 @@ h3.my-profession
 }
 .portfolio .portfolio-item-inner
 {
-    border: 4px solid var(--bg-black-100);
+    border: 4px solid var(--skin-color);
     border-radius: 10px;
 }
 
