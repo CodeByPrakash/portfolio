@@ -338,6 +338,7 @@ h3.my-profession
 }
 .typing
 {
+    font-family: "Leckerli One", cursive;
     color: var(--skin-color);
 }
 .home-info p{
