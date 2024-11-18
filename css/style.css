@@ -73,6 +73,7 @@ ul
 }
 .main-content
 {
+    font-family: "Poppins", sans-serif;
     padding-left: 270px;
 }
 .padd-15
@@ -343,10 +344,6 @@ h3.my-profession
     margin-bottom: 70px ;
     font-size: 20px;
     color: var(--text-black-700);
-}
-.section_of_portfolio
-{
-    font-family: "Poppins", sans-serif;
 }
 .home .home-img
 {
