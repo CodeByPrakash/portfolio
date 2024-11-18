@@ -588,6 +588,7 @@ h3.my-profession
 {
     text-decoration: none;
     color: var(--text-black-700);
+    opacity: 0.95;
 }
 /* Searvice*/
 .service .container
