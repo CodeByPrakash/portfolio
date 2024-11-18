@@ -693,7 +693,7 @@ h3.my-profession
     transition: .3s ease;
     opacity: 1;
 }
-.portfolio-img:hover > :not(:hover)
+.portfolio-img:hover > .portfolio-img:not(:hover)
 {
     opacity: .5;
     filter: blur(10px);
