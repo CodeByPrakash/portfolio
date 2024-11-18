@@ -590,7 +590,7 @@ h3.my-profession
     margin-bottom: 30px;
     margin: 0 10px 0 10px;
     flex: 0 0 49.99%;
-    max-width: 49.99%;
+    max-width: calc(49.99% - 20px);
 }
 .service .service-item .service-item-inner
 {
