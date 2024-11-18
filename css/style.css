@@ -54,6 +54,23 @@ body
 {
     box-sizing: border-box;
 }
+.goHomeBtn
+{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+}
+.goHomeBtn a
+{
+    text-decoration: none;
+    color: var(--skin-color);
+    padding: 10px;
+}
+.goHomeBtn a i
+{
+    color: var(--skin-color);
+}
 ul
 {
     list-style: none;

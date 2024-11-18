@@ -115,6 +115,23 @@ window.addEventListener("scroll" , () => {
             }
     });
 });
+/* GoTo Home */
+// Get the button
+const goHomeBtn = document.getElementById('goHomeBtn');
+
+// Function to show the button when scrolling
+window.onscroll = function() {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    goHomeBtn.style.display = 'block'; // Show the button
+  } else {
+    goHomeBtn.style.display = 'none'; // Hide the button
+  }
+};
+
+// Scroll to the top of the page
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 /* Send Message */
 function sendEmail()
