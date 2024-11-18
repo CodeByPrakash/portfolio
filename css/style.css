@@ -690,8 +690,11 @@ h3.my-profession
     width: 100%;
     display: block;
     cursor: pointer;
-    transition: .3s ease;
     opacity: 1;
+}
+.portfolio .portfolio-img
+{
+    transition: .3s ease;
 }
 .portfolio-img:hover img:not(:hover)
 {
