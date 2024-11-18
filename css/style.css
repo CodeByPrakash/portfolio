@@ -695,7 +695,7 @@ h3.my-profession
     width: 100%;
     display: block;
     opacity: 1;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 .row:hover .portfolio-item-inner {
     filter: blur(10px);
