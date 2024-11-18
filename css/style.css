@@ -691,11 +691,13 @@ h3.my-profession
     display: block;
     cursor: pointer;
     transition: .3s ease;
+    opacity: 1;
 }
-.portfolio .portfolio-item .portfolio-item-inner:hover > :not(:hover)
+.portfolio-img:hover > :not(:hover)
 {
-    filter: blur(5px);
-    opacity: 0.5;
+    opacity: .5;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
 }
 
 /* Contact */
