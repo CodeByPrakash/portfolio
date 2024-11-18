@@ -86,6 +86,7 @@ ul
 {
     background: var(--bg-black-900);
     min-height: 100vh;
+    margin: 50px;
     display: block;
     padding: 0 30px;
     opacity: 1;
