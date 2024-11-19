@@ -228,6 +228,7 @@ ul
     padding: 30px;
     height: 100%;
     z-index: 10;
+    animation-delay: 500ms;
 }
 .aside .logo
 {
@@ -411,27 +412,45 @@ h3.my-profession
     text-align: center;
     position: relative;
 }
-.home-img::after
+/* .home-img::after
 {
     content: '';
     position: absolute;
-    height: 80px;
-    width: 80px;
-    border-bottom: 10px solid var(--skin-color);
-    border-right: 10px solid var(--skin-color);
-    right: 20px;
-    bottom: 40px;
-}
+    height: 10px;
+    width: 120px;
+    border-top: 10px solid var(--skin-color);
+    bottom: 50px;
+    right: 0;
+} */
 .home-img::before
 {
     content: '';
     position: absolute;
-    height: 80px;
-    width: 80px;
+    height: 10px;
+    width: 260px;
     border-top: 10px solid var(--skin-color);
-    border-left: 10px solid var(--skin-color);
-    left: 20px;
-    top: -40px;
+    top: -30px;
+    translate: 10px;
+    transition: .5s ease;
+    box-shadow: 0 0 20px var(--skin-color);
+    animation: float-animation linear infinite 5s;
+}
+@keyframes float-animation {
+    0%{
+        transform: translateY(0);
+        transition: .5s;
+    }
+    50%
+    {
+        transform: translateY(-40px);
+        transition: .5s;
+    }
+    100%
+    {
+        transform: translateY(0);
+        transition: .5s;
+    }
+    
 }
 .home .home-img img
 {
