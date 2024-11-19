@@ -54,7 +54,7 @@ body
     background: var(--bg-black-900);
     line-height: 1.5;
     font-size: 16px;
-    font-family: 'Poppins' sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 .wave {
     animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
@@ -260,7 +260,7 @@ ul
 }
 .aside .logo a
 {
-    font-family: 'Poppins' sans-serif;
+    font-family: "Poppins", sans-serif;
     color: var(--text-black-900);
     font-weight: 700;
     padding: 15px 20px;
@@ -360,7 +360,7 @@ ul
 }
 .aside .nav li a
 {
-    font-family: 'Poppins', monospace;
+    font-family: "Poppins", sans-serif;
     cursor: pointer;
     font-size: 16px;
     display: block;
