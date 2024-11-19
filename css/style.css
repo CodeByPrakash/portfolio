@@ -161,6 +161,9 @@ ul
 }
 .container
 {
+    -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
     cursor: default;
     max-width: 1100px;
     width: 100%;
