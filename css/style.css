@@ -363,7 +363,6 @@ ul
     font-family: 'Poppins', monospace;
     cursor: pointer;
     font-size: 16px;
-    font-family: 600;
     display: block;
     border: 1px solid var(--bg-black-50);
     background: var(--bg-black-custome);
