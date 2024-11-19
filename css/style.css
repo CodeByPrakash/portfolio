@@ -923,7 +923,7 @@ h3.my-profession
         display: none;
     }
 } 
-@media(max-width:767px)
+@media(max-width:880px)
 {
     .contact .contact-form .col-6,
     .contact .contact-info-item,
@@ -960,3 +960,16 @@ h3.my-profession
     padding-top: 5px ;
 }
 }
+@media screen and (max-width:680px) {
+    .section
+    {
+        margin: 0;
+    }
+    .contact .contact-info-item
+    {
+        flex: 0 0 100%;
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+

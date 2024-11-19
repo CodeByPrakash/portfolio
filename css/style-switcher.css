@@ -86,3 +86,22 @@
 {
     background: #9b0ed3;
 }
+@media (max-width:450px) and (max-height:800px)
+{
+    .style-switcher
+{
+
+    width: 250px;
+    height: 120px;
+    padding-top: 30px;
+}
+.style-switcher .s-icon{
+    height: 50px;
+    margin: 10px;
+    padding: 5px 0;
+    width: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-size: 30px;   
+}
+}
