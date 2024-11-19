@@ -161,6 +161,7 @@ ul
 }
 .container
 {
+    cursor: default;
     max-width: 1100px;
     width: 100%;
     margin: auto;
@@ -684,7 +685,7 @@ h3.my-profession
 /* Searvice*/
 .service .container
 {
-    cursor: default;
+    
     padding: 40px;
 }
 
