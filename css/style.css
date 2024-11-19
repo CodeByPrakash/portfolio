@@ -684,6 +684,7 @@ h3.my-profession
 /* Searvice*/
 .service .container
 {
+    cursor: default;
     padding: 40px;
 }
 
