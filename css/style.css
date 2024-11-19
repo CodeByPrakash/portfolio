@@ -96,15 +96,18 @@ body
     flex-wrap: wrap;
     text-decoration: none;
     color: var(--skin-color);
-    background: var(--text-black-700);
+    background: var(--bg-black-custome);
     text-align: center;
     border-radius: 20px;
     transition: .5s ease;
+    padding: 10px 40px;
+    font-size: 1.5rem;
 }
 .row .social a i
 {
-    transform: scale(1.2);
     padding-right: 10px;
+    scale: 1.5;
+    padding: 5px 20px 0 0;
     overflow: hidden;
 }
 .row .social a:hover
@@ -883,6 +886,7 @@ h3.my-profession
 }
 .contact .contact-form .form-item textarea.form-control
 {
+    font-family: "Poppins",sans-serif;
     height: 140px;
 }
 .contact .contact-form .btn
@@ -890,6 +894,16 @@ h3.my-profession
     cursor: pointer;
     height: 50px;
     padding: 0 50px;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.contact .contact-form .button
+{
+    max-width: 100%;
+    margin: 0 auto 0 auto;
+    align-items: center;
+    justify-content: center;
+    display: grid;
 }
 @media(max-width: 1283px) 
 {
@@ -997,9 +1011,19 @@ h3.my-profession
     }
     .contact .social div
     {
-        text-align: center;
         width: calc(100% - 20px);
         margin: 0 10px 0 10px; 
+    }
+    .contact .social div a
+    {
+        width: 100%;
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 2px;
+    }
+    .contact .social div a i
+    {
+        margin: 2px 0 0 10px;
     }
     .about
     {

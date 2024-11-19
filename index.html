@@ -63,7 +63,7 @@
                             </h3>
                             <h3 class="my-profession"><span class="typing"></span></h3>
                             <p>I am a web designer currently studying at Bhadrak Engineering School and Technology. With a strong passion for programming and web design, I enjoy creating interactive and visually appealing websites. In addition to web development, I have a keen interest in game development and other technical projects. I am constantly learning and exploring new technologies to enhance my skills and create innovative digital experiences.</p>
-                            <a class="btn hire-me animate__animated animate__fadeInDown" style="cursor: pointer;" onclick="location.href='#contact'">Hire Me</a>
+                            <a class="btn hire-me animate__animated animate__fadeInDown" style="cursor: pointer;" href="#hireme">Hire Me</a>
                         </div>
                         <div class="home-img padd-15 animate__animated animate__bounceInRight" oncontextmenu="return false;">
                             <img src="assets/images/person/OM.png" onclick="window.location.href='person.html'">
@@ -420,14 +420,14 @@
                         </div>
                         <!--- ===== Contact Info item End =====-->
                         <!--- ===== Contact Info item start =====-->
-                        <div class="contact-info-item padd-15">
+                        <div class="contact-info-item padd-15" onclick="window.location.href='https://mailto:omprakashbehera.cse@gmail.com/'">
                             <div class="icon"><i class="fa fa-envelope"></i></div>
                             <h4>Email</h4>
                             <p><a href="mailto:omprakashbehera.cse@gmail.com" style="text-decoration: none;">omprakashbehera.cse@gmail.com</a></p>
                         </div>
                         <!--- ===== Contact Info item End =====-->
                         <!--- ===== Contact Info item start =====-->
-                        <div class="contact-info-item padd-15">
+                        <div class="contact-info-item padd-15" onclick="window.location.href='https://omprakashcse.vercel.app/'">
                             <div class="icon"><i class="fa fa-globe-asia"></i></div>
                             <h4>Website</h4>
                             <p><a href="https://omprakashcse.vercel.app/" style="text-decoration: none;">omprakashcse.vercel.app</a></p>
@@ -438,7 +438,7 @@
                     <h4 class="contact-sub-title padd-15">I May be quite Slow but I am responsive</h4>
                     <!-- ===== Contact Form ===== -->
                      <div class="row">
-                        <div class="contact-form padd-15">
+                        <div class="contact-form padd-15" id="hireme">
                         <form onsubmit="sendEmail(); reset(); return false;" method="post">
                             <div class="row">
                                 <div class="form-item col-6 padd-15">
@@ -462,11 +462,11 @@
                             <div class="row">
                                 <div class="form-item col-12 padd-15">
                                     <div class="form-group">
-                                        <textarea name="" id="message-send" class="form-control" placeholder="Your Message"></textarea>
+                                        <textarea name="" id="message-send" class="form-control" placeholder="Your Message" style="resize: none;"></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row button">
                                 <div class="form-item col-12 padd-15">
                                     <button type="submit" class="btn">Send Message</button>
                                 </div>
