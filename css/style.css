@@ -302,29 +302,6 @@ ul
     top: 0;
     right: 0;
 }
-/* .aside .nav-toggler
-{
-    height: 40px;
-    width: 40px;
-    padding: 5px;
-    border: 1px solid var(--bg-black-50);
-    cursor: pointer;
-    position: fixed;
-    left: -300px;
-    top: 20px;
-    border-radius: 5px;
-    background: var(--bg-black-100);
-    display: none;
-    align-items: center;
-    justify-content: center;
-}
-@media(max-width:1280px)
-{
-    .aside .nav-toggler
-    {
-        left: 50px;
-    }
-} */
 .aside .nav-toggler span
 {
     /* margin-top: 10px; */
