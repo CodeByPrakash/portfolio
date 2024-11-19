@@ -9,7 +9,7 @@
     --bg-black-50: #e8dfec;
     --text-black-900: #302e4d;
     --text-black-700: #504e70;
-    --bg-black-custome: #f5f3f3;
+    --bg-black-custome: #e7e7e7;
     --scroll-thumb:rgba(255, 255, 255, 0.027);
 }
 html
@@ -116,15 +116,18 @@ body
     margin: 20px;
     z-index: 9999;
     transition: .5s ease;
+    
 }
 .goHomeBtn a
 {
     text-decoration: none;
     background: var(--skin-color);
     color: var(--text-black-700);
-    font-size: 20px;
+    font-size: 24px;
     padding: 10px;
-    border-radius: 30px;
+    box-shadow: 0 0 10px var(--skin-color);
+    border-radius: 100%;
+   
 }
 ul
 {
@@ -369,7 +372,6 @@ ul
     font-size: 16px;
     display: block;
     border: 1px solid var(--bg-black-50);
-    background: var(--bg-black-custome);
     border-radius: 5px;
     color: var(--text-black-900);
     padding: 5px 15px;
@@ -826,10 +828,13 @@ h3.my-profession
 }
 .contact .contact-info-item
 {
-    flex: 0 0 25%;
-    max-width: 25%;
+    background: var(--bg-black-custome);
+    margin: 0 10px 20px 10px;
+    flex: 0 0 calc(50% - 20px);
+    padding: 40px;
+    border-radius: 30px;
+    max-width: 50%;
     text-align: center;
-    margin-bottom: 60px;
 }
 .contact .contact-info-item .icon
 {

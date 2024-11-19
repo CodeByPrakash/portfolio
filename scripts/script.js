@@ -122,7 +122,7 @@ const goHomeBtn = document.querySelector('.goHomeBtn');
 // Function to show the button when scrolling
 window.onscroll = function() {
   if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-    goHomeBtn.style.display = 'block'; // Show the button
+    goHomeBtn.style.display = 'flex'; // Show the button
   } else {
     goHomeBtn.style.display = 'none'; // Hide the button
   }
