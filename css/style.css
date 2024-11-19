@@ -9,7 +9,7 @@
     --bg-black-50: #e8dfec;
     --text-black-900: #302e4d;
     --text-black-700: #504e70;
-    --bg-black-custome: #e7e7e7;
+    --bg-black-custome: #ffffff;
     --scroll-thumb:rgba(255, 255, 255, 0.027);
 }
 html
@@ -954,7 +954,7 @@ h3.my-profession
     flex-wrap: wrap;
     text-decoration: none;
     color: var(--skin-color);
-    background: var(--text-black-700);
+    background: var(--bg-black-custome);
     padding: 10px 20px;
     font-size: 24px;
     border-radius: 30px;
@@ -981,12 +981,12 @@ h3.my-profession
     {
         flex: 0 0 100%;
         width:calc(100% - 20px);
-        margin: 10px;
+        margin: 10px 0;
     }
     .contact form
     {
-        width: calc(100% - 20px);
-        margin:10px 20px 10px 20px;
+        width: calc(100%);
+        margin:10px 10px 10px 0px;
     }
     .contact .contact-form .form-item .btn
     {
@@ -1039,15 +1039,13 @@ h3.my-profession
     .service
     {
         padding: 0;
-        flex: 0 0 100%;
-        width: 100%;
     }
     .portfolio .portfolio-item
     {
         max-width: fit-content;
         margin-left: auto;
         margin-right: auto;
-        margin: 10px 0 0 20px;
+        margin: 15px 0 0 0px;
     }
     .portfolio .portfolio-item-inner img
     {
@@ -1056,15 +1054,15 @@ h3.my-profession
     }
     .service .container
     {
-        padding: 10px;
+        padding: 0px;
     }
-    .service .service-item .service-item-inner
+    .service .service-item
     {
-        margin: 10px;
+        width: calc(100% - 10px);
+        margin: 10px 0 0 0;
     }
-    .service .section-title
+    .section
     {
-        padding: 0 15px 0 15px;
+        padding: 0 30px;
     }
 }
-
