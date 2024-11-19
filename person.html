@@ -9,12 +9,24 @@
     <style>
         body
         {
+            background: #000;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        .back
+        .back:hover a
         {
+            color: #000000;
+            transition: .5s ease;
+            background: #00a841;
+        }
+        .back a
+        {
+            text-align: center;
+            color: #00ff62;
+            font-family: monospace;
+            font-size: 20px;
+            text-decoration: none;
             height: auto;
             position: fixed;
             top: 0;
@@ -27,24 +39,6 @@
             border: 2px solid #00ff62;
             transition: .5s ease;
             cursor: pointer;
-        }
-        .back:hover
-        {
-            transition: .5s ease;
-            background: #00a841;
-            
-        }
-        .back:hover a
-        {
-            color: #000000;
-        }
-        .back a
-        {
-            text-align: center;
-            color: #00ff62;
-            font-family: monospace;
-            font-size: 20px;
-            text-decoration: none;
         }
         .image
         {
