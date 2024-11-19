@@ -1093,7 +1093,5 @@ h3.my-profession
     {
         width: calc(100% - 20px);
         margin: 0 10px 0 10px;
-        justify-content: center;
-        align-items: center;
     }
 }
