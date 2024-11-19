@@ -90,18 +90,18 @@
 {
     .style-switcher
 {
-
+    
     width: 250px;
     height: 120px;
     padding-top: 30px;
 }
 .style-switcher .s-icon{
+    transform: translate(-10px, 0);
     height: 50px;
-    margin: 10px;
+    margin: 5px;
     padding: 5px 0;
     width: 50px;
     text-align: center;
-    font-size: 20px;
-    font-size: 30px;   
+    font-size: 20px;  
 }
 }

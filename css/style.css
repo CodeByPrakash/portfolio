@@ -16,6 +16,12 @@ html
 {
     scroll-behavior: smooth;
 }
+body
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body.dark
 {
     --bg-black-custome: #292929;
@@ -29,7 +35,6 @@ body.dark
 *{
     margin: 0;
     padding: 0;
-    outline: none;
     text-decoration: none;
     box-sizing: border-box;
 }
@@ -83,6 +88,7 @@ body
     margin: 10px;
     justify-content: space-evenly;
     max-width: 100%;
+    text-align: center;
 }
 .row .social a
 {
@@ -92,14 +98,13 @@ body
     color: var(--skin-color);
     background: var(--text-black-700);
     text-align: center;
-    padding: 12px 20px 10px 0;
     border-radius: 20px;
     transition: .5s ease;
 }
 .row .social a i
 {
     transform: scale(1.2);
-    padding: 4px 10px 4px 20px;
+    padding-right: 10px;
     overflow: hidden;
 }
 .row .social a:hover
@@ -519,11 +524,11 @@ h3.my-profession
     margin-left: 4px;
     display: inline-block;
 }
-.about .about-content .personal-info .buttons
+.about-content .buttons
 {
     margin-top: 30px;
 }
-.about .about-content .personal-info .buttons .btn
+.about .about-content .buttons .btn
 {
     margin-right: 15px;
     margin-top: 10px;
@@ -664,10 +669,9 @@ h3.my-profession
     text-decoration: none;
     color: var(--skin-color);
 }
-/* Searvice*/
+/* Service*/
 .service .container
 {
-    
     padding: 40px;
 }
 
@@ -768,8 +772,8 @@ h3.my-profession
 } */
 .portfolio .portfolio-item-inner img
 {
-    width: 100%;
-    display: block;
+    width: calc(100%);
+    display: flex;
     opacity: 1;
     border-radius: 6px;
 }
@@ -806,7 +810,7 @@ h3.my-profession
 .contact .contact-info-item
 {
     background: var(--bg-black-custome);
-    margin: 0 10px 20px 10px;
+    margin: 0 auto 20px auto;
     flex: 0 0 calc(50% - 20px);
     padding: 40px;
     border-radius: 30px;
@@ -965,11 +969,102 @@ h3.my-profession
     {
         margin: 0;
     }
+    .contact .contact-title,
+    .contact .contact-sub-title
+    {
+        margin: 10px;
+        padding: 0;
+        width: calc(100% - 20px);
+        text-align: center;
+    }
     .contact .contact-info-item
     {
         flex: 0 0 100%;
+        width:calc(100% - 20px);
+        margin: 10px;
+    }
+    .contact form
+    {
+        width: calc(100% - 20px);
+        margin:10px 20px 10px 20px;
+    }
+    .contact .contact-form .form-item .btn
+    {
+        width: calc(100% - 20px);
+        margin: 0 10px 0 10px;
+        font-size: 20px;
+        text-transform: uppercase;
+    }
+    .contact .social div
+    {
+        text-align: center;
+        width: calc(100% - 20px);
+        margin: 0 10px 0 10px; 
+    }
+    .about
+    {
+        margin: 0;
+    }
+    .about .about-content .row1
+    {
+        display: flex;
+        flex: 0 0 100%;
         width: 100%;
-        margin: 10px 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .about .about-content .personal-info .info-item
+    {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .about .about-content .personal-info .info-item p
+    {
+        font-weight: 700 ;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 18px;
+        color: var(--text-black-900);
+        border-bottom: 1px solid var(--bg-black-50);
+    }
+    .about .about-content .personal-info .info-item p span
+    {
+        font-weight: 400;
+        color: var(--skin-color);
+        margin-left: 4px;
+        display: inline-block;
+    }
+    .service
+    {
+        padding: 0;
+        flex: 0 0 100%;
+        width: 100%;
+    }
+    .portfolio .portfolio-item
+    {
+        max-width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        margin: 10px 0 0 20px;
+    }
+    .portfolio .portfolio-item-inner img
+    {
+        width: calc(100%);
+        padding: 0;
+    }
+    .service .container
+    {
+        padding: 10px;
+    }
+    .service .service-item .service-item-inner
+    {
+        margin: 10px;
+    }
+    .service .section-title
+    {
+        padding: 0 15px 0 15px;
     }
 }
 
