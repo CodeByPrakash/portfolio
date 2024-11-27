@@ -17,8 +17,6 @@ I am Om, a passionate software developer and technology enthusiast. I specialize
 
 ## 🛠️ Technologies Used
 - **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Python, Flask
-- **Database**: SQLite (Optional for some projects)
 
 ## 🎯 Live Demo
 Check out the live version of my portfolio:  
