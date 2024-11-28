@@ -35,17 +35,3 @@ window.onscroll = function() {
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-/* Send Message */
-function sendEmail()
-{
-    Email.send({
-    SecureToken : "b6b8ff9f-d5e3-4362-b578-adf662aff832",
-    To : "omprakashbehera.cse@gmail.com",
-    From : document.getElementById("email").value,
-    Subject : document.getElementById("subject-send").value,
-    Body : document.getElementById("message-send").value
-}).then(
-      message => alert(message)
-);
-}
