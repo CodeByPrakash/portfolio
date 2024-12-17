@@ -1129,6 +1129,7 @@ h3.my-profession
 }
 
 .form-label {
+  color: var(--text-black-900);
   margin-bottom: 0.5rem;
 }
 
