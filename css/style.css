@@ -849,61 +849,10 @@ h3.my-profession
     text-decoration: none;
     color: var(--text-black-700);
 }
-.contact .contact-form
+.contact .contact-form1
 {
     flex: 0 0 100%;
     max-width: 100%;
-}
-.contact .contact-form .col-6
-{
-    flex: 0 0 50%;
-    max-width: 50%;
-}
-.contact .contact-form .col-12
-{
-    flex: 0 0 100%;
-    max-width: 100%;
-}
-.contact .contact-form .form-item
-{
-    margin-bottom: 30px;
-}
-.contact .contact-form .form-item .form-control
-{
-    width: 100%;
-    height: 50px;
-    border-radius: 25px;
-    background: var(--bg-black-100);
-    border: 1px solid var(--bg-black-50);
-    padding: 10px 25px;
-    font-size: 16px;
-    color: var(--text-black-700);
-    transition: all 0.3s ease;
-}
-.contact .contact-form .form-item .form-control:focus
-{
-    box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
-}
-.contact .contact-form .form-item textarea.form-control
-{
-    font-family: "Poppins",sans-serif;
-    height: 140px;
-}
-.contact .contact-form .btn
-{
-    cursor: pointer;
-    height: 50px;
-    padding: 0 50px;
-    font-size: 20px;
-    text-transform: uppercase;
-}
-.contact .contact-form .button
-{
-    max-width: 100%;
-    margin: 0 auto 0 auto;
-    align-items: center;
-    justify-content: center;
-    display: grid;
 }
 @media(max-width: 1283px) 
 {
@@ -1002,13 +951,13 @@ h3.my-profession
         width: calc(100%);
         margin:10px 10px 10px 0px;
     }
-    .contact .contact-form .form-item .btn
+    /* .contact .contact-form1 .form-item .btn
     {
         width: calc(100% - 20px);
         margin: 0 10px 0 10px;
         font-size: 20px;
         text-transform: uppercase;
-    }
+    } */
     .contact .social div
     {
         width: calc(100% - 20px);
@@ -1129,7 +1078,7 @@ h3.my-profession
 }
 
 .form-label {
-    color: var(--bg-black-900);
+color: var(--text-black-900);
   margin-bottom: 0.5rem;
 }
 
