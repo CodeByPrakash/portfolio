@@ -261,6 +261,162 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <style>
+                            
+                            .gallery-container {
+                              width: 100%;
+                              margin: 50px 0 0 0;
+                              padding: 0;
+                              min-height: 70vh; /* Ensures a minimum height of 50% of the viewport height */
+                              overflow: hidden;
+                              position: relative;
+                              display: flex;
+                              justify-content: center; /* Centers horizontally */
+                              align-items: center;    /* Centers vertically */
+                              background-color: transparent;
+                              border: 2px solid var(--skin-color);
+                              border-radius: 30px;
+                            }
+                            .gallery-container:hover .gallery
+                            {
+                                animation-play-state: paused;
+                            }
+                            .gallery {
+                              display: flex;
+                              gap: 30px; /* Increased gap for better spacing between larger images */
+                              animation: move-left 30s linear infinite;
+                            }
+                            
+                            .image {
+                                border: solid 2px var(--skin-color);
+                                border-radius: 10px;
+                              width: 520px; 
+                              height: 380px;
+                              object-fit: cover;
+                              transition: transform 0.3s ease;
+                              cursor: pointer;
+                              filter: contrast(1.2);
+                            }
+                            .image:hover
+                            {
+                                animation: pulse 1s ease;
+                            }
+                            @keyframes pulse {
+                                0%
+                                {
+                                    opacity: 1;
+                                    transform: scale(1,1.06);
+                                    filter: grayscale(1);
+                                }
+                                50%
+                                {
+                                    scale: 1.05;
+                                    opacity: .2;
+                                }
+                                100%
+                                {
+                                    opacity: 1;
+                                    scale: 1;
+                                    
+                                }
+                            }
+                            
+                            @keyframes move-left {
+                              0% {
+                                transform: translateX(100%);
+                              }
+                              100% {
+                                transform: translateX(-100%);
+                              }
+                            }
+                            
+                            .lightbox {
+                              position: fixed;
+                              top: 0;
+                              left: 0;
+                              width: 100%;
+                              height: 100%;
+                              background: rgba(0, 0, 0, 0.8);
+                              display: none;
+                              justify-content: center;
+                              align-items: center;
+                              flex-direction: column;
+                              z-index: 9;
+                            }
+                            
+                            .lightbox img {
+                              max-width: calc(100% - 150px);
+                              width: calc(100% - 150px);
+                              margin: 50px 100px 0 100px;
+                              max-height: calc(100% - 80px);
+                              border: 2px solid var(--skin-color);
+                              border-radius: 30px;
+                              z-index: 9;
+                            }
+                            
+                            #back-button {
+                              margin-top: 10px;
+                              background-color: #ff4d4d;
+                              color: white;
+                              border: none;
+                              padding: 5px 20px;
+                              font-size: 16px;
+                              cursor: pointer;
+                              border-radius: 5px;
+                              z-index: 9;
+                            }
+                            
+                            #back-button:hover {
+                              background-color: #ff3333;
+                            }
+                            
+                                </style>
+                              <div class="gallery-container">
+                                <div class="gallery">
+                                  <img src="assets/images/addons/1.jpg" alt="Image 1" class="image">
+                                  <img src="assets/images/addons/1.jpg" alt="Image 2" class="image">
+                                  <img src="assets/images/addons/1.jpg" alt="Image 3" class="image">
+                                  <img src="assets/images/addons/1.jpg" alt="Image 4" class="image">
+                                </div>
+                              </div>
+                            
+                              <div class="lightbox" id="lightbox">
+                                <img id="lightbox-image" src="" alt="Expanded View">
+                                <button id="back-button">⟵ Back</button>
+                              </div>
+                            
+                              <script>
+                                const images = document.querySelectorAll('.image');
+                            const lightbox = document.getElementById('lightbox');
+                            const lightboxImage = document.getElementById('lightbox-image');
+                            const backButton = document.getElementById('back-button');
+                            
+                            images.forEach(image => {
+                              image.addEventListener('click', () => {
+                                lightboxImage.src = image.src;
+                                lightbox.style.display = 'flex';
+                              });
+                            });
+                            
+                            backButton.addEventListener('click', () => {
+                              lightbox.style.display = 'none';
+                            });
+                            const gallery = document.querySelector('.gallery');
+
+                            // Event listener for when hovering over any image
+                            // images.forEach(image => {
+                            //     image.addEventListener('mouseenter', () => {
+                            //         gallery.style.animationPlayState = 'paused'; // Pause animation on hover
+                            //     });
+
+                            //     image.addEventListener('mouseleave', () => {
+                            //         gallery.style.animationPlayState = 'running'; // Resume animation when hover ends
+                            //     });
+                            // });
+
+                              </script>
+                        
                     </div>
                 </div>
              </section>

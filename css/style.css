@@ -122,7 +122,7 @@ body
     bottom: 0;
     right: 0;
     margin: 20px;
-    z-index: 9999;
+    z-index: 9;
     transition: .5s ease;
     
 }
@@ -262,7 +262,7 @@ ul
     top: 0;
     padding: 30px;
     height: 100%;
-    z-index: 10;
+    z-index: 5;
     animation-delay: 500ms;
 }
 .aside .logo
@@ -740,29 +740,29 @@ h3.my-profession
     line-height: 25px;
 }
 /* Portfolio */
-.portfolio .portfolio-heading
+ .portfolio-heading
 {
     flex: 0 0 100%;
     max-width: 100%;
     margin-bottom: 40px;
 }
-.portfolio .portfolio-heading h2
+ .portfolio-heading h2
 {
     color: var(--text-black-900);
     font-weight: 500;
 }
 
-.portfolio .container
+ .container
 {
     padding-bottom: 40px;
 }
-.portfolio .portfolio-item
+ .portfolio-item
 {
     flex: 0 0 33.33%;
     max-width: 33.33%;
     margin-bottom: 30px;
 }
-.portfolio .portfolio-item-inner
+ .portfolio-item-inner
 {
     border: 4px solid var(--skin-color);
     border-radius: 10px;
@@ -773,20 +773,20 @@ h3.my-profession
     filter: blur(5px);
     opacity: 0.5;
 } */
-.portfolio .portfolio-item-inner img
+.portfolio-item-inner img
 {
     width: calc(100%);
     display: flex;
     opacity: 1;
     border-radius: 6px;
 }
-.row:hover .portfolio-item-inner
+.portfolio .row:hover .portfolio-item-inner
 {
     filter: blur(10px);
     opacity: 0.5;
     transition: .5s ease;
 }
-.row .portfolio-item-inner:hover
+.portfolio .row .portfolio-item-inner:hover
 {
     filter: blur(0);
     opacity: 1;
@@ -873,7 +873,7 @@ h3.my-profession
 }
 @media(max-width: 992px)
 {
-    .portfolio .portfolio-item,
+    .portfolio-item,
     .contact .contact-info-item
     {
         flex: 0 0 50%;
@@ -894,7 +894,7 @@ h3.my-profession
 {
     .contact .contact-form .col-6,
     .contact .contact-info-item,
-    .portfolio .portfolio-item,
+    .portfolio-item,
     .service .service-item,
     .about .about-content .education,
     .about .about-content .experience,
@@ -1013,14 +1013,14 @@ h3.my-profession
     {
         padding: 0;
     }
-    .portfolio .portfolio-item
+    .portfolio-item
     {
         max-width: fit-content;
         margin-left: auto;
         margin-right: auto;
         margin: 15px 0 0 0px;
     }
-    .portfolio .portfolio-item-inner img
+    .portfolio-item-inner img
     {
         width: calc(100%);
         padding: 0;
