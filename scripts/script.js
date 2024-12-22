@@ -33,7 +33,7 @@ window.onscroll = () => {
 
 // Scroll to the top of the page
 function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: '-1px', behavior: 'smooth' });
 }
 
 if (goHomeBtn) {
