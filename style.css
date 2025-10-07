@@ -61,6 +61,8 @@
     --code-bg: rgba(255,255,255,0.04);
     --code-border: rgba(255,255,255,0.08);
     --focus-ring: var(--android-blue);
+    /* Accent RGB for dynamic glows (default) */
+    --accent-rgb: 76,175,80; /* matches #4CAF50 */
 }
 
 /* Light Theme Variables */
@@ -413,7 +415,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 20px 60px rgba(76, 175, 80, 0.3);
+    box-shadow: 0 20px 60px rgba(var(--accent-rgb,76,175,80), 0.3);
     animation: imageGlow 3s ease-in-out infinite alternate;
     overflow: hidden;
     padding: 8px;
@@ -485,8 +487,8 @@ body {
 }
 
 @keyframes imageGlow {
-    from { box-shadow: 0 20px 60px rgba(76, 175, 80, 0.3); }
-    to { box-shadow: 0 30px 80px rgba(76, 175, 80, 0.6); }
+    from { box-shadow: 0 20px 60px rgba(var(--accent-rgb,76,175,80), 0.30); }
+    to { box-shadow: 0 30px 80px rgba(var(--accent-rgb,76,175,80), 0.60); }
 }
 
 .image-placeholder {
@@ -2386,6 +2388,7 @@ body[data-color-theme="emerald"] {
     --gradient-primary: linear-gradient(135deg,#16a34a,#0ea5e9);
     --gradient-secondary: linear-gradient(135deg,#6366f1,#16a34a);
     --gradient-accent: linear-gradient(45deg,#0ea5e9,#a5b4fc);
+    --accent-rgb: 22,163,74; /* #16a34a */
 }
 body[data-color-theme="pink"] {
     --blossom-pink: #ec4899;           /* vibrant pink */
@@ -2415,6 +2418,7 @@ body[data-color-theme="sunset"] {
     --gradient-primary: linear-gradient(135deg,#db2777,#f97316);
     --gradient-secondary: linear-gradient(135deg,#facc15,#db2777);
     --gradient-accent: linear-gradient(45deg,#f97316,#facc15);
+    --accent-rgb: 249,115,22; /* #f97316 */
 }
 body[data-color-theme="amethyst"] {
     --android-green:#9333ea; --android-green-light:#c084fc; --android-green-dark:#6b21a8;
@@ -2422,6 +2426,7 @@ body[data-color-theme="amethyst"] {
     --gradient-primary: linear-gradient(135deg,#9333ea,#6366f1);
     --gradient-secondary: linear-gradient(135deg,#7e22ce,#9333ea);
     --gradient-accent: linear-gradient(45deg,#6366f1,#d8b4fe);
+    --accent-rgb: 147,51,234; /* #9333ea */
 }
 body[data-color-theme="mono"] {
     --android-green:#636363; --android-green-light:#a3a3a3; --android-green-dark:#272727;
@@ -2429,6 +2434,7 @@ body[data-color-theme="mono"] {
     --gradient-primary: linear-gradient(135deg,#525252,#272727);
     --gradient-secondary: linear-gradient(135deg,#737373,#525252);
     --gradient-accent: linear-gradient(45deg,#636363,#a3a3a3);
+    --accent-rgb: 99,99,99; /* #636363 */
 }
 
 /* Theme palette component */
