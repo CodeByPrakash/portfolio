@@ -581,13 +581,16 @@ body {
 }
 
 .hero-title h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2.35rem, 5.2vw, 3.4rem);
+    line-height: 1.08;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.85rem;
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-wrap: balance;
+    word-break: break-word;
 }
 
 .hero-title p {
@@ -2206,7 +2209,10 @@ section:not(.hero) {
     }
     
     .hero-title h1 {
-        font-size: 2rem;
+        font-size: clamp(1.55rem, 8vw, 1.9rem);
+        letter-spacing: .5px;
+        line-height: 1.1;
+        margin-bottom: .65rem;
     }
     
     .hero-cta {
@@ -2222,6 +2228,29 @@ section:not(.hero) {
     .skills-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Ultra-narrow refinements */
+@media (max-width: 560px) {
+    .hero-title h1 { font-size: clamp(1.7rem, 7vw, 2rem); }
+    .hero-title p { font-size: .85rem; line-height: 1.35; }
+    .hero-floating-palette { top: -44px !important; right: 0 !important; transform: scale(.82); }
+    .hero-floating-palette .palette-toggle { width: 40px; height: 40px; font-size: .9rem; }
+    .hero-floating-palette .palette-options { padding:.45rem .5rem; gap:.5rem; }
+    .about-details-grid { gap:.6rem .7rem; }
+    .detail-item { padding:.55rem .65rem; }
+    .about-bio-extended { padding:1rem 1.05rem; font-size:.82rem; }
+}
+@media (max-width: 420px) {
+    .hero-title h1 { font-size: clamp(1.45rem, 8.5vw, 1.7rem); }
+    .hero-title p { font-size:.8rem; }
+    .hero-floating-palette { transform: scale(.75); }
+    .skill-category { padding: .7rem .65rem .75rem; }
+    .skill-meta li { padding:.3rem .4rem; }
+    .skills-list { gap:.55rem; }
+    .skill-name { font-size:.78rem; }
+    .category-description { font-size:.66rem; }
+    .detail-item { border-radius:10px; }
 }
 
 /* Custom scrollbar */
@@ -2540,7 +2569,30 @@ body[data-color-theme="mono"] {
 }
 
 @media (max-width: 980px) {
-    .floating-code-card { display:none; }
+    /* Re-enable floating cards in a simplified, inline layout for mobile */
+    .floating-code-card { 
+        display: block; 
+        position: relative; 
+        inset: auto; 
+        width: 100%; 
+        max-width: 260px; 
+        margin: 50px auto .85rem; 
+        transform: none !important; 
+        animation: none; 
+        pointer-events: auto; 
+    }
+    .floating-code-card.card-a,
+    .floating-code-card.card-b,
+    .floating-code-card.card-c { left:auto; right:auto; top:auto; bottom:auto; }
+    .floating-code-card pre { font-size:.65rem; }
+    .about-image-wrapper { position:relative; padding-bottom: 1.2rem; }
+    .about-image-wrapper .floating-code-card:last-of-type { margin-bottom:0; }
+}
+
+/* Ultra narrow refine stacked code cards */
+@media (max-width: 520px) {
+  .floating-code-card { max-width: 230px; font-size:.62rem; }
+  .floating-code-card pre { font-size:.6rem; }
 }
 .code-snippet, .mini-code code, .code-line { color: var(--text-primary); }
 .code-snippet .keyword { color: var(--android-purple-light); }
