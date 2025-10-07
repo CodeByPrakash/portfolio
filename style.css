@@ -63,6 +63,9 @@
     --focus-ring: var(--android-blue);
     /* Accent RGB for dynamic glows (default) */
     --accent-rgb: 76,175,80; /* matches #4CAF50 */
+    /* Unified accent glow layers (composed, appended to existing shadows) */
+    --card-accent-glow: 0 0 0 1px rgba(var(--accent-rgb),0.28), 0 6px 22px -6px rgba(var(--accent-rgb),0.38), 0 0 46px -12px rgba(var(--accent-rgb),0.45);
+    --card-accent-glow-hover: 0 0 0 1px rgba(var(--accent-rgb),0.40), 0 10px 30px -6px rgba(var(--accent-rgb),0.52), 0 0 62px -10px rgba(var(--accent-rgb),0.60);
 }
 
 /* Light Theme Variables */
@@ -2230,6 +2233,34 @@ section:not(.hero) {
     .skills-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Focused fix: prevent About section horizontal overflow under 450px */
+@media (max-width: 450px) {
+    .about-content { grid-template-columns: 1fr; gap: 2rem; }
+    .about-card, .image-frame { 
+            padding: 1.35rem 1.05rem 1.4rem; 
+            border-radius: 16px; 
+            width: 100%; 
+            max-width: 100%; 
+    }
+    .about-card h3 { font-size: clamp(1.25rem, 5.2vw, 1.45rem); }
+    .about-card p { font-size: .9rem; line-height: 1.55; margin-bottom: 1.25rem; }
+    .stats { gap: 1.1rem; }
+    .stat-number { font-size: 1.85rem; }
+    .stat-item { padding: .65rem .5rem; }
+    .about-details-grid { gap:.55rem .6rem; }
+    .detail-item { padding:.55rem .6rem; }
+    .detail-value { font-size:.78rem; }
+    .dev-code-block { padding: .85rem .9rem .95rem; border-radius: 14px; }
+    .code-snippet { font-size:.78rem; line-height:1.45; }
+    .image-frame { min-height: auto; padding-bottom: 1.6rem; }
+    .floating-code-card { margin-bottom:.7rem; }
+    .about-bio-extended { padding:.9rem 1rem; font-size:.82rem; border-radius:14px; }
+    .about-bio-extended p { margin:0; }
+    /* Ensure no accidental horizontal scroll */
+    .about, .about * { max-width: 100%; }
+    body, html { overflow-x:hidden; }
 }
 
 /* Ultra-narrow refinements */
