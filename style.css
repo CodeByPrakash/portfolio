@@ -2253,24 +2253,6 @@ section:not(.hero) {
     .detail-item { border-radius:10px; }
 }
 
-/* Narrow device hardening (<472px) to stop right-side clipping */
-@media (max-width: 472px) {
-    .container { padding-left: 14px; padding-right: 14px; }
-    .hero-content, .skills-grid, .projects-grid, .about-details-grid { width:100%; }
-    .skill-category, .project-card, .detail-item, .about-bio-extended { width:100%; max-width:100%; }
-    .floating-code-card { max-width:100%; width:100%; margin-left:auto; margin-right:auto; }
-    .floating-code-card pre, .mini-code code { white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; }
-    .skill-meta li { max-width:100%; word-break: break-word; }
-    .hero-floating-palette { transform-origin: top right; right:4px !important; }
-    .hero-floating-palette .palette-options { right:0; }
-    /* Prevent accidental horizontal overflow from grid gaps */
-    .skills-grid { gap: clamp(0.9rem, 2.5vw, 1.2rem); }
-    .projects-grid { gap: clamp(1.1rem, 3vw, 1.6rem); }
-    /* Slightly reduce shadows to avoid perceived cut-off */
-    .skill-category, .project-card, .detail-item, .floating-code-card { box-shadow: 0 10px 24px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.05); }
-    body, html { max-width:100%; overflow-x:hidden; }
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
