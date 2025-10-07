@@ -2253,6 +2253,24 @@ section:not(.hero) {
     .detail-item { border-radius:10px; }
 }
 
+/* Narrow device hardening (<472px) to stop right-side clipping */
+@media (max-width: 472px) {
+    .container { padding-left: 14px; padding-right: 14px; }
+    .hero-content, .skills-grid, .projects-grid, .about-details-grid { width:100%; }
+    .skill-category, .project-card, .detail-item, .about-bio-extended { width:100%; max-width:100%; }
+    .floating-code-card { max-width:100%; width:100%; margin-left:auto; margin-right:auto; }
+    .floating-code-card pre, .mini-code code { white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; }
+    .skill-meta li { max-width:100%; word-break: break-word; }
+    .hero-floating-palette { transform-origin: top right; right:4px !important; }
+    .hero-floating-palette .palette-options { right:0; }
+    /* Prevent accidental horizontal overflow from grid gaps */
+    .skills-grid { gap: clamp(0.9rem, 2.5vw, 1.2rem); }
+    .projects-grid { gap: clamp(1.1rem, 3vw, 1.6rem); }
+    /* Slightly reduce shadows to avoid perceived cut-off */
+    .skill-category, .project-card, .detail-item, .floating-code-card { box-shadow: 0 10px 24px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.05); }
+    body, html { max-width:100%; overflow-x:hidden; }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
@@ -2377,6 +2395,35 @@ section:not(.hero) {
   .skill-category { padding: 0.95rem 0.7rem; }
   .skill-name { font-size: 0.8rem; }
   .skill-percentage { font-size: 0.58rem; }
+}
+@media (max-width: 320px) {
+    html, body { overflow-x: hidden; }
+    .container { padding-left: 10px; padding-right: 10px; }
+    .hero-letter { font-size: 1.45rem; }
+    .hero-title h1 { font-size: clamp(1.28rem, 9vw, 1.5rem); letter-spacing:.4px; }
+    .hero-title p { font-size: .75rem; line-height: 1.28; }
+    .hero-floating-palette { top: -40px !important; right: 0 !important; transform: scale(.68); }
+    .hero-floating-palette .palette-toggle { width: 36px; height: 36px; font-size:.8rem; border-radius:11px; }
+    .hero-floating-palette .palette-options { padding:.4rem .45rem; gap:.45rem; }
+    .palette-swatch { width:28px; height:28px; }
+    .btn { padding:.75rem 1rem; font-size:.8rem; }
+    .skills-grid { gap:.85rem; }
+    .skill-category { padding:.6rem .55rem .65rem; border-radius:12px; }
+    .skill-category h3 { font-size:1rem; }
+    .category-description { font-size:.6rem; margin-bottom:.45rem; }
+    .skill-meta { font-size:.52rem; gap:.25rem; }
+    .skill-meta li { padding:.28rem .35rem; border-radius:6px; }
+    .skills-list { gap:.5rem; }
+    .skill-name { font-size:.72rem; }
+    .skill-bar { height:4px; }
+    .project-card { border-radius:14px; }
+    .project-image { min-height:160px; }
+    .detail-item { padding:.5rem .55rem; }
+    .about-bio-extended { padding:.85rem .95rem; font-size:.78rem; border-radius:14px; }
+    .floating-code-card { max-width:100%; font-size:.58rem; }
+    .floating-code-card pre { font-size:.56rem; }
+    form.contact-form input, form.contact-form textarea { font-size:.75rem; padding:.65rem .8rem; }
+    .footer { font-size:.7rem; }
 }
 
 /* Additional Color Theme Palettes (applied via body[data-color-theme]) */
