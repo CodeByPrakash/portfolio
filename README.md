@@ -1,16 +1,80 @@
-# React + Vite
+# Omprakash Behera — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, gamified designer portfolio built with **React + Vite**. Features a dotted cream background, deep neo-brutalist borders, and a vibrant multi-colored component system.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+| Layer | Tech |
+|---|---|
+| Framework | React 18 + Vite |
+| Styling | CSS Modules + CSS custom properties |
+| Fonts | Syne · Space Grotesk · Space Mono (Google Fonts) |
+| Animations | Pure CSS keyframes |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+├── components/
+│   ├── Navbar.jsx / .module.css
+│   ├── Hero.jsx   / .module.css
+│   ├── About.jsx  / .module.css
+│   ├── Skills.jsx / .module.css
+│   ├── Projects.jsx / .module.css
+│   ├── Contact.jsx  / .module.css
+│   └── Footer.jsx   / .module.css
+├── App.jsx
+├── App.css
+├── index.css        ← global tokens, .btn, .card utilities
+└── main.jsx
+```
+
+---
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+---
+
+## Sections
+
+- **Hero** — Full-height landing with animated status badge, large typographic headline, CTA buttons, and floating skill badges
+- **About** — Gamified character card with XP bar, level badge, and toolkit chips
+- **Skills** — Four color-coded stat cards (Design · Frontend · Backend · Strategy) with animated progress bars
+- **Projects** — 3-column project grid with colored thumbnails, award labels, and tag chips
+- **Contact** — Two-column layout with channel cards, availability indicator, and a working form
+- **Footer** — Dark footer with social links
+
+---
+
+## Customisation
+
+1. **Personal info** — Update name, bio, and location in `About.jsx` and `Hero.jsx`
+2. **Projects** — Edit the `projects` array in `Projects.jsx`
+3. **Social links** — Update hrefs in `Footer.jsx`
+4. **Colors** — CSS variables in `index.css` (`:root` block)
+5. **Fonts** — Swap the Google Fonts `@import` in `index.css`
+
+---
+
+## License
+
+MIT — free to use and adapt for personal portfolios.
+
