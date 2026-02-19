@@ -118,6 +118,17 @@
 }
 .textarea { min-height: 130px; }
 
+/* Error banner */
+.errorBanner {
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  color: var(--red);
+  background: var(--red-pale);
+  border: var(--bw) solid var(--red);
+  border-radius: var(--radius);
+  padding: .6rem 1rem;
+}
+
 /* Success */
 .success {
   display: flex;
