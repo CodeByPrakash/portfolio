@@ -22,27 +22,27 @@ const categories = [
     skills: [    
       { name: 'CSS / Sass', xp: 96 },
       { name: 'React', xp: 80 },
-      { name: 'TypeScript', xp: 60 },
-      { name: 'Animation', xp: 50 },
+      { name: 'TypeScript', xp: 67 },
+      { name: 'Animation', xp: 56 },
     ],
   },
   {
     title: 'Backend',
     icon: '🔧',
     color: 'red',
-    level: 'INTERMEDIATE',
+    level: 'ADVANCED',
     skills: [
       { name: 'Node.js', xp: 72 },
-      { name: 'REST APIs', xp: 78 },
       { name: 'mongoDB', xp: 70 },
       { name: 'PostgreSQL', xp: 65 },
+      { name: 'REST APIs', xp: 50 },
     ],
   },
   {
     title: 'Strategy',
     icon: '♟',
     color: 'purple',
-    level: 'PRO',
+    level: 'MASTER',
     skills: [
       { name: 'Agile / Scrum', xp: 85 },
       { name: 'Client comms', xp: 90 },
@@ -52,7 +52,7 @@ const categories = [
   },
 ]
 
-const levelColors = { MASTER: 'yellow', EXPERT: 'blue', ADVANCED: 'red', PRO: 'purple' }
+const levelColors = { MASTER: 'yellow', INTERMEDIATE: 'blue', ADVANCED: 'red', PRO: 'purple' }
 
 export default function Skills() {
   return (
