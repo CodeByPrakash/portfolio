@@ -48,13 +48,13 @@ export default function Contact() {
             </div>
 
             {/* Availability card */}
-            <div className={styles.availCard}>
+            {/* <div className={styles.availCard}>
               <span className={styles.availDot} />
               <div>
                 <span className={styles.availTitle}>Available for Projects</span>
                 <span className={styles.availSub}>Next availability: March 2026</span>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Form */}
