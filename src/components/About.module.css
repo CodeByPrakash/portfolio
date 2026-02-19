@@ -1,0 +1,181 @@
+.about {
+  padding: 7rem 0 5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+
+/* ─── Avatar column ───────────────────────────── */
+.avatarWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.avatarCard {
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  background: var(--blue-pale);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--blue);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.avatarInitials {
+  font-family: var(--font-head);
+  font-size: 5rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -.04em;
+}
+
+/* Level badge */
+.levelBadge {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  background: var(--ink);
+  color: var(--cream);
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  padding: .5rem 1rem;
+  box-shadow: var(--shadow-sm);
+}
+.levelLabel {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.levelNum {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--yellow);
+}
+
+/* XP bar */
+.xpRow {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+}
+.xpLabel {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.xpTrack {
+  flex: 1;
+  height: 10px;
+  background: var(--cream-dark);
+  border: 2px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.xpFill {
+  height: 100%;
+  background: var(--blue);
+  border-radius: 1px;
+  transition: width .4s;
+}
+.xpVal {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  flex-shrink: 0;
+}
+
+/* Info card */
+.infoCard {
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  background: white;
+  box-shadow: var(--shadow-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  font-size: .88rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.infoIcon { font-size: 1rem; }
+
+/* ─── Content column ──────────────────────────── */
+.heading {
+  font-family: var(--font-head);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+}
+.accent {
+  color: var(--blue);
+  -webkit-text-stroke: 2px var(--border);
+}
+
+.body {
+  font-size: 1.02rem;
+  color: var(--ink-light);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+/* Toolkit */
+.toolkit { margin: 1.25rem 0; }
+.toolkitLabel {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  display: block;
+  margin-bottom: .6rem;
+}
+.toolList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.tool {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  padding: .3rem .75rem;
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  background: var(--cream-dark);
+  box-shadow: var(--shadow-sm);
+  transition: background .12s, transform .12s;
+}
+.tool:hover { background: var(--ink); color: var(--cream); transform: translate(-1px,-1px); }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  .avatarCard { flex-direction: row; flex-wrap: wrap; }
+  .avatar { width: 140px; height: 140px; }
+}

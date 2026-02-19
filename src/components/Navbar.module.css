@@ -1,0 +1,104 @@
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: transparent;
+  transition: background .2s, border-bottom .2s;
+}
+.nav.scrolled {
+  background: var(--cream);
+  border-bottom: var(--bw) solid var(--border);
+  backdrop-filter: blur(8px);
+}
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo { display: flex; align-items: center; gap: .65rem; text-decoration: none; }
+.logoBox {
+  width: 36px; height: 36px;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  font-weight: 700;
+  display: grid; place-items: center;
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+.logoText {
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -.01em;
+}
+
+/* Desktop links */
+.links {
+  display: flex; align-items: center; gap: .5rem;
+  list-style: none;
+}
+.link {
+  font-family: var(--font-body);
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  padding: .35rem .8rem;
+  border: var(--bw) solid transparent;
+  border-radius: var(--radius);
+  transition: border-color .12s, background .12s;
+}
+.link:hover { border-color: var(--border); background: var(--cream-dark); }
+
+/* Hamburger */
+.ham {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: .4rem;
+}
+.ham span {
+  display: block;
+  width: 24px; height: 2.5px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform .2s;
+}
+
+/* Mobile drawer */
+.drawer {
+  display: flex;
+  flex-direction: column;
+  background: var(--cream);
+  border-top: var(--bw) solid var(--border);
+  padding: 1rem 2rem;
+  gap: .5rem;
+}
+.drawerLink {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--cream-dark);
+}
+
+@media (max-width: 720px) {
+  .links { display: none; }
+  .ham { display: flex; }
+}

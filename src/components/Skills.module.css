@@ -1,0 +1,105 @@
+.skills { padding: 6rem 0; }
+
+.heading {
+  font-family: var(--font-head);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.05;
+  margin-bottom: .75rem;
+}
+.accent { color: var(--yellow); -webkit-text-stroke: 2px var(--border); }
+.sub { font-size: 1rem; color: var(--ink-light); margin-bottom: 2.5rem; }
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* Card base */
+.card {
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+  transition: transform .15s, box-shadow .15s;
+}
+.card:hover { transform: translate(-3px,-3px); box-shadow: var(--shadow-lg); }
+
+.card_yellow { background: var(--yellow-pale); }
+.card_blue   { background: var(--blue-pale); }
+.card_red    { background: var(--red-pale); }
+.card_purple { background: var(--purple-pale); }
+
+/* Card header */
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  margin-bottom: 1.4rem;
+}
+.icon { font-size: 1.4rem; }
+.catTitle {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 800;
+  flex: 1;
+}
+
+/* Level pill */
+.levelPill {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .22rem .65rem;
+  border: var(--bw) solid var(--border);
+  border-radius: 999px;
+}
+.lp_yellow { background: var(--yellow); color: var(--ink); }
+.lp_blue   { background: var(--blue); color: white; }
+.lp_red    { background: var(--red); color: white; }
+.lp_purple { background: var(--purple); color: white; }
+
+/* Skill bars */
+.bars { display: flex; flex-direction: column; gap: .85rem; }
+.barRow {}
+.barMeta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .3rem;
+}
+.barName {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.barVal {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--ink-light);
+}
+
+.track {
+  height: 8px;
+  background: rgba(0,0,0,.08);
+  border: 2px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.fill {
+  height: 100%;
+  border-radius: 1px;
+  transition: width .5s cubic-bezier(.4,0,.2,1);
+}
+.fill_yellow { background: var(--yellow); }
+.fill_blue   { background: var(--blue); }
+.fill_red    { background: var(--red); }
+.fill_purple { background: var(--purple); }
+
+@media (max-width: 720px) {
+  .grid { grid-template-columns: 1fr; }
+}

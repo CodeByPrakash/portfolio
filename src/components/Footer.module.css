@@ -1,0 +1,60 @@
+.footer {
+  border-top: var(--bw) solid var(--border);
+  background: var(--ink);
+  color: var(--cream);
+  padding: 2rem 0;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.left { display: flex; flex-direction: column; gap: .4rem; }
+.logo {
+  display: flex; align-items: center; gap: .6rem;
+  font-family: var(--font-head);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--cream);
+}
+.logoBox {
+  width: 30px; height: 30px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  font-weight: 700;
+  display: grid; place-items: center;
+  border: 2px solid var(--cream);
+  border-radius: 3px;
+}
+.copy {
+  font-size: .75rem;
+  color: rgba(253,248,238,.5);
+  font-family: var(--font-mono);
+}
+
+.center .madeWith {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  color: rgba(253,248,238,.6);
+}
+
+.right { display: flex; gap: 1rem; flex-wrap: wrap; }
+.social {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: rgba(253,248,238,.6);
+  text-decoration: none;
+  transition: color .12s;
+}
+.social:hover { color: var(--yellow); }
+
+@media (max-width: 600px) {
+  .inner { flex-direction: column; align-items: flex-start; }
+  .center { display: none; }
+}
