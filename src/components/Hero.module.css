@@ -7,18 +7,205 @@
   padding-top: 64px;
 }
 
+/* Gradient wire lines background */
+.wireLines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wirePath1,
+.wirePath2,
+.wirePath3,
+.wirePath4 {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 12 18;
+  animation: wireDash 8s linear infinite;
+}
+
+.wirePath2 {
+  stroke-dasharray: 8 22;
+  animation-duration: 12s;
+  animation-direction: reverse;
+}
+
+.wirePath3 {
+  stroke-dasharray: 16 14;
+  animation-duration: 10s;
+}
+
+.wirePath4 {
+  stroke-dasharray: 6 24;
+  animation-duration: 14s;
+  animation-direction: reverse;
+}
+
+@keyframes wireDash {
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
+.wireDot {
+  animation: dotPulse 3s ease-in-out infinite;
+}
+
+.wireDot:nth-child(6) {
+  animation-delay: -0.8s;
+}
+
+.wireDot:nth-child(7) {
+  animation-delay: -1.6s;
+}
+
+.wireDot:nth-child(8) {
+  animation-delay: -2.4s;
+}
+
+@keyframes dotPulse {
+
+  0%,
+  100% {
+    opacity: 0.15;
+    r: 2;
+  }
+
+  50% {
+    opacity: 0.4;
+    r: 4;
+  }
+}
+
+/* Floating geometric shapes */
+.geoShape1 {
+  animation: geoDrift1 14s ease-in-out infinite;
+  transform-origin: 1138px 138px;
+}
+
+.geoShape2 {
+  animation: geoDrift2 18s ease-in-out infinite;
+  transform-origin: 112px 492px;
+}
+
+.geoShape3 {
+  animation: geoDrift3 16s ease-in-out infinite;
+  transform-origin: 1300px 520px;
+}
+
+.geoShape4 {
+  animation: geoDrift1 20s ease-in-out infinite reverse;
+  transform-origin: 280px 175px;
+}
+
+.geoShape5 {
+  animation: geoDrift2 15s ease-in-out infinite;
+  transform-origin: 180px 720px;
+}
+
+.geoShape6 {
+  animation: geoDrift3 12s ease-in-out infinite reverse;
+  transform-origin: 1200px 400px;
+}
+
+.geoShape7 {
+  animation: geoDrift1 17s ease-in-out infinite;
+  transform-origin: 680px 100px;
+}
+
+.geoShape8 {
+  animation: geoDrift2 19s ease-in-out infinite reverse;
+  transform-origin: 1050px 695px;
+}
+
+@keyframes geoDrift1 {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-8px) rotate(15deg);
+  }
+
+  50% {
+    transform: translateY(4px) rotate(-5deg);
+  }
+
+  75% {
+    transform: translateY(-4px) rotate(10deg);
+  }
+}
+
+@keyframes geoDrift2 {
+
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  33% {
+    transform: translateX(6px) rotate(-12deg);
+  }
+
+  66% {
+    transform: translateX(-6px) rotate(8deg);
+  }
+}
+
+@keyframes geoDrift3 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-5px, -7px) rotate(20deg);
+  }
+}
+
 /* Corner decorations */
 .corner {
   position: absolute;
-  width: 18px; height: 18px;
+  width: 18px;
+  height: 18px;
   border-color: var(--border);
   border-style: solid;
   border-width: 0;
 }
-.tl { top: 80px; left: 28px; border-top-width: 3px; border-left-width: 3px; }
-.tr { top: 80px; right: 28px; border-top-width: 3px; border-right-width: 3px; }
-.bl { bottom: 28px; left: 28px; border-bottom-width: 3px; border-left-width: 3px; }
-.br { bottom: 28px; right: 28px; border-bottom-width: 3px; border-right-width: 3px; }
+
+.tl {
+  top: 80px;
+  left: 28px;
+  border-top-width: 3px;
+  border-left-width: 3px;
+}
+
+.tr {
+  top: 80px;
+  right: 28px;
+  border-top-width: 3px;
+  border-right-width: 3px;
+}
+
+.bl {
+  bottom: 28px;
+  left: 28px;
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+}
+
+.br {
+  bottom: 28px;
+  right: 28px;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+}
 
 .inner {
   display: flex;
@@ -46,15 +233,27 @@
   border-radius: 999px;
   box-shadow: var(--shadow-sm);
 }
+
 .statusDot {
-  width: 8px; height: 8px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--green);
   animation: pulse 2s infinite;
 }
+
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: .5; transform: scale(.85); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: .5;
+    transform: scale(.85);
+  }
 }
 
 /* Headline */
@@ -63,6 +262,7 @@
   flex-direction: column;
   gap: .1em;
 }
+
 .line1 {
   font-family: var(--font-head);
   font-size: clamp(3.2rem, 9vw, 7.5rem);
@@ -71,6 +271,7 @@
   line-height: 1;
   color: var(--ink);
 }
+
 .line2 {
   font-family: var(--font-head);
   font-size: clamp(3.2rem, 9vw, 7.5rem);
@@ -79,6 +280,7 @@
   line-height: 1;
   color: var(--ink);
 }
+
 .line3 {
   font-family: var(--font-head);
   font-size: clamp(3.2rem, 9vw, 7.5rem);
@@ -93,6 +295,7 @@
   display: inline-block;
   color: var(--ink);
 }
+
 .highlight::after {
   content: '';
   position: absolute;
@@ -114,7 +317,11 @@
 }
 
 /* CTAs */
-.ctas { display: flex; flex-wrap: wrap; gap: .75rem; }
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
 
 /* Stats */
 .stats {
@@ -126,7 +333,13 @@
   border-top: var(--bw) solid var(--border);
   width: 100%;
 }
-.stat { display: flex; flex-direction: column; gap: .1rem; }
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: .1rem;
+}
+
 .statN {
   font-family: var(--font-head);
   font-size: 1.75rem;
@@ -134,6 +347,7 @@
   color: var(--ink);
   line-height: 1;
 }
+
 .statL {
   font-family: var(--font-mono);
   font-size: .72rem;
@@ -143,7 +357,9 @@
 }
 
 /* Floating badges */
-.badge1, .badge2, .badge3 {
+.badge1,
+.badge2,
+.badge3 {
   position: absolute;
   display: flex;
   align-items: center;
@@ -156,12 +372,14 @@
   border-radius: var(--radius);
   animation: float 4s ease-in-out infinite;
 }
+
 .badge1 {
   top: 22%;
   right: 8%;
   background: var(--yellow-pale);
   box-shadow: var(--shadow-md);
 }
+
 .badge2 {
   bottom: 22%;
   right: 12%;
@@ -169,20 +387,36 @@
   box-shadow: var(--shadow-md);
   animation-delay: -2s;
 }
+
 .badge3 {
   bottom: 50%;
   right: 20%;
   background: var(--green-pale);
   box-shadow: var(--shadow-md);
-  animation-delay: -2s;
+  animation-delay: -1s;
 }
-.badgeIcon { font-size: 1rem; }
+
+.badgeIcon {
+  font-size: 1rem;
+}
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @media (max-width: 720px) {
-  .badge1, .badge2, .badge3 { display: none; }
+
+  .badge1,
+  .badge2,
+  .badge3 {
+    display: none;
+  }
 }

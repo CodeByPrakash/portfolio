@@ -1,10 +1,42 @@
-.contact { padding: 6rem 0 5rem; }
+.contact {
+  padding: 6rem 0 5rem;
+  position: relative;
+}
+
+/* Wire background */
+.wireBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wireArc {
+  fill: none;
+  stroke-dasharray: 12 16;
+  animation: contDash 10s linear infinite;
+}
+
+.wireArc2 {
+  fill: none;
+  stroke-dasharray: 8 20;
+  animation: contDash 14s linear infinite reverse;
+}
+
+@keyframes contDash {
+  to {
+    stroke-dashoffset: -112;
+  }
+}
+
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: start;
+  align-items: stretch;
   margin-top: 1rem;
 }
 
@@ -17,11 +49,27 @@
   line-height: 1.05;
   margin-bottom: 1.2rem;
 }
-.accent { color: var(--blue); -webkit-text-stroke: 2px var(--border); }
-.sub { font-size: 1rem; color: var(--ink-light); line-height: 1.7; margin-bottom: 2rem; }
+
+.accent {
+  color: var(--blue);
+  -webkit-text-stroke: 2px var(--border);
+}
+
+.sub {
+  font-size: 1rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
 
 /* Channels */
-.channels { display: flex; flex-direction: column; gap: .85rem; margin-bottom: 2rem; }
+.channels {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+  margin-bottom: 2rem;
+}
+
 .channel {
   display: flex;
   align-items: center;
@@ -33,8 +81,16 @@
   box-shadow: var(--shadow-sm);
   transition: transform .12s;
 }
-.channel:hover { transform: translate(-2px,-2px); box-shadow: var(--shadow-md); }
-.chIcon { font-size: 1.2rem; }
+
+.channel:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-md);
+}
+
+.chIcon {
+  font-size: 1.2rem;
+}
+
 .chLabel {
   font-family: var(--font-mono);
   font-size: .65rem;
@@ -43,7 +99,12 @@
   color: var(--ink-light);
   display: block;
 }
-.chVal { font-size: .88rem; font-weight: 600; color: var(--ink); }
+
+.chVal {
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--ink);
+}
 
 /* Availability card */
 .availCard {
@@ -56,23 +117,35 @@
   border-radius: var(--radius);
   box-shadow: var(--shadow-md);
 }
+
 .availDot {
-  width: 12px; height: 12px;
+  width: 12px;
+  height: 12px;
   background: var(--green);
   border-radius: 50%;
   border: 2px solid var(--border);
   flex-shrink: 0;
   animation: pulse 2s infinite;
 }
+
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: .4; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .4;
+  }
 }
+
 .availTitle {
   display: block;
   font-weight: 700;
   font-size: .9rem;
 }
+
 .availSub {
   display: block;
   font-family: var(--font-mono);
@@ -87,10 +160,35 @@
   background: white;
   box-shadow: var(--shadow-lg);
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
 }
-.form { display: flex; flex-direction: column; gap: 1.25rem; }
-.fieldGroup { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.field { display: flex; flex-direction: column; gap: .4rem; }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+.fieldGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.field:last-child {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .label {
   font-family: var(--font-mono);
   font-size: .68rem;
@@ -99,7 +197,9 @@
   text-transform: uppercase;
   color: var(--ink-light);
 }
-.input, .textarea {
+
+.input,
+.textarea {
   font-family: var(--font-body);
   font-size: .92rem;
   width: 100%;
@@ -112,11 +212,17 @@
   transition: box-shadow .12s, background .12s;
   resize: vertical;
 }
-.input:focus, .textarea:focus {
+
+.input:focus,
+.textarea:focus {
   background: white;
   box-shadow: var(--shadow-sm);
 }
-.textarea { min-height: 130px; }
+
+.textarea {
+  min-height: 130px;
+  flex: 1;
+}
 
 /* Error banner */
 .errorBanner {
@@ -140,11 +246,27 @@
   text-align: center;
   min-height: 320px;
 }
-.successIcon { font-size: 3rem; }
-.success h3 { font-family: var(--font-head); font-size: 1.75rem; font-weight: 800; }
-.success p { color: var(--ink-light); }
+
+.successIcon {
+  font-size: 3rem;
+}
+
+.success h3 {
+  font-family: var(--font-head);
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.success p {
+  color: var(--ink-light);
+}
 
 @media (max-width: 900px) {
-  .grid { grid-template-columns: 1fr; }
-  .fieldGroup { grid-template-columns: 1fr; }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fieldGroup {
+    grid-template-columns: 1fr;
+  }
 }

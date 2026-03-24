@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+import { fadeIn, staggerContainer, scaleIn } from '../utils/motion'
 import styles from './Projects.module.css'
 
 const projects = [
@@ -127,20 +129,43 @@ export default function Projects() {
   return (
     <section id="projects" className={styles.projects}>
       <div className="section-wrap">
-        <span className="section-tag">◉ Projects</span>
-        <div className={styles.headRow}>
-          <h2 className={styles.heading}>
-            Selected<br /><span className={styles.accent}>Work.</span>
-          </h2>
-          <p className={styles.sub}>
-            A curated selection of projects spanning product design,
-            frontend engineering, and creative experimentation.
-          </p>
-        </div>
+        <motion.span
+          className="section-tag"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.4 }}
+        >
+          ◉ Projects
+        </motion.span>
 
-        <div className={styles.grid}>
+        <motion.div
+          className={styles.headRow}
+          variants={staggerContainer(0.1, 0)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.3 }}
+        >
+          <motion.h2 className={styles.heading} variants={fadeIn('left', 0)}>
+            Selected<br /><span className={styles.accent}>Work.</span>
+          </motion.h2>
+        </motion.div>
+
+        <motion.div
+          className={styles.grid}
+          variants={staggerContainer(0.08, 0)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.05 }}
+        >
           {projects.map(p => (
-            <a key={p.id} href={p.link} className={`${styles.card} ${styles[`card_${p.color}`]}`}>
+            <motion.a
+              key={p.id}
+              href={p.link}
+              className={`${styles.card} ${styles[`card_${p.color}`]}`}
+              variants={scaleIn(0)}
+              whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
+            >
               {/* Card top */}
               <div className={styles.cardTop}>
                 <span className={styles.award}>{p.award}</span>
@@ -166,9 +191,9 @@ export default function Projects() {
                   <span className={styles.year}>{p.year}</span>
                 </div>
               </div>
-            </a>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -1,24 +1,13 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { fadeIn, staggerContainer, slideIn, scaleIn } from '../utils/motion'
 import styles from './Contact.module.css'
 
 // ─────────────────────────────────────────────────────────────
 // CONTACT FORM CONFIG
-// Pick one provider, add your key/URL, set PROVIDER to match.
-//
-// Option A — Web3Forms (free 250 msgs/mo)
-//   1. Go to https://web3forms.com → enter your email → copy key
-//   2. Paste it below, set PROVIDER = 'web3forms'
-//
-// Option B — Formspree (free 50 msgs/mo)
-//   1. Go to https://formspree.io → create form → copy endpoint
-//   2. Paste it below, set PROVIDER = 'formspree'
-//
-// Option C — Demo mode (no real sending, UI only)
-//   Set PROVIDER = 'demo'
-// ─────────────────────────────────────────────────────────────
-const PROVIDER         = 'demo'                           // 'web3forms' | 'formspree' | 'demo'
-const WEB3FORMS_KEY    = 'YOUR_WEB3FORMS_ACCESS_KEY'      // only needed when PROVIDER = 'web3forms'
-const FORMSPREE_URL    = 'https://formspree.io/f/XXXXXX'  // only needed when PROVIDER = 'formspree'
+const PROVIDER = 'demo'
+const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY'
+const FORMSPREE_URL = 'https://formspree.io/f/XXXXXX'
 
 async function sendMessage(data) {
   if (PROVIDER === 'web3forms') {
@@ -47,8 +36,8 @@ async function sendMessage(data) {
 }
 
 export default function Contact() {
-  const [form, setForm]     = useState({ name: '', email: '', message: '' })
-  const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'sent' | 'error'
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [status, setStatus] = useState('idle')
   const [errMsg, setErrMsg] = useState('')
 
   const handle = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
@@ -67,14 +56,28 @@ export default function Contact() {
     }
   }
 
+  const channels = [
+    { icon: '✉', label: 'Email', val: 'omprakashbehera.cse@gmail.com' },
+    { icon: '📱', label: 'Phone', val: '+91 7205252871' },
+    { icon: '🐱', label: 'GitHub', val: 'CodeByPrakash' },
+    { icon: '⚜️', label: 'Instagram', val: '@quasar_om' },
+    { icon: '💼', label: 'LinkedIn', val: '/in/omprakash-cse' },
+  ]
+
   return (
     <section id="contact" className={styles.contact}>
-      <div className="section-wrap">
-        <span className="section-tag">✉ Contact</span>
+      <motion.div
+        className="section-wrap"
+        variants={staggerContainer(0.1, 0)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.15 }}
+      >
+        <motion.span className="section-tag" variants={fadeIn('down', 0)}>✉ Contact</motion.span>
 
         <div className={styles.grid}>
-          {/* Left */}
-          <div className={styles.left}>
+          {/* Left — slides from left */}
+          <motion.div className={styles.left} variants={slideIn('left', 0.1)}>
             <h2 className={styles.heading}>
               Let's build<br />
               something<br />
@@ -85,43 +88,39 @@ export default function Contact() {
               I'd love to hear about your project.
             </p>
 
-            <div className={styles.channels}>
-              {[
-                { icon: '✉', label: 'Email', val: 'omprakashbehera.cse@gmail.com' },
-                { icon: '📱', label: 'Phone', val: '+91 7205252871' },
-                { icon: '🐱', label: 'GitHub', val: 'CodeByPrakash' },
-                { icon: '⚜️', label: 'Instagram', val: '@quasar_om' },
-                { icon: '💼', label: 'LinkedIn', val: '/in/omprakash-cse' },
-              ].map(c => (
-                <div key={c.label} className={styles.channel}>
+            <motion.div
+              className={styles.channels}
+              variants={staggerContainer(0.07, 0.3)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false }}
+            >
+              {channels.map(c => (
+                <motion.div key={c.label} className={styles.channel} variants={fadeIn('left', 0)}>
                   <span className={styles.chIcon}>{c.icon}</span>
                   <div>
                     <span className={styles.chLabel}>{c.label}</span>
                     <span className={styles.chVal}>{c.val}</span>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
+          </motion.div>
 
-            {/* Availability card */}
-            {/* <div className={styles.availCard}>
-              <span className={styles.availDot} />
-              <div>
-                <span className={styles.availTitle}>Available for Projects</span>
-                <span className={styles.availSub}>Next availability: March 2026</span>
-              </div>
-            </div> */}
-          </div>
-
-          {/* Form */}
-          <div className={styles.formWrap}>
+          {/* Form — slides from right */}
+          <motion.div className={styles.formWrap} variants={slideIn('right', 0.2)}>
             {status === 'sent' ? (
-              <div className={styles.success}>
+              <motion.div
+                className={styles.success}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+              >
                 <span className={styles.successIcon}>🎉</span>
                 <h3>Message sent!</h3>
                 <p>I'll get back to you within 24 hours.</p>
                 <button className="btn" onClick={() => setStatus('idle')}>Send another</button>
-              </div>
+              </motion.div>
             ) : (
               <form onSubmit={submit} className={styles.form}>
                 <div className={styles.fieldGroup}>
@@ -164,7 +163,13 @@ export default function Contact() {
 
                 {/* Error banner */}
                 {status === 'error' && (
-                  <div className={styles.errorBanner}>⚠ {errMsg}</div>
+                  <motion.div
+                    className={styles.errorBanner}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    ⚠ {errMsg}
+                  </motion.div>
                 )}
 
                 <button
@@ -177,9 +182,9 @@ export default function Contact() {
                 </button>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

@@ -1,4 +1,36 @@
-.skills { padding: 6rem 0; }
+.skills {
+  padding: 6rem 0;
+  position: relative;
+}
+
+/* Wire background */
+.wireBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wireZig {
+  fill: none;
+  stroke-dasharray: 10 15;
+  animation: skillDash 9s linear infinite;
+}
+
+.wireZig2 {
+  fill: none;
+  stroke-dasharray: 8 18;
+  animation: skillDash 13s linear infinite reverse;
+}
+
+@keyframes skillDash {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
 
 .heading {
   font-family: var(--font-head);
@@ -8,8 +40,17 @@
   line-height: 1.05;
   margin-bottom: .75rem;
 }
-.accent { color: var(--yellow); -webkit-text-stroke: 2px var(--border); }
-.sub { font-size: 1rem; color: var(--ink-light); margin-bottom: 2.5rem; }
+
+.accent {
+  color: var(--yellow);
+  -webkit-text-stroke: 2px var(--border);
+}
+
+.sub {
+  font-size: 1rem;
+  color: var(--ink-light);
+  margin-bottom: 2.5rem;
+}
 
 /* Grid */
 .grid {
@@ -26,12 +67,27 @@
   box-shadow: var(--shadow-md);
   transition: transform .15s, box-shadow .15s;
 }
-.card:hover { transform: translate(-3px,-3px); box-shadow: var(--shadow-lg); }
 
-.card_yellow { background: var(--yellow-pale); }
-.card_blue   { background: var(--blue-pale); }
-.card_red    { background: var(--red-pale); }
-.card_purple { background: var(--purple-pale); }
+.card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card_yellow {
+  background: var(--yellow-pale);
+}
+
+.card_blue {
+  background: var(--blue-pale);
+}
+
+.card_red {
+  background: var(--red-pale);
+}
+
+.card_purple {
+  background: var(--purple-pale);
+}
 
 /* Card header */
 .cardHead {
@@ -40,7 +96,11 @@
   gap: .65rem;
   margin-bottom: 1.4rem;
 }
-.icon { font-size: 1.4rem; }
+
+.icon {
+  font-size: 1.4rem;
+}
+
 .catTitle {
   font-family: var(--font-head);
   font-size: 1.15rem;
@@ -59,24 +119,50 @@
   border: var(--bw) solid var(--border);
   border-radius: 999px;
 }
-.lp_yellow { background: var(--yellow); color: var(--ink); }
-.lp_blue   { background: var(--blue); color: white; }
-.lp_red    { background: var(--red); color: white; }
-.lp_purple { background: var(--purple); color: white; }
+
+.lp_yellow {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.lp_blue {
+  background: var(--blue);
+  color: white;
+}
+
+.lp_red {
+  background: var(--red);
+  color: white;
+}
+
+.lp_purple {
+  background: var(--purple);
+  color: white;
+}
 
 /* Skill bars */
-.bars { display: flex; flex-direction: column; gap: .85rem; }
-.barRow {}
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+}
+
+.barRow {
+  display: block;
+}
+
 .barMeta {
   display: flex;
   justify-content: space-between;
   margin-bottom: .3rem;
 }
+
 .barName {
   font-size: .82rem;
   font-weight: 600;
   color: var(--ink);
 }
+
 .barVal {
   font-family: var(--font-mono);
   font-size: .72rem;
@@ -85,21 +171,36 @@
 
 .track {
   height: 8px;
-  background: rgba(0,0,0,.08);
+  background: rgba(0, 0, 0, .08);
   border: 2px solid var(--border);
   border-radius: 2px;
   overflow: hidden;
 }
+
 .fill {
   height: 100%;
   border-radius: 1px;
-  transition: width .5s cubic-bezier(.4,0,.2,1);
+  transition: width .5s cubic-bezier(.4, 0, .2, 1);
 }
-.fill_yellow { background: var(--yellow); }
-.fill_blue   { background: var(--blue); }
-.fill_red    { background: var(--red); }
-.fill_purple { background: var(--purple); }
+
+.fill_yellow {
+  background: var(--yellow);
+}
+
+.fill_blue {
+  background: var(--blue);
+}
+
+.fill_red {
+  background: var(--red);
+}
+
+.fill_purple {
+  background: var(--purple);
+}
 
 @media (max-width: 720px) {
-  .grid { grid-template-columns: 1fr; }
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
