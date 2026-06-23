@@ -58,7 +58,6 @@ export default function Contact() {
 
   const channels = [
     { icon: '✉', label: 'Email', val: 'omprakashbehera.cse@gmail.com' },
-    { icon: '📱', label: 'Phone', val: '+91 7205252871' },
     { icon: '🐱', label: 'GitHub', val: 'CodeByPrakash' },
     { icon: '⚜️', label: 'Instagram', val: '@quasar_om' },
     { icon: '💼', label: 'LinkedIn', val: '/in/omprakash-cse' },
