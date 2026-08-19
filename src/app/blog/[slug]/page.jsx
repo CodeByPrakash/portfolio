@@ -398,11 +398,12 @@ export default async function BlogPostPage({ params }) {
               <div className={styles.authorByline}>
                 <div className={styles.authorLeft}>
                   <Image
-                    src="/omprakash.png"
+                    src="/omprakash.webp"
                     alt="Om Prakash Behera"
                     className={styles.authorAvatar}
                     width={54}
                     height={54}
+                    quality={85}
                   />
                   <div className={styles.authorDetails}>
                     <span className={styles.authorName}>Om Prakash Behera</span>
@@ -475,11 +476,12 @@ export default async function BlogPostPage({ params }) {
             <footer className={styles.articleFooter}>
               <div className={styles.authorBioBox}>
                 <Image
-                  src="/omprakash.png"
+                  src="/omprakash.webp"
                   alt="Om Prakash Behera profile photo"
                   className={styles.bioAvatar}
                   width={76}
                   height={76}
+                  quality={85}
                 />
                 <div className={styles.bioContent}>
                   <h3 className={styles.bioTitle}>Written by Om Prakash Behera (CodeByPrakash)</h3>

@@ -495,6 +495,7 @@
   z-index: 1;
   pointer-events: none;
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.08));
+  will-change: transform;
 }
 
 /* 1. Clay Orange Orb (Top-Right Edge) */
@@ -511,6 +512,7 @@
   top: 14%;
   right: 6%;
   opacity: 0.92;
+  animation: floatOrb 7s ease-in-out infinite;
 }
 
 /* 2. Clay Blue Torus / Ring (Bottom-Left Edge) */
@@ -528,6 +530,7 @@
   bottom: 18%;
   left: 4%;
   opacity: 0.88;
+  animation: floatTorus 9s ease-in-out 0.8s infinite;
 }
 
 /* 3. Clay Mint Pill / Capsule (Top-Left Edge) */
@@ -544,6 +547,7 @@
   top: 24%;
   left: 8%;
   opacity: 0.88;
+  animation: floatPill 8s ease-in-out 1.5s infinite;
 }
 
 /* 4. Clay Purple Cube (Bottom-Right Edge) */
@@ -560,6 +564,7 @@
   bottom: 22%;
   right: 14%;
   opacity: 0.9;
+  animation: floatCube 8.5s ease-in-out 0.4s infinite;
 }
 
 /* 5. Clay Coral Mini Bead (Center-Right Edge) */
@@ -576,6 +581,32 @@
   top: 50%;
   right: 32%;
   opacity: 0.85;
+  animation: floatMiniOrb 6.5s ease-in-out 2s infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  50% { transform: translateY(-32px) rotate(20deg) scale(1.04); }
+}
+
+@keyframes floatTorus {
+  0%, 100% { transform: translateY(0) rotate(-12deg); }
+  50% { transform: translateY(36px) rotate(18deg); }
+}
+
+@keyframes floatPill {
+  0%, 100% { transform: translateY(0) rotate(20deg); }
+  50% { transform: translateY(-28px) rotate(40deg); }
+}
+
+@keyframes floatCube {
+  0%, 100% { transform: translateY(0) rotate(-10deg) scale(1); }
+  50% { transform: translateY(30px) rotate(15deg) scale(0.95); }
+}
+
+@keyframes floatMiniOrb {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(16px, -24px); }
 }
 
 /* ─── Dark Mode 3D Clay Polish (ZERO White Glow) ─── */

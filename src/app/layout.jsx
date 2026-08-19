@@ -1,6 +1,21 @@
 import '../index.css'
+import { Space_Grotesk, Space_Mono } from 'next/font/google'
 import { ThemeProvider } from '../context/ThemeContext'
 import ScrollManager from '../components/ScrollManager'
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+})
+
+const spaceMono = Space_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-space-mono',
+  display: 'swap',
+})
 
 export const viewport = {
   themeColor: '#FF6B00',
@@ -30,6 +45,59 @@ export const metadata = {
     'OP Behera',
     'O.P. Behera',
     'OPB',
+    'omprakash gamer',
+    'Om Prakash Gamer',
+    'OmPrakash Gamer',
+    'omprakash gaming',
+    'Om Prakash Gaming',
+    'omprakash pc gamer',
+    'Om Prakash PC Gamer',
+    'omprakash pro gamer',
+    'omprakash esports',
+    'CodeByPrakash Gaming',
+    'CodeByPrakash Gamer',
+    'Quasar Om Gamer',
+    'quasar_om gamer',
+    'omprakash gamer odisha',
+    'omprakash gamer india',
+    'omprakash pc',
+    'Om Prakash PC',
+    'OmPrakash PC',
+    'omprakash computer',
+    'Om Prakash Computer',
+    'OmPrakash Computer',
+    'omprakash pc build',
+    'omprakash pc setup',
+    'omprakash computer science',
+    'omprakash computer engineer',
+    'omprakash computer programmer',
+    'omprakash workstation',
+    'omprakash laptop',
+    'omprakash pc specs',
+    'omprakash computer developer',
+    'codebyprakash pc',
+    'codebyprakash computer',
+    'diploma in cse',
+    'diploma cse',
+    'diploma computer science',
+    'diploma in computer science engineering',
+    'diploma computer science and engineering',
+    'diploma in computer engineering',
+    'diploma cse odisha',
+    'diploma cse sctevt',
+    'diploma cse distinction',
+    'diploma cse topper',
+    'diploma cse projects',
+    'diploma cse lateral entry',
+    'diploma cse to btech cse',
+    'diploma cse ojee',
+    'diploma cse student portfolio',
+    'polytechnic cse',
+    'polytechnic diploma cse',
+    'polytechnic computer science',
+    'omprakash diploma cse',
+    'om prakash behera diploma cse',
+    'diploma cse first class with distinction',
     'ଓମ ପ୍ରକାଶ ବେହେରା',
     'ଓମ୍ ପ୍ରକାଶ ବେହେରା',
     'ପ୍ରକାଶ ବେହେରା',
@@ -220,6 +288,13 @@ const jsonLd = {
         'OP Behera',
         'O.P. Behera',
         'OPB',
+        'Om Prakash Gamer',
+        'omprakash gamer',
+        'Quasar Om Gamer',
+        'Om Prakash PC',
+        'omprakash pc',
+        'Om Prakash Computer',
+        'omprakash computer',
         'ଓମ ପ୍ରକାଶ ବେହେରା',
         'ଓମ୍ ପ୍ରକାଶ ବେହେରା',
         'ପ୍ରକାଶ ବେହେରା',
@@ -662,18 +737,15 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" dir="ltr" prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#" suppressHydrationWarning>
+    <html
+      lang="en"
+      dir="ltr"
+      prefix="og: http://ogp.me/ns# profile: http://ogp.me/ns/profile#"
+      className={`${spaceGrotesk.variable} ${spaceMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
-        {/* Preconnect to Google Fonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
-        />
         {/* DNS Prefetch */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <link rel="dns-prefetch" href="//github.com" />
         {/* RSS & Atom Feeds for Google Discover & Feed Readers */}
         <link

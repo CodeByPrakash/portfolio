@@ -45,7 +45,7 @@ export default function Hero() {
       <motion.div
         className={`section-wrap ${styles.inner}`}
         variants={staggerContainer(0.12, 0.1)}
-        initial="hidden"
+        initial={false}
         animate="show"
       >
         {/* Top row: status + nav tabs + unique Hello Palm Dark Mode Switcher */}
@@ -205,32 +205,12 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Floating 3D Clay Morphism Edge Geometrics */}
-      <motion.div
-        className={`${styles.clayShape} ${styles.clayOrb}`}
-        animate={{ y: [0, -32, 0], rotate: [0, 20, 0], scale: [1, 1.04, 1] }}
-        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className={`${styles.clayShape} ${styles.clayTorus}`}
-        animate={{ y: [0, 36, 0], rotate: [-12, 18, -12] }}
-        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
-      />
-      <motion.div
-        className={`${styles.clayShape} ${styles.clayPill}`}
-        animate={{ y: [0, -28, 0], rotate: [20, 40, 20] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-      />
-      <motion.div
-        className={`${styles.clayShape} ${styles.clayCube}`}
-        animate={{ y: [0, 30, 0], rotate: [-10, 15, -10], scale: [1, 0.95, 1] }}
-        transition={{ duration: 8.5, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
-      />
-      <motion.div
-        className={`${styles.clayShape} ${styles.clayMiniOrb}`}
-        animate={{ y: [0, -24, 0], x: [0, 16, 0] }}
-        transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-      />
+      {/* Floating 3D Clay Morphism Edge Geometrics (GPU Compositor Animated) */}
+      <div className={`${styles.clayShape} ${styles.clayOrb}`} aria-hidden="true" />
+      <div className={`${styles.clayShape} ${styles.clayTorus}`} aria-hidden="true" />
+      <div className={`${styles.clayShape} ${styles.clayPill}`} aria-hidden="true" />
+      <div className={`${styles.clayShape} ${styles.clayCube}`} aria-hidden="true" />
+      <div className={`${styles.clayShape} ${styles.clayMiniOrb}`} aria-hidden="true" />
 
       {/* Tech logos strip — like reference partner strip */}
       <motion.div

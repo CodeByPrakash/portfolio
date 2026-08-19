@@ -48,31 +48,40 @@ export default function LoadingScreen({ onComplete }) {
     setGreetingIndex(computedIndex)
   }, [progress])
 
-  // Smooth loading progression loop (~5.2s duration to enjoy all language greetings)
+  // Smooth loading progression loop (Snappy 1.1s duration for optimal Lighthouse LCP & FCP)
   useEffect(() => {
+    // If user already experienced the loader in this session or prefers reduced motion, skip instantly
+    const alreadyVisited = typeof window !== 'undefined' && sessionStorage.getItem('visited_opb')
+    const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (alreadyVisited || prefersReducedMotion) {
+      setProgress(100)
+      setIsFinished(true)
+      return
+    }
+
+    try {
+      sessionStorage.setItem('visited_opb', '1')
+    } catch {}
+
     let startTimestamp = null
-    const targetDuration = 5200
+    const targetDuration = 1100
 
     const updateProgress = (timestamp) => {
       if (!startTimestamp) startTimestamp = timestamp
       const elapsed = timestamp - startTimestamp
       const progressRatio = Math.min(elapsed / targetDuration, 1)
 
-      // Custom easing curve: smooth start, steady mid pace, cinematic deceleration into 100
+      // Snappy easing curve: brisk ramp, smooth finish
       let easedValue
-      if (progressRatio < 0.25) {
-        easedValue = (progressRatio / 0.25) * 32
-      } else if (progressRatio < 0.65) {
-        const midRatio = (progressRatio - 0.25) / 0.4
-        easedValue = 32 + midRatio * 44
-      } else if (progressRatio < 0.9) {
-        const lateRatio = (progressRatio - 0.65) / 0.25
-        easedValue = 76 + lateRatio * 20
-      } else if (progressRatio < 0.98) {
-        const finalRatio = (progressRatio - 0.9) / 0.08
-        easedValue = 96 + finalRatio * 3
+      if (progressRatio < 0.3) {
+        easedValue = (progressRatio / 0.3) * 45
+      } else if (progressRatio < 0.75) {
+        const midRatio = (progressRatio - 0.3) / 0.45
+        easedValue = 45 + midRatio * 42
       } else {
-        easedValue = 100
+        const lateRatio = (progressRatio - 0.75) / 0.25
+        easedValue = 87 + lateRatio * 13
       }
 
       const currentInt = Math.min(100, Math.floor(easedValue))
@@ -84,7 +93,7 @@ export default function LoadingScreen({ onComplete }) {
         setProgress(100)
         setTimeout(() => {
           setIsFinished(true)
-        }, 400)
+        }, 150)
       }
     }
 

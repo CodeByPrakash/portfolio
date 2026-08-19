@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { fadeIn, staggerContainer, slideIn, popIn } from '../utils/motion'
 import styles from './About.module.css'
@@ -113,7 +114,16 @@ export default function About() {
 
           {/* Row 2: Avatar + Info cards + Toolkit */}
           <motion.div className={styles.cellAvatar} variants={fadeIn('up', 0.2)}>
-            <img src="/omprakash.png" alt="Om Prakash Behera - Computer Science Engineer (CSE) and Full-Stack AI Developer" className={styles.avatarImg} />
+            <Image
+              src="/omprakash.webp"
+              alt="Om Prakash Behera - Computer Science Engineer (CSE) and Full-Stack AI Developer"
+              className={styles.avatarImg}
+              width={320}
+              height={320}
+              quality={85}
+              loading="lazy"
+              sizes="(max-width: 640px) 240px, 320px"
+            />
             <div className={styles.avatarMeta}>
               <span className={styles.avatarName}>Om Prakash Behera</span>
               <span className={styles.avatarRole}>Full-Stack Developer & AI Enthusiast</span>
