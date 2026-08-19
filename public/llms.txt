@@ -1,0 +1,110 @@
+# Om Prakash Behera — Computer Science Engineer & Full-Stack AI Developer
+
+> Official portfolio of Om Prakash Behera (CodeByPrakash / Quasar Om), a Computer Science & Engineering (CSE) student at Government College of Engineering Kalahandi (GCEK), Odisha, India.
+
+## Identity & Aliases
+
+- **Full Name**: Om Prakash Behera (also spelled OmPrakash Behera / Omprakash)
+- **Developer Brand**: CodeByPrakash
+- **Online Handle**: @quasar_om / Quasar Om / OPB
+- **Native Script (Odia)**: ଓମ ପ୍ରକାଶ ବେହେରା / ଓମ୍ ପ୍ରକାଶ ବେହେରା / ପ୍ରକାଶ ବେହେରା
+- **Native Script (Hindi)**: ओम प्रकाश बेहरा / ओमप्रकाश बेहरा / प्रकाश बेहरा
+
+## About & Background
+
+Om Prakash Behera is an Indian Computer Science Engineer and Full-Stack Developer born and raised in Bhadrak, Odisha. He specializes in artificial intelligence, machine learning, computer vision, cybersecurity, and scalable MERN stack systems. Since beginning his coding journey in 2022, he has developed 30+ production-grade software projects and maintains 100+ public GitHub repositories.
+
+## Education & Credentials
+
+- **Bachelor of Technology (B.Tech) in Computer Science & Engineering (2025 – Present)**: Government College of Engineering, Kalahandi (GCEK Bhawanipatna, Odisha) — Affiliated with Biju Patnaik University of Technology (BPUT Odisha). Admitted through State-Level Lateral Entry (OJEE).
+- **Diploma in Computer Science & Engineering (2022 – 2025)**: State Council for Technical Education & Vocational Training (SCTE&VT Odisha) — Graduated with **First Class Honours with Distinction**.
+
+## Geography & Locations
+
+- **Hometown**: Bhadrak, Odisha, India (PIN: 756100)
+- **Current Campus Location**: Government College of Engineering, Kalahandi (GCEK), Bhawanipatna / Jaipatna, Kalahandi, Odisha, India
+- **Availability**: Open for remote freelance, engineering collaborations, and global opportunities.
+
+## Notable Achievements & Hackathons
+
+- 🥇 **1st Prize Winner (7000 Rs Prize Pool)**: YOUTH@2050 District Level Project Software Exhibition for MRS-AI (AI Medicine Recommender System).
+- 🚀 **ISRO BAH 2026 PS-07**: Bharatiya Antariksh Hackathon — Exoplanet Transit Detection using 1D-CNN Deep Learning.
+- 🇮🇳 **Smart India Hackathon (SIH 2025)**: Selected with Team CodeNova for AttendTrue Analytics (AI Smart Attendance & Behavioral Analytics).
+- 🌟 **Diploma CSE Distinction**: Graduated First Class with Distinction from SCTE&VT Odisha.
+- 📦 **Open-Source Milestones**: 100+ GitHub repositories and 30+ completed software systems.
+
+## Links
+
+- [Portfolio Website](https://omprakashbehera.me/)
+- [GitHub Profile](https://github.com/CodeByPrakash)
+- [LinkedIn Profile](https://linkedin.com/in/omprakash-cse)
+- [ORCID](https://orcid.org/0009-0002-2403-2907)
+- [Instagram](https://instagram.com/quasar_om)
+- [Resume (PDF)](https://omprakashbehera.me/resume.pdf)
+- [Technical Blog & Articles](https://omprakashbehera.me/blog)
+- [RSS Feed](https://omprakashbehera.me/rss.xml)
+
+## Technical Blog & Engineering Articles
+
+1. [Detecting Exoplanets with Machine Learning: ISRO BAH 2026 (PS-07)](https://omprakashbehera.me/blog/isro-bah-2026-exoplanet-detection-ml) — 1D-CNN, BLS periodograms & Kepler light-curve transit photometry.
+2. [Engineering AttendTrue Analytics for SIH 2025: AI-Driven Smart Attendance](https://omprakashbehera.me/blog/sih-2025-attendtrue-analytic) — Team CodeNova computer vision attendance verification & institutional analytics.
+3. [Inside MRS-AI: 1st Prize Winning ML Medicine Recommender](https://omprakashbehera.me/blog/mrs-ai-medicine-recommender-system) — Multi-class SVC clinical symptom classification.
+4. [Engineering a Touchless AR Hand Gesture Canvas with MediaPipe](https://omprakashbehera.me/blog/ar-hand-gesture-canvas-mediapipe) — Real-time 21-joint hand tracking & Bézier curves.
+5. [UnVoiced: Translating Indian Sign Language in Real-Time](https://omprakashbehera.me/blog/unvoiced-sign-language-translator-opencv) — OpenCV YCrCb skin segmentation & TTS synthesis.
+6. [Building a High-Performance Windows DNS Switcher](https://omprakashbehera.me/blog/public-dns-switcher-system-utility) — Windows TCP/IP netsh socket benchmarks & privacy resolvers.
+7. [Architecting a Biometric Attendance System with OpenCV](https://omprakashbehera.me/blog/simple-face-recognition-attendance-system) — Haar cascades, 128D embeddings & SQLite synchronization.
+8. [StadiumAI: Real-Time Crowd Density & Flow Analysis](https://omprakashbehera.me/blog/stadium-ai-crowd-density-computer-vision) — Homography bird's-eye mapping & YOLOv8 tracking.
+9. [Time-Series Forecasting on Stock Markets with LSTM](https://omprakashbehera.me/blog/stock-market-price-prediction-lstm) — Bidirectional LSTM, RSI, MACD & NATR features.
+10. [Running Local LLMs on Consumer GPUs: VRAM Optimization](https://omprakashbehera.me/blog/local-llm-cuda-quantization-optimization) — GGUF quantization, Flash Attention 2 & Ollama CUDA offloading.
+11. [Predicting Campus Placements with Supervised Learning](https://omprakashbehera.me/blog/smart-placement-campus-prediction-ml) — Skill gap analytics & placement probability scoring.
+12. [Architecting Scalable Tourism & Lab Management Systems](https://omprakashbehera.me/blog/odisha-tourism-management-database-architecture) — 3NF relational schemas, ACID transactions & RBAC.
+
+## Featured Projects
+
+### AI & Machine Learning
+- [ISRO Exoplanet ML](https://github.com/CodeByPrakash/ISRO_PS07) — 1D-CNN exoplanet transit detection engine for ISRO BAH 2026 PS-07 using Kepler photometry
+- [AttendTrue Analytics](https://github.com/CodeByPrakash/AttendTrue-Analytic) — AI-powered smart automated attendance tracking & institutional behavioral analytics platform (SIH 2025 Team CodeNova)
+- [MRS-AI Healthcare System](https://github.com/CodeByPrakash/MRS-AI) — Award-winning AI-powered medicine recommender using SVC ML model (1st Prize)
+- [UnVoiced ISL Translator](https://github.com/CodeByPrakash/UnVoiced) — Real-time Indian Sign Language gesture recognition & text-to-speech translator
+- [StadiumAI Vision](https://github.com/CodeByPrakash/StadiumAI-C4) — Real-time crowd density monitoring with YOLOv8 and homography bird's-eye mapping
+- [Stock Predictor AI](https://github.com/CodeByPrakash/stock_price_prediction_application) — Bidirectional LSTM neural network for stock trend forecasting
+- [Movie Recommender System](https://github.com/CodeByPrakash/Movie-Recommender-System) — Content-based recommendation engine using TF-IDF vectorization
+- [SmartPlacement](https://github.com/CodeByPrakash/SmartPlacement) — Campus recruitment predictor with placement probability and skill gap analysis
+
+### Computer Vision
+- [AR Hand Gesture Canvas](https://arhandgesture.vercel.app/) — Real-time AR air-drawing canvas using Google MediaPipe 21-joint hand tracking
+- [Biometric Attendance](https://github.com/CodeByPrakash/Simple_FaceRecoginition_Attendance_Sys) — Contactless face recognition attendance logger with deep embeddings
+- [EmoSense](https://github.com/CodeByPrakash) — Real-time multi-face emotion detection dashboard with live charts
+
+### Full-Stack & Web
+- [Open E-Commerce](https://open-ecommerce.vercel.app) — Full-featured e-commerce platform built with React and Framer Motion
+- [Local LLM ChatUI](https://github.com/CodeByPrakash/Local-LLM-ChatUI) — Local LLM execution interface with GGUF quantization and Ollama
+- [GCEK Vendor](https://gcekvendor.vercel.app) — Campus peer-to-peer rental & exchange marketplace
+- [Resume Builder](https://github.com/CodeByPrakash/ResumeBuilder-React) — ATS-friendly resume generator with live PDF compilation
+
+### Security & Systems
+- [Privacy Dashboard](https://github.com/CodeByPrakash/privacy_dashboard) — Telemetry tracking and privacy protection dashboard
+- [Public DNS Switcher](https://github.com/CodeByPrakash/Public_DNS_Switcher) — Windows DNS switching utility with live RTT benchmarking
+- [Computer Lab LMS](https://github.com/CodeByPrakash/LMS) — Multi-lab device tracking and hardware fault ticketing system
+
+### Others
+- [Odisha Tourism OTM](https://github.com/CodeByPrakash/OTM) — Tourism portal for Odisha heritage and hotel reservations
+
+## Skills
+
+- **Frontend**: React.js, Next.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Framer Motion, Sass
+- **Backend**: Node.js, Express.js, Python, Flask, FastAPI, PHP, REST APIs
+- **Databases**: MongoDB, PostgreSQL, MySQL, SQLite
+- **AI/ML**: TensorFlow, PyTorch, Scikit-learn, CNN, LSTM, RNN, Deep Learning, Computer Vision, NLP, LLMs, MediaPipe, OpenCV, YOLOv8
+- **Blockchain**: Solidity, Smart Contracts, IPFS
+- **Security**: Ethical Hacking, System Security, Network Security, Cyber Security
+- **Tools**: Git, GitHub, Figma, Blender, Canva, Streamlit, Vercel, Cloudflare, Ollama, CUDA
+
+## Contact
+
+- Primary Email: contact@omprakashbehera.me
+- Alternate Email: omprakashbehera.cse@gmail.com
+- LinkedIn: [omprakash-cse](https://linkedin.com/in/omprakash-cse)
+- GitHub: [CodeByPrakash](https://github.com/CodeByPrakash)
+- Instagram: [@quasar_om](https://instagram.com/quasar_om)
+- Location: Odisha, India (Available for remote work worldwide)

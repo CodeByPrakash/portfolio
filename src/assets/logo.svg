@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" fill="#F97316"/>
+
+  <!-- Stylized "om" mark traced from the supplied reference -->
+  <g transform="translate(25.25 152) scale(6.5)" fill="#000000" fill-rule="evenodd">
+    <!-- m -->
+    <path d="M41 3 L34 10 L34 16 L33 17 L33 22 L32 23 L32 28 L36 28 L36 25 L37 24 L37 17 L38 16 L38 9 L40 7 L47 7 L48 8 L48 28 L52 28 L52 8 L53 7 L60 7 L61 8 L61 17 L62 18 L63 28 L67 28 L66 17 L66 8 L64 5 L62 3 L53 3 L50 6 L48 3 Z"/>
+
+    <!-- o with inner counter -->
+    <path d="M8 3 L8 6 L7 7 L4 7 L3 8 L3 25 L4 26 L4 27 L5 28 L21 28 L22 27 L22 25 L23 24 L26 24 L26 5 L24 3 Z
+             M8 7 L21 7 L22 8 L22 23 L21 24 L8 24 L7 23 L7 8 Z"/>
+  </g>
+</svg>

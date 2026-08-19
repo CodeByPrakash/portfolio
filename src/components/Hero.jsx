@@ -1,0 +1,252 @@
+'use client'
+
+import { useRef } from 'react'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
+import { fadeIn, staggerContainer, scaleIn } from '../utils/motion'
+import { useTheme } from '../context/ThemeContext'
+import styles from './Hero.module.css'
+
+const techLogos = ['React', 'Python', 'Node.js', 'Flask', 'TensorFlow', 'PostgreSQL']
+
+export default function Hero() {
+  const { isDark, toggleTheme } = useTheme()
+  const heroRef = useRef(null)
+
+  // Track scroll position across the Hero section
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  })
+
+  // Smooth spring physics for scroll-driven path drawing
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 24,
+    restDelta: 0.001,
+  })
+
+  // Dynamic path length drawing & arrow distance linked strictly to scroll
+  const pathLength = useTransform(smoothProgress, [0, 0.6], [0.15, 1])
+  const arrowDistance = useTransform(smoothProgress, [0, 0.6], ['15%', '100%'])
+  const arrowScale = useTransform(smoothProgress, [0, 0.35], [0.9, 1.15])
+  const ribbonRotate = useTransform(smoothProgress, [0, 1], [0, 6])
+  const ribbonY = useTransform(smoothProgress, [0, 1], [0, 35])
+
+  return (
+    <section className={styles.hero} id="hero" ref={heroRef} aria-label="Hero — Om Prakash Behera, Computer Science Engineer building intelligent systems">
+      {/* Scrolling marquee — like reference */}
+      <div className={styles.marqueeWrap}>
+        <div className={styles.marquee}>
+          <span>BUILDING INTELLIGENT SYSTEMS — COMPUTER SCIENCE ENGINEER (CSE) — FULL STACK SOFTWARE DEVELOPER — AI & ML ENGINEER — BTECH COMPUTER SCIENCE — </span>
+          <span>BUILDING INTELLIGENT SYSTEMS — COMPUTER SCIENCE ENGINEER (CSE) — FULL STACK SOFTWARE DEVELOPER — AI & ML ENGINEER — BTECH COMPUTER SCIENCE — </span>
+        </div>
+      </div>
+
+      <motion.div
+        className={`section-wrap ${styles.inner}`}
+        variants={staggerContainer(0.12, 0.1)}
+        initial="hidden"
+        animate="show"
+      >
+        {/* Top row: status + nav tabs + unique Hello Palm Dark Mode Switcher */}
+        <motion.div className={styles.topRow} variants={fadeIn('down', 0)}>
+          <div className={styles.tabGroup}>
+            <a href="#about" className={styles.tab}>About</a>
+            <a href="#projects" className={`${styles.tab} ${styles.tabActive}`}>Portfolio</a>
+            <a href="#skills" className={styles.tab}>Skills</a>
+          </div>
+
+          <div className={styles.topRightControls}>
+            {/* Unique Hello Palm Emoji Theme Switcher (Emoji Only) */}
+            <motion.button
+              type="button"
+              className={`${styles.themePalmBtn} ${isDark ? styles.themePalmDark : ''}`}
+              onClick={toggleTheme}
+              aria-label={`Toggle theme: currently ${isDark ? 'Dark Mode' : 'Light Mode'}`}
+              whileHover={{ scale: 1.12, y: -2 }}
+              whileTap={{ scale: 0.92 }}
+              title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode (🦇)`}
+              suppressHydrationWarning
+            >
+              <motion.span
+                className={styles.palmEmoji}
+                animate={{ rotate: [0, 22, -14, 22, -8, 14, 0] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut', repeatDelay: 0.8 }}
+              >
+                🦇
+              </motion.span>
+            </motion.button>
+
+            <div className={styles.status}>
+              <span className={styles.statusDot} />
+              Available for work
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Headline with Clean Connected Dotted Arrow & Wave (Rendered BEHIND text) */}
+        <div className={styles.headlineWrapper}>
+          {/* Unified Connected Dotted Arrow & Triangle Head (Background Layer, z-index: 1) */}
+          <motion.svg
+            className={styles.unifiedArrowSvg}
+            viewBox="0 0 960 340"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ y: ribbonY, rotate: ribbonRotate }}
+            aria-hidden="true"
+          >
+            <defs>
+              {/* Vibrant Linear Gradient along the Dotted Wave */}
+              <linearGradient id="arrowLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="var(--accent)" />
+                <stop offset="35%" stopColor="#8B5CF6" />
+                <stop offset="70%" stopColor="#3B82F6" />
+                <stop offset="100%" stopColor="var(--accent)" />
+              </linearGradient>
+
+              {/* Triangle Head Gradient */}
+              <linearGradient id="arrowHeadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#3d3d3dff" />
+                <stop offset="100%" stopColor="#5f5f5fff" />
+              </linearGradient>
+
+              {/* Scroll Progress Mask — unmasks the true dotted dashes cleanly */}
+              <mask id="dottedScrollMask">
+                <motion.path
+                  d="M 40,190 C 140,190 200,50 330,50 C 460,50 510,270 640,270 C 750,270 800,160 880,70"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  strokeWidth="24"
+                  strokeLinecap="butt"
+                  style={{ pathLength }}
+                />
+              </mask>
+            </defs>
+
+            {/* True Dotted / Stroked Line Tail — lengthier rounded dashes unmasked with scroll */}
+            <path
+              d="M 40,190 C 140,190 200,50 330,50 C 460,50 510,270 640,270 C 750,270 800,160 880,70"
+              fill="none"
+              stroke="url(#arrowLineGrad)"
+              strokeWidth="5.5"
+              strokeLinecap="round"
+              strokeDasharray="10 16"
+              mask="url(#dottedScrollMask)"
+            />
+
+            {/* Compact Triangle Head — shifted to the left to cleanly cap and cover the line end */}
+            <motion.g
+              style={{
+                offsetPath: "path('M 40,190 C 140,190 200,50 330,50 C 460,50 510,270 640,270 C 750,270 800,160 880,70')",
+                offsetRotate: 'auto',
+                offsetDistance: arrowDistance,
+                scale: arrowScale,
+              }}
+            >
+              {/* Compact Solid Gradient Triangle Arrowhead covering the line end */}
+              <path
+                d="M 12,0 L -6,-10 L -6,10 Z"
+                fill="url(#arrowHeadGrad)"
+                stroke="url(#arrowHeadGrad)"
+                strokeWidth="1.5"
+                strokeLinejoin="round"
+              />
+            </motion.g>
+          </motion.svg>
+
+          {/* Main Headline Display Text (Foreground Layer, z-index: 2) */}
+          <h1 className={styles.headline}>
+            <motion.span className={styles.line1} variants={fadeIn('up', 0)}>
+              Building
+            </motion.span>
+            <motion.span className={styles.line2} variants={fadeIn('up', 0)}>
+              Intelligent <span className={styles.highlight}>Systems</span>
+            </motion.span>
+            <motion.span className={styles.line3} variants={fadeIn('up', 0)}>
+              For All.
+            </motion.span>
+          </h1>
+        </div>
+
+        {/* Sub row: description + CTAs side by side */}
+        <motion.div className={styles.subRow} variants={fadeIn('up', 0)}>
+          <p className={styles.sub}>
+            Computer Science Engineer building AI-driven systems.
+            From architecture to deployment — I create complete solutions
+            that solve real-world problems.
+          </p>
+          <div className={styles.ctaCol}>
+            <a href="#projects" className="btn btn-accent">See my work ↓</a>
+            <a href="#contact" className="btn">Get in touch</a>
+            <a href="/resume.pdf" download className="btn btn-outline">↓ Resume</a>
+          </div>
+        </motion.div>
+
+        {/* Stats row — 3D Clay Morphism Grid */}
+        <motion.div className={styles.stats} variants={fadeIn('up', 0)}>
+          {[
+            { n: '3+', l: 'Years Experience', color: 'orange' },
+            { n: '30+', l: 'Projects Built', color: 'blue' },
+            { n: '13+', l: 'Tech Stack Tools', color: 'green' },
+            { n: '99%', l: 'Satisfaction Rate', color: 'purple' },
+          ].map(s => (
+            <motion.div
+              key={s.l}
+              className={`${styles.stat} ${styles[`stat_${s.color}`]}`}
+              variants={scaleIn(0)}
+              whileHover={{ y: -5, scale: 1.025 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: 'spring', stiffness: 350, damping: 22 }}
+            >
+              <span className={styles.statN}>{s.n}</span>
+              <span className={styles.statL}>{s.l}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* Floating 3D Clay Morphism Edge Geometrics */}
+      <motion.div
+        className={`${styles.clayShape} ${styles.clayOrb}`}
+        animate={{ y: [0, -32, 0], rotate: [0, 20, 0], scale: [1, 1.04, 1] }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className={`${styles.clayShape} ${styles.clayTorus}`}
+        animate={{ y: [0, 36, 0], rotate: [-12, 18, -12] }}
+        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
+      />
+      <motion.div
+        className={`${styles.clayShape} ${styles.clayPill}`}
+        animate={{ y: [0, -28, 0], rotate: [20, 40, 20] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+      />
+      <motion.div
+        className={`${styles.clayShape} ${styles.clayCube}`}
+        animate={{ y: [0, 30, 0], rotate: [-10, 15, -10], scale: [1, 0.95, 1] }}
+        transition={{ duration: 8.5, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+      />
+      <motion.div
+        className={`${styles.clayShape} ${styles.clayMiniOrb}`}
+        animate={{ y: [0, -24, 0], x: [0, 16, 0] }}
+        transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+      />
+
+      {/* Tech logos strip — like reference partner strip */}
+      <motion.div
+        className={styles.logoStrip}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.5 }}
+      >
+        <div className={styles.logoStripInner}>
+          {techLogos.map(t => (
+            <span key={t} className={styles.logoItem}>
+              <span className={styles.logoDot}>●</span> {t}
+            </span>
+          ))}
+        </div>
+      </motion.div>
+    </section>
+  )
+}

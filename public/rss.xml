@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" 
+     xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+     xmlns:dc="http://purl.org/dc/elements/1.1/" 
+     xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Om Prakash Behera — Technical Blog &amp; Engineering Articles</title>
+    <link>https://omprakashbehera.me/blog</link>
+    <description>Engineering writeups, AI/ML tutorials, computer vision architectures, and system software articles by Om Prakash Behera (CodeByPrakash).</description>
+    <language>en-IN</language>
+    <lastBuildDate>Tue, 18 Aug 2026 15:30:00 GMT</lastBuildDate>
+    <atom:link href="https://omprakashbehera.me/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://omprakashbehera.me/logo.svg</url>
+      <title>Om Prakash Behera</title>
+      <link>https://omprakashbehera.me</link>
+    </image>
+
+    <item>
+      <title><![CDATA[Detecting Exoplanets with Machine Learning: My Approach for ISRO BAH 2026 (PS-07)]]></title>
+      <link>https://omprakashbehera.me/blog/isro-bah-2026-exoplanet-detection-ml</link>
+      <guid isPermaLink="true">https://omprakashbehera.me/blog/isro-bah-2026-exoplanet-detection-ml</guid>
+      <description><![CDATA[Deep dive into light-curve transit photometry, Kepler & TESS astrophysical signal processing, and 1D CNN / Random Forest models for ISRO Bharatiya Antariksh Hackathon Problem Statement 07.]]></description>
+      <category><![CDATA[AI & ML]]></category>
+      <dc:creator><![CDATA[Om Prakash Behera]]></dc:creator>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Engineering AttendTrue Analytics for SIH 2025: AI-Driven Smart Attendance & Institutional Analytics]]></title>
+      <link>https://omprakashbehera.me/blog/sih-2025-attendtrue-analytic</link>
+      <guid isPermaLink="true">https://omprakashbehera.me/blog/sih-2025-attendtrue-analytic</guid>
+      <description><![CDATA[How Team CodeNova engineered AttendTrue Analytics for Smart India Hackathon 2025: An intelligent computer vision attendance tracking and real-time student behavioral analytics platform.]]></description>
+      <category><![CDATA[AI & Full-Stack]]></category>
+      <dc:creator><![CDATA[Om Prakash Behera]]></dc:creator>
+      <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Inside MRS-AI: Designing the 1st Prize Winning ML Healthcare & Medicine Recommender Engine]]></title>
+      <link>https://omprakashbehera.me/blog/mrs-ai-medicine-recommender-system</link>
+      <guid isPermaLink="true">https://omprakashbehera.me/blog/mrs-ai-medicine-recommender-system</guid>
+      <description><![CDATA[Detailed architecture of MRS-AI, which won 1st Prize at the District Level Software Expo: Multi-class disease classification with SVC and personalized clinical precautions.]]></description>
+      <category><![CDATA[AI & Data]]></category>
+      <dc:creator><![CDATA[Om Prakash Behera]]></dc:creator>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Engineering a Touchless AR Hand Gesture Canvas with MediaPipe & React]]></title>
+      <link>https://omprakashbehera.me/blog/ar-hand-gesture-canvas-mediapipe</link>
+      <guid isPermaLink="true">https://omprakashbehera.me/blog/ar-hand-gesture-canvas-mediapipe</guid>
+      <description><![CDATA[Building an interactive zero-latency virtual drawing canvas powered by Google MediaPipe 21-hand-landmark tracking and cubic Bézier stroke interpolation.]]></description>
+      <category><![CDATA[Computer Vision]]></category>
+      <dc:creator><![CDATA[Om Prakash Behera]]></dc:creator>
+      <pubDate>Sun, 30 Nov 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[UnVoiced: Translating Indian Sign Language in Real-Time with OpenCV & Python]]></title>
+      <link>https://omprakashbehera.me/blog/unvoiced-sign-language-translator-opencv</link>
+      <guid isPermaLink="true">https://omprakashbehera.me/blog/unvoiced-sign-language-translator-opencv</guid>
+      <description><![CDATA[How UnVoiced converts Indian Sign Language alphabet gestures into spoken audio and real-time text using OpenCV contour analysis and neural classification.]]></description>
+      <category><![CDATA[Computer Vision]]></category>
+      <dc:creator><![CDATA[Om Prakash Behera]]></dc:creator>
+      <pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Building a High-Performance Windows DNS Switcher with Flask & Netsh Socket Benchmarks]]></title>
+      <link>https://omprakashbehera.me/blog/public-dns-switcher-system-utility</link>
+      <guid isPermaLink="true">https://omprakashbehera.me/blog/public-dns-switcher-system-utility</guid>
+      <description><![CDATA[An engineering retrospective on building Public_DNS_Switcher: Interfacing with Windows TCP/IP networking, automating adapter DNS overrides, and live RTT latency pings.]]></description>
+      <category><![CDATA[Cyber Security]]></category>
+      <dc:creator><![CDATA[Om Prakash Behera]]></dc:creator>
+      <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Architecting a Multi-Factor Biometric Attendance System with Python & OpenCV]]></title>
+      <link>https://omprakashbehera.me/blog/simple-face-recognition-attendance-system</link>
+      <guid isPermaLink="true">https://omprakashbehera.me/blog/simple-face-recognition-attendance-system</guid>
+      <description><![CDATA[Building an automated face recognition attendance logger with Haar cascades, dlib facial embeddings, and live SQLite/CSV database synchronization.]]></description>
+      <category><![CDATA[AI & ML]]></category>
+      <dc:creator><![CDATA[Om Prakash Behera]]></dc:creator>
+      <pubDate>Thu, 14 Aug 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[StadiumAI: Real-Time Crowd Density & Flow Analysis with Computer Vision]]></title>
+      <link>https://omprakashbehera.me/blog/stadium-ai-crowd-density-computer-vision</link>
+      <guid isPermaLink="true">https://omprakashbehera.me/blog/stadium-ai-crowd-density-computer-vision</guid>
+      <description><![CDATA[Implementing automated crowd surge monitoring, bottleneck detection, and spatial density heatmaps using YOLO object tracking and perspective transformation.]]></description>
+      <category><![CDATA[Computer Vision]]></category>
+      <dc:creator><![CDATA[Om Prakash Behera]]></dc:creator>
+      <pubDate>Sat, 26 Jul 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Time-Series Forecasting on Stock Markets with LSTM Recurrent Neural Networks]]></title>
+      <link>https://omprakashbehera.me/blog/stock-market-price-prediction-lstm</link>
+      <guid isPermaLink="true">https://omprakashbehera.me/blog/stock-market-price-prediction-lstm</guid>
+      <description><![CDATA[Comparing ARIMA, Prophet, and Bidirectional LSTM networks for multi-step financial time-series prediction with technical indicators (RSI, MACD, Bollinger Bands).]]></description>
+      <category><![CDATA[AI & ML]]></category>
+      <dc:creator><![CDATA[Om Prakash Behera]]></dc:creator>
+      <pubDate>Thu, 19 Jun 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Running Local LLMs on Consumer GPUs: VRAM Optimization with GGUF & Ollama CUDA Improver]]></title>
+      <link>https://omprakashbehera.me/blog/local-llm-cuda-quantization-optimization</link>
+      <guid isPermaLink="true">https://omprakashbehera.me/blog/local-llm-cuda-quantization-optimization</guid>
+      <description><![CDATA[How to maximize token generation throughput and eliminate PCIe transfer bottlenecks when executing 7B & 14B parameter LLMs locally on consumer NVIDIA GPUs.]]></description>
+      <category><![CDATA[AI & Data]]></category>
+      <dc:creator><![CDATA[Om Prakash Behera]]></dc:creator>
+      <pubDate>Wed, 14 May 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Predicting Campus Placements with Supervised Learning & Skill Gap Scoring]]></title>
+      <link>https://omprakashbehera.me/blog/smart-placement-campus-prediction-ml</link>
+      <guid isPermaLink="true">https://omprakashbehera.me/blog/smart-placement-campus-prediction-ml</guid>
+      <description><![CDATA[Building SmartPlacement: An analytics tool for engineering colleges that predicts placement probabilities and recommends targeted technical skill paths.]]></description>
+      <category><![CDATA[Web Architecture]]></category>
+      <dc:creator><![CDATA[Om Prakash Behera]]></dc:creator>
+      <pubDate>Fri, 11 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+
+    <item>
+      <title><![CDATA[Architecting Scalable Tourism & Lab Management Systems with Normalized Relational Schemas]]></title>
+      <link>https://omprakashbehera.me/blog/odisha-tourism-management-database-architecture</link>
+      <guid isPermaLink="true">https://omprakashbehera.me/blog/odisha-tourism-management-database-architecture</guid>
+      <description><![CDATA[A practical guide to database normalization (3NF), ACID transaction guarantees, and role-based access control in OTM and LMS enterprise systems.]]></description>
+      <category><![CDATA[Web Architecture]]></category>
+      <dc:creator><![CDATA[Om Prakash Behera]]></dc:creator>
+      <pubDate>Sun, 02 Mar 2025 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

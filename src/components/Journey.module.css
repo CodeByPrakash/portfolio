@@ -1,0 +1,702 @@
+.journey {
+  padding: 6.5rem 0 6rem;
+  position: relative;
+  border-bottom: var(--bw) solid var(--border);
+  overflow: hidden;
+}
+
+/* ─── Header Row ────────────────────────────────── */
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 2rem;
+  border-bottom: var(--bw) solid var(--border);
+}
+
+.heading {
+  font-family: var(--font-head);
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: 400;
+  letter-spacing: .02em;
+  line-height: .95;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-top: 0.5rem;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.sub {
+  font-size: .95rem;
+  color: var(--text-secondary);
+  line-height: 1.68;
+  max-width: 640px;
+  margin-bottom: 3.5rem;
+}
+
+/* ─── 3D Clay Live Step Tracker Box ─────────────── */
+.stepTracker {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-tertiary);
+  border: var(--bw) solid var(--border);
+  border-radius: 24px;
+  padding: 1.25rem 1.6rem;
+  min-width: 280px;
+  box-shadow: 
+    10px 14px 28px rgba(0, 0, 0, 0.06),
+    -6px -6px 18px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+    inset -2px -2px 5px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.stepTracker:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    14px 20px 36px rgba(0, 0, 0, 0.09),
+    -8px -8px 22px rgba(255, 255, 255, 0.95);
+}
+
+.trackerBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.trackerDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.25);
+  animation: pulseDot 1.5s infinite ease-in-out;
+}
+
+.trackerLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+.trackerInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.2rem;
+}
+
+.trackerStep {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.trackerYear {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.trackerTitle {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+}
+
+/* ─── Timeline Container & SVG Layer ───────────── */
+.timelineContainer {
+  position: relative;
+  padding: 3rem 0;
+  min-height: 800px;
+}
+
+.curlySvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* Background Dotted Curly Guide Track */
+.pathGuide {
+  stroke: var(--border-light);
+  stroke-width: 2.5;
+  stroke-dasharray: 8 8;
+  fill: none;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+
+/* Active Gradient Curly Path (Animated with Scroll) */
+.pathActive {
+  stroke: url(#curlyJourneyGrad);
+  stroke-width: 4.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 2px 4px rgba(255, 107, 0, 0.25));
+}
+
+/* ─── Traveling Arrowhead & Energy Marker ───────── */
+.travelingArrowGroup {
+  pointer-events: none;
+  transition: transform 0.05s linear;
+}
+
+.arrowPulseCircle {
+  fill: rgba(255, 107, 0, 0.22);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  animation: pulseArrowCircle 1.6s infinite ease-out;
+  transform-origin: center;
+}
+
+.arrowCenterDisc {
+  fill: var(--text-primary);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.arrowHeadPath {
+  fill: var(--accent);
+  stroke: var(--border);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+/* Floating dynamic year tag following arrow */
+.floatingArrowTag {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  background: var(--bg-tertiary);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1.5px solid var(--accent);
+  box-shadow: 
+    0 4px 14px rgba(0, 0, 0, 0.35),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.2s ease;
+}
+
+.arrowTagArrow {
+  color: var(--accent);
+  font-size: 0.55rem;
+}
+
+/* ─── Milestones Stack ─────────────────────────── */
+.milestones {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.milestone {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Left milestone card */
+.left {
+  justify-content: flex-start;
+  padding-right: calc(50% + 48px);
+}
+
+.left .card {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.left .touchPoint {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Right milestone card */
+.right {
+  justify-content: flex-end;
+  padding-left: calc(50% + 48px);
+}
+
+.right .card {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.right .touchPoint {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ─── Connector Touch Point — 3D Tactile Disc ─── */
+.touchPoint {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  z-index: 4;
+}
+
+.touchRect {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 
+    3px 4px 8px rgba(0,0,0,0.1),
+    -2px -2px 6px rgba(255,255,255,0.9),
+    inset 1px 1px 2px rgba(255,255,255,0.8);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.touchInnerDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.touchRectActive {
+  transform: scale(1.25);
+  box-shadow: 
+    0 0 0 5px rgba(255, 107, 0, 0.2),
+    4px 6px 12px rgba(0,0,0,0.15);
+}
+
+.touchRectCurrent {
+  transform: scale(1.4);
+  border-color: var(--accent) !important;
+  box-shadow: 
+    0 0 0 6px rgba(255, 107, 0, 0.35),
+    4px 8px 16px rgba(255, 107, 0, 0.3);
+}
+
+.currentPing {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: pingRing 1.5s infinite cubic-bezier(0, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* ─── 3D Clay Milestone Card ─────────────────────── */
+.card {
+  border: var(--bw) solid var(--border);
+  border-radius: 26px;
+  padding: 2rem 2.25rem;
+  background: var(--bg-tertiary);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-shadow: 
+    12px 16px 32px rgba(0, 0, 0, 0.06),
+    -8px -8px 24px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+    inset -2px -2px 5px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    16px 24px 44px rgba(0, 0, 0, 0.09),
+    -10px -10px 28px rgba(255, 255, 255, 0.95);
+}
+
+.cardActive {
+  background: var(--bg-tertiary);
+}
+
+.cardCurrent {
+  background: var(--bg-tertiary);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.95rem;
+  flex-wrap: wrap;
+}
+
+.left .cardHeader {
+  justify-content: flex-end;
+}
+
+.right .cardHeader {
+  justify-content: flex-start;
+}
+
+/* Clay Year Pill */
+.year {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .3rem .85rem;
+  border: var(--bw) solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  display: inline-block;
+  box-shadow: 
+    2px 3px 6px rgba(0,0,0,0.04),
+    inset 1px 1px 2px rgba(255,255,255,0.9);
+}
+
+/* Clay Status Pill */
+.statusBadge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  text-transform: uppercase;
+  box-shadow: 
+    2px 3px 6px rgba(0,0,0,0.04),
+    inset 1px 1px 2px rgba(255,255,255,0.8);
+}
+
+.badge_blue {
+  background: var(--blue-pale);
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+.badge_orange {
+  background: var(--orange-pale);
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.badge_green {
+  background: var(--green-pale);
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.badge_purple {
+  background: var(--purple-pale);
+  color: var(--purple);
+  border-color: var(--purple);
+}
+
+.badge_red {
+  background: var(--red-pale);
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.cardTitle {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: .65rem;
+  color: var(--text-primary);
+}
+
+.cardDesc {
+  font-size: .92rem;
+  color: var(--text-secondary);
+  line-height: 1.68;
+  margin-bottom: 1.1rem;
+}
+
+.cardFooter {
+  display: flex;
+  margin-top: auto;
+}
+
+.left .cardFooter {
+  justify-content: flex-end;
+}
+
+.right .cardFooter {
+  justify-content: flex-start;
+}
+
+/* Clay Stage Tag */
+.stageTag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-light);
+  box-shadow: inset 1px 1px 2px rgba(255,255,255,0.8);
+}
+
+/* ─── Background Floating 3D Clay Morphism Shapes ── */
+.shape {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.08));
+}
+
+/* 1. Clay Slate Torus (Top-Left Edge) */
+.shape1 {
+  width: 135px;
+  height: 135px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, transparent 40%, #2A4DB8 42%, #3B5FCF 65%, #6384EC 100%);
+  border: 24px solid #3B5FCF;
+  box-shadow: 
+    18px 24px 42px rgba(59, 95, 207, 0.32),
+    -7px -7px 18px rgba(255, 255, 255, 0.95),
+    inset 5px 5px 11px rgba(255, 255, 255, 0.75),
+    inset -5px -5px 13px rgba(26, 44, 110, 0.45);
+  top: 8%;
+  left: 4%;
+  opacity: 0.88;
+}
+
+/* 2. Clay Orange Orb (Center-Right Edge) */
+.shape2 {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #FFB670 0%, #FF8533 35%, #FF6B00 70%, #B84700 100%);
+  box-shadow: 
+    16px 22px 38px rgba(255, 107, 0, 0.35),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 6px 6px 12px rgba(255, 255, 255, 0.8),
+    inset -6px -6px 14px rgba(138, 54, 0, 0.45);
+  top: 48%;
+  right: 3%;
+  opacity: 0.92;
+}
+
+/* 3. Clay Mint Pill (Bottom-Left Edge) */
+.shape3 {
+  width: 55px;
+  height: 115px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #8BF2BE 0%, #2DB77B 55%, #197148 100%);
+  box-shadow: 
+    14px 18px 30px rgba(45, 183, 123, 0.28),
+    -6px -6px 16px rgba(255, 255, 255, 0.95),
+    inset 4px 4px 9px rgba(255, 255, 255, 0.8),
+    inset -4px -4px 10px rgba(17, 77, 49, 0.38);
+  bottom: 12%;
+  left: 8%;
+  opacity: 0.85;
+}
+
+/* ─── Keyframe Animations ───────────────────────── */
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.7;
+  }
+}
+
+@keyframes pulseArrowCircle {
+  0% {
+    r: 8px;
+    opacity: 0.9;
+  }
+  70% {
+    r: 18px;
+    opacity: 0.15;
+  }
+  100% {
+    r: 22px;
+    opacity: 0;
+  }
+}
+
+@keyframes pingRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* ─── Mobile Responsiveness ─────────────────────── */
+@media (max-width: 768px) {
+  .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .stepTracker {
+    width: 100%;
+    min-width: unset;
+    padding: 1.25rem 1.4rem;
+  }
+
+  .timelineContainer {
+    padding-left: 0;
+  }
+
+  .left,
+  .right {
+    padding-left: 56px;
+    padding-right: 0;
+    justify-content: flex-start;
+  }
+
+  .left .card,
+  .right .card {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .left .cardHeader,
+  .right .cardHeader {
+    justify-content: flex-start;
+  }
+
+  .left .cardFooter,
+  .right .cardFooter {
+    justify-content: flex-start;
+  }
+
+  .left .touchPoint,
+  .right .touchPoint {
+    left: 20px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .milestones {
+    gap: 3rem;
+  }
+
+  .card {
+    padding: 1.6rem 1.5rem;
+    border-radius: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .left,
+  .right {
+    padding-left: 40px;
+  }
+
+  .left .touchPoint,
+  .right .touchPoint {
+    left: 15px;
+  }
+
+  .card {
+    padding: 1.25rem 1rem;
+    border-radius: 18px;
+  }
+
+  .role {
+    font-size: 1.15rem;
+  }
+
+  .desc {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+}
+
+/* ─── Dark Mode 3D Clay Polish (ZERO White Glow) ─── */
+:global([data-theme="dark"]) .card,
+:global([data-theme="dark"]) .stepTracker {
+  box-shadow: 
+    0 10px 28px rgba(0, 0, 0, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05),
+    inset -1px -1px 3px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .card:hover,
+:global([data-theme="dark"]) .stepTracker:hover {
+  box-shadow: 
+    0 16px 38px rgba(0, 0, 0, 0.7),
+    0 4px 12px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.08),
+    inset -1px -1px 3px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .touchPoint,
+:global([data-theme="dark"]) .stepSegment,
+:global([data-theme="dark"]) .typePill,
+:global([data-theme="dark"]) .tag {
+  box-shadow: 
+    inset 2px 2px 5px rgba(0, 0, 0, 0.4),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.04),
+    0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+:global([data-theme="dark"]) .clayShapeOrb,
+:global([data-theme="dark"]) .clayShapeCone,
+:global([data-theme="dark"]) .clayShapeTorus,
+:global([data-theme="dark"]) .clayShapePyramid {
+  box-shadow: 
+    0 14px 34px rgba(0, 0, 0, 0.65),
+    0 4px 10px rgba(0, 0, 0, 0.4),
+    inset 1.5px 1.5px 4px rgba(255, 255, 255, 0.12),
+    inset -3px -3px 8px rgba(0, 0, 0, 0.55);
+  opacity: 0.75;
+  filter: brightness(0.92);
+}

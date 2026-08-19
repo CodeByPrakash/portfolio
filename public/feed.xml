@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Om Prakash Behera — Technical Blog &amp; Engineering Articles</title>
+  <subtitle>Engineering writeups on artificial intelligence, computer vision, web architecture, and system software by Om Prakash Behera (CodeByPrakash).</subtitle>
+  <link href="https://omprakashbehera.me/feed.xml" rel="self"/>
+  <link href="https://omprakashbehera.me/blog"/>
+  <updated>2026-08-18T15:30:00Z</updated>
+  <id>https://omprakashbehera.me/blog</id>
+  <author>
+    <name>Om Prakash Behera</name>
+    <email>contact@omprakashbehera.me</email>
+    <uri>https://omprakashbehera.me</uri>
+  </author>
+  <icon>https://omprakashbehera.me/logo.svg</icon>
+  <logo>https://omprakashbehera.me/omprakash.png</logo>
+  <rights>© 2026 Om Prakash Behera. All rights reserved.</rights>
+
+  <entry>
+    <title>Detecting Exoplanets with Machine Learning: My Approach for ISRO BAH 2026 (PS-07)</title>
+    <link href="https://omprakashbehera.me/blog/isro-bah-2026-exoplanet-detection-ml"/>
+    <id>https://omprakashbehera.me/blog/isro-bah-2026-exoplanet-detection-ml</id>
+    <updated>2026-02-15T00:00:00Z</updated>
+    <published>2026-02-15T00:00:00Z</published>
+    <summary>Deep dive into light-curve transit photometry, Kepler &amp; TESS astrophysical signal processing, and 1D CNN / Random Forest models for ISRO Bharatiya Antariksh Hackathon Problem Statement 07.</summary>
+    <category term="AI &amp; ML"/>
+  </entry>
+
+  <entry>
+    <title>Engineering AttendTrue Analytics for SIH 2025: AI-Driven Smart Attendance &amp; Institutional Analytics</title>
+    <link href="https://omprakashbehera.me/blog/sih-2025-attendtrue-analytic"/>
+    <id>https://omprakashbehera.me/blog/sih-2025-attendtrue-analytic</id>
+    <updated>2026-01-20T00:00:00Z</updated>
+    <published>2026-01-20T00:00:00Z</published>
+    <summary>How Team CodeNova engineered AttendTrue Analytics for Smart India Hackathon 2025: An intelligent computer vision attendance tracking and real-time student behavioral analytics platform.</summary>
+    <category term="AI &amp; Full-Stack"/>
+  </entry>
+
+  <entry>
+    <title>Inside MRS-AI: Designing the 1st Prize Winning ML Healthcare &amp; Medicine Recommender Engine</title>
+    <link href="https://omprakashbehera.me/blog/mrs-ai-medicine-recommender-system"/>
+    <id>https://omprakashbehera.me/blog/mrs-ai-medicine-recommender-system</id>
+    <updated>2025-12-22T00:00:00Z</updated>
+    <published>2025-12-22T00:00:00Z</published>
+    <summary>Detailed architecture of MRS-AI, which won 1st Prize at the District Level Software Expo: Multi-class disease classification with SVC and personalized clinical precautions.</summary>
+    <category term="AI &amp; Data"/>
+  </entry>
+
+  <entry>
+    <title>Engineering a Touchless AR Hand Gesture Canvas with MediaPipe &amp; React</title>
+    <link href="https://omprakashbehera.me/blog/ar-hand-gesture-canvas-mediapipe"/>
+    <id>https://omprakashbehera.me/blog/ar-hand-gesture-canvas-mediapipe</id>
+    <updated>2025-11-30T00:00:00Z</updated>
+    <published>2025-11-30T00:00:00Z</published>
+    <summary>Building an interactive zero-latency virtual drawing canvas powered by Google MediaPipe 21-hand-landmark tracking and cubic Bézier stroke interpolation.</summary>
+    <category term="Computer Vision"/>
+  </entry>
+
+  <entry>
+    <title>UnVoiced: Translating Indian Sign Language in Real-Time with OpenCV &amp; Python</title>
+    <link href="https://omprakashbehera.me/blog/unvoiced-sign-language-translator-opencv"/>
+    <id>https://omprakashbehera.me/blog/unvoiced-sign-language-translator-opencv</id>
+    <updated>2025-10-28T00:00:00Z</updated>
+    <published>2025-10-28T00:00:00Z</published>
+    <summary>How UnVoiced converts Indian Sign Language alphabet gestures into spoken audio and real-time text using OpenCV contour analysis and neural classification.</summary>
+    <category term="Computer Vision"/>
+  </entry>
+
+  <entry>
+    <title>Building a High-Performance Windows DNS Switcher with Flask &amp; Netsh Socket Benchmarks</title>
+    <link href="https://omprakashbehera.me/blog/public-dns-switcher-system-utility"/>
+    <id>https://omprakashbehera.me/blog/public-dns-switcher-system-utility</id>
+    <updated>2025-09-18T00:00:00Z</updated>
+    <published>2025-09-18T00:00:00Z</published>
+    <summary>An engineering retrospective on building Public_DNS_Switcher: Interfacing with Windows TCP/IP networking, automating adapter DNS overrides, and live RTT latency pings.</summary>
+    <category term="Cyber Security"/>
+  </entry>
+
+  <entry>
+    <title>Architecting a Multi-Factor Biometric Attendance System with Python &amp; OpenCV</title>
+    <link href="https://omprakashbehera.me/blog/simple-face-recognition-attendance-system"/>
+    <id>https://omprakashbehera.me/blog/simple-face-recognition-attendance-system</id>
+    <updated>2025-08-14T00:00:00Z</updated>
+    <published>2025-08-14T00:00:00Z</published>
+    <summary>Building an automated face recognition attendance logger with Haar cascades, dlib facial embeddings, and live SQLite/CSV database synchronization.</summary>
+    <category term="AI &amp; ML"/>
+  </entry>
+
+  <entry>
+    <title>StadiumAI: Real-Time Crowd Density &amp; Flow Analysis with Computer Vision</title>
+    <link href="https://omprakashbehera.me/blog/stadium-ai-crowd-density-computer-vision"/>
+    <id>https://omprakashbehera.me/blog/stadium-ai-crowd-density-computer-vision</id>
+    <updated>2025-07-26T00:00:00Z</updated>
+    <published>2025-07-26T00:00:00Z</published>
+    <summary>Implementing automated crowd surge monitoring, bottleneck detection, and spatial density heatmaps using YOLO object tracking and perspective transformation.</summary>
+    <category term="Computer Vision"/>
+  </entry>
+
+  <entry>
+    <title>Time-Series Forecasting on Stock Markets with LSTM Recurrent Neural Networks</title>
+    <link href="https://omprakashbehera.me/blog/stock-market-price-prediction-lstm"/>
+    <id>https://omprakashbehera.me/blog/stock-market-price-prediction-lstm</id>
+    <updated>2025-06-19T00:00:00Z</updated>
+    <published>2025-06-19T00:00:00Z</published>
+    <summary>Comparing ARIMA, Prophet, and Bidirectional LSTM networks for multi-step financial time-series prediction with technical indicators (RSI, MACD, Bollinger Bands).</summary>
+    <category term="AI &amp; ML"/>
+  </entry>
+
+  <entry>
+    <title>Running Local LLMs on Consumer GPUs: VRAM Optimization with GGUF &amp; Ollama CUDA Improver</title>
+    <link href="https://omprakashbehera.me/blog/local-llm-cuda-quantization-optimization"/>
+    <id>https://omprakashbehera.me/blog/local-llm-cuda-quantization-optimization</id>
+    <updated>2025-05-14T00:00:00Z</updated>
+    <published>2025-05-14T00:00:00Z</published>
+    <summary>How to maximize token generation throughput and eliminate PCIe transfer bottlenecks when executing 7B &amp; 14B parameter LLMs locally on consumer NVIDIA GPUs.</summary>
+    <category term="AI &amp; Data"/>
+  </entry>
+
+  <entry>
+    <title>Predicting Campus Placements with Supervised Learning &amp; Skill Gap Scoring</title>
+    <link href="https://omprakashbehera.me/blog/smart-placement-campus-prediction-ml"/>
+    <id>https://omprakashbehera.me/blog/smart-placement-campus-prediction-ml</id>
+    <updated>2025-04-11T00:00:00Z</updated>
+    <published>2025-04-11T00:00:00Z</published>
+    <summary>Building SmartPlacement: An analytics tool for engineering colleges that predicts placement probabilities and recommends targeted technical skill paths.</summary>
+    <category term="Web Architecture"/>
+  </entry>
+
+  <entry>
+    <title>Architecting Scalable Tourism &amp; Lab Management Systems with Normalized Relational Schemas</title>
+    <link href="https://omprakashbehera.me/blog/odisha-tourism-management-database-architecture"/>
+    <id>https://omprakashbehera.me/blog/odisha-tourism-management-database-architecture</id>
+    <updated>2025-03-02T00:00:00Z</updated>
+    <published>2025-03-02T00:00:00Z</published>
+    <summary>A practical guide to database normalization (3NF), ACID transaction guarantees, and role-based access control in OTM and LMS enterprise systems.</summary>
+    <category term="Web Architecture"/>
+  </entry>
+</feed>

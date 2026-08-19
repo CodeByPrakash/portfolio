@@ -1,0 +1,363 @@
+.skills {
+  padding: 6.5rem 0 6rem;
+  position: relative;
+  border-bottom: var(--bw) solid var(--border);
+  overflow: hidden;
+}
+
+.sectionHeading {
+  font-family: var(--font-head);
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-weight: 400;
+  letter-spacing: .02em;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 2.2rem;
+  color: var(--text-primary);
+}
+
+/* ─── 3D Clay Bento Wrapper ───────────────────── */
+.bentoWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  background: transparent;
+}
+
+.bannerCell {
+  padding: 2rem 2.25rem;
+  border: var(--bw) solid var(--border);
+  border-radius: 26px;
+  background: var(--bg-tertiary);
+  box-shadow: 
+    12px 16px 32px rgba(0, 0, 0, 0.06),
+    -8px -8px 24px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+    inset -2px -2px 5px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.bannerCell:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    16px 22px 40px rgba(0, 0, 0, 0.08),
+    -10px -10px 28px rgba(255, 255, 255, 0.95);
+}
+
+.bannerTag {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.bannerText {
+  font-size: .95rem;
+  color: var(--text-secondary);
+  line-height: 1.68;
+  max-width: 680px;
+}
+
+/* ─── 3D Clay Skills Grid ─────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.35rem;
+}
+
+/* 3D Clay Card Base */
+.card {
+  padding: 2.25rem;
+  background: var(--bg-tertiary);
+  border: var(--bw) solid var(--border);
+  border-radius: 26px;
+  box-shadow: 
+    12px 16px 32px rgba(0, 0, 0, 0.06),
+    -8px -8px 24px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+    inset -2px -2px 5px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    16px 24px 44px rgba(0, 0, 0, 0.09),
+    -10px -10px 28px rgba(255, 255, 255, 0.95);
+}
+
+/* Card Header */
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  margin-bottom: 1.5rem;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  box-shadow: 
+    inset 2px 2px 4px rgba(0,0,0,0.05),
+    inset -1.5px -1.5px 3px rgba(255,255,255,0.9);
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  flex-shrink: 0;
+}
+
+.icon_orange { color: var(--orange); }
+.icon_blue { color: var(--blue); }
+.icon_green { color: var(--green); }
+.icon_purple { color: var(--purple); }
+
+.card:hover .icon_orange {
+  background: var(--orange-pale);
+  border-color: var(--orange);
+  transform: scale(1.08);
+}
+
+.card:hover .icon_blue {
+  background: var(--blue-pale);
+  border-color: var(--blue);
+  transform: scale(1.08);
+}
+
+.card:hover .icon_green {
+  background: var(--green-pale);
+  border-color: var(--green);
+  transform: scale(1.08);
+}
+
+.card:hover .icon_purple {
+  background: var(--purple-pale);
+  border-color: var(--purple);
+  transform: scale(1.08);
+}
+
+.catTitle {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+/* Level Pill — Clay Capsule */
+.levelPill {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .3rem .75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  box-shadow: 
+    2px 4px 8px rgba(0,0,0,0.05),
+    inset 1px 1px 2px rgba(255,255,255,0.8);
+}
+
+.lp_orange {
+  background: var(--orange-pale);
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.lp_blue {
+  background: var(--blue-pale);
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+.lp_green {
+  background: var(--green-pale);
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.lp_purple {
+  background: var(--purple-pale);
+  color: var(--purple);
+  border-color: var(--purple);
+}
+
+/* Skill Bars */
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.barRow {
+  display: block;
+}
+
+.barMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .35rem;
+}
+
+.barName {
+  font-size: .84rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.barVal {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+/* Clay Inset Track */
+.track {
+  height: 8px;
+  background: var(--bg-secondary);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: 
+    inset 2px 2px 4px rgba(0, 0, 0, 0.08),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.95);
+  position: relative;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width .6s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+.fill_orange { background: linear-gradient(90deg, #FFA34D 0%, #FF6B00 100%); }
+.fill_blue { background: linear-gradient(90deg, #6083F0 0%, #3B5FCF 100%); }
+.fill_green { background: linear-gradient(90deg, #6CE0A6 0%, #2DB77B 100%); }
+.fill_purple { background: linear-gradient(90deg, #AB78FF 0%, #7C3AED 100%); }
+
+/* ─── 3D Clay Morphism Floating Edge Geometrics ───────── */
+.clayShape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.08));
+}
+
+/* 1. Clay Slate Torus / Ring (Top-Right Edge) */
+.clayShapeTorus {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, transparent 40%, #2A4DB8 42%, #3B5FCF 65%, #6384EC 100%);
+  border: 22px solid #3B5FCF;
+  box-shadow: 
+    18px 24px 40px rgba(59, 95, 207, 0.32),
+    -7px -7px 18px rgba(255, 255, 255, 0.95),
+    inset 5px 5px 11px rgba(255, 255, 255, 0.75),
+    inset -5px -5px 13px rgba(26, 44, 110, 0.45);
+  top: 12%;
+  right: 4%;
+  opacity: 0.88;
+}
+
+/* 2. Clay Orange Orb (Bottom-Left Edge) */
+.clayShapeOrb {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #FFB670 0%, #FF8533 35%, #FF6B00 70%, #B84700 100%);
+  box-shadow: 
+    16px 20px 36px rgba(255, 107, 0, 0.32),
+    -7px -7px 18px rgba(255, 255, 255, 0.95),
+    inset 5px 5px 10px rgba(255, 255, 255, 0.8),
+    inset -5px -5px 12px rgba(138, 54, 0, 0.45);
+  bottom: 16%;
+  left: 3%;
+  opacity: 0.9;
+}
+
+/* 3. Clay Mint Capsule (Top-Left Edge) */
+.clayShapeCapsule {
+  width: 55px;
+  height: 110px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #8BF2BE 0%, #2DB77B 55%, #197148 100%);
+  box-shadow: 
+    14px 18px 30px rgba(45, 183, 123, 0.28),
+    -6px -6px 16px rgba(255, 255, 255, 0.95),
+    inset 4px 4px 9px rgba(255, 255, 255, 0.8),
+    inset -4px -4px 10px rgba(17, 77, 49, 0.38);
+  top: 32%;
+  left: 6%;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .bannerCell {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .clayShape {
+    opacity: 0.4;
+    transform: scale(0.65);
+  }
+}
+
+/* ─── Dark Mode 3D Clay Polish (ZERO White Glow) ─── */
+:global([data-theme="dark"]) .card,
+:global([data-theme="dark"]) .bannerCell {
+  box-shadow: 
+    0 10px 28px rgba(0, 0, 0, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05),
+    inset -1px -1px 3px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .card:hover,
+:global([data-theme="dark"]) .bannerCell:hover {
+  box-shadow: 
+    0 16px 38px rgba(0, 0, 0, 0.7),
+    0 4px 12px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.08),
+    inset -1px -1px 3px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .track,
+:global([data-theme="dark"]) .tagPill,
+:global([data-theme="dark"]) .pillCapsule,
+:global([data-theme="dark"]) .logoBox {
+  box-shadow: 
+    inset 2px 2px 5px rgba(0, 0, 0, 0.4),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.04),
+    0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+:global([data-theme="dark"]) .clayShapeTorus,
+:global([data-theme="dark"]) .clayShapeOrb,
+:global([data-theme="dark"]) .clayShapeCapsule {
+  box-shadow: 
+    0 14px 34px rgba(0, 0, 0, 0.65),
+    0 4px 10px rgba(0, 0, 0, 0.4),
+    inset 1.5px 1.5px 4px rgba(255, 255, 255, 0.12),
+    inset -3px -3px 8px rgba(0, 0, 0, 0.55);
+  opacity: 0.75;
+  filter: brightness(0.92);
+}

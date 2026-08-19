@@ -1,0 +1,42 @@
+{
+  "name": "Om Prakash Behera — Computer Science Engineer Portfolio",
+  "short_name": "OPB Portfolio",
+  "description": "Portfolio of Om Prakash Behera — Computer Science Engineer, Full-Stack Developer & AI Systems Specialist from Odisha, India. Showcasing 30+ projects in AI/ML, MERN stack, computer vision, and cyber security.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F5F2EB",
+  "theme_color": "#FF6B00",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "categories": [
+    "portfolio",
+    "developer",
+    "technology",
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/omprakash.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/admin-opt.webp",
+      "sizes": "192x192 512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

@@ -1,0 +1,86 @@
+# Om Prakash Behera — Full Developer Knowledge Base & Engineering Corpus
+
+> This document contains comprehensive technical documentation, article abstracts, and project blueprints from the official portfolio of Om Prakash Behera (CodeByPrakash).
+
+## 1. Professional Identity & Background
+
+- **Name**: Om Prakash Behera (OMPRAKASH BEHERA / CodeByPrakash / Quasar Om)
+- **Occupation**: Computer Science Engineer, Full-Stack Developer, AI/ML Researcher
+- **Hometown**: Bhadrak, Odisha, India
+- **Institution**: Government College of Engineering Kalahandi (GCEK), Bhawanipatna, Odisha
+- **Affiliation**: Biju Patnaik University of Technology (BPUT Odisha) & SCTE&VT Odisha
+- **Degree**: Bachelor of Technology in Computer Science & Engineering (BTech CSE, 2025–2028); Diploma in Computer Science & Engineering with First Class Distinction (2022–2025).
+- **Core Focus**: Artificial Intelligence, Deep Learning (1D-CNN, LSTM), Computer Vision (MediaPipe, OpenCV, YOLOv8), Full-Stack Web Development (Next.js, React, Node.js, Python), and Cyber Security.
+
+## 2. Technical Articles Corpus
+
+### 1. Detecting Exoplanets with Machine Learning: My Approach for ISRO BAH 2026 (PS-07)
+- **URL**: https://omprakashbehera.me/blog/isro-bah-2026-exoplanet-detection-ml
+- **Category**: AI & ML
+- **Summary**: Implemented light-curve transit photometry signal processing using Box Least Squares (BLS) periodograms, Wotan spline baseline flattening, and a dual-stream 1D-CNN + Random Forest ensemble classifier on Kepler DR25 mission data. Achieved 0.964 ROC-AUC and 93.8% precision on false positive binary rejection for ISRO Problem Statement PS-07.
+
+### 2. Engineering AttendTrue Analytics for SIH 2025: AI-Driven Smart Attendance & Institutional Analytics
+- **URL**: https://omprakashbehera.me/blog/sih-2025-attendtrue-analytic
+- **Category**: AI & Full-Stack
+- **Summary**: Team CodeNova developed AttendTrue Analytics for Smart India Hackathon (SIH 2025), an AI-powered automated attendance verification and predictive institutional behavioral analytics platform. Utilizes deep facial embedding extraction, anti-spoofing liveness checks, automated irregularity alerts, and a Next.js full-stack analytics portal.
+
+### 3. Inside MRS-AI: Designing the 1st Prize Winning ML Healthcare & Medicine Recommender Engine
+- **URL**: https://omprakashbehera.me/blog/mrs-ai-medicine-recommender-system
+- **Category**: AI & Data
+- **Summary**: Won 1st Prize at YOUTH@2050 District Level Expo. Benchmarked 5 machine learning models on clinical prognosis data; Support Vector Classifier (Linear Kernel) achieved 98.2% accuracy across 132 symptom inputs, prescribing verified pharmaceutical regimens, dietary instructions, and contraindication warnings in <25ms inference time.
+
+### 4. Engineering a Touchless AR Hand Gesture Canvas with MediaPipe & React
+- **URL**: https://omprakashbehera.me/blog/ar-hand-gesture-canvas-mediapipe
+- **Category**: Computer Vision
+- **Summary**: Built an in-browser zero-latency air-drawing interface utilizing Google MediaPipe Hands (21 3D landmarks). Features Euclidean fingertip pinch triggers, state-based brush/palette switching, and exponential moving average jitter smoothing. Deployed at https://arhandgesture.vercel.app.
+
+### 5. UnVoiced: Translating Indian Sign Language in Real-Time with OpenCV & Python
+- **URL**: https://omprakashbehera.me/blog/unvoiced-sign-language-translator-opencv
+- **Category**: Computer Vision
+- **Summary**: Developed an automated Indian Sign Language (ISL) alphabet and gesture translator using OpenCV HSV and YCrCb chrominance skin segmentation, convex hull defect extraction, and pyttsx3 real-time speech synthesis for deaf and mute accessibility.
+
+### 6. Building a High-Performance Windows DNS Switcher with Flask & Netsh Socket Benchmarks
+- **URL**: https://omprakashbehera.me/blog/public-dns-switcher-system-utility
+- **Category**: Cyber Security
+- **Summary**: Engineered Public_DNS_Switcher to configure Windows TCP/IP networking stack via netsh commands. Automates secure DNS switching between Cloudflare 1.1.1.1, Google 8.8.8.8, Quad9, and AdGuard with live ICMP socket round-trip time (RTT) benchmarking.
+
+### 7. Architecting a Multi-Factor Biometric Attendance System with Python & OpenCV
+- **URL**: https://omprakashbehera.me/blog/simple-face-recognition-attendance-system
+- **Category**: AI & ML
+- **Summary**: Contactless facial attendance logger combining Haar Cascade face detection, 128D deep metric feature embeddings, and cosine similarity matching at >45 FPS. Automated SQLite logging and daily CSV reporting eliminate classroom proxy attendance.
+
+### 8. StadiumAI: Real-Time Crowd Density & Flow Analysis with Computer Vision
+- **URL**: https://omprakashbehera.me/blog/stadium-ai-crowd-density-computer-vision
+- **Category**: Computer Vision
+- **Summary**: Multi-camera pedestrian surveillance monitoring using homography planar transformation (bird’s-eye view mapping) and YOLOv8 head tracking to generate 2D Gaussian heatmaps and trigger automatic crowd crush alerts at 85% capacity thresholds.
+
+### 9. Time-Series Forecasting on Stock Markets with LSTM Recurrent Neural Networks
+- **URL**: https://omprakashbehera.me/blog/stock-market-price-prediction-lstm
+- **Category**: AI & ML
+- **Summary**: Designed a Bidirectional LSTM neural network forecasting non-stationary financial asset price movements. Extracted differential stationary features including Log Returns, 14-day RSI, MACD crossovers, and NATR, achieving a 14.2% reduction in RMSE over standard baseline models.
+
+### 10. Running Local LLMs on Consumer GPUs: VRAM Optimization with GGUF & Ollama CUDA Improver
+- **URL**: https://omprakashbehera.me/blog/local-llm-cuda-quantization-optimization
+- **Category**: AI & Data
+- **Summary**: Optimized token generation throughput for 7B/14B parameter open-weights models (Llama 3, DeepSeek, Qwen) on mid-tier consumer NVIDIA GPUs using GGUF 4-bit quantization (Q4_K_M), Flash Attention 2, and Server-Sent Events (SSE) chat streaming.
+
+### 11. Predicting Campus Placements with Supervised Learning & Skill Gap Scoring
+- **URL**: https://omprakashbehera.me/blog/smart-placement-campus-prediction-ml
+- **Category**: Web Architecture
+- **Summary**: Recruitment readiness analytics tool for engineering colleges. Feature importance analysis revealed project complexity and coding challenge rankings outranked pure CGPA by 2.4x for top recruitment tiers. Computes custom readiness percentile scores and generates tailored study roadmaps.
+
+### 12. Architecting Scalable Tourism & Lab Management Systems with Normalized Relational Schemas
+- **URL**: https://omprakashbehera.me/blog/odisha-tourism-management-database-architecture
+- **Category**: Web Architecture
+- **Summary**: Relational database architecture breakdown (3NF) for OTM (Odisha Tourism Management) and LMS (Computer Lab Management System). Details ACID transaction wrappers with optimistic concurrency locks and Role-Based Access Control (RBAC).
+
+## 3. Contact & Socials
+
+- Website: https://omprakashbehera.me
+- Blog: https://omprakashbehera.me/blog
+- RSS Feed: https://omprakashbehera.me/rss.xml
+- Email: contact@omprakashbehera.me / omprakashbehera.cse@gmail.com
+- GitHub: https://github.com/CodeByPrakash
+- LinkedIn: https://linkedin.com/in/omprakash-cse
+- Instagram: https://instagram.com/quasar_om
+- Location: Odisha, India

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Home Page -->
+  <url>
+    <loc>https://omprakashbehera.me/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/omprakash.png</image:loc>
+      <image:title>Om Prakash Behera Profile Photo — Computer Science Engineer &amp; Full-Stack Developer</image:title>
+      <image:caption>Om Prakash Behera, Computer Science Engineer at GCEK Kalahandi and software developer from Odisha, India.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/logo.svg</image:loc>
+      <image:title>CodeByPrakash Brand Logo</image:title>
+      <image:caption>CodeByPrakash brand logo representing Om Prakash Behera.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Technical Blog Index -->
+  <url>
+    <loc>https://omprakashbehera.me/blog</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Resume PDF -->
+  <url>
+    <loc>https://omprakashbehera.me/resume.pdf</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- All 12 Technical Articles (Dedicated Pre-Rendered URLs) -->
+  <url>
+    <loc>https://omprakashbehera.me/blog/isro-bah-2026-exoplanet-detection-ml</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/blog/isro-bah-2026-exoplanet-detection-ml/opengraph-image</image:loc>
+      <image:title>Detecting Exoplanets with Machine Learning: ISRO BAH 2026 (PS-07)</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://omprakashbehera.me/blog/sih-2025-attendtrue-analytic</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/blog/sih-2025-attendtrue-analytic/opengraph-image</image:loc>
+      <image:title>Engineering AttendTrue Analytics for SIH 2025: AI-Driven Smart Attendance &amp; Institutional Analytics</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://omprakashbehera.me/blog/mrs-ai-medicine-recommender-system</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/blog/mrs-ai-medicine-recommender-system/opengraph-image</image:loc>
+      <image:title>Inside MRS-AI: Designing the 1st Prize Winning ML Healthcare Recommender</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://omprakashbehera.me/blog/ar-hand-gesture-canvas-mediapipe</loc>
+    <lastmod>2025-11-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/blog/ar-hand-gesture-canvas-mediapipe/opengraph-image</image:loc>
+      <image:title>Engineering a Touchless AR Hand Gesture Canvas with MediaPipe &amp; React</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://omprakashbehera.me/blog/unvoiced-sign-language-translator-opencv</loc>
+    <lastmod>2025-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/blog/unvoiced-sign-language-translator-opencv/opengraph-image</image:loc>
+      <image:title>UnVoiced: Translating Indian Sign Language in Real-Time with OpenCV</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://omprakashbehera.me/blog/public-dns-switcher-system-utility</loc>
+    <lastmod>2025-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/blog/public-dns-switcher-system-utility/opengraph-image</image:loc>
+      <image:title>Building a High-Performance Windows DNS Switcher with Flask &amp; Netsh</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://omprakashbehera.me/blog/simple-face-recognition-attendance-system</loc>
+    <lastmod>2025-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/blog/simple-face-recognition-attendance-system/opengraph-image</image:loc>
+      <image:title>Architecting a Biometric Attendance System with Python &amp; OpenCV</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://omprakashbehera.me/blog/stadium-ai-crowd-density-computer-vision</loc>
+    <lastmod>2025-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/blog/stadium-ai-crowd-density-computer-vision/opengraph-image</image:loc>
+      <image:title>StadiumAI: Real-Time Crowd Density &amp; Flow Analysis with Computer Vision</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://omprakashbehera.me/blog/stock-market-price-prediction-lstm</loc>
+    <lastmod>2025-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/blog/stock-market-price-prediction-lstm/opengraph-image</image:loc>
+      <image:title>Time-Series Forecasting on Stock Markets with LSTM Neural Networks</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://omprakashbehera.me/blog/local-llm-cuda-quantization-optimization</loc>
+    <lastmod>2025-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/blog/local-llm-cuda-quantization-optimization/opengraph-image</image:loc>
+      <image:title>Running Local LLMs on Consumer GPUs: VRAM Optimization with GGUF</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://omprakashbehera.me/blog/smart-placement-campus-prediction-ml</loc>
+    <lastmod>2025-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/blog/smart-placement-campus-prediction-ml/opengraph-image</image:loc>
+      <image:title>Predicting Campus Placements with Supervised Learning &amp; Skill Gap Scoring</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://omprakashbehera.me/blog/odisha-tourism-management-database-architecture</loc>
+    <lastmod>2025-03-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/blog/odisha-tourism-management-database-architecture/opengraph-image</image:loc>
+      <image:title>Architecting Scalable Tourism &amp; Lab Management Systems with 3NF Relational Schemas</image:title>
+    </image:image>
+  </url>
+
+</urlset>

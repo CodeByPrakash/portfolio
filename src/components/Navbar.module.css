@@ -1,0 +1,385 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: transparent;
+  transition: background .3s ease, border-bottom .3s ease, backdrop-filter .3s ease;
+}
+
+.nav.scrolled {
+  background: rgba(232, 230, 226, 0.88);
+  border-bottom: var(--bw) solid rgba(26, 26, 26, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.nav.navOpen {
+  background: var(--bg-secondary);
+  border-bottom: var(--bw) solid var(--border-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+:global([data-theme="dark"]) .nav.scrolled,
+:global([data-theme="dark"]) .nav.navOpen {
+  background: rgba(15, 14, 19, 0.95);
+  border-bottom: var(--bw) solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── Scroll Progress Bar Indicator ───────────── */
+.scrollProgressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FF6B00 0%, #3B5FCF 50%, #2DB77B 100%);
+  transform-origin: 0%;
+  z-index: 101;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ─── Logo ────────────────────────────────────── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logoBox {
+  width: 36px;
+  height: 36px;
+  background: var(--accent);
+  color: #1A1A1A;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  border: var(--bw) solid var(--border);
+  border-radius: 10px;
+  flex-shrink: 0;
+  box-shadow: 
+    3px 4px 10px rgba(255, 107, 0, 0.25),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.logoText {
+  font-family: var(--font-body);
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -.01em;
+}
+
+/* ─── Desktop Links ───────────────────────────── */
+.links {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  list-style: none;
+}
+
+.linkItem {
+  position: relative;
+}
+
+.link {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: .5rem .9rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color .2s ease;
+  z-index: 1;
+}
+
+.link:hover {
+  color: var(--text-primary);
+}
+
+.linkActive {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* 3D Clay Sliding Active Pill */
+.activePill {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  box-shadow: 
+    3px 4px 10px rgba(0, 0, 0, 0.05),
+    -2px -2px 6px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+  z-index: -1;
+}
+
+.linkContent {
+  position: relative;
+  z-index: 2;
+}
+
+.resumeLink {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.hireBtn {
+  font-family: var(--font-body);
+  font-size: .84rem;
+  font-weight: 700;
+  padding: .45rem 1.15rem;
+  background: var(--accent);
+  color: #1A1A1A;
+  border: var(--bw) solid var(--border);
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 
+    3px 4px 10px rgba(255, 107, 0, 0.25),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+  transition: all .2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+.hireBtn:hover {
+  background: var(--ink);
+  color: #FFFFFF;
+  border-color: var(--border);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ─── Animated Hamburger Button ───────────────── */
+.ham {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  gap: 5px;
+  cursor: pointer;
+  background: var(--bg-tertiary);
+  border: var(--bw) solid var(--border-light);
+  border-radius: 12px;
+  padding: .4rem;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  z-index: 105;
+}
+
+.ham span {
+  display: block;
+  width: 22px;
+  height: 2.2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.hamOpen .hamLine1 {
+  transform: translateY(7.2px) rotate(45deg);
+}
+
+.hamOpen .hamLine2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamOpen .hamLine3 {
+  transform: translateY(-7.2px) rotate(-45deg);
+}
+
+/* ─── Animated Mobile Drawer ──────────────────── */
+.drawer {
+  background: var(--bg-secondary);
+  border-top: var(--bw) solid var(--border-light);
+  border-bottom: var(--bw) solid var(--border);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100dvh - 70px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+}
+
+.drawerInner {
+  padding: 1.25rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.drawerLink {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: .75rem 1rem;
+  border-radius: 14px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 2px 3px 8px rgba(0,0,0,0.03);
+  transition: all 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+.drawerLink:active {
+  transform: scale(0.98);
+  background: var(--bg-secondary);
+}
+
+.drawerLinkActive {
+  background: var(--bg-tertiary);
+  border-color: var(--accent);
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.15);
+}
+
+.drawerIndex {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.drawerText {
+  flex: 1;
+  margin-left: .85rem;
+}
+
+.drawerArrow {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.drawerActions {
+  display: flex;
+  gap: .75rem;
+  margin-top: .75rem;
+}
+
+.drawerResume,
+.drawerHire {
+  flex: 1;
+  text-align: center;
+  padding: .85rem;
+  border-radius: 14px;
+  font-family: var(--font-body);
+  font-size: .9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.drawerResume {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: var(--bw) solid var(--border);
+}
+
+.drawerHire {
+  background: var(--accent);
+  color: #1A1A1A;
+  border: var(--bw) solid var(--border);
+}
+
+@media (max-width: 860px) {
+  .links { display: none; }
+  .ham { display: flex; }
+}
+
+@media (max-width: 480px) {
+  .drawerInner {
+    padding: 1rem 1.15rem 1.5rem;
+  }
+
+  .logoText {
+    font-size: .85rem;
+  }
+}
+
+/* ─── Dark Mode Adjustments (No Glows / White Shadows) ─── */
+:global([data-theme="dark"]) .activePill {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  box-shadow: none !important;
+}
+
+:global([data-theme="dark"]) .logoBox {
+  box-shadow: none !important;
+  border-color: var(--border);
+}
+
+:global([data-theme="dark"]) .hireBtn {
+  background: var(--accent);
+  color: #1A1A1A;
+  border-color: var(--accent);
+  box-shadow: none !important;
+}
+
+:global([data-theme="dark"]) .hireBtn:hover {
+  background: #FF8533;
+  color: #1A1A1A;
+  border-color: #FF8533;
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35) !important;
+}
+
+:global([data-theme="dark"]) .ham {
+  box-shadow: none !important;
+}
+
+:global([data-theme="dark"]) .drawerLink {
+  box-shadow: none !important;
+}
+
+:global([data-theme="dark"]) .drawerLinkActive {
+  box-shadow: none !important;
+  border-color: var(--accent);
+}
+
+:global([data-theme="dark"]) .drawerHire {
+  background: var(--accent);
+  color: #1A1A1A;
+  border-color: var(--accent);
+}
+
+:global([data-theme="dark"]) .drawerResume {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border);
+}
