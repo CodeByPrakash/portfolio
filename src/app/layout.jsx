@@ -234,9 +234,12 @@ export const metadata = {
     images: ['https://omprakashbehera.me/omprakash.png'],
   },
   icons: {
-    icon: '/logo.svg',
-    shortcut: '/logo.svg',
-    apple: '/logo.svg',
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/logo.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png',
   },
   manifest: '/site.webmanifest',
   verification: {
