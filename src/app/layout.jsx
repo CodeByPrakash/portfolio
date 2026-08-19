@@ -745,6 +745,14 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <head>
+        {/* Preload custom display font for instant Speed Index and 0 font layout shifts */}
+        <link
+          rel="preload"
+          href="/font/AtAmigaTRIAL-Regular.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
         {/* DNS Prefetch */}
         <link rel="dns-prefetch" href="//github.com" />
         {/* RSS & Atom Feeds for Google Discover & Feed Readers */}

@@ -42,14 +42,9 @@ export default function Hero() {
         </div>
       </div>
 
-      <motion.div
-        className={`section-wrap ${styles.inner}`}
-        variants={staggerContainer(0.12, 0.1)}
-        initial={false}
-        animate="show"
-      >
+      <div className={`section-wrap ${styles.inner}`}>
         {/* Top row: status + nav tabs + unique Hello Palm Dark Mode Switcher */}
-        <motion.div className={styles.topRow} variants={fadeIn('down', 0)}>
+        <div className={styles.topRow}>
           <div className={styles.tabGroup}>
             <a href="#about" className={styles.tab}>About</a>
             <a href="#projects" className={`${styles.tab} ${styles.tabActive}`}>Portfolio</a>
@@ -58,31 +53,23 @@ export default function Hero() {
 
           <div className={styles.topRightControls}>
             {/* Unique Hello Palm Emoji Theme Switcher (Emoji Only) */}
-            <motion.button
+            <button
               type="button"
               className={`${styles.themePalmBtn} ${isDark ? styles.themePalmDark : ''}`}
               onClick={toggleTheme}
               aria-label={`Toggle theme: currently ${isDark ? 'Dark Mode' : 'Light Mode'}`}
-              whileHover={{ scale: 1.12, y: -2 }}
-              whileTap={{ scale: 0.92 }}
               title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode (🦇)`}
               suppressHydrationWarning
             >
-              <motion.span
-                className={styles.palmEmoji}
-                animate={{ rotate: [0, 22, -14, 22, -8, 14, 0] }}
-                transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut', repeatDelay: 0.8 }}
-              >
-                🦇
-              </motion.span>
-            </motion.button>
+              <span className={styles.palmEmoji}>🦇</span>
+            </button>
 
             <div className={styles.status}>
               <span className={styles.statusDot} />
               Available for work
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Headline with Clean Connected Dotted Arrow & Wave (Rendered BEHIND text) */}
         <div className={styles.headlineWrapper}>
@@ -154,22 +141,18 @@ export default function Hero() {
             </motion.g>
           </motion.svg>
 
-          {/* Main Headline Display Text (Foreground Layer, z-index: 2) */}
+          {/* Main Headline Display Text (Instant Static Paint for 100% Core Web Vitals) */}
           <h1 className={styles.headline}>
-            <motion.span className={styles.line1} variants={fadeIn('up', 0)}>
-              Building
-            </motion.span>
-            <motion.span className={styles.line2} variants={fadeIn('up', 0)}>
+            <span className={styles.line1}>Building</span>
+            <span className={styles.line2}>
               Intelligent <span className={styles.highlight}>Systems</span>
-            </motion.span>
-            <motion.span className={styles.line3} variants={fadeIn('up', 0)}>
-              For All.
-            </motion.span>
+            </span>
+            <span className={styles.line3}>For All.</span>
           </h1>
         </div>
 
-        {/* Sub row: description + CTAs side by side */}
-        <motion.div className={styles.subRow} variants={fadeIn('up', 0)}>
+        {/* Sub row: description + CTAs side by side (LCP Element) */}
+        <div className={styles.subRow}>
           <p className={styles.sub}>
             Computer Science Engineer building AI-driven systems.
             From architecture to deployment — I create complete solutions
@@ -180,30 +163,26 @@ export default function Hero() {
             <a href="#contact" className="btn">Get in touch</a>
             <a href="/resume.pdf" download className="btn btn-outline">↓ Resume</a>
           </div>
-        </motion.div>
+        </div>
 
         {/* Stats row — 3D Clay Morphism Grid */}
-        <motion.div className={styles.stats} variants={fadeIn('up', 0)}>
+        <div className={styles.stats}>
           {[
             { n: '3+', l: 'Years Experience', color: 'orange' },
             { n: '30+', l: 'Projects Built', color: 'blue' },
             { n: '13+', l: 'Tech Stack Tools', color: 'green' },
             { n: '99%', l: 'Satisfaction Rate', color: 'purple' },
           ].map(s => (
-            <motion.div
+            <div
               key={s.l}
               className={`${styles.stat} ${styles[`stat_${s.color}`]}`}
-              variants={scaleIn(0)}
-              whileHover={{ y: -5, scale: 1.025 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: 'spring', stiffness: 350, damping: 22 }}
             >
               <span className={styles.statN}>{s.n}</span>
               <span className={styles.statL}>{s.l}</span>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
       {/* Floating 3D Clay Morphism Edge Geometrics (GPU Compositor Animated) */}
       <div className={`${styles.clayShape} ${styles.clayOrb}`} aria-hidden="true" />
