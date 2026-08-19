@@ -423,3 +423,30 @@ a {
 .text-muted {
   color: var(--text-muted);
 }
+
+/* ─── Google Translate Clean Reset ─────────────────────── */
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Hide the automatic Google Translate top iframe if injected */
+body > .skiptranslate:first-child {
+  display: none !important;
+}

@@ -43,13 +43,14 @@
 }
 
 .inner {
-  max-width: 1200px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
   height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 /* ─── Logo ────────────────────────────────────── */
@@ -59,6 +60,7 @@
   gap: .75rem;
   text-decoration: none;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .logoBox {
@@ -85,32 +87,39 @@
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -.01em;
+  white-space: nowrap;
 }
 
 /* ─── Desktop Links ───────────────────────────── */
 .links {
   display: flex;
   align-items: center;
-  gap: .4rem;
+  gap: .2rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .linkItem {
   position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .link {
   position: relative;
   font-family: var(--font-body);
-  font-size: .88rem;
+  font-size: .84rem;
   font-weight: 600;
   color: var(--text-secondary);
   text-decoration: none;
-  padding: .5rem .9rem;
+  padding: .42rem .72rem;
   border-radius: 999px;
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
   transition: color .2s ease;
   z-index: 1;
 }
@@ -141,30 +150,36 @@
 .linkContent {
   position: relative;
   z-index: 2;
+  white-space: nowrap;
 }
 
 .resumeLink {
   color: var(--text-primary);
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .hireBtn {
   font-family: var(--font-body);
-  font-size: .84rem;
+  font-size: .82rem;
   font-weight: 700;
-  padding: .45rem 1.15rem;
+  padding: .38rem 1rem;
+  height: 34px;
   background: var(--accent);
   color: #1A1A1A;
   border: var(--bw) solid var(--border);
   border-radius: 999px;
   text-decoration: none;
   box-shadow: 
-    3px 4px 10px rgba(255, 107, 0, 0.25),
+    2px 3px 8px rgba(255, 107, 0, 0.25),
     inset 1px 1px 2px rgba(255, 255, 255, 0.8);
   transition: all .2s cubic-bezier(0.34, 1.56, 0.64, 1);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: .3rem;
+  white-space: nowrap;
+  margin-left: 0.25rem;
 }
 
 .hireBtn:hover {
@@ -287,6 +302,24 @@
   color: var(--text-muted);
 }
 
+.drawerTranslateRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.9rem;
+  background: var(--bg-tertiary);
+  border: var(--bw) solid var(--border);
+  border-radius: 12px;
+  margin-top: 0.5rem;
+}
+
+.drawerTranslateLabel {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
 .drawerActions {
   display: flex;
   gap: .75rem;
@@ -318,7 +351,7 @@
   border: var(--bw) solid var(--border);
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1040px) {
   .links { display: none; }
   .ham { display: flex; }
 }

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+// import GoogleTranslate from './GoogleTranslate'
 import styles from './Navbar.module.css'
 
 const NAV_LINKS = [
@@ -210,6 +211,11 @@ export default function Navbar() {
             </a>
           </li>
 
+          {/* Google Translate Language Selector */}
+          {/* <li className={styles.linkItem}>
+            <GoogleTranslate variant="navbar" />
+          </li> */}
+
           {/* Call to Action: Hire Me */}
           <li className={styles.linkItem}>
             <Link
@@ -272,6 +278,12 @@ export default function Navbar() {
                   </motion.div>
                 )
               })}
+
+              {/* Mobile Drawer Language Switcher */}
+              {/* <div className={styles.drawerTranslateRow}>
+                <span className={styles.drawerTranslateLabel}>🌐 Language / ଭାଷା:</span>
+                <GoogleTranslate variant="navbar" />
+              </div> */}
 
               <div className={styles.drawerActions}>
                 <a
