@@ -1,0 +1,53 @@
+version: 0.0.1
+
+achievements:
+
+  - achievement:
+      name: Code Initiate
+      icon: https://your-icon-url.com/code-initiate.png
+      description: Made your first contribution to the project.
+      triggers:
+        - trigger:
+            actor: author
+            action: commit
+            condition: count() >= 1
+
+  - achievement:
+      name: Commit Warrior
+      icon: https://your-icon-url.com/commit-warrior.png
+      description: Reached 10 commits on the project.
+      triggers:
+        - trigger:
+            actor: author
+            action: commit
+            condition: count() >= 10
+
+  - achievement:
+      name: PR Hero
+      icon: https://your-icon-url.com/pr-hero.png
+      description: Successfully merged a pull request.
+      triggers:
+        - trigger:
+            actor: author
+            action: pull_request
+            condition: merged = true
+
+  - achievement:
+      name: Bug Hunter
+      icon: https://your-icon-url.com/bug-hunter.png
+      description: Successfully closed an issue.
+      triggers:
+        - trigger:
+            actor: author
+            action: issue
+            condition: closed = true
+
+  - achievement:
+      name: Project Supporter
+      icon: https://your-icon-url.com/supporter.png
+      description: Starred the project.
+      triggers:
+        - trigger:
+            actor: author
+            action: star
+            condition: starred = true
