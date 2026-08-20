@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <circle cx="64" cy="64" r="52" fill="#0D1117" stroke="#39FF88" stroke-width="3"/>
+
+  <!-- Bug -->
+  <ellipse
+    cx="64"
+    cy="67"
+    rx="20"
+    ry="27"
+    fill="#39FF88"
+    filter="url(#glow)"
+  />
+
+  <path
+    d="M64 40v54"
+    stroke="#0D1117"
+    stroke-width="4"
+  />
+
+  <path
+    d="M44 55H31M44 68H27M46 82H32
+       M84 55H97M84 68H101M82 82H96"
+    stroke="#39FF88"
+    stroke-width="5"
+    stroke-linecap="round"
+  />
+
+  <!-- Crosshair -->
+  <circle
+    cx="64"
+    cy="64"
+    r="38"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="2"
+    stroke-dasharray="5 6"
+    opacity=".7"
+  />
+
+  <path
+    d="M64 19v12M64 97v12M19 64h12M97 64h12"
+    stroke="#FFFFFF"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+
+  <circle cx="64" cy="64" r="5" fill="#0D1117"/>
+</svg>
