@@ -24,6 +24,13 @@ export default function sitemap() {
       images: [`${baseUrl}/omprakash.png`],
     },
     {
+      url: `${baseUrl}/activity`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+      images: [`${baseUrl}/omprakash.png`],
+    },
+    {
       url: `${baseUrl}/resume.pdf`,
       lastModified: currentDate,
       changeFrequency: 'monthly',

@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { name: 'Journey', href: '#journey', target: '/#journey' },
   { name: 'Achievements', href: '#achievements', target: '/#achievements' },
   { name: 'Blog', href: '#blog', target: '/blog' },
+  { name: 'Activity', href: '/activity', target: '/activity' },
   { name: 'Contact', href: '#contact', target: '/#contact' },
 ]
 
@@ -43,6 +44,11 @@ export default function Navbar() {
   useEffect(() => {
     if (pathname.startsWith('/blog')) {
       setActiveSection('blog')
+      return
+    }
+
+    if (pathname.startsWith('/activity')) {
+      setActiveSection('activity')
       return
     }
 
@@ -174,9 +180,12 @@ export default function Navbar() {
         <ul className={styles.links}>
           {NAV_LINKS.map((link) => {
             const isBlogLink = link.name === 'Blog'
+            const isActivityLink = link.name === 'Activity'
             const destination = pathname === '/' ? link.href : link.target
             const isActive = isBlogLink
               ? pathname.startsWith('/blog') || activeSection === 'blog'
+              : isActivityLink
+              ? pathname.startsWith('/activity') || activeSection === 'activity'
               : activeSection === link.href.substring(1)
 
             return (
@@ -254,9 +263,12 @@ export default function Navbar() {
             <div className={styles.drawerInner}>
               {NAV_LINKS.map((link, idx) => {
                 const isBlogLink = link.name === 'Blog'
+                const isActivityLink = link.name === 'Activity'
                 const destination = pathname === '/' ? link.href : link.target
                 const isActive = isBlogLink
                   ? pathname.startsWith('/blog') || activeSection === 'blog'
+                  : isActivityLink
+                  ? pathname.startsWith('/activity') || activeSection === 'activity'
                   : activeSection === link.href.substring(1)
 
                 return (

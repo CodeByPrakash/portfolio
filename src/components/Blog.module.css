@@ -650,6 +650,10 @@
   border-color: var(--border-light);
 }
 
+.pageNavText {
+  display: inline;
+}
+
 .pageNumbers {
   display: flex;
   align-items: center;
@@ -675,6 +679,7 @@
     inset 1px 1px 2px rgba(255, 255, 255, 0.8);
   transition: color 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
   user-select: none;
+  overflow: hidden;
 }
 
 .pageNumberBtn:hover {
@@ -692,7 +697,7 @@
   position: absolute;
   inset: 0;
   background: var(--accent);
-  border-radius: 50%;
+  border-radius: inherit;
   z-index: 0;
   box-shadow: 0 4px 14px rgba(255, 107, 0, 0.4);
 }
@@ -879,22 +884,44 @@
     margin-top: 1rem;
   }
 
+  .paginationContainer {
+    gap: 1rem;
+    margin-top: 2.5rem;
+    width: 100%;
+  }
+
+  .paginationInfo {
+    font-size: 0.8rem;
+  }
+
   .paginationControls {
     gap: 0.35rem;
-    margin-top: 2rem;
+    margin-top: 0;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
   }
 
   .pageNavBtn {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.74rem;
-    border-radius: 12px;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.76rem;
+    border-radius: 999px;
+    height: 38px;
+    gap: 0.35rem;
+    flex-shrink: 0;
+  }
+
+  .pageNumbers {
+    gap: 0.35rem;
   }
 
   .pageNumberBtn {
     width: 36px;
     height: 36px;
     font-size: 0.78rem;
-    border-radius: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
   }
 
   .modalOverlay {
@@ -929,7 +956,36 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 520px) {
+  .paginationControls {
+    gap: 0.25rem;
+  }
+
+  .pageNavBtn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .pageNavText {
+    display: none;
+  }
+
+  .pageNumbers {
+    gap: 0.25rem;
+  }
+
+  .pageNumberBtn {
+    width: 34px;
+    height: 34px;
+    font-size: 0.76rem;
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 380px) {
   .articleCard {
     padding: 1.15rem 0.95rem;
     border-radius: 16px;
@@ -939,10 +995,29 @@
     font-size: 1.08rem;
   }
 
+  .paginationControls {
+    gap: 0.2rem;
+  }
+
+  .pageNavBtn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .pageNavBtn svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .pageNumbers {
+    gap: 0.2rem;
+  }
+
   .pageNumberBtn {
     width: 32px;
     height: 32px;
     font-size: 0.72rem;
+    border-radius: 50%;
   }
 }
 
