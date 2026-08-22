@@ -247,6 +247,6 @@ This project is for personal portfolio use. Feel free to use it as inspiration f
 
 <div align="center">
 
-**Made with ♥ & React by Om Prakash Behera**
+**Made with ♥ & React by OMPRAKASH BEHERA**
 
 </div>
