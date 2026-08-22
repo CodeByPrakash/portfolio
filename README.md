@@ -18,7 +18,9 @@ A premium, animated developer portfolio built with **React 19**, **Framer Motion
 </div>
 
 ---
-
+## Achievement
+[![CodeByPrakash GitHub Achievements](https://api.vaunt.dev/v1/github/entities/CodeByPrakash/achievements?format=svg&limit=6&raw=true)](https://community.vaunt.dev/board/CodeByPrakash/achievements)
+---
 ## ✨ Features
 
 | Category | Details |
