@@ -138,6 +138,9 @@ export const metadata = {
     'ISRO BAH 2026 PS-07',
     'Smart India Hackathon SIH 2025',
     'AttendTrue Analytics Team CodeNova',
+    'CyberTerminal OS CLI Web Portfolio',
+    'Command Line Interface Web Portfolio',
+    'vintageprixu.vercel.app',
     '100+ GitHub Repositories',
     'omprakashbehera.me',
     'omprakashbehera.cse@gmail.com',
@@ -534,11 +537,19 @@ const jsonLd = {
       '@type': 'ItemList',
       name: 'Featured Engineering Projects by Om Prakash Behera',
       description: 'Selected software engineering, AI/ML, and full-stack development projects',
-      numberOfItems: 18,
+      numberOfItems: 19,
       itemListElement: [
         {
           '@type': 'ListItem',
           position: 1,
+          name: 'CyberTerminal OS — Command Line Interface (CLI) Web Portfolio',
+          description:
+            'Interactive cybernetic command terminal & biometric HUD interface with live BASH console, HTOP telemetry, and CRT shaders',
+          url: 'https://vintageprixu.vercel.app',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
           name: 'ISRO Exoplanet ML — BAH 2026 PS-07',
           description:
             'Exoplanet transit detection engine using 1D-CNN, Kepler photometry and BLS for ISRO BAH 2026 Problem Statement 07',
@@ -800,6 +811,7 @@ export default function RootLayout({ children }) {
             <section>
               <h2>Featured Engineering Projects</h2>
               <ul>
+                <li><a href="https://vintageprixu.vercel.app">CyberTerminal OS (CLI Web Portfolio)</a> — Interactive retro-modern terminal OS with live BASH shell, HTOP monitor &amp; CRT shaders</li>
                 <li><a href="https://github.com/CodeByPrakash/ISRO_PS07">ISRO Exoplanet ML</a> — 1D-CNN exoplanet transit detection for ISRO BAH 2026</li>
                 <li><a href="https://github.com/CodeByPrakash/AttendTrue-Analytic">AttendTrue Analytics</a> — AI-powered smart attendance and institutional analytics for Smart India Hackathon</li>
                 <li><a href="https://github.com/CodeByPrakash/MRS-AI">MRS-AI Healthcare</a> — Award-winning AI medicine recommender (1st Prize)</li>

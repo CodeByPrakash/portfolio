@@ -112,7 +112,7 @@ export default function Activity() {
               </span>
             </div>
             <span className={styles.lastUpdatedText}>
-              Last active: <strong>Aug 20, 2026</strong>
+              Last active: <strong>Aug 22, 2026</strong>
             </span>
           </motion.div>
 
@@ -131,7 +131,7 @@ export default function Activity() {
             </div>
             <div className={styles.metricDivider} />
             <div className={styles.metricItem}>
-              <span className={styles.metricValue}>12</span>
+              <span className={styles.metricValue}>13</span>
               <span className={styles.metricLabel}>Projects &amp; Models</span>
             </div>
             <div className={styles.metricDivider} />

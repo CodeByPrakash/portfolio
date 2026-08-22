@@ -15,6 +15,58 @@ export const ACTIVITY_CATEGORIES = [
 
 export const ACTIVITIES = [
   {
+    id: 'act-2026-08-22-cyberterminal',
+    title: 'Shipped CyberTerminal OS: Cybernetic Command Shell & Biometric HUD Interface',
+    category: 'Projects & Builds',
+    timestamp: '2026-08-22T16:00:00+05:30',
+    displayDate: 'Aug 22, 2026',
+    time: '16:00 IST',
+    year: '2026',
+    status: 'Production Live',
+    color: 'green',
+    type: 'Release',
+    summary:
+      'Engineered an interactive retro-modern cybernetic command terminal & biometric HUD interface with live BASH command shell, HTOP system telemetry, CRT scanlines, and optical HUD targeting.',
+    details: [
+      'Built a fully interactive Web Shell executing real-time terminal commands (about, skills, projects, scan, matrix, target).',
+      'Engineered live HTOP process telemetry monitoring octa-core CPU loads, memory allocation, and swap buffers.',
+      'Integrated CRT scanline shaders, phosphor green/amber/cyan color schemes, and keystroke audio SFX.',
+      'Developed a tactical optical intelligence HUD with real-time biometric tracking, radar sweeps, and thermal/nightvision vision filters.',
+    ],
+    tags: ['Cyber Terminal', 'Web Shell', 'Next.js', 'CRT Shader', 'HTOP Telemetry', 'Biometric HUD'],
+    stats: { metric: 'v4.8.2', label: 'Terminal OS' },
+    links: [
+      { label: 'Live Terminal', url: 'https://vintageprixu.vercel.app', type: 'external' },
+      { label: 'GitHub Repository', url: 'https://github.com/CodeByPrakash/portfolio_terminal', type: 'github' },
+    ],
+  },
+  {
+    id: 'act-2026-08-22',
+    title: 'Shipped VoxelCam: Real-Time 3D Pixel & Voxel Video Stream Engine',
+    category: 'Projects & Builds',
+    timestamp: '2026-08-22T15:30:00+05:30',
+    displayDate: 'Aug 22, 2026',
+    time: '15:30 IST',
+    year: '2026',
+    status: 'Production Live',
+    color: 'orange',
+    type: 'Release',
+    summary:
+      'Born from "when developer got free time to do nothing" — engineered an interactive 3D voxel video renderer that captures live webcam video streams and dynamically transforms real-time frames into interactive voxelized 3D pixel blocks.',
+    details: [
+      'Built as a creative weekend experiment — turning live webcam feeds into floating interactive 3D voxel cubes.',
+      'Engineered real-time video frame downsampling and luminance/RGB color-to-depth voxel mapping algorithms.',
+      'Rendered interactive 3D instanced voxel blocks with dynamic lighting, spatial camera controls, and smooth 60 FPS performance.',
+      'Implemented client-side WebRTC video capture with zero latency and zero external server dependencies.',
+    ],
+    tags: ['Three.js', 'WebGL', '3D Voxels', 'WebRTC', 'Creative Coding', 'Fun Experiment'],
+    stats: { metric: '60 FPS', label: 'Real-Time Render' },
+    links: [
+      { label: 'Live App', url: 'https://voxelcam.vercel.app/', type: 'external' },
+      { label: 'GitHub Repository', url: 'https://github.com/CodeByPrakash/voxelcam', type: 'github' },
+    ],
+  },
+  {
     id: 'act-2026-08-20',
     title: 'Engineered ISRO BAH 2026 Exoplanet Transit 1D-CNN Model',
     category: 'Research & ML',

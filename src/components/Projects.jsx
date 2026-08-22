@@ -7,6 +7,26 @@ import styles from './Projects.module.css'
 const projects = [
   {
     id: '01',
+    title: 'CyberTerminal OS',
+    desc: 'Cybernetic command terminal & biometric HUD interface with live interactive BASH console, HTOP telemetry & CRT shaders.',
+    tags: ['Cyber Terminal', 'Next.js', 'Web Shell', 'CRT Shader', 'Live HUD'],
+    color: 'green',
+    featuredBadge: '>_ Terminal',
+    isCli: true,
+    stats: { users: '3.2K', stars: '128', tech: '6', year: '2026' },
+    link: 'https://vintageprixu.vercel.app',
+  },
+  {
+    id: '02',
+    title: 'VoxelCam 3D',
+    desc: 'When developer got free time to do nothing — transforms real-time webcam video stream into dynamic 3D voxel pixel blocks.',
+    tags: ['Three.js', 'WebGL', '3D Voxels', 'WebRTC'],
+    color: 'orange',
+    stats: { users: '1.2K', stars: '45', tech: '4', year: '2026' },
+    link: 'https://voxelcam.vercel.app/',
+  },
+  {
+    id: '03',
     title: 'ISRO Exoplanet ML',
     desc: 'Exoplanet transit detection engine using 1D-CNN, Kepler photometry & BLS for ISRO BAH 2026 (PS-07).',
     tags: ['Python', 'ISRO PS-07', '1D-CNN', 'Astrophysics'],
@@ -15,7 +35,7 @@ const projects = [
     link: 'https://github.com/CodeByPrakash/ISRO_PS07',
   },
   {
-    id: '02',
+    id: '04',
     title: 'AttendTrue Analytics',
     desc: 'AI-driven smart attendance tracking & behavioral analytics platform engineered for SIH 2025 with Team CodeNova.',
     tags: ['AI Analytics', 'Computer Vision', 'Next.js', 'Team CodeNova'],
@@ -24,7 +44,7 @@ const projects = [
     link: 'https://github.com/CodeByPrakash/AttendTrue-Analytic',
   },
   {
-    id: '03',
+    id: '05',
     title: 'MRS-AI Medicine',
     desc: 'Awarded 1st Prize at YOUTH@2050. Multi-class symptom diagnosis & pharmaceutical regimen recommender.',
     tags: ['Python', 'Flask', 'SVC', '1st Prize'],
@@ -33,7 +53,7 @@ const projects = [
     link: 'https://github.com/CodeByPrakash/MRS-AI',
   },
   {
-    id: '04',
+    id: '06',
     title: 'AR Hand Canvas',
     desc: 'Zero-latency browser AR air-drawing canvas with Google MediaPipe 21-joint tracking & Bézier curves.',
     tags: ['JavaScript', 'MediaPipe', 'Canvas API'],
@@ -42,7 +62,7 @@ const projects = [
     link: 'https://arhandgesture.vercel.app/',
   },
   {
-    id: '05',
+    id: '07',
     title: 'UnVoiced Sign AI',
     desc: 'Real-time Indian Sign Language (ISL) gesture recognition & text-to-speech translator with OpenCV.',
     tags: ['Python', 'OpenCV', 'Accessibility', 'TTS'],
@@ -51,7 +71,7 @@ const projects = [
     link: 'https://github.com/CodeByPrakash/UnVoiced',
   },
   {
-    id: '06',
+    id: '08',
     title: 'StadiumAI Vision',
     desc: 'Real-time pedestrian crowd density monitoring, homography bird’s-eye mapping, and YOLO surge tracking.',
     tags: ['YOLOv8', 'OpenCV', 'PyTorch', 'Analytics'],
@@ -60,7 +80,7 @@ const projects = [
     link: 'https://github.com/CodeByPrakash/StadiumAI-C4',
   },
   {
-    id: '07',
+    id: '09',
     title: 'Local LLM ChatUI',
     desc: 'High-throughput local LLM execution interface with GGUF quantization and VRAM layer offloading.',
     tags: ['React', 'CUDA', 'Ollama', 'GGUF'],
@@ -69,7 +89,7 @@ const projects = [
     link: 'https://github.com/CodeByPrakash/Local-LLM-ChatUI',
   },
   {
-    id: '08',
+    id: '10',
     title: 'Stock Predictor AI',
     desc: 'Bidirectional LSTM neural network forecasting non-stationary stock trends with RSI, MACD & NATR features.',
     tags: ['PyTorch', 'LSTM', 'Time-Series', 'Finance'],
@@ -78,7 +98,7 @@ const projects = [
     link: 'https://github.com/CodeByPrakash/stock_price_prediction_application',
   },
   {
-    id: '09',
+    id: '11',
     title: 'SmartPlacement',
     desc: 'Campus recruitment readiness engine predicting placement probabilities and student skill gap roadmaps.',
     tags: ['TypeScript', 'React', 'ML', 'Analytics'],
@@ -87,7 +107,7 @@ const projects = [
     link: 'https://github.com/CodeByPrakash/SmartPlacement',
   },
   {
-    id: '10',
+    id: '12',
     title: 'Public DNS Switcher',
     desc: 'Windows network stack orchestrator via netsh with live RTT latency benchmarking for fast DNS switching.',
     tags: ['Python', 'Flask', 'Windows API', 'Security'],
@@ -96,7 +116,7 @@ const projects = [
     link: 'https://github.com/CodeByPrakash/Public_DNS_Switcher',
   },
   {
-    id: '11',
+    id: '13',
     title: 'Biometric Attendance',
     desc: 'Contactless face recognition attendance logger with Haar cascades, 128D deep embeddings & SQLite.',
     tags: ['OpenCV', 'Python', 'SQLite', 'Biometrics'],
@@ -105,7 +125,7 @@ const projects = [
     link: 'https://github.com/CodeByPrakash/Simple_FaceRecoginition_Attendance_Sys',
   },
   {
-    id: '12',
+    id: '14',
     title: 'Privacy Dashboard',
     desc: 'Tracks telemetry, web activity, and protects user data from online surveillance & tracking scripts.',
     tags: ['React.js', 'TypeScript', 'MySQL'],
@@ -114,7 +134,7 @@ const projects = [
     link: 'https://github.com/CodeByPrakash/privacy_dashboard',
   },
   {
-    id: '13',
+    id: '15',
     title: 'Movie Recommender',
     desc: 'Content-based and collaborative filtering recommender utilizing TF-IDF vectorization and cosine similarity.',
     tags: ['Pandas', 'Scikit-Learn', 'Python'],
@@ -123,7 +143,7 @@ const projects = [
     link: 'https://github.com/CodeByPrakash/Movie-Recommender-System',
   },
   {
-    id: '14',
+    id: '16',
     title: 'Open Ecommerce',
     desc: 'High-performance interactive ecommerce application with React, cart persistence, and micro-animations.',
     tags: ['React', 'Framer Motion', 'CSS3'],
@@ -132,25 +152,25 @@ const projects = [
     link: 'https://open-ecommerce.vercel.app',
   },
   {
-    id: '15',
-    title: 'GCEK VENDOR',
-    desc: 'Campus peer-to-peer rental & exchange platform for college hostel students with real-time listings.',
-    tags: ['Next.js', 'React', 'MongoDB'],
+    id: '17',
+    title: 'GCEK Vendor',
+    desc: 'Campus peer-to-peer rental, used gear, and exchange marketplace for engineering students.',
+    tags: ['Next.js', 'MongoDB', 'Tailwind'],
     color: 'orange',
-    stats: { users: '420', stars: '22', tech: '3', year: '2024' },
+    stats: { users: '1.4K', stars: '48', tech: '4', year: '2025' },
     link: 'https://gcekvendor.vercel.app',
   },
   {
-    id: '16',
+    id: '18',
     title: 'Resume Builder',
-    desc: 'Modern ATS-friendly resume generator with live PDF compilation and modular design layouts.',
-    tags: ['React.js', 'Tailwind', 'MongoDB'],
-    color: 'red',
-    stats: { users: '940', stars: '38', tech: '3', year: '2025' },
+    desc: 'ATS-friendly resume generator with live markdown preview, modular sections, and PDF compilation.',
+    tags: ['React', 'Tailwind CSS', 'PDF Gen'],
+    color: 'blue',
+    stats: { users: '1.7K', stars: '54', tech: '3', year: '2025' },
     link: 'https://github.com/CodeByPrakash/ResumeBuilder-React',
   },
   {
-    id: '17',
+    id: '19',
     title: 'Computer Lab LMS',
     desc: 'Multi-lab device tracking, hardware fault ticketing, and inventory management with 3NF relational MySQL.',
     tags: ['PHP', 'MySQL', 'Hardware Mgmt'],
@@ -159,7 +179,7 @@ const projects = [
     link: 'https://github.com/CodeByPrakash/LMS',
   },
   {
-    id: '18',
+    id: '20',
     title: 'Odisha Tourism OTM',
     desc: 'Comprehensive tourism portal for Odisha heritage, hotel reservations, package bookings, and reviews.',
     tags: ['PHP', 'MySQL', 'Full Stack'],
@@ -171,7 +191,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className={styles.projects} aria-label="Portfolio — 18 Engineering Projects in AI, Machine Learning, Full-Stack Development, and Cyber Security">
+    <section id="projects" className={styles.projects} aria-label="Portfolio — 20 Engineering Projects in AI, Machine Learning, Full-Stack Development, and Cyber Security">
       {/* Floating 3D Clay Morphism Edge Geometrics */}
       <motion.div
         className={`${styles.clayShape} ${styles.clayShapeTorus}`}
@@ -233,16 +253,23 @@ export default function Projects() {
               href={p.link}
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.card}
+              className={`${styles.card} ${p.isCli ? styles.cardCliFeatured : ''}`}
               variants={scaleIn(0)}
               whileHover={{ y: -3, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
             >
               {/* Logo / Thumbnail */}
               <div className={styles.cardTop}>
-                <div className={`${styles.logoCircle} ${styles[`logo_${p.color}`]}`}>
-                  <span className={styles.logoLetter}>{p.title.charAt(0)}</span>
+                <div className={`${styles.logoCircle} ${p.isCli ? styles.logoCli : styles[`logo_${p.color}`]}`}>
+                  <span className={`${styles.logoLetter} ${p.isCli ? styles.logoCliLetter : ''}`}>
+                    {p.isCli ? '>_' : p.title.charAt(0)}
+                  </span>
                 </div>
-                <span className={styles.projName}>{p.title}</span>
+                <div className={styles.nameWrap}>
+                  <span className={styles.projName}>{p.title}</span>
+                  {p.featuredBadge && (
+                    <span className={styles.terminalBadge}>{p.featuredBadge}</span>
+                  )}
+                </div>
                 <span className={styles.arrow}>↗</span>
               </div>
 

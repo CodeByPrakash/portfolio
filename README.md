@@ -18,7 +18,9 @@ A premium, animated developer portfolio built with **React 19**, **Framer Motion
 </div>
 
 ---
-
+## Achievement
+[![CodeByPrakash GitHub Achievements](https://api.vaunt.dev/v1/github/entities/CodeByPrakash/achievements?format=svg&limit=6&raw=true)](https://community.vaunt.dev/board/CodeByPrakash/achievements)
+---
 ## ✨ Features
 
 | Category | Details |
@@ -188,24 +190,25 @@ This portfolio implements enterprise-grade SEO:
 
 | # | Project | Tech | Highlight |
 |:---:|---|---|---|
-| 01 | **ISRO Exoplanet ML** | Python, 1D-CNN | ISRO BAH 2026 PS-07 |
-| 02 | **AttendTrue Analytics** | Next.js, Python, AI | Smart India Hackathon |
-| 03 | **MRS-AI Medicine** | Python, Flask, SVC | 🥇 1st Prize YOUTH@2050 |
-| 04 | **AR Hand Canvas** | JavaScript, MediaPipe | [Live Demo ↗](https://arhandgesture.vercel.app/) |
-| 05 | **UnVoiced Sign AI** | Python, OpenCV, TTS | ISL Accessibility |
-| 06 | **StadiumAI Vision** | YOLOv8, PyTorch | Crowd Monitoring |
-| 07 | **Local LLM ChatUI** | React, Ollama, CUDA | Local AI Interface |
-| 08 | **Stock Predictor AI** | PyTorch, LSTM | Time-Series Finance |
-| 09 | **SmartPlacement** | TypeScript, React, ML | Campus Analytics |
-| 10 | **Public DNS Switcher** | Python, Flask | Network Security |
-| 11 | **Biometric Attendance** | OpenCV, Python | Face Recognition |
-| 12 | **Privacy Dashboard** | React, TypeScript | Privacy Protection |
-| 13 | **Movie Recommender** | Pandas, Scikit-learn | ML Recommendation |
-| 14 | **Open E-Commerce** | React, Framer Motion | [Live Demo ↗](https://open-ecommerce.vercel.app) |
-| 15 | **GCEK Vendor** | Next.js, MongoDB | [Live Demo ↗](https://gcekvendor.vercel.app) |
-| 16 | **Resume Builder** | React, Tailwind | ATS-Friendly PDF |
-| 17 | **Computer Lab LMS** | PHP, MySQL | Hardware Management |
-| 18 | **Odisha Tourism OTM** | PHP, MySQL | Heritage Portal |
+| 01 | **CyberTerminal OS** | Next.js, CRT Shaders, Terminal | [Live CLI Demo ↗](https://vintageprixu.vercel.app) |
+| 02 | **ISRO Exoplanet ML** | Python, 1D-CNN | ISRO BAH 2026 PS-07 |
+| 03 | **AttendTrue Analytics** | Next.js, Python, AI | Smart India Hackathon |
+| 04 | **MRS-AI Medicine** | Python, Flask, SVC | 🥇 1st Prize YOUTH@2050 |
+| 05 | **AR Hand Canvas** | JavaScript, MediaPipe | [Live Demo ↗](https://arhandgesture.vercel.app/) |
+| 06 | **UnVoiced Sign AI** | Python, OpenCV, TTS | ISL Accessibility |
+| 07 | **StadiumAI Vision** | YOLOv8, PyTorch | Crowd Monitoring |
+| 08 | **Local LLM ChatUI** | React, Ollama, CUDA | Local AI Interface |
+| 09 | **Stock Predictor AI** | PyTorch, LSTM | Time-Series Finance |
+| 10 | **SmartPlacement** | TypeScript, React, ML | Campus Analytics |
+| 11 | **Public DNS Switcher** | Python, Flask | Network Security |
+| 12 | **Biometric Attendance** | OpenCV, Python | Face Recognition |
+| 13 | **Privacy Dashboard** | React, TypeScript | Privacy Protection |
+| 14 | **Movie Recommender** | Pandas, Scikit-learn | ML Recommendation |
+| 15 | **Open E-Commerce** | React, Framer Motion | [Live Demo ↗](https://open-ecommerce.vercel.app) |
+| 16 | **GCEK Vendor** | Next.js, MongoDB | [Live Demo ↗](https://gcekvendor.vercel.app) |
+| 17 | **Resume Builder** | React, Tailwind | ATS-Friendly PDF |
+| 18 | **Computer Lab LMS** | PHP, MySQL | Hardware Management |
+| 19 | **Odisha Tourism OTM** | PHP, MySQL | Heritage Portal |
 
 ---
 

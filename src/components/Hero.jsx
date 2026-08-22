@@ -159,6 +159,15 @@ export default function Hero() {
           </p>
           <div className={styles.ctaCol}>
             <a href="#projects" className="btn btn-accent">See my work ↓</a>
+            <a
+              href="https://vintageprixu.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.cliHeroBtn} btn`}
+              title="Open CyberTerminal CLI Web Portfolio (vintageprixu.vercel.app)"
+            >
+              <span className={styles.cliPrompt}>&gt;_</span> CLI Portfolio ↗
+            </a>
             <a href="#contact" className="btn">Get in touch</a>
             <a href="/resume.pdf" download className="btn btn-outline">↓ Resume</a>
             <a
