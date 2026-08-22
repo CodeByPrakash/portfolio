@@ -2,7 +2,6 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
-import { fadeIn, staggerContainer, scaleIn } from '../utils/motion'
 import { useTheme } from '../context/ThemeContext'
 import styles from './Hero.module.css'
 
@@ -162,6 +161,21 @@ export default function Hero() {
             <a href="#projects" className="btn btn-accent">See my work ↓</a>
             <a href="#contact" className="btn">Get in touch</a>
             <a href="/resume.pdf" download className="btn btn-outline">↓ Resume</a>
+            <a
+              href="https://websitelaunches.com/site/omprakashbehera.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.launchBadge}
+              aria-label="Established online - Public launch record"
+            >
+              <img
+                src={`https://websitelaunches.com/badge/omprakashbehera.me.svg?theme=${isDark ? 'dark' : 'light'}`}
+                alt="Established online - Public launch record"
+                width="255"
+                height="55"
+                className={styles.launchBadgeImg}
+              />
+            </a>
           </div>
         </div>
 

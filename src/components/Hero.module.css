@@ -279,6 +279,34 @@
   gap: .6rem;
   flex-shrink: 0;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ─── Website Launches Verification Badge ─────── */
+.launchBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease, opacity 0.2s ease;
+  flex-shrink: 0;
+  vertical-align: middle;
+  line-height: 0;
+}
+
+.launchBadge:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.15));
+}
+
+.launchBadgeImg {
+  display: block;
+  width: 255px;
+  height: 55px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
 /* ─── 3D Clay Morphism Stats Row ───────────────── */
@@ -434,6 +462,12 @@
     font-size: .82rem;
   }
 
+  .launchBadge {
+    width: 100%;
+    margin-top: .25rem;
+    justify-content: flex-start;
+  }
+
   .topRow {
     flex-direction: row;
     flex-wrap: wrap;
@@ -473,6 +507,10 @@
 @media (max-width: 480px) {
   .ctaCol :global(.btn) {
     flex: 1 1 100%;
+  }
+
+  .launchBadge {
+    justify-content: center;
   }
 
   .topRightControls {
