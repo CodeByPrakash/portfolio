@@ -4,7 +4,7 @@ achievements:
 
   - achievement:
       name: Code Initiate
-      icon: https://raw.githubusercontent.com/CodeByPrakash/portfolio/main/public/achievements/code-initiate.png
+      icon: https://raw.githubusercontent.com/CodeByPrakash/portfolio/main/public/achievements/code-initiate.svg
       description: Made your first contribution to the project.
       triggers:
         - trigger:
@@ -14,7 +14,7 @@ achievements:
 
   - achievement:
       name: Commit Warrior
-      icon: https://raw.githubusercontent.com/CodeByPrakash/portfolio/main/public/achievements/commit-warrior.png
+      icon: https://raw.githubusercontent.com/CodeByPrakash/portfolio/main/public/achievements/commit-warrior.svg
       description: Reached 10 commits on the project.
       triggers:
         - trigger:
@@ -24,7 +24,7 @@ achievements:
 
   - achievement:
       name: PR Hero
-      icon: https://raw.githubusercontent.com/CodeByPrakash/portfolio/main/public/achievements/pr-hero.png
+      icon: https://raw.githubusercontent.com/CodeByPrakash/portfolio/main/public/achievements/pr-hero.svg
       description: Successfully merged a pull request.
       triggers:
         - trigger:
@@ -34,7 +34,7 @@ achievements:
 
   - achievement:
       name: Bug Hunter
-      icon: https://raw.githubusercontent.com/CodeByPrakash/portfolio/main/public/achievements/bug-hunter.png
+      icon: https://raw.githubusercontent.com/CodeByPrakash/portfolio/main/public/achievements/bug-hunter.svg
       description: Successfully closed an issue.
       triggers:
         - trigger:
@@ -44,7 +44,7 @@ achievements:
 
   - achievement:
       name: Project Supporter
-      icon: https://raw.githubusercontent.com/CodeByPrakash/portfolio/main/public/achievements/project-supporter.png
+      icon: https://raw.githubusercontent.com/CodeByPrakash/portfolio/main/public/achievements/project-supporter.svg
       description: Starred the project.
       triggers:
         - trigger:
