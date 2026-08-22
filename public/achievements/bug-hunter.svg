@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <!-- Background Radial Gradient -->
+    <radialGradient id="bhBgGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#0c1829" />
+      <stop offset="55%" stop-color="#060c14" />
+      <stop offset="100%" stop-color="#020408" />
+    </radialGradient>
+
+    <!-- Glow Filters -->
+    <filter id="bhCoreGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur1" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="bhLaserGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Metallic Rim Gradients -->
+    <linearGradient id="bhMetalOuter" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5a7b9e" />
+      <stop offset="35%" stop-color="#24384e" />
+      <stop offset="70%" stop-color="#101a26" />
+      <stop offset="100%" stop-color="#3b5673" />
+    </linearGradient>
+
+    <linearGradient id="bhMetalInner" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a293b" />
+      <stop offset="50%" stop-color="#0b131d" />
+      <stop offset="100%" stop-color="#05090f" />
+    </linearGradient>
+
+    <!-- Laser Elimination Slash Gradient -->
+    <linearGradient id="bhSlashGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff1a40" stop-opacity="0" />
+      <stop offset="30%" stop-color="#ff3366" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="70%" stop-color="#ff4757" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#ff6b81" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Reticle Glow Gradient -->
+    <linearGradient id="bhOrangeReticle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffb830" />
+      <stop offset="50%" stop-color="#ff7b00" />
+      <stop offset="100%" stop-color="#ff4500" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="500" height="500" fill="url(#bhBgGlow)" />
+
+  <!-- Ambient Light Spills -->
+  <circle cx="250" cy="250" r="170" fill="#00d2ff" opacity="0.06" filter="url(#bhCoreGlow)" />
+  <circle cx="250" cy="250" r="100" fill="#ff7b00" opacity="0.08" filter="url(#bhCoreGlow)" />
+
+  <!-- Background Circuit Traces -->
+  <g stroke="#00d2ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.3" fill="none">
+    <!-- Left PCB Tracks -->
+    <path d="M 40,210 H 90 L 110,230 H 130" />
+    <path d="M 30,250 H 80" />
+    <path d="M 50,290 H 95 L 115,270 H 130" />
+    <circle cx="40" cy="210" r="2.5" fill="#00d2ff" />
+    <circle cx="30" cy="250" r="2.5" fill="#00d2ff" />
+    <circle cx="50" cy="290" r="2.5" fill="#00d2ff" />
+
+    <!-- Right PCB Tracks -->
+    <path d="M 460,210 H 410 L 390,230 H 370" />
+    <path d="M 470,250 H 420" />
+    <path d="M 450,290 H 405 L 385,270 H 370" />
+    <circle cx="460" cy="210" r="2.5" fill="#00d2ff" />
+    <circle cx="470" cy="250" r="2.5" fill="#00d2ff" />
+    <circle cx="450" cy="290" r="2.5" fill="#00d2ff" />
+  </g>
+
+  <!-- Cyber Dust Particles -->
+  <g fill="#00d2ff" opacity="0.4">
+    <circle cx="120" cy="140" r="1.5" />
+    <circle cx="380" cy="130" r="1.5" />
+    <circle cx="390" cy="360" r="1.5" />
+    <circle cx="110" cy="370" r="1.5" />
+  </g>
+
+  <!-- Heavy Metallic Circular Outer Frame -->
+  <circle cx="250" cy="250" r="200" fill="url(#bhMetalOuter)" stroke="#52789c" stroke-width="1.5" />
+  <circle cx="250" cy="250" r="186" fill="url(#bhMetalInner)" stroke="#090f17" stroke-width="3" />
+  <circle cx="250" cy="250" r="172" fill="#070e17" stroke="#1b2d42" stroke-width="1.5" />
+
+  <!-- Outer Radar HUD Rings -->
+  <circle cx="250" cy="250" r="162" fill="none" stroke="#00d2ff" stroke-width="1" stroke-dasharray="3 6" opacity="0.4" />
+  <circle cx="250" cy="250" r="148" fill="none" stroke="#00d2ff" stroke-width="2" opacity="0.6" filter="url(#bhLaserGlow)" />
+  <circle cx="250" cy="250" r="115" fill="none" stroke="#ff7b00" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.5" />
+
+  <!-- TECH / DIGITAL BUG SILHOUETTE -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Bug Legs (Glow Base) -->
+    <g stroke="#00d2ff" stroke-width="7" fill="none" opacity="0.3" filter="url(#bhCoreGlow)">
+      <!-- Top Left/Right Legs -->
+      <path d="M 210,185 L 175,155 L 175,205" />
+      <path d="M 290,185 L 325,155 L 325,205" />
+      <!-- Mid Left/Right Legs -->
+      <path d="M 200,240 L 160,240 L 145,265" />
+      <path d="M 300,240 L 340,240 L 355,265" />
+      <!-- Bottom Left/Right Legs -->
+      <path d="M 210,290 L 175,325 L 180,355" />
+      <path d="M 290,290 L 325,325 L 320,355" />
+    </g>
+
+    <!-- Bug Legs (Crisp Neon Core) -->
+    <g stroke="#00f0ff" stroke-width="3.5" fill="none">
+      <path d="M 210,185 L 175,155 L 175,205" />
+      <path d="M 290,185 L 325,155 L 325,205" />
+      <path d="M 200,240 L 160,240 L 145,265" />
+      <path d="M 300,240 L 340,240 L 355,265" />
+      <path d="M 210,290 L 175,325 L 180,355" />
+      <path d="M 290,290 L 325,325 L 320,355" />
+    </g>
+
+    <!-- Bug Antennae -->
+    <g stroke="#00f0ff" stroke-width="3" fill="none" filter="url(#bhLaserGlow)">
+      <path d="M 235,145 Q 225,120 210,115" />
+      <path d="M 265,145 Q 275,120 290,115" />
+    </g>
+    <circle cx="210" cy="115" r="2.5" fill="#00f0ff" />
+    <circle cx="290" cy="115" r="2.5" fill="#00f0ff" />
+
+    <!-- Bug Head & Carapace Plates -->
+    <!-- Head Capsule -->
+    <polygon points="230,170 250,145 270,170 260,185 240,185" fill="#0a1928" stroke="#00d2ff" stroke-width="2.5" />
+    <!-- Eyes -->
+    <circle cx="236" cy="162" r="3" fill="#00f0ff" filter="url(#bhLaserGlow)" />
+    <circle cx="264" cy="162" r="3" fill="#00f0ff" filter="url(#bhLaserGlow)" />
+
+    <!-- Thorax / Center Core Block -->
+    <polygon points="215,190 285,190 295,225 205,225" fill="#081421" stroke="#00d2ff" stroke-width="2.5" />
+
+    <!-- Digital Shell Wings (Abdomen Facets) -->
+    <!-- Left Wing Plate -->
+    <polygon points="205,230 245,230 245,340 215,315 190,265" fill="#06121c" stroke="#00d2ff" stroke-width="2.5" />
+    <!-- Right Wing Plate -->
+    <polygon points="295,230 255,230 255,340 285,315 310,265" fill="#091826" stroke="#00d2ff" stroke-width="2.5" />
+
+    <!-- Internal Shell Circuit Pattern -->
+    <g stroke="#00e1d9" stroke-width="1.5" fill="none" opacity="0.8">
+      <path d="M 220,240 V 265 L 235,280 V 315" />
+      <path d="M 280,240 V 265 L 265,280 V 315" />
+      <circle cx="220" cy="240" r="1.5" fill="#00e1d9" />
+      <circle cx="280" cy="240" r="1.5" fill="#00e1d9" />
+    </g>
+  </g>
+
+  <!-- TARGETING CROSSHAIR & RESOLVED HUD (AMBER/ORANGE) -->
+  <g filter="url(#bhLaserGlow)">
+    <!-- Central Reticle Target Ring -->
+    <circle cx="250" cy="250" r="28" fill="none" stroke="url(#bhOrangeReticle)" stroke-width="3" />
+    <circle cx="250" cy="250" r="42" fill="none" stroke="#ff7b00" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.7" />
+
+    <!-- Reticle Crosshair Beams -->
+    <!-- Horizontal -->
+    <line x1="85" y1="250" x2="215" y2="250" stroke="url(#bhOrangeReticle)" stroke-width="3.5" stroke-linecap="round" />
+    <line x1="285" y1="250" x2="415" y2="250" stroke="url(#bhOrangeReticle)" stroke-width="3.5" stroke-linecap="round" />
+    <!-- Vertical -->
+    <line x1="250" y1="85" x2="250" y2="215" stroke="url(#bhOrangeReticle)" stroke-width="3.5" stroke-linecap="round" />
+    <line x1="250" y1="285" x2="250" y2="415" stroke="url(#bhOrangeReticle)" stroke-width="3.5" stroke-linecap="round" />
+
+    <!-- Reticle Target Point -->
+    <circle cx="250" cy="250" r="3.5" fill="#ffffff" />
+  </g>
+
+  <!-- Bug Eliminated / Resolved Laser Strike (Diagonal Containment Slash) -->
+  <g filter="url(#bhCoreGlow)">
+    <line x1="65" y1="435" x2="435" y2="65" stroke="url(#bhSlashGrad)" stroke-width="7" stroke-linecap="round" />
+  </g>
+  <line x1="65" y1="435" x2="435" y2="65" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.9" />
+
+  <!-- Frame Reflection Accent -->
+  <path d="M 120,95 C 160,65 210,54 250,54" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.35" />
+</svg>
