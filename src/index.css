@@ -112,7 +112,15 @@
 [data-theme="dark"] [class*="_articleCard_"],
 [data-theme="dark"] [class*="_channelCard_"],
 [data-theme="dark"] [class*="_actionCard_"],
-[data-theme="dark"] [class*="_bento_"]>div,
+[data-theme="dark"] [class*="_cellMain_"],
+[data-theme="dark"] [class*="_cellDesc_"],
+[data-theme="dark"] [class*="_cellSmall_"],
+[data-theme="dark"] [class*="_cellAvatar_"],
+[data-theme="dark"] [class*="_cellInfo_"],
+[data-theme="dark"] [class*="_cellToolkit_"],
+[data-theme="dark"] [class*="_cellClay1_"],
+[data-theme="dark"] [class*="_cellClay2_"],
+[data-theme="dark"] [class*="_cellClay3_"],
 [data-theme="dark"] [class*="_cell1_"],
 [data-theme="dark"] [class*="_cell2_"],
 [data-theme="dark"] [class*="_cell3_"],
@@ -126,6 +134,16 @@
     0 2px 8px rgba(0, 0, 0, 0.35),
     inset 1px 1px 2px rgba(255, 255, 255, 0.05),
     inset -1px -1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Explicitly ensure flex/grid wrappers in dark mode never render box-shadow or background */
+[data-theme="dark"] [class*="rightCol"],
+[data-theme="dark"] [class*="RightCol"],
+[data-theme="dark"] [class*="cellRow"],
+[data-theme="dark"] [class*="CellRow"] {
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
 }
 
 [data-theme="dark"] [class*="_card_"]:hover,
