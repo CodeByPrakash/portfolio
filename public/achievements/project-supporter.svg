@@ -1,0 +1,240 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <!-- Deep Cosmic Canvas Gradient -->
+    <radialGradient id="spaceBg" cx="50%" cy="42%" r="65%">
+      <stop offset="0%" stop-color="#0e172a" />
+      <stop offset="45%" stop-color="#080c18" />
+      <stop offset="100%" stop-color="#020409" />
+    </radialGradient>
+
+    <!-- Glowing Filters -->
+    <filter id="goldGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur1" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="coreAura" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="24" result="blur" />
+    </filter>
+
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Star Facet 3D Gradients -->
+    <linearGradient id="goldTopL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="35%" stop-color="#ffea9f" />
+      <stop offset="100%" stop-color="#d49a24" />
+    </linearGradient>
+
+    <linearGradient id="goldTopR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffd56b" />
+      <stop offset="50%" stop-color="#cf8e1d" />
+      <stop offset="100%" stop-color="#7a4e04" />
+    </linearGradient>
+
+    <linearGradient id="goldRightTop" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff2c2" />
+      <stop offset="40%" stop-color="#f5b331" />
+      <stop offset="100%" stop-color="#9e660a" />
+    </linearGradient>
+
+    <linearGradient id="goldRightBot" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#543302" />
+      <stop offset="60%" stop-color="#99600b" />
+      <stop offset="100%" stop-color="#d99b24" />
+    </linearGradient>
+
+    <linearGradient id="goldBotR" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#704403" />
+      <stop offset="60%" stop-color="#ba8018" />
+      <stop offset="100%" stop-color="#f0bc43" />
+    </linearGradient>
+
+    <linearGradient id="goldBotL" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fce895" />
+      <stop offset="50%" stop-color="#df9e1e" />
+      <stop offset="100%" stop-color="#8a5405" />
+    </linearGradient>
+
+    <linearGradient id="goldLeftBot" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#693d02" />
+      <stop offset="70%" stop-color="#b87a12" />
+      <stop offset="100%" stop-color="#fadc66" />
+    </linearGradient>
+
+    <linearGradient id="goldLeftTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="35%" stop-color="#ffe48a" />
+      <stop offset="100%" stop-color="#c98a18" />
+    </linearGradient>
+
+    <!-- Star Outer Metal Frame Gradient -->
+    <linearGradient id="goldFrame" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8db" />
+      <stop offset="30%" stop-color="#f5b82e" />
+      <stop offset="70%" stop-color="#784703" />
+      <stop offset="100%" stop-color="#e8a820" />
+    </linearGradient>
+
+    <!-- Platform Gradient -->
+    <linearGradient id="pedestalRim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1f3752" />
+      <stop offset="50%" stop-color="#0d1926" />
+      <stop offset="100%" stop-color="#050a10" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="500" height="500" fill="url(#spaceBg)" />
+
+  <!-- Ambient Light Clouds -->
+  <circle cx="250" cy="205" r="140" fill="#ffaa00" opacity="0.14" filter="url(#coreAura)" />
+  <circle cx="250" cy="205" r="90" fill="#00d2ff" opacity="0.08" filter="url(#coreAura)" />
+  <ellipse cx="250" cy="405" rx="160" ry="30" fill="#00d2ff" opacity="0.12" filter="url(#coreAura)" />
+
+  <!-- Background Cyber Particle Grid -->
+  <g fill="#ffd269" opacity="0.45">
+    <circle cx="85" cy="110" r="1.5" />
+    <circle cx="140" cy="70" r="1" />
+    <circle cx="390" cy="95" r="2" />
+    <circle cx="430" cy="160" r="1" />
+    <circle cx="70" cy="280" r="1.5" />
+    <circle cx="420" cy="290" r="1.5" />
+  </g>
+  <g fill="#00f0ff" opacity="0.45">
+    <circle cx="110" cy="190" r="1.5" />
+    <circle cx="380" cy="210" r="1.5" />
+    <circle cx="160" cy="340" r="1" />
+    <circle cx="340" cy="345" r="1" />
+  </g>
+
+  <!-- FUTURISTIC DIGITAL PEDESTAL (Bottom) -->
+  <!-- Circuit Traces Leading to Base -->
+  <g stroke="#00d2ff" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.35">
+    <path d="M 60,450 H 130 L 170,425 H 210" />
+    <path d="M 440,450 H 370 L 330,425 H 290" />
+    <path d="M 110,475 H 180 L 215,445" />
+    <path d="M 390,475 H 320 L 285,445" />
+    <circle cx="60" cy="450" r="2" fill="#00d2ff" />
+    <circle cx="440" cy="450" r="2" fill="#00d2ff" />
+  </g>
+
+  <!-- Pedestal Outer Cylinder Step -->
+  <path d="M 100,415 C 100,390 167,372 250,372 C 333,372 400,390 400,415 L 400,432 C 400,457 333,475 250,475 C 167,475 100,457 100,432 Z" 
+        fill="url(#pedestalRim)" stroke="#315477" stroke-width="1" />
+
+  <!-- Pedestal Upper Tier Face -->
+  <ellipse cx="250" cy="415" rx="150" ry="42" fill="#091421" stroke="#00d2ff" stroke-width="1.8" filter="url(#softGlow)" />
+  <ellipse cx="250" cy="415" rx="125" ry="34" fill="#050b12" stroke="#ffb700" stroke-width="1.5" opacity="0.8" />
+  <ellipse cx="250" cy="415" rx="90" ry="24" fill="#0a1829" stroke="#00f0ff" stroke-width="1.2" stroke-dasharray="6 4" />
+  <ellipse cx="250" cy="415" rx="45" ry="12" fill="#00e5ff" opacity="0.35" filter="url(#softGlow)" />
+
+  <!-- Upward Projection Light Shaft -->
+  <polygon points="205,415 295,415 325,230 175,230" fill="url(#spaceBg)" opacity="0.1" />
+
+  <!-- ORBITAL RINGS & ENERGY PARTICLES (Around Star) -->
+  <!-- Back Arc of Ring (behind star) -->
+  <g opacity="0.75" filter="url(#softGlow)">
+    <path d="M 90,240 C 90,175 160,135 250,135 C 340,135 410,175 410,240" fill="none" stroke="#ffd059" stroke-width="1.8" stroke-dasharray="14 8 4 8" />
+    <path d="M 115,225 C 125,160 180,120 250,120 C 320,120 375,160 385,225" fill="none" stroke="#00d2ff" stroke-width="1" stroke-dasharray="30 12" />
+  </g>
+
+  <!-- Orbital Cyber Nodes -->
+  <circle cx="140" cy="160" r="3" fill="#ffffff" filter="url(#softGlow)" />
+  <circle cx="360" cy="155" r="2.5" fill="#00f0ff" filter="url(#softGlow)" />
+
+  <!-- 3D PREMIER ACHIEVEMENT STAR (Centerpiece) -->
+
+  <!-- Outer Star Metal Frame / Bezel -->
+  <polygon points="
+    250,58 
+    289,157 
+    395,164 
+    314,233 
+    341,337 
+    250,280 
+    159,337 
+    186,233 
+    105,164 
+    211,157"
+    fill="url(#goldFrame)" stroke="#523100" stroke-width="2" stroke-linejoin="round" filter="url(#goldGlow)" />
+
+  <!-- Inner Star Body Recess -->
+  <polygon points="
+    250,68 
+    285,160 
+    384,166 
+    309,230 
+    334,326 
+    250,273 
+    166,326 
+    191,230 
+    116,166 
+    215,160"
+    fill="#261601" />
+
+  <!-- 10 Individual 3D Facets (Light-Engineered) -->
+  <!-- Top Point - Left -->
+  <polygon points="250,72 250,205 217,162" fill="url(#goldTopL)" />
+  <!-- Top Point - Right -->
+  <polygon points="250,72 283,162 250,205" fill="url(#goldTopR)" />
+
+  <!-- Right Point - Top -->
+  <polygon points="380,168 250,205 283,162" fill="url(#goldRightTop)" />
+  <!-- Right Point - Bottom -->
+  <polygon points="380,168 307,228 250,205" fill="url(#goldRightBot)" />
+
+  <!-- Bottom-Right Point - Outer -->
+  <polygon points="331,320 250,205 307,228" fill="url(#goldBotR)" />
+  <!-- Bottom-Right Point - Inner -->
+  <polygon points="331,320 250,270 250,205" fill="url(#goldBotL)" />
+
+  <!-- Bottom-Left Point - Inner -->
+  <polygon points="169,320 250,205 250,270" fill="url(#goldBotR)" />
+  <!-- Bottom-Left Point - Outer -->
+  <polygon points="169,320 193,228 250,205" fill="url(#goldLeftBot)" />
+
+  <!-- Left Point - Bottom -->
+  <polygon points="120,168 250,205 193,228" fill="url(#goldLeftBot)" />
+  <!-- Left Point - Top -->
+  <polygon points="120,168 217,162 250,205" fill="url(#goldLeftTop)" />
+
+  <!-- Internal Facet Ridge Highlights -->
+  <g stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.65">
+    <line x1="250" y1="72" x2="250" y2="205" />
+    <line x1="120" y1="168" x2="250" y2="205" />
+    <line x1="380" y1="168" x2="250" y2="205" />
+  </g>
+
+  <!-- Front Arc of Orbiting Ring (Passing OVER the star base) -->
+  <g filter="url(#softGlow)">
+    <path d="M 410,240 C 410,310 340,350 250,350 C 160,350 90,310 90,240" fill="none" stroke="#ffd059" stroke-width="2.2" stroke-dasharray="10 6 22 6" />
+    <path d="M 385,225 C 375,290 320,335 250,335 C 180,335 125,290 115,225" fill="none" stroke="#00f0ff" stroke-width="1.4" />
+  </g>
+
+  <!-- Front Floating Nodes -->
+  <circle cx="215" cy="348" r="3" fill="#ffffff" filter="url(#softGlow)" />
+  <circle cx="320" cy="330" r="2.5" fill="#ffd56b" filter="url(#softGlow)" />
+
+  <!-- Star Central Energy Core (Gleam Flare) -->
+  <g filter="url(#goldGlow)">
+    <circle cx="250" cy="205" r="7" fill="#ffffff" />
+    <ellipse cx="250" cy="205" rx="22" ry="4" fill="#ffffff" opacity="0.85" />
+    <ellipse cx="250" cy="205" rx="4" ry="22" fill="#ffffff" opacity="0.85" />
+  </g>
+  <circle cx="250" cy="205" r="3" fill="#fff9e6" />
+
+  <!-- Top Point Specular Glint -->
+  <polygon points="250,60 252,78 250,86 248,78" fill="#ffffff" opacity="0.8" />
+</svg>

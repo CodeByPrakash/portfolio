@@ -1,0 +1,338 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <radialGradient id="bgVignette" cx="50%" cy="46%" r="52%">
+      <stop offset="0%" stop-color="#071b30" stop-opacity="0.9"/>
+      <stop offset="45%" stop-color="#050e1c" stop-opacity="0.95"/>
+      <stop offset="85%" stop-color="#02050b" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#010307" stop-opacity="1"/>
+    </radialGradient>
+
+    <radialGradient id="auraCoreGlow" cx="50%" cy="46%" r="40%">
+      <stop offset="0%" stop-color="#00f2ff" stop-opacity="0.3"/>
+      <stop offset="40%" stop-color="#0284c7" stop-opacity="0.15"/>
+      <stop offset="70%" stop-color="#6366f1" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Metallic Frame Gradients -->
+    <linearGradient id="frameMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b5370"/>
+      <stop offset="25%" stop-color="#192535"/>
+      <stop offset="50%" stop-color="#0c141f"/>
+      <stop offset="75%" stop-color="#1e2e42"/>
+      <stop offset="100%" stop-color="#486588"/>
+    </linearGradient>
+
+    <linearGradient id="frameRimHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#0f172a" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <!-- Blade & Metal Gradients -->
+    <linearGradient id="bladeEdgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="20%" stop-color="#0c2238"/>
+      <stop offset="50%" stop-color="#1e3a5f"/>
+      <stop offset="80%" stop-color="#0c2238"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <linearGradient id="bladeLeftFacet" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#08182b"/>
+      <stop offset="100%" stop-color="#142c47"/>
+    </linearGradient>
+
+    <linearGradient id="bladeRightFacet" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a3556"/>
+      <stop offset="100%" stop-color="#0a1d33"/>
+    </linearGradient>
+
+    <linearGradient id="hiltMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="30%" stop-color="#0f172a"/>
+      <stop offset="70%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+
+    <!-- Glowing Energy Gradients -->
+    <linearGradient id="cyanNeon" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="20%" stop-color="#67e8f9"/>
+      <stop offset="60%" stop-color="#00d8f6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+
+    <linearGradient id="auraRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2ff"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+
+    <!-- Glow Filters -->
+    <filter id="highGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur1"/>
+      <feGaussianBlur stdDeviation="12" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softAura" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- ================= BADGE FRAME ================= -->
+  <!-- Outer Shield Base with Bottom Pointed Notch -->
+  <path d="M 75 35 
+           L 425 35 
+           A 32 32 0 0 1 457 67 
+           L 457 410 
+           A 32 32 0 0 1 425 442 
+           L 272 442 
+           L 250 468 
+           L 228 442 
+           L 75 442 
+           A 32 32 0 0 1 43 410 
+           L 43 67 
+           A 32 32 0 0 1 75 35 Z" 
+        fill="url(#frameMetallic)" stroke="#5279a4" stroke-width="1.5"/>
+
+  <!-- Dark Inset Recess -->
+  <path d="M 78 42 
+           L 422 42 
+           A 26 26 0 0 1 448 68 
+           L 448 405 
+           A 26 26 0 0 1 422 431 
+           L 270 431 
+           L 250 455 
+           L 230 431 
+           L 78 431 
+           A 26 26 0 0 1 52 405 
+           L 52 68 
+           A 26 26 0 0 1 78 42 Z" 
+        fill="#040811"/>
+
+  <!-- Inner Metallic Beveled Rim -->
+  <path d="M 82 48 
+           L 418 48 
+           A 22 22 0 0 1 440 70 
+           L 440 398 
+           A 22 22 0 0 1 418 420 
+           L 268 420 
+           L 250 442 
+           L 232 420 
+           L 82 420 
+           A 22 22 0 0 1 60 398 
+           L 60 70 
+           A 22 22 0 0 1 82 48 Z" 
+        fill="none" stroke="url(#frameRimHighlight)" stroke-width="3"/>
+
+  <!-- Badge Screen Interior -->
+  <path d="M 85 53 
+           L 415 53 
+           A 18 18 0 0 1 433 71 
+           L 433 393 
+           A 18 18 0 0 1 415 411 
+           L 265 411 
+           L 250 430 
+           L 235 411 
+           L 85 411 
+           A 18 18 0 0 1 67 393 
+           L 67 71 
+           A 18 18 0 0 1 85 53 Z" 
+        fill="url(#bgVignette)"/>
+
+  <!-- Center Ambient Forcefield -->
+  <circle cx="250" cy="230" r="170" fill="url(#auraCoreGlow)"/>
+
+  <!-- ================= CIRCULAR ENERGY AURA (10 COMMIT NODES) ================= -->
+  <!-- Secondary Subtle Energy Tendrils / Orbit Lines -->
+  <g fill="none" stroke="#00d8f6" opacity="0.25" stroke-linecap="round">
+    <ellipse cx="250" cy="230" rx="155" ry="148" stroke-width="1.5" stroke-dasharray="8 12 120 18"/>
+    <ellipse cx="250" cy="230" rx="136" ry="142" stroke-width="1.2" stroke-dasharray="40 8 80 14"/>
+    <circle cx="250" cy="230" r="162" stroke-width="0.8" opacity="0.4" stroke-dasharray="4 6"/>
+  </g>
+
+  <!-- Primary Outer Glowing Aura Ring -->
+  <circle cx="250" cy="230" r="145" fill="none" stroke="url(#auraRingGrad)" stroke-width="4" filter="url(#highGlow)"/>
+  <circle cx="250" cy="230" r="145" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.85"/>
+
+  <!-- 10 Commit Nodes Distributed Around Aura Ring -->
+  <!-- Node 0: Top Tip (250, 85) -->
+  <g filter="url(#highGlow)" transform="translate(250, 85)">
+    <circle cx="0" cy="0" r="8" fill="#00f2ff" opacity="0.4"/>
+    <circle cx="0" cy="0" r="5" fill="#ffffff"/>
+  </g>
+  <!-- Node 1: Top Right High (335, 113) -->
+  <g filter="url(#highGlow)" transform="translate(335.2, 112.7)">
+    <circle cx="0" cy="0" r="7" fill="#00f2ff" opacity="0.4"/>
+    <circle cx="0" cy="0" r="4.5" fill="#ffffff"/>
+  </g>
+  <!-- Node 2: Top Right Mid (388, 185) -->
+  <g filter="url(#highGlow)" transform="translate(387.9, 185.2)">
+    <circle cx="0" cy="0" r="7" fill="#00f2ff" opacity="0.4"/>
+    <circle cx="0" cy="0" r="4.5" fill="#ffffff"/>
+  </g>
+  <!-- Node 3: Bottom Right Mid (388, 275) -->
+  <g filter="url(#highGlow)" transform="translate(387.9, 274.8)">
+    <circle cx="0" cy="0" r="7" fill="#00f2ff" opacity="0.4"/>
+    <circle cx="0" cy="0" r="4.5" fill="#ffffff"/>
+  </g>
+  <!-- Node 4: Bottom Right Low (335, 347) -->
+  <g filter="url(#highGlow)" transform="translate(335.2, 347.3)">
+    <circle cx="0" cy="0" r="7" fill="#00f2ff" opacity="0.4"/>
+    <circle cx="0" cy="0" r="4.5" fill="#ffffff"/>
+  </g>
+  <!-- Node 5: Bottom Center (250, 375) -->
+  <g filter="url(#highGlow)" transform="translate(250, 375)">
+    <circle cx="0" cy="0" r="8" fill="#00f2ff" opacity="0.4"/>
+    <circle cx="0" cy="0" r="5" fill="#ffffff"/>
+  </g>
+  <!-- Node 6: Bottom Left Low (165, 347) -->
+  <g filter="url(#highGlow)" transform="translate(164.8, 347.3)">
+    <circle cx="0" cy="0" r="7" fill="#00f2ff" opacity="0.4"/>
+    <circle cx="0" cy="0" r="4.5" fill="#ffffff"/>
+  </g>
+  <!-- Node 7: Bottom Left Mid (112, 275) -->
+  <g filter="url(#highGlow)" transform="translate(112.1, 274.8)">
+    <circle cx="0" cy="0" r="7" fill="#00f2ff" opacity="0.4"/>
+    <circle cx="0" cy="0" r="4.5" fill="#ffffff"/>
+  </g>
+  <!-- Node 8: Top Left Mid (112, 185) -->
+  <g filter="url(#highGlow)" transform="translate(112.1, 185.2)">
+    <circle cx="0" cy="0" r="7" fill="#00f2ff" opacity="0.4"/>
+    <circle cx="0" cy="0" r="4.5" fill="#ffffff"/>
+  </g>
+  <!-- Node 9: Top Left High (165, 113) -->
+  <g filter="url(#highGlow)" transform="translate(164.8, 112.7)">
+    <circle cx="0" cy="0" r="7" fill="#00f2ff" opacity="0.4"/>
+    <circle cx="0" cy="0" r="4.5" fill="#ffffff"/>
+  </g>
+
+  <!-- ================= 3D WARRIOR SWORD ================= -->
+  <!-- Outer Blade Atmospheric Glow -->
+  <path d="M 250 55 L 278 105 L 278 335 L 222 335 L 222 105 Z" 
+        fill="none" stroke="#00f2ff" stroke-width="12" filter="url(#highGlow)" opacity="0.6"/>
+
+  <!-- Solid Metallic Blade Structure -->
+  <!-- Left Facet -->
+  <path d="M 250 58 L 223 106 L 223 335 L 250 335 Z" 
+        fill="url(#bladeLeftFacet)" stroke="#38bdf8" stroke-width="2"/>
+  <!-- Right Facet -->
+  <path d="M 250 58 L 277 106 L 277 335 L 250 335 Z" 
+        fill="url(#bladeRightFacet)" stroke="#38bdf8" stroke-width="2"/>
+  <!-- Center Ridge Highlight -->
+  <line x1="250" y1="62" x2="250" y2="335" stroke="#93c5fd" stroke-width="1.5" opacity="0.8"/>
+
+  <!-- ================= GIT COMMIT BRANCHES & NODES ON BLADE ================= -->
+  <!-- Git Circuit Traces (Neon Path) -->
+  <g fill="none" stroke="url(#cyanNeon)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#highGlow)">
+    <!-- Central Main Trunk Commit Line -->
+    <path d="M 250 88 L 250 330"/>
+
+    <!-- Branch 1 (Left High: Feature Branch) -->
+    <path d="M 250 175 L 232 155 L 208 155 L 208 185"/>
+    <path d="M 208 185 L 208 215 L 226 215 L 250 238"/>
+
+    <!-- Branch 2 (Left Low: Hotfix Branch) -->
+    <path d="M 250 270 L 232 290 L 208 290 L 208 315"/>
+
+    <!-- Branch 3 (Right High: Staging Flow) -->
+    <path d="M 250 140 L 268 158 L 292 158 L 292 195"/>
+
+    <!-- Branch 4 (Right Low: Release Branch) -->
+    <path d="M 250 215 L 268 235 L 292 235 L 292 275 L 275 292 L 250 310"/>
+    <path d="M 292 275 L 292 305"/>
+  </g>
+
+  <!-- Git Circuit Overlay (Crisp Specular Centerlines) -->
+  <g fill="none" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 250 88 L 250 330"/>
+    <path d="M 250 175 L 232 155 L 208 155 L 208 185"/>
+    <path d="M 208 185 L 208 215 L 226 215 L 250 238"/>
+    <path d="M 250 270 L 232 290 L 208 290 L 208 315"/>
+    <path d="M 250 140 L 268 158 L 292 158 L 292 195"/>
+    <path d="M 250 215 L 268 235 L 292 235 L 292 275 L 275 292 L 250 310"/>
+    <path d="M 292 275 L 292 305"/>
+  </g>
+
+  <!-- Git Commit Circles (Trunk & Branch Nodes) -->
+  <g filter="url(#highGlow)">
+    <!-- Main Trunk Commits -->
+    <circle cx="250" cy="102" r="5" fill="#ffffff" stroke="#00f2ff" stroke-width="2.5"/>
+    <circle cx="250" cy="140" r="4.5" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+    <circle cx="250" cy="175" r="4.5" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+    <circle cx="250" cy="215" r="4.5" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+    <circle cx="250" cy="270" r="4.5" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+    <circle cx="250" cy="310" r="4.5" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+
+    <!-- Branch Commits -->
+    <circle cx="208" cy="155" r="4" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+    <circle cx="208" cy="185" r="4.5" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+    <circle cx="208" cy="290" r="4" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+    <circle cx="208" cy="315" r="4" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+
+    <circle cx="292" cy="158" r="4" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+    <circle cx="292" cy="195" r="4.5" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+    <circle cx="292" cy="235" r="4" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+    <circle cx="292" cy="275" r="4" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+    <circle cx="292" cy="305" r="4" fill="#ffffff" stroke="#00f2ff" stroke-width="2"/>
+  </g>
+
+  <!-- ================= SWORD HILT, GUARD & POMMEL ================= -->
+  <!-- Crossguard Wings -->
+  <!-- Guard Shadow / Base -->
+  <path d="M 185 340 L 225 345 L 250 352 L 275 345 L 315 340 L 305 358 L 268 362 L 250 372 L 232 362 L 195 358 Z" 
+        fill="#080e18"/>
+
+  <!-- Guard Body 3D -->
+  <path d="M 188 342 L 222 346 L 250 334 L 278 346 L 312 342 L 302 355 L 266 358 L 250 378 L 234 358 L 198 355 Z" 
+        fill="url(#hiltMetal)" stroke="#38bdf8" stroke-width="1.8" stroke-linejoin="round"/>
+
+  <!-- Guard Glowing Energy Slots -->
+  <path d="M 198 348 L 226 351" stroke="#00f2ff" stroke-width="2.5" stroke-linecap="round" filter="url(#highGlow)"/>
+  <path d="M 302 348 L 274 351" stroke="#00f2ff" stroke-width="2.5" stroke-linecap="round" filter="url(#highGlow)"/>
+
+  <!-- Guard Center Core Diamond Matrix -->
+  <polygon points="250,332 268,354 250,376 232,354" 
+           fill="#071322" stroke="#67e8f9" stroke-width="2"/>
+  <!-- Central Glowing Heart Gem -->
+  <polygon points="250,342 260,354 250,366 240,354" 
+           fill="#ffffff" stroke="#00f2ff" stroke-width="2" filter="url(#highGlow)"/>
+
+  <!-- Grip / Handle -->
+  <rect x="239" y="375" width="22" height="58" rx="2" fill="#09111e" stroke="#1e293b" stroke-width="1.5"/>
+  <!-- Segmented Handle Energy Rings (Commit Bands) -->
+  <line x1="239" y1="388" x2="261" y2="388" stroke="#00f2ff" stroke-width="2.5" filter="url(#highGlow)"/>
+  <line x1="239" y1="402" x2="261" y2="402" stroke="#00f2ff" stroke-width="2.5" filter="url(#highGlow)"/>
+  <line x1="239" y1="416" x2="261" y2="416" stroke="#00f2ff" stroke-width="2.5" filter="url(#highGlow)"/>
+
+  <!-- Grip Specular Edge Highlights -->
+  <line x1="240" y1="376" x2="240" y2="432" stroke="#475569" stroke-width="1"/>
+  <line x1="260" y1="376" x2="260" y2="432" stroke="#475569" stroke-width="1"/>
+
+  <!-- Hexagonal Pommel Base -->
+  <polygon points="250,432 266,441 266,457 250,466 234,457 234,441" 
+           fill="url(#hiltMetal)" stroke="#38bdf8" stroke-width="1.8"/>
+  <!-- Inner Pommel Commit Core -->
+  <circle cx="250" cy="449" r="5" fill="#ffffff" stroke="#00f2ff" stroke-width="2" filter="url(#highGlow)"/>
+
+  <!-- Floating Sparkles & Code Spark Elements -->
+  <g fill="#ffffff" opacity="0.8">
+    <path d="M 430 425 L 434 430 L 439 434 L 434 438 L 430 443 L 426 438 L 421 434 L 426 430 Z" 
+          fill="#38bdf8" opacity="0.6"/>
+    <circle cx="180" cy="80" r="1.5" fill="#67e8f9" filter="url(#highGlow)"/>
+    <circle cx="320" cy="75" r="1.5" fill="#67e8f9" filter="url(#highGlow)"/>
+    <circle cx="130" cy="140" r="1" fill="#ffffff"/>
+    <circle cx="370" cy="140" r="1" fill="#ffffff"/>
+  </g>
+</svg>

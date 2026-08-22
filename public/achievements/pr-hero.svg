@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <!-- Background Radial Gradient -->
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#0f1f38" />
+      <stop offset="50%" stop-color="#080e1a" />
+      <stop offset="100%" stop-color="#03060a" />
+    </radialGradient>
+
+    <!-- Outer Glow for Central Merge -->
+    <filter id="coreGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur1" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Metallic Shield Rim Gradients -->
+    <linearGradient id="metalRimLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8baac9" />
+      <stop offset="30%" stop-color="#3a5169" />
+      <stop offset="70%" stop-color="#182330" />
+      <stop offset="100%" stop-color="#415d7a" />
+    </linearGradient>
+
+    <linearGradient id="metalBezel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#223347" />
+      <stop offset="50%" stop-color="#0d1724" />
+      <stop offset="100%" stop-color="#080e17" />
+    </linearGradient>
+
+    <!-- Shield Face Gradient -->
+    <linearGradient id="shieldPlate" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#142133" />
+      <stop offset="50%" stop-color="#0a121d" />
+      <stop offset="100%" stop-color="#050a12" />
+    </linearGradient>
+
+    <!-- Branch Gradients -->
+    <linearGradient id="leftBranchGrad" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#00f5a0" />
+      <stop offset="60%" stop-color="#00d294" />
+      <stop offset="100%" stop-color="#38ef7d" />
+    </linearGradient>
+
+    <linearGradient id="rightBranchGrad" x1="100%" y1="0%" x2="0%" y2="50%">
+      <stop offset="0%" stop-color="#00d2ff" />
+      <stop offset="60%" stop-color="#00a3e0" />
+      <stop offset="100%" stop-color="#38ef7d" />
+    </linearGradient>
+
+    <linearGradient id="mergedStemGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="25%" stop-color="#38ef7d" />
+      <stop offset="75%" stop-color="#00d2ff" />
+      <stop offset="100%" stop-color="#0077b6" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="500" height="500" fill="url(#bgGlow)" />
+
+  <!-- Ambient Light Backing -->
+  <circle cx="250" cy="250" r="160" fill="#00f5a0" opacity="0.06" filter="url(#coreGlow)" />
+  <circle cx="250" cy="250" r="130" fill="#00d2ff" opacity="0.08" filter="url(#coreGlow)" />
+
+  <!-- Background Cyber Particles -->
+  <g fill="#00f5a0" opacity="0.4">
+    <circle cx="110" cy="180" r="1.5" />
+    <circle cx="130" cy="340" r="2" />
+    <circle cx="180" cy="120" r="1" />
+  </g>
+  <g fill="#00d2ff" opacity="0.4">
+    <circle cx="390" cy="190" r="2" />
+    <circle cx="370" cy="320" r="1.5" />
+    <circle cx="320" cy="110" r="1.5" />
+    <circle cx="250" cy="80" r="2" />
+  </g>
+
+  <!-- Shield Outer Rim (Metallic 3D) -->
+  <path d="M 250,55 
+           C 340,78 405,100 415,145 
+           C 420,240 380,365 250,440 
+           C 120,365 80,240 85,145 
+           C 95,100 160,78 250,55 Z" 
+        fill="url(#metalRimLight)" stroke="#52789c" stroke-width="1.5" />
+
+  <!-- Shield Inner Bezel -->
+  <path d="M 250,70 
+           C 330,90 388,110 398,150 
+           C 402,230 368,342 250,412 
+           C 132,342 98,230 102,150 
+           C 112,110 170,90 250,70 Z" 
+        fill="url(#metalBezel)" stroke="#0f1925" stroke-width="2" />
+
+  <!-- Shield Core Plate (Dark Navy/Slate) -->
+  <path d="M 250,82 
+           C 320,100 372,118 382,154 
+           C 385,224 355,322 250,388 
+           C 145,322 115,224 118,154 
+           C 128,118 180,100 250,82 Z" 
+        fill="url(#shieldPlate)" />
+
+  <!-- Shield Facet Shading (Right Half Shadow) -->
+  <path d="M 250,82 
+           C 320,100 372,118 382,154 
+           C 385,224 355,322 250,388 Z" 
+        fill="#000000" opacity="0.28" />
+
+  <!-- Inner Plate Highlight Trace -->
+  <path d="M 250,92 
+           C 310,108 358,124 368,156 
+           C 370,215 342,304 250,366 
+           C 158,304 130,215 132,156 
+           C 142,124 190,108 250,92 Z" 
+        fill="none" stroke="#1f3752" stroke-width="1.5" opacity="0.7" />
+
+  <!-- GIT BRANCHES (PR Hero Core) -->
+
+  <!-- Glow Underlay for Branches -->
+  <g filter="url(#coreGlow)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left Source Branch (Green) -->
+    <path d="M 145,170 H 200 C 220,170 230,195 240,225 L 250,255" stroke="#00f5a0" stroke-width="8" opacity="0.6"/>
+    <path d="M 155,230 H 205 C 225,230 235,240 250,255" stroke="#00f5a0" stroke-width="8" opacity="0.6"/>
+
+    <!-- Right Target Branch (Cyan) -->
+    <path d="M 355,170 H 300 C 280,170 270,195 260,225 L 250,255" stroke="#00d2ff" stroke-width="8" opacity="0.6"/>
+    <path d="M 345,230 H 295 C 275,230 265,240 250,255" stroke="#00d2ff" stroke-width="8" opacity="0.6"/>
+
+    <!-- Merged Stem (Cyan-Green Radiant) -->
+    <path d="M 250,255 V 350" stroke="#38ef7d" stroke-width="10" opacity="0.8"/>
+  </g>
+
+  <!-- Sharp Main Branch Lines -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left Inbound Branches -->
+    <path d="M 145,170 H 200 C 220,170 230,195 240,225 L 250,255" stroke="url(#leftBranchGrad)" stroke-width="4.5"/>
+    <path d="M 155,230 H 205 C 225,230 235,240 250,255" stroke="url(#leftBranchGrad)" stroke-width="4.5"/>
+
+    <!-- Right Inbound Branches -->
+    <path d="M 355,170 H 300 C 280,170 270,195 260,225 L 250,255" stroke="url(#rightBranchGrad)" stroke-width="4.5"/>
+    <path d="M 345,230 H 295 C 275,230 265,240 250,255" stroke="url(#rightBranchGrad)" stroke-width="4.5"/>
+
+    <!-- Merged Unified Trunk -->
+    <path d="M 250,255 V 350" stroke="url(#mergedStemGrad)" stroke-width="6"/>
+  </g>
+
+  <!-- Branch Nodes (Git Commits) -->
+  <!-- Left Nodes (Green) -->
+  <g filter="url(#softGlow)">
+    <circle cx="170" cy="170" r="5.5" fill="#0b1723" stroke="#00f5a0" stroke-width="3" />
+    <circle cx="180" cy="230" r="5.5" fill="#0b1723" stroke="#00f5a0" stroke-width="3" />
+  </g>
+  <circle cx="170" cy="170" r="2" fill="#ffffff" />
+  <circle cx="180" cy="230" r="2" fill="#ffffff" />
+
+  <!-- Right Nodes (Cyan) -->
+  <g filter="url(#softGlow)">
+    <circle cx="330" cy="170" r="5.5" fill="#0b1723" stroke="#00d2ff" stroke-width="3" />
+    <circle cx="320" cy="230" r="5.5" fill="#0b1723" stroke="#00d2ff" stroke-width="3" />
+  </g>
+  <circle cx="330" cy="170" r="2" fill="#ffffff" />
+  <circle cx="320" cy="230" r="2" fill="#ffffff" />
+
+  <!-- Downstream Merged Node -->
+  <g filter="url(#softGlow)">
+    <circle cx="250" cy="315" r="6.5" fill="#0b1723" stroke="#00f5a0" stroke-width="3.5" />
+    <circle cx="250" cy="350" r="5" fill="#00d2ff" />
+  </g>
+  <circle cx="250" cy="315" r="2.5" fill="#ffffff" />
+
+  <!-- Epic Central Merge Node & Flare (Pull Request Successfully Merged) -->
+  <g filter="url(#coreGlow)">
+    <!-- Cyan/White Fusion Flare -->
+    <ellipse cx="250" cy="255" rx="20" ry="6" fill="#ffffff" opacity="0.9" />
+    <ellipse cx="250" cy="255" rx="6" ry="20" fill="#ffffff" opacity="0.9" />
+    <circle cx="250" cy="255" r="9" fill="#ffffff" />
+  </g>
+  <circle cx="250" cy="255" r="4.5" fill="#e8ffff" />
+
+  <!-- Shield Top Edge Specular Reflection -->
+  <path d="M 250,57 C 330,78 390,98 408,140" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.4" />
+</svg>
