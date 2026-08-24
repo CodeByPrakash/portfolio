@@ -598,5 +598,140 @@ COMMIT;
 ### Role-Based Access Control (RBAC)
 Granular access control prevents students/tourists from accessing administrative logs while granting lab managers and tour operators restricted management views.
     `
+  },
+  {
+    id: '13',
+    slug: 'architecting-3d-gsap-interactive-developer-portfolio',
+    title: 'Architecting an Immersive 3D Portfolio with GSAP & WebGL: From Concept to 60 FPS Web Experience',
+    excerpt: 'A comprehensive deep dive into designing and engineering a cutting-edge 3D developer portfolio utilizing GSAP timelines, Three.js / WebGL scenes, camera choreography, and 60 FPS performance optimizations.',
+    category: 'Creative Dev & 3D',
+    color: 'purple',
+    date: 'Aug 24, 2026',
+    readTime: '8 min read',
+    tags: ['GSAP', 'Three.js', 'WebGL', 'React', 'TypeScript', 'Creative Dev', '3D Web', 'Performance'],
+    content: `
+### The Vision: Moving Beyond Flat Web Portfolios
+
+In modern web development, standard flat 2D portfolio websites often struggle to convey spatial depth, motion elegance, and true technical artistry. When designing my new 3D developer portfolio—deployed live at [omprakashbehera-3d.vercel.app](https://omprakashbehera-3d.vercel.app/) with the source code open on GitHub at [CodeByPrakash.github.io](https://github.com/CodeByPrakash/CodeByPrakash.github.io)—the goal was clear: build a seamless, interactive 3D spatial experience powered by **GSAP (GreenSock Animation Platform)** and **Three.js / WebGL** that maintains a rock-solid 60 FPS across both desktop and mobile viewports.
+
+### Architectural Blueprint
+
+The application brings together four core architectural layers:
+
+1. **3D WebGL Canvas Layer**: Hosts procedural 3D geometries, point clouds, ambient/point lighting rigs, and a perspective camera responding to real-time pointer coordinates.
+2. **GSAP Animation & Timeline Orchestrator**: Synchronizes scroll-driven transitions, character-by-character typography reveals, entrance choreography, and elastic hover mechanics.
+3. **Reactive UI & Glassmorphism Shell**: Modular React & TypeScript components providing structured information (projects, skills, career milestones, contact interfaces) styled with frosted glassmorphism and high-contrast dark accents.
+4. **Performance & Render Loop Optimization**: Dynamic resolution scaling, frustum culling, delta-time normalization, and requestAnimationFrame throttling to eliminate frame stutter.
+
+---
+
+### GSAP Timeline & Scroll Choreography
+
+GSAP provides unparalleled precision for sequencing multi-stage element transitions. Rather than triggering disjointed CSS animations, we construct orchestrated timelines where elements animate with custom cubic-bezier easing curves:
+
+\`\`\`javascript
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+// Master entry timeline with staggered reveals
+export const initHeroAnimation = (heroRef, titleRef, subtitleRef, canvasRef) => {
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1.2 } })
+
+  tl.fromTo(
+    canvasRef.current,
+    { opacity: 0, scale: 0.85 },
+    { opacity: 1, scale: 1, duration: 1.6 }
+  )
+  .fromTo(
+    titleRef.current.children,
+    { y: 60, opacity: 0, rotateX: 25 },
+    { y: 0, opacity: 1, rotateX: 0, stagger: 0.08 },
+    '-=1.0'
+  )
+  .fromTo(
+    subtitleRef.current,
+    { y: 30, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8 },
+    '-=0.6'
+  )
+
+  return tl
+}
+\`\`\`
+
+### 3D Scene Composition & Camera Parallax Physics
+
+To make the environment feel tactile and alive, the 3D scene calculates a smooth damping interpolation (lerp) between current camera angles and mouse/gyroscope coordinates:
+
+\`\`\`typescript
+import * as THREE from 'three'
+
+interface MouseState {
+  x: number
+  y: number
+  targetX: number
+  targetY: number
+}
+
+export class SceneController {
+  private scene: THREE.Scene
+  private camera: THREE.PerspectiveCamera
+  private renderer: THREE.WebGLRenderer
+  private mouse: MouseState = { x: 0, y: 0, targetX: 0, targetY: 0 }
+
+  constructor(container: HTMLElement) {
+    this.scene = new THREE.Scene()
+    this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000)
+    this.camera.position.set(0, 0, 5)
+
+    this.renderer = new THREE.WebGLRenderer({
+      antialias: window.devicePixelRatio < 2,
+      powerPreference: 'high-performance',
+      alpha: true,
+    })
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    this.renderer.setSize(window.innerWidth, window.innerHeight)
+    container.appendChild(this.renderer.domElement)
+
+    this.initLights()
+    this.bindEvents()
+    this.render()
+  }
+
+  private render = () => {
+    requestAnimationFrame(this.render)
+
+    // Smooth camera damping (Lerp)
+    this.mouse.x += (this.mouse.targetX - this.mouse.x) * 0.05
+    this.mouse.y += (this.mouse.targetY - this.mouse.y) * 0.05
+
+    this.camera.position.x = this.mouse.x * 0.8
+    this.camera.position.y = -this.mouse.y * 0.8
+    this.camera.lookAt(this.scene.position)
+
+    this.renderer.render(this.scene, this.camera)
+  }
+}
+\`\`\`
+
+---
+
+### Key Performance Engineering Strategies
+
+Executing 3D rendering alongside heavy DOM animations can quickly degrade CPU/GPU framerates on lower-end devices. To ensure consistent 60 FPS:
+
+1. **Pixel Ratio Clamping**: Clamped \`devicePixelRatio\` to a maximum of \`2.0\` to prevent 4K mobile displays from over-rendering pixels.
+2. **Geometry Instancing**: Reused shared geometry buffers and materials across floating 3D particle nodes to minimize WebGL draw calls.
+3. **Debounced Resize & Cleanup**: Cleaned up Three.js geometries, textures, and GSAP ScrollTrigger instances upon component unmount to prevent memory leaks.
+4. **CSS Hardware Acceleration**: Applied \`will-change: transform, opacity\` and \`transform: translateZ(0)\` to animated glassmorphic cards.
+
+### Conclusion & Live Deployment
+
+The final build combines the mathematical precision of 3D spatial computing with the artistic fluidity of GSAP motion design. 
+
+Explore the live interactive experience at **[omprakashbehera-3d.vercel.app](https://omprakashbehera-3d.vercel.app/)** or inspect the complete codebase and structure on **[GitHub: CodeByPrakash.github.io](https://github.com/CodeByPrakash/CodeByPrakash.github.io)**.
+    `
   }
 ]

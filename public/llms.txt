@@ -37,6 +37,7 @@ Om Prakash Behera is an Indian Computer Science Engineer and Full-Stack Develope
 ## Links
 
 - [Portfolio Website](https://omprakashbehera.me/)
+- [3D GSAP Portfolio (Live)](https://omprakashbehera-3d.vercel.app/)
 - [GitHub Profile](https://github.com/CodeByPrakash)
 - [LinkedIn Profile](https://linkedin.com/in/omprakash-cse)
 - [ORCID](https://orcid.org/0009-0002-2403-2907)
@@ -59,6 +60,7 @@ Om Prakash Behera is an Indian Computer Science Engineer and Full-Stack Develope
 10. [Running Local LLMs on Consumer GPUs: VRAM Optimization](https://omprakashbehera.me/blog/local-llm-cuda-quantization-optimization) — GGUF quantization, Flash Attention 2 & Ollama CUDA offloading.
 11. [Predicting Campus Placements with Supervised Learning](https://omprakashbehera.me/blog/smart-placement-campus-prediction-ml) — Skill gap analytics & placement probability scoring.
 12. [Architecting Scalable Tourism & Lab Management Systems](https://omprakashbehera.me/blog/odisha-tourism-management-database-architecture) — 3NF relational schemas, ACID transactions & RBAC.
+13. [Architecting an Immersive 3D Portfolio with GSAP & WebGL](https://omprakashbehera.me/blog/architecting-3d-gsap-interactive-developer-portfolio) — GSAP timelines, Three.js / WebGL 3D scenes, camera choreography & 60 FPS performance optimizations.
 
 ## Featured Projects
 
@@ -78,6 +80,7 @@ Om Prakash Behera is an Indian Computer Science Engineer and Full-Stack Develope
 - [EmoSense](https://github.com/CodeByPrakash) — Real-time multi-face emotion detection dashboard with live charts
 
 ### Full-Stack & Web
+- [3D GSAP Portfolio](https://omprakashbehera-3d.vercel.app/) — Immersive 3D interactive web portfolio built with GSAP animations, WebGL/Three.js spatial scenes & dynamic camera physics (GitHub: [CodeByPrakash.github.io](https://github.com/CodeByPrakash/CodeByPrakash.github.io))
 - [CyberTerminal OS](https://vintageprixu.vercel.app) — Cybernetic command terminal & biometric HUD interface with live BASH shell, HTOP telemetry, and CRT shaders
 - [Open E-Commerce](https://open-ecommerce.vercel.app) — Full-featured e-commerce platform built with React and Framer Motion
 - [Local LLM ChatUI](https://github.com/CodeByPrakash/Local-LLM-ChatUI) — Local LLM execution interface with GGUF quantization and Ollama

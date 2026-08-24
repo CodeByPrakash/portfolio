@@ -47,6 +47,13 @@ export const EASY_WORDS = [
   'Terminal Portfolio Om Prakash',
   'CodeByPrakash CyberTerminal',
   'interactive terminal web portfolio',
+  'omprakashbehera-3d.vercel.app',
+  '3D GSAP Portfolio',
+  'GSAP Web Developer',
+  'Interactive 3D Portfolio Om Prakash',
+  'CodeByPrakash 3D Portfolio',
+  'CodeByPrakash.github.io',
+  'Three.js GSAP Portfolio',
 
   // ─── GAMING & GAMER SEARCH COMBINATIONS ───
   'omprakash gamer',
@@ -1655,6 +1662,8 @@ export const BLOG_PAGE_KEYWORDS = Array.from(
     'Local LLM Quantization GGUF',
     'SmartPlacement Campus Predictor',
     'Odisha Tourism 3NF Database',
+    '3D GSAP Portfolio',
+    'GSAP Three.js WebGL Developer',
   ])
 )
 
@@ -1858,6 +1867,23 @@ export const BLOG_POSTS_SEO = {
       'Role-Based Access Control RBAC database design',
       'CodeByPrakash OTM LMS',
       'relational database architecture case study',
+    ],
+  },
+  'architecting-3d-gsap-interactive-developer-portfolio': {
+    slug: 'architecting-3d-gsap-interactive-developer-portfolio',
+    canonicalUrl: 'https://omprakashbehera.me/blog/architecting-3d-gsap-interactive-developer-portfolio',
+    githubUrl: 'https://github.com/CodeByPrakash/CodeByPrakash.github.io',
+    category: 'Creative Dev & 3D',
+    primaryKeywords: [
+      '3D GSAP Portfolio',
+      'GSAP Three.js WebGL developer portfolio',
+      'omprakashbehera-3d.vercel.app',
+      'CodeByPrakash 3D portfolio',
+      'creative developer portfolio 2026',
+      'interactive 3D web development',
+      'GSAP ScrollTrigger Three.js tutorial',
+      'WebGL camera parallax React',
+      'CodeByPrakash.github.io',
     ],
   },
 }

@@ -15,6 +15,32 @@ export const ACTIVITY_CATEGORIES = [
 
 export const ACTIVITIES = [
   {
+    id: 'act-2026-08-24-3d-portfolio',
+    title: 'Shipped 3D GSAP Portfolio: Immersive Interactive Web Experience',
+    category: 'Projects & Builds',
+    timestamp: '2026-08-24T22:30:00+05:30',
+    displayDate: 'Aug 24, 2026',
+    time: '22:30 IST',
+    year: '2026',
+    status: 'Production Live',
+    color: 'purple',
+    type: 'Release',
+    summary:
+      'Engineered an interactive 3D developer portfolio website powered by GSAP (GreenSock Animation Platform) timeline animations, Three.js WebGL interactive 3D spatial scenes, dynamic camera parallax choreography, and glassmorphism interface design.',
+    details: [
+      'Engineered fluid GSAP timeline animations with physics-based easing, scroll-triggered reveals, and micro-interactions.',
+      'Constructed responsive 3D WebGL spatial scenes with custom lighting, depth buffers, and real-time cursor/touch tracking.',
+      'Architected modular React and TypeScript components ensuring consistent 60 FPS performance across desktop and mobile devices.',
+      'Deployed production build to Vercel with automated CI/CD pipeline and open-source GitHub repository integration.',
+    ],
+    tags: ['3D Portfolio', 'GSAP', 'Three.js', 'WebGL', 'React', 'TypeScript', 'Vercel', 'Creative Dev'],
+    stats: { metric: '60 FPS', label: '3D & GSAP Engine' },
+    links: [
+      { label: 'Live 3D Website', url: 'https://omprakashbehera-3d.vercel.app/', type: 'external' },
+      { label: 'GitHub Repository', url: 'https://github.com/CodeByPrakash/CodeByPrakash.github.io', type: 'github' },
+    ],
+  },
+  {
     id: 'act-2026-08-22-cyberterminal',
     title: 'Shipped CyberTerminal OS: Cybernetic Command Shell & Biometric HUD Interface',
     category: 'Projects & Builds',

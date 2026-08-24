@@ -7,7 +7,7 @@ import { fadeIn, staggerContainer } from '../utils/motion'
 import { BLOG_POSTS } from '../data/blogPosts'
 import styles from './Blog.module.css'
 
-const CATEGORIES = ['All', 'AI & ML', 'Computer Vision', 'AI & Data', 'Web Architecture', 'Cyber Security']
+const CATEGORIES = ['All', 'Creative Dev & 3D', 'AI & ML', 'Computer Vision', 'AI & Data', 'Web Architecture', 'Cyber Security']
 
 export default function Blog({ isStandalone = false }) {
   const [activeCategory, setActiveCategory] = useState('All')

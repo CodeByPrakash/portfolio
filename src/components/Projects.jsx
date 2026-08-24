@@ -7,6 +7,16 @@ import styles from './Projects.module.css'
 const projects = [
   {
     id: '01',
+    title: '3D GSAP Portfolio',
+    desc: 'Immersive 3D interactive web portfolio built with GSAP animations, WebGL/Three.js spatial scenes & dynamic camera physics.',
+    tags: ['GSAP', 'Three.js', 'WebGL', 'React'],
+    color: 'purple',
+    featuredBadge: '✨ 3D Experience',
+    stats: { users: '2.8K', stars: '64', tech: '5', year: '2026' },
+    link: 'https://omprakashbehera-3d.vercel.app/',
+  },
+  {
+    id: '02',
     title: 'CyberTerminal OS',
     desc: 'Cybernetic command terminal & biometric HUD interface with live interactive BASH console, HTOP telemetry & CRT shaders.',
     tags: ['Cyber Terminal', 'Next.js', 'Web Shell', 'CRT Shader', 'Live HUD'],
@@ -17,7 +27,7 @@ const projects = [
     link: 'https://vintageprixu.vercel.app',
   },
   {
-    id: '02',
+    id: '03',
     title: 'VoxelCam 3D',
     desc: 'When developer got free time to do nothing — transforms real-time webcam video stream into dynamic 3D voxel pixel blocks.',
     tags: ['Three.js', 'WebGL', '3D Voxels', 'WebRTC'],
