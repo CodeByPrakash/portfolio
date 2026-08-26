@@ -117,21 +117,41 @@ export default function SEO({
     let scriptTag = null
     if (structuredData) {
       // Remove any existing dynamic structured data script
-      const existing = document.getElementById('page-structured-data')
-      if (existing && existing.parentNode) {
-        existing.parentNode.removeChild(existing)
+      try {
+        const existing = document.getElementById('page-structured-data')
+        if (existing) {
+          if (typeof existing.remove === 'function') {
+            existing.remove()
+          } else if (existing.parentNode) {
+            existing.parentNode.removeChild(existing)
+          }
+        }
+      } catch (e) {
+        // ignore safely
       }
 
-      scriptTag = document.createElement('script')
-      scriptTag.type = 'application/ld+json'
-      scriptTag.innerHTML = JSON.stringify(structuredData)
-      scriptTag.id = 'page-structured-data'
-      document.head.appendChild(scriptTag)
+      try {
+        scriptTag = document.createElement('script')
+        scriptTag.type = 'application/ld+json'
+        scriptTag.innerHTML = JSON.stringify(structuredData)
+        scriptTag.id = 'page-structured-data'
+        document.head.appendChild(scriptTag)
+      } catch (e) {
+        // ignore safely
+      }
     }
 
     return () => {
-      if (scriptTag && scriptTag.parentNode) {
-        scriptTag.parentNode.removeChild(scriptTag)
+      try {
+        if (scriptTag) {
+          if (typeof scriptTag.remove === 'function') {
+            scriptTag.remove()
+          } else if (scriptTag.parentNode) {
+            scriptTag.parentNode.removeChild(scriptTag)
+          }
+        }
+      } catch (e) {
+        // ignore safely
       }
     }
   }, [

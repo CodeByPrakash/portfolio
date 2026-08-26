@@ -788,7 +788,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {/* Noscript fallback for SEO crawlers and text browsers */}
         <noscript>
           <header>
