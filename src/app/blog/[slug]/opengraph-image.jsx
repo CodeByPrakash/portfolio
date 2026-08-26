@@ -1,7 +1,6 @@
 import { ImageResponse } from 'next/og'
 import { BLOG_POSTS } from '../../../data/blogPosts'
 
-export const runtime = 'edge'
 export const alt = 'Om Prakash Behera — Technical Article Preview'
 export const size = {
   width: 1200,

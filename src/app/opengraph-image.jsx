@@ -1,6 +1,5 @@
 import { ImageResponse } from 'next/og'
 
-export const runtime = 'edge'
 export const alt = 'Om Prakash Behera — Computer Science Engineer & Full-Stack AI Developer'
 export const size = {
   width: 1200,
