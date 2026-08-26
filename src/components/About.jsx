@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { fadeIn, staggerContainer, slideIn, popIn } from '../utils/motion'
+import GithubContributions from './GithubContributions'
 import styles from './About.module.css'
 
 const tools = ['Figma', 'React', 'TypeScript', 'Node.js', 'CSS/Sass', 'Framer', 'Git', 'Tailwind', 'PHP', 'Python', 'Flask', 'mongoDB', 'mySQL', 'Streamlit', 'CANVA', 'BLENDER']
@@ -218,7 +219,7 @@ export default function About() {
             <span className={styles.clayCellLabel}>Full-Stack Core</span>
           </motion.div>
 
-          <motion.div className={styles.cellClay3} variants={fadeIn('up', 0.45)} style={{ borderRight: 'none' }}>
+          <motion.div className={styles.cellClay3} variants={fadeIn('up', 0.45)}>
             <motion.div
               className={styles.clayInnerCapsule}
               animate={{ y: [0, 10, 0], rotate: [-10, 15, -10] }}
@@ -226,6 +227,9 @@ export default function About() {
             />
             <span className={styles.clayCellLabel}>Secure Systems</span>
           </motion.div>
+
+          {/* Row 4: GitHub Contributions Graph (Full Width Bento Cell) */}
+          <GithubContributions username="CodeByPrakash" />
 
         </div>
       </motion.div>

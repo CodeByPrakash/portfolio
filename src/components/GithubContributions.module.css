@@ -1,0 +1,468 @@
+.githubCell {
+  grid-column: 1 / -1;
+  padding: 1.85rem 2.2rem;
+  border: var(--bw) solid var(--border);
+  border-radius: 26px;
+  background: var(--bg-tertiary);
+  box-shadow: 
+    12px 16px 32px rgba(0, 0, 0, 0.06),
+    -8px -8px 24px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+    inset -2px -2px 5px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.githubCell:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    16px 22px 42px rgba(0, 0, 0, 0.09),
+    -10px -10px 28px rgba(255, 255, 255, 0.95);
+}
+
+:global([data-theme="dark"]) .githubCell {
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.7),
+    0 4px 12px rgba(0, 0, 0, 0.45),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.08),
+    inset -3px -3px 8px rgba(0, 0, 0, 0.6);
+}
+
+:global([data-theme="dark"]) .githubCell:hover {
+  box-shadow:
+    0 20px 44px rgba(0, 0, 0, 0.85),
+    0 6px 16px rgba(0, 0, 0, 0.55),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.12);
+}
+
+/* ─── Header ──────────────────────────────────── */
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.octoIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  border: var(--bw) solid var(--border-light);
+  display: grid;
+  place-items: center;
+  color: var(--text-primary);
+  box-shadow:
+    3px 4px 10px rgba(0, 0, 0, 0.06),
+    -2px -2px 6px rgba(255, 255, 255, 0.9),
+    inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.8);
+  flex-shrink: 0;
+}
+
+:global([data-theme="dark"]) .octoIcon {
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+.titleWrap {
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+}
+
+.cellTag {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.cellTitle {
+  font-family: var(--font-head);
+  font-size: 1.55rem;
+  font-weight: 400;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* ─── Stats Badges ────────────────────────────── */
+.statsGroup {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.statBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .35rem .75rem;
+  border-radius: 14px;
+  border: var(--bw) solid var(--border);
+  background: var(--bg-secondary);
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  box-shadow:
+    2px 3px 6px rgba(0, 0, 0, 0.04),
+    -2px -2px 5px rgba(255, 255, 255, 0.8),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+}
+
+:global([data-theme="dark"]) .statBadge {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.06);
+}
+
+.statHighlight {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.githubLink {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .35rem .85rem;
+  border-radius: 14px;
+  border: var(--bw) solid var(--accent);
+  background: var(--accent);
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow:
+    3px 4px 10px rgba(255, 107, 0, 0.25),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.4);
+  transition: transform .2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow .2s ease;
+}
+
+.githubLink:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    4px 6px 14px rgba(255, 107, 0, 0.4);
+}
+
+/* ─── 3D Clay Year Filter Controls ────────────── */
+.yearFilterGroup {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  background: var(--bg-secondary);
+  padding: .25rem;
+  border-radius: 14px;
+  border: var(--bw) solid var(--border);
+  box-shadow: 
+    inset 1.5px 1.5px 3px rgba(0, 0, 0, 0.05),
+    inset -1.5px -1.5px 3px rgba(255, 255, 255, 0.8);
+}
+
+:global([data-theme="dark"]) .yearFilterGroup {
+  box-shadow: 
+    inset 1px 1px 3px rgba(0, 0, 0, 0.6),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.04);
+}
+
+.yearBtn {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .3rem .7rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+}
+
+.yearBtn:hover {
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+:global([data-theme="dark"]) .yearBtn:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.yearBtnActive {
+  background: var(--bg-tertiary);
+  color: var(--accent);
+  border-color: var(--border);
+  box-shadow: 
+    2px 3px 6px rgba(0, 0, 0, 0.08),
+    -1px -1px 4px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+:global([data-theme="dark"]) .yearBtnActive {
+  background: #0f1c0f;
+  color: #33ff00;
+  border-color: #1e4d1e;
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.6),
+    inset 1px 1px 2px rgba(51, 255, 0, 0.25);
+}
+
+/* ─── Heatmap Scrollable Wrapper ──────────────── */
+.heatmapContainer {
+  width: 100%;
+  overflow-x: auto;
+  padding: .5rem 0 .25rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.heatmapContainer::-webkit-scrollbar {
+  height: 6px;
+}
+
+.heatmapContainer::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+.heatmapInner {
+  min-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  user-select: none;
+}
+
+/* ─── Months Header Row ───────────────────────── */
+.monthsRow {
+  display: flex;
+  margin-left: 28px;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.monthLabel {
+  flex: 1;
+  text-align: left;
+}
+
+/* ─── Calendar Body (Days + Grid) ─────────────── */
+.calendarBody {
+  display: flex;
+  gap: .5rem;
+  align-items: flex-start;
+}
+
+.daysCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 98px;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  width: 24px;
+  padding: 2px 0;
+  text-align: right;
+  line-height: 1;
+}
+
+.weeksGrid {
+  display: flex;
+  gap: 3.5px;
+  flex: 1;
+}
+
+.weekCol {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5px;
+}
+
+/* ─── Clay Contribution Tiles ─────────────────── */
+.dayTile {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.dayTile:hover {
+  transform: scale(1.35);
+  z-index: 10;
+  filter: brightness(1.15);
+}
+
+/* Light Mode Tile Colors */
+.level_0 {
+  background: var(--bg-secondary);
+  border-color: var(--border-light);
+}
+
+.level_1 {
+  background: #FFD2B0;
+  border-color: #FFB380;
+}
+
+.level_2 {
+  background: #FFA15A;
+  border-color: #FF8533;
+}
+
+.level_3 {
+  background: #FF6B00;
+  border-color: #E05800;
+  box-shadow: 0 0 4px rgba(255, 107, 0, 0.35);
+}
+
+.level_4 {
+  background: #D94800;
+  border-color: #B33600;
+  box-shadow: 0 0 6px rgba(217, 72, 0, 0.55);
+}
+
+/* Dark Mode Tile Colors */
+:global([data-theme="dark"]) .level_0 {
+  background: #121812;
+  border-color: #1a261a;
+}
+
+:global([data-theme="dark"]) .level_1 {
+  background: #1a4d26;
+  border-color: #246b35;
+}
+
+:global([data-theme="dark"]) .level_2 {
+  background: #258a3e;
+  border-color: #2fb04f;
+}
+
+:global([data-theme="dark"]) .level_3 {
+  background: #2ed154;
+  border-color: #38eb62;
+  box-shadow: 0 0 6px rgba(46, 209, 84, 0.45);
+}
+
+:global([data-theme="dark"]) .level_4 {
+  background: #39ff66;
+  border-color: #70ff90;
+  box-shadow: 0 0 8px rgba(57, 255, 102, 0.7);
+}
+
+/* ─── Footer with Legend ──────────────────────── */
+.footerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: .5rem;
+  border-top: var(--bw) solid var(--border-light);
+}
+
+.footerNote {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  color: var(--text-muted);
+}
+
+.legendWrap {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  color: var(--text-muted);
+}
+
+.legendTiles {
+  display: flex;
+  gap: 3px;
+}
+
+.legendTile {
+  width: 10px;
+  height: 10px;
+  border-radius: 2.5px;
+}
+
+/* ─── Floating Tooltip ────────────────────────── */
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000000;
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  font-weight: 700;
+  padding: .35rem .6rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 50;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: #000000;
+}
+
+/* ─── Responsive ──────────────────────────────── */
+@media (max-width: 768px) {
+  .githubCell {
+    padding: 1.4rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .75rem;
+  }
+
+  .statsGroup {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .footerRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+  }
+}

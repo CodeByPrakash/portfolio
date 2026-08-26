@@ -1,0 +1,754 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-top: 64px;
+  background-color: var(--bg-primary);
+  border-bottom: var(--bw) solid var(--border);
+}
+
+/* ─── Marquee ─────────────────────────────────── */
+.marqueeWrap {
+  overflow: hidden;
+  border-bottom: var(--bw) solid var(--border);
+  background: var(--bg-tertiary);
+  padding: .6rem 0;
+}
+
+.marquee {
+  display: flex;
+  white-space: nowrap;
+  animation: marqueeScroll 20s linear infinite;
+}
+
+.marquee span {
+  font-family: var(--font-head);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: .02em;
+  color: var(--text-primary);
+  padding-right: 1rem;
+  text-transform: uppercase;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ─── Inner ───────────────────────────────────── */
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  justify-content: center;
+}
+
+/* ─── Top Row ─────────────────────────────────── */
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.tabGroup {
+  display: flex;
+  gap: 0;
+  border: var(--bw) solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.tab {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: .4rem 1rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-right: var(--bw) solid var(--border);
+  transition: all .15s;
+}
+
+.tab:last-child {
+  border-right: none;
+}
+
+.tab:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.tabActive {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.tabActive:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* ─── Top Right Controls & Theme Trigger ───────── */
+.topRightControls {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  flex-wrap: wrap;
+}
+
+/* 3D Clay Hello Palm Emoji Button (Icon Only) */
+.themePalmBtn {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  border: var(--bw) solid var(--border);
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  box-shadow:
+    3px 4px 10px rgba(0, 0, 0, 0.05),
+    -2px -2px 6px rgba(255, 255, 255, 0.9),
+    inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.8),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.03);
+  transition: all .2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.themePalmDark {
+  background: var(--bg-tertiary);
+  border-color: var(--accent);
+  box-shadow:
+    2px 4px 12px rgba(0, 0, 0, 0.3),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.08);
+}
+
+.palmEmoji {
+  font-size: 1.25rem;
+  line-height: 1;
+  display: inline-block;
+  transform-origin: 70% 70%;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.12));
+}
+
+/* ─── Status ──────────────────────────────────── */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border: var(--bw) solid var(--border);
+  padding: .35rem .85rem;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-radius: 999px;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.04);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: .5;
+    transform: scale(.8);
+  }
+}
+
+/* ─── Headline & Unified Connected Dotted Arrow ────── */
+.headlineWrapper {
+  position: relative;
+  width: 100%;
+  padding: .5rem 0;
+}
+
+/* Unified Arrow SVG Layer: Connected Dotted Tail and Chevron Arrow (Behind text) */
+.unifiedArrowSvg {
+  position: absolute;
+  top: -8%;
+  left: -2%;
+  width: 104%;
+  height: 116%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
+}
+
+.headline {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.line1,
+.line2,
+.line3 {
+  font-family: var(--font-head);
+  font-size: clamp(2.3rem, 8.5vw, 8rem);
+  font-weight: 400;
+  letter-spacing: .02em;
+  line-height: 1;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  position: relative;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.line3 {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.highlight {
+  position: relative;
+  display: inline-block;
+  color: var(--text-primary);
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: .05em;
+  left: -.02em;
+  right: -.02em;
+  height: .18em;
+  background: var(--accent);
+  z-index: -1;
+  opacity: 0.85;
+}
+
+/* ─── Sub Row (text + CTA side by side) ──────── */
+.subRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: var(--bw) solid var(--border);
+  flex-wrap: wrap;
+}
+
+.sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  flex: 1 1 360px;
+  max-width: 480px;
+  min-width: 280px;
+  line-height: 1.65;
+}
+
+.ctaCol {
+  display: flex;
+  flex-direction: row;
+  gap: .6rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 500px;
+}
+
+/* ─── Cyber Terminal CLI Hero Button ───────────── */
+.cliHeroBtn {
+  font-family: var(--font-mono);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #0b150b;
+  color: #33ff00;
+  border: var(--bw) solid #1e4d1e;
+  border-radius: var(--radius);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 
+    3px 4px 12px rgba(51, 255, 0, 0.12),
+    inset 1px 1px 2px rgba(51, 255, 0, 0.25),
+    inset -1px -1px 3px rgba(0, 0, 0, 0.6);
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-shadow: 0 0 6px rgba(51, 255, 0, 0.4);
+}
+
+.cliHeroBtn:hover {
+  background: #33ff00;
+  color: #030803;
+  border-color: #33ff00;
+  box-shadow: 
+    0 0 20px rgba(51, 255, 0, 0.45),
+    4px 6px 16px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+  text-shadow: none;
+}
+
+.cliPrompt {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  color: inherit;
+  animation: promptBlink 1.4s infinite;
+}
+
+@keyframes promptBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+:global([data-theme="dark"]) .cliHeroBtn {
+  background: #050e05;
+  color: #33ff00;
+  border-color: #1e4d1e;
+  box-shadow: 
+    0 4px 14px rgba(0, 0, 0, 0.7),
+    0 0 10px rgba(51, 255, 0, 0.12),
+    inset 1px 1px 2px rgba(51, 255, 0, 0.15);
+}
+
+:global([data-theme="dark"]) .cliHeroBtn:hover {
+  background: #33ff00;
+  color: #000000;
+  border-color: #33ff00;
+  box-shadow: 
+    0 0 22px rgba(51, 255, 0, 0.55),
+    0 4px 16px rgba(0, 0, 0, 0.8);
+}
+
+/* ─── Website Launches Verification Badge ─────── */
+.launchBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease, opacity 0.2s ease;
+  flex-shrink: 0;
+  vertical-align: middle;
+  line-height: 0;
+}
+
+.launchBadge:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.15));
+}
+
+.launchBadgeImg {
+  display: block;
+  max-width: 100%;
+  height: 42px;
+  width: auto;
+  border-radius: var(--radius);
+}
+
+/* ─── 3D Clay Morphism Stats Row ───────────────── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  background: transparent;
+  width: 100%;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  padding: 1.6rem 1.4rem;
+  border: var(--bw) solid var(--border);
+  border-radius: 22px;
+  background: var(--bg-tertiary);
+  text-align: center;
+  box-shadow:
+    10px 14px 28px rgba(0, 0, 0, 0.06),
+    -6px -6px 18px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+    inset -2px -2px 5px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat:hover {
+  border-color: var(--accent);
+  box-shadow:
+    14px 20px 38px rgba(0, 0, 0, 0.09),
+    -8px -8px 24px rgba(255, 255, 255, 0.95);
+}
+
+.statN {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 3.2vw, 2.5rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1;
+  letter-spacing: .02em;
+  transition: color 0.2s ease;
+}
+
+.stat_orange:hover .statN {
+  color: var(--orange);
+}
+
+.stat_blue:hover .statN {
+  color: var(--blue);
+}
+
+.stat_green:hover .statN {
+  color: var(--green);
+}
+
+.stat_purple:hover .statN {
+  color: var(--purple);
+}
+
+.statL {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-secondary);
+}
+
+/* ─── Logo Strip ──────────────────────────────── */
+.logoStrip {
+  border-top: var(--bw) solid var(--border);
+  background: var(--bg-tertiary);
+  padding: 1rem 0;
+}
+
+.logoStripInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.logoItem {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--font-body);
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: .01em;
+}
+
+.logoDot {
+  color: var(--accent);
+  font-size: .6rem;
+}
+
+/* ─── Responsive ──────────────────────────────── */
+@media (max-width: 960px) {
+  .subRow {
+    gap: 1.5rem;
+  }
+
+  .sub {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .ctaCol {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .inner {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+    gap: 1.5rem;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: .75rem;
+  }
+
+  .stat {
+    padding: 1.15rem .85rem;
+    border-radius: 18px;
+  }
+
+  .statN {
+    font-size: 1.85rem;
+  }
+
+  .statL {
+    font-size: .62rem;
+  }
+
+  .subRow {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .ctaCol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    width: 100%;
+  }
+
+  .ctaCol :global(.btn) {
+    flex: 1 1 calc(50% - .5rem);
+    min-width: 130px;
+    justify-content: center;
+    text-align: center;
+    padding: .6rem .85rem;
+    font-size: .82rem;
+  }
+
+  .launchBadge {
+    width: 100%;
+    margin-top: .25rem;
+    justify-content: flex-start;
+  }
+
+  .topRow {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .65rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tab {
+    font-size: .65rem;
+    padding: .35rem .75rem;
+  }
+
+  .status {
+    font-size: .65rem;
+    padding: .3rem .75rem;
+  }
+
+  .marquee span {
+    font-size: clamp(1.4rem, 5vw, 2rem);
+  }
+
+  .clayShape {
+    opacity: 0.25;
+    transform: scale(0.5);
+    pointer-events: none;
+  }
+
+  .unifiedArrowSvg {
+    top: -2%;
+    left: 0%;
+    width: 100%;
+    height: 105%;
+  }
+}
+
+@media (max-width: 480px) {
+  .ctaCol :global(.btn) {
+    flex: 1 1 100%;
+  }
+
+  .launchBadge {
+    justify-content: center;
+  }
+
+  .topRightControls {
+    gap: .5rem;
+  }
+
+  .themePalmBtn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .palmEmoji {
+    font-size: 1.1rem;
+  }
+}
+
+/* ─── 3D Clay Morphism Floating Edge Geometrics ───────── */
+.clayShape {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.08));
+  will-change: transform;
+}
+
+/* 1. Clay Orange Orb (Top-Right Edge) */
+.clayOrb {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #FFB670 0%, #FF8533 35%, #FF6B00 70%, #B84700 100%);
+  box-shadow:
+    16px 22px 38px rgba(255, 107, 0, 0.35),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 6px 6px 12px rgba(255, 255, 255, 0.8),
+    inset -6px -6px 14px rgba(138, 54, 0, 0.45);
+  top: 14%;
+  right: 6%;
+  opacity: 0.92;
+  animation: floatOrb 7s ease-in-out infinite;
+}
+
+/* 2. Clay Blue Torus / Ring (Bottom-Left Edge) */
+.clayTorus {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, transparent 42%, #2A4DB8 43%, #3B5FCF 65%, #6384EC 100%);
+  border: 24px solid #3B5FCF;
+  box-shadow:
+    18px 24px 42px rgba(59, 95, 207, 0.32),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 6px 6px 12px rgba(255, 255, 255, 0.75),
+    inset -6px -6px 14px rgba(26, 44, 110, 0.5);
+  bottom: 18%;
+  left: 4%;
+  opacity: 0.88;
+  animation: floatTorus 9s ease-in-out 0.8s infinite;
+}
+
+/* 3. Clay Mint Pill / Capsule (Top-Left Edge) */
+.clayPill {
+  width: 55px;
+  height: 115px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #8BF2BE 0%, #2DB77B 55%, #197148 100%);
+  box-shadow:
+    16px 20px 34px rgba(45, 183, 123, 0.3),
+    -7px -7px 18px rgba(255, 255, 255, 0.95),
+    inset 5px 5px 10px rgba(255, 255, 255, 0.8),
+    inset -5px -5px 12px rgba(17, 77, 49, 0.4);
+  top: 24%;
+  left: 8%;
+  opacity: 0.88;
+  animation: floatPill 8s ease-in-out 1.5s infinite;
+}
+
+/* 4. Clay Purple Cube (Bottom-Right Edge) */
+.clayCube {
+  width: 85px;
+  height: 85px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #C49BFF 0%, #7C3AED 60%, #4C1D95 100%);
+  box-shadow:
+    16px 22px 38px rgba(124, 58, 237, 0.32),
+    -8px -8px 20px rgba(255, 255, 255, 0.95),
+    inset 5px 5px 11px rgba(255, 255, 255, 0.75),
+    inset -5px -5px 13px rgba(49, 16, 102, 0.45);
+  bottom: 22%;
+  right: 14%;
+  opacity: 0.9;
+  animation: floatCube 8.5s ease-in-out 0.4s infinite;
+}
+
+/* 5. Clay Coral Mini Bead (Center-Right Edge) */
+.clayMiniOrb {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #FFA8A8 0%, #F55555 45%, #E53E3E 75%, #991B1B 100%);
+  box-shadow:
+    10px 14px 24px rgba(229, 62, 62, 0.32),
+    -5px -5px 12px rgba(255, 255, 255, 0.95),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.8),
+    inset -4px -4px 8px rgba(127, 29, 29, 0.4);
+  top: 50%;
+  right: 32%;
+  opacity: 0.85;
+  animation: floatMiniOrb 6.5s ease-in-out 2s infinite;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  50% { transform: translateY(-32px) rotate(20deg) scale(1.04); }
+}
+
+@keyframes floatTorus {
+  0%, 100% { transform: translateY(0) rotate(-12deg); }
+  50% { transform: translateY(36px) rotate(18deg); }
+}
+
+@keyframes floatPill {
+  0%, 100% { transform: translateY(0) rotate(20deg); }
+  50% { transform: translateY(-28px) rotate(40deg); }
+}
+
+@keyframes floatCube {
+  0%, 100% { transform: translateY(0) rotate(-10deg) scale(1); }
+  50% { transform: translateY(30px) rotate(15deg) scale(0.95); }
+}
+
+@keyframes floatMiniOrb {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(16px, -24px); }
+}
+
+/* ─── Dark Mode 3D Clay Polish (ZERO White Glow) ─── */
+:global([data-theme="dark"]) .stat,
+:global([data-theme="dark"]) .themePalmBtn,
+:global([data-theme="dark"]) .tabGroup {
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05),
+    inset -1px -1px 3px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .clayOrb,
+:global([data-theme="dark"]) .clayTorus,
+:global([data-theme="dark"]) .clayPill,
+:global([data-theme="dark"]) .clayCube,
+:global([data-theme="dark"]) .clayMiniOrb {
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.7),
+    0 4px 12px rgba(0, 0, 0, 0.45),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.15),
+    inset -4px -4px 10px rgba(0, 0, 0, 0.6);
+  opacity: 0.8;
+  filter: brightness(0.92);
+}

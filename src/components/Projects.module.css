@@ -71,6 +71,18 @@
   color: var(--accent);
   line-height: 1;
   letter-spacing: .02em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.countSub {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* ─── 3D Clay Projects Grid — 3 columns with gap ── */
@@ -376,6 +388,95 @@
   opacity: 0.85;
 }
 
+/* ─── Pagination Controls ─────────────────────── */
+.paginationRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+  padding-top: 1rem;
+}
+
+.pageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  background: var(--bg-tertiary);
+  border: var(--bw) solid var(--border);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow:
+    6px 8px 16px rgba(0, 0, 0, 0.04),
+    -4px -4px 12px rgba(255, 255, 255, 0.9),
+    inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.8);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+
+.pageBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: var(--bg-secondary);
+  box-shadow:
+    8px 12px 20px rgba(0, 0, 0, 0.08),
+    -6px -6px 14px rgba(255, 255, 255, 0.95);
+}
+
+.pageBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.pageNumbers {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pageNumberBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  border: var(--bw) solid var(--border);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow:
+    4px 6px 12px rgba(0, 0, 0, 0.04),
+    -3px -3px 8px rgba(255, 255, 255, 0.9);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pageNumberBtn:hover:not(.pageNumberActive) {
+  transform: translateY(-2px);
+  color: var(--text-primary);
+  border-color: var(--accent);
+}
+
+.pageNumberActive {
+  background: var(--accent) !important;
+  color: #FFFFFF !important;
+  border-color: var(--accent) !important;
+  box-shadow:
+    0 6px 18px rgba(255, 107, 0, 0.35),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.4) !important;
+}
+
 /* ─── Responsive ──────────────────────────────── */
 @media (max-width: 1080px) {
   .grid {
@@ -396,6 +497,23 @@
     gap: 1.25rem;
   }
 
+  .paginationRow {
+    gap: 0.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .pageBtn {
+    padding: 0.55rem 0.95rem;
+    font-size: 0.78rem;
+  }
+
+  .pageNumberBtn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.8rem;
+  }
+
   .clayShape {
     opacity: 0.4;
     transform: scale(0.65);
@@ -414,12 +532,16 @@
 }
 
 :global([data-theme="dark"]) .card,
-:global([data-theme="dark"]) .countCard {
+:global([data-theme="dark"]) .countCard,
+:global([data-theme="dark"]) .pageBtn,
+:global([data-theme="dark"]) .pageNumberBtn {
   box-shadow: none !important;
 }
 
 :global([data-theme="dark"]) .card:hover,
-:global([data-theme="dark"]) .countCard:hover {
+:global([data-theme="dark"]) .countCard:hover,
+:global([data-theme="dark"]) .pageBtn:hover:not(:disabled),
+:global([data-theme="dark"]) .pageNumberBtn:hover:not(.pageNumberActive) {
   box-shadow: none !important;
 }
 
