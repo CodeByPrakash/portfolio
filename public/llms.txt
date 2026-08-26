@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Om Prakash Behera — Computer Science Engineer & Full-Stack AI Developer
 
 > Official portfolio of Om Prakash Behera (CodeByPrakash / Quasar Om), a Computer Science & Engineering (CSE) student at Government College of Engineering Kalahandi (GCEK), Odisha, India.
@@ -114,7 +114,7 @@ Om Prakash Behera is an Indian Computer Science Engineer and Full-Stack Develope
 - GitHub: [CodeByPrakash](https://github.com/CodeByPrakash)
 - Instagram: [@quasar_om](https://instagram.com/quasar_om)
 - Location: Odisha, India (Available for remote work worldwide)
-=======
+
 # Om Prakash Behera — Computer Science Engineer & Full-Stack AI Developer
 
 > Official portfolio of Om Prakash Behera (CodeByPrakash / Quasar Om), a Computer Science & Engineering (CSE) student at Government College of Engineering Kalahandi (GCEK), Odisha, India.
@@ -230,4 +230,4 @@ Om Prakash Behera is an Indian Computer Science Engineer and Full-Stack Develope
 - GitHub: [CodeByPrakash](https://github.com/CodeByPrakash)
 - Instagram: [@quasar_om](https://instagram.com/quasar_om)
 - Location: Odisha, India (Available for remote work worldwide)
->>>>>>> 2460c0fbb415dc293b82c778ff2bc1c4558e9c86
+
