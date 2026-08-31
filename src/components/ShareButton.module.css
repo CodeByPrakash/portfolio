@@ -1,0 +1,302 @@
+.shareWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ─── Share Trigger Button ────────────────────── */
+.shareTriggerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+  user-select: none;
+  position: relative;
+  outline: none;
+}
+
+/* Compact (Used in Blog Cards) */
+.shareTriggerCompact {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.72rem;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: var(--bw) solid var(--border-light);
+  box-shadow: 
+    2px 3px 6px rgba(0, 0, 0, 0.04),
+    -1px -1px 4px rgba(255, 255, 255, 0.8),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.shareTriggerCompact:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--bg-tertiary);
+  transform: translateY(-2px);
+  box-shadow: 
+    3px 5px 10px rgba(255, 107, 0, 0.15),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Full (Used in Article Header & Footer) */
+.shareTriggerFull {
+  padding: 0.52rem 1.1rem;
+  font-size: 0.82rem;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: var(--bw) solid var(--border);
+  border-radius: 14px;
+  box-shadow: 
+    3px 5px 12px rgba(0, 0, 0, 0.06),
+    -2px -2px 6px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.shareTriggerFull:hover {
+  color: #FFFFFF;
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 
+    4px 8px 18px rgba(255, 107, 0, 0.35),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.shareTriggerActive {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+/* ─── Compact Sleek Popover ───────────────────── */
+.sharePopover {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  width: 250px;
+  background: var(--bg-tertiary);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--bw) solid var(--border);
+  border-radius: 18px;
+  padding: 0.85rem;
+  box-shadow: 
+    0 14px 36px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.9);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  animation: popIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom right;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ─── Header ──────────────────────────────────── */
+.popoverHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.headerTitleWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.popoverTitle {
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.popoverHint {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+.closeBtn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.closeBtn:hover {
+  background: var(--accent);
+  color: #FFFFFF;
+  border-color: var(--accent);
+}
+
+/* ─── 1-Click Copy Bar ────────────────────────── */
+.copyBar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 0.25rem 0.25rem 0.25rem 0.55rem;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.urlPreview {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  user-select: all;
+}
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #FFFFFF;
+  border: 1px solid var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(255, 107, 0, 0.25);
+}
+
+.copyBtn:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+
+.copyBtnDone {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.3) !important;
+}
+
+/* ─── Horizontal Social Icons Bar ─────────────── */
+.socialRow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.35rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.socialIconBtn {
+  height: 32px;
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 
+    1.5px 2px 5px rgba(0, 0, 0, 0.03),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+.socialIconBtn:hover {
+  transform: translateY(-2px);
+  color: #FFFFFF;
+}
+
+.socialWhatsapp:hover {
+  background: #25D366;
+  border-color: #25D366;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.35);
+}
+
+.socialTwitter:hover {
+  background: #000000;
+  border-color: #000000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.socialLinkedin:hover {
+  background: #0A66C2;
+  border-color: #0A66C2;
+  box-shadow: 0 4px 10px rgba(10, 102, 194, 0.35);
+}
+
+.socialTelegram:hover {
+  background: #229ED9;
+  border-color: #229ED9;
+  box-shadow: 0 4px 10px rgba(34, 158, 217, 0.35);
+}
+
+.socialReddit:hover {
+  background: #FF4500;
+  border-color: #FF4500;
+  box-shadow: 0 4px 10px rgba(255, 69, 0, 0.35);
+}
+
+/* ─── Dark Mode Refinements ───────────────────── */
+:global([data-theme="dark"]) .shareTriggerCompact,
+:global([data-theme="dark"]) .shareTriggerFull {
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+:global([data-theme="dark"]) .sharePopover {
+  box-shadow: 
+    0 18px 44px rgba(0, 0, 0, 0.8),
+    0 4px 14px rgba(0, 0, 0, 0.4),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.08);
+}
+
+:global([data-theme="dark"]) .copyBar {
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+:global([data-theme="dark"]) .socialIconBtn {
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+:global([data-theme="dark"]) .socialTwitter:hover {
+  background: #FFFFFF;
+  color: #000000;
+  border-color: #FFFFFF;
+}

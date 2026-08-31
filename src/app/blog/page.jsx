@@ -108,8 +108,10 @@ export default function BlogPage() {
   return (
     <>
       <script
+        id="blog-schema-ldjson"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogIndexJsonLd) }}
+        suppressHydrationWarning
       />
       <Navbar />
       <main id="main-content" style={{ minHeight: '80vh' }}>

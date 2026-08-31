@@ -118,8 +118,10 @@ export default function ActivityPage() {
   return (
     <>
       <script
+        id="activity-schema-ldjson"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(activityIndexJsonLd) }}
+        suppressHydrationWarning
       />
       <Navbar />
       <main id="main-content" style={{ minHeight: '80vh' }}>

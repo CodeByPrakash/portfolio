@@ -758,7 +758,7 @@ export default function RootLayout({ children }) {
       className={`${spaceGrotesk.variable} ${spaceMono.variable}`}
       suppressHydrationWarning
     >
-      <head>
+      <head suppressHydrationWarning>
         {/* Preload custom display font for instant Speed Index and 0 font layout shifts */}
         <link
           rel="preload"
@@ -784,8 +784,10 @@ export default function RootLayout({ children }) {
         />
         {/* JSON-LD Rich Structured Data */}
         <script
+          id="global-schema-ldjson"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          suppressHydrationWarning
         />
       </head>
       <body suppressHydrationWarning>

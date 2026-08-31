@@ -1,177 +1,117 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import GitHubCalendar from 'github-calendar'
+import 'github-calendar/dist/github-calendar-responsive.css'
 import { fadeIn } from '../utils/motion'
 import styles from './GithubContributions.module.css'
 
-// Default fallback contribution generator so the UI is immediately complete
-function generateFallbackData() {
-  const years = ['2026', '2025', '2024']
-  const allContributions = []
-  const totals = { lastYear: 516, '2026': 437, '2025': 260, '2024': 229 }
-
-  years.forEach((yr) => {
-    const isLeap = parseInt(yr) % 4 === 0
-    const totalDays = isLeap ? 366 : 365
-    const startDate = new Date(`${yr}-01-01`)
-
-    for (let i = 0; i < totalDays; i++) {
-      const cur = new Date(startDate)
-      cur.setDate(startDate.getDate() + i)
-      const dateStr = cur.toISOString().split('T')[0]
-      const dayOfWeek = cur.getDay()
-      const seed = (cur.getDate() * 17 + cur.getMonth() * 31 + parseInt(yr) * 7) % 100
-
-      let count = 0
-      let level = 0
-
-      if (dateStr === '2026-08-22') {
-        count = 54
-        level = 4
-      } else if (seed > 84) {
-        count = Math.floor((seed - 80) * 1.8)
-        level = count > 15 ? 3 : 2
-      } else if (seed > 62 && dayOfWeek !== 0) {
-        count = Math.floor((seed - 50) * 0.4)
-        level = 1
-      }
-
-      allContributions.push({ date: dateStr, count, level })
-    }
-  })
-
-  return { total: totals, contributions: allContributions }
-}
-
 export default function GithubContributions({ username = 'CodeByPrakash' }) {
-  const [data, setData] = useState(() => generateFallbackData())
-  const [selectedYear, setSelectedYear] = useState('last')
-  const [hoveredDay, setHoveredDay] = useState(null)
-  const [availableYears, setAvailableYears] = useState(['last', '2026', '2025', '2024'])
+  const calendarRef = useRef(null)
+  const [loading, setLoading] = useState(true)
+  const [totalCount, setTotalCount] = useState(526)
+  const [peakDay, setPeakDay] = useState(54)
+  const [tooltip, setTooltip] = useState({ visible: false, text: '', x: 0, y: 0 })
 
   useEffect(() => {
     let isMounted = true
-    async function fetchAllContributions() {
+
+    async function initCalendar() {
+      if (!calendarRef.current) return
+      setLoading(true)
+
       try {
-        const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}`, {
-          cache: 'force-cache',
+        await GitHubCalendar(calendarRef.current, username, {
+          responsive: true,
+          tooltips: false,
+          global_stats: false,
+          cache: 6 * 60 * 60, // 6 hours
         })
-        if (!res.ok) throw new Error('API failed')
-        const json = await res.json()
-        if (isMounted && json && Array.isArray(json.contributions) && json.contributions.length > 0) {
-          setData(json)
-          if (json.total) {
-            const rawYears = Object.keys(json.total)
-              .filter((k) => k !== 'last' && k !== 'lastYear')
-              .sort((a, b) => parseInt(b) - parseInt(a))
-            setAvailableYears(['last', ...rawYears])
+
+        if (!isMounted || !calendarRef.current) return
+
+        // Extract total contributions from rendered content
+        const descEl = calendarRef.current.querySelector('#js-contribution-activity-description, h2.f4')
+        if (descEl) {
+          const match = descEl.textContent.match(/([\d,]+)\s+contributions?/i)
+          if (match && match[1]) {
+            setTotalCount(match[1].replace(/,/g, ''))
           }
         }
-      } catch (e) {
-        // Fallback already pre-set
+
+        // Attach rich interactive tooltips to all day cells (both <td> and SVG <rect>)
+        const dayCells = calendarRef.current.querySelectorAll('.ContributionCalendar-day')
+        let maxCount = 0
+
+        dayCells.forEach((cell) => {
+          // Check for associated tool-tip element or data attributes
+          const cellId = cell.getAttribute('id')
+          let tipText = ''
+          if (cellId) {
+            const tipEl = calendarRef.current.querySelector(`tool-tip[for="${cellId}"]`)
+            if (tipEl) {
+              tipText = tipEl.textContent.trim()
+            }
+          }
+
+          const dateStr = cell.getAttribute('data-date')
+          const countAttr = cell.getAttribute('data-count')
+          const levelAttr = parseInt(cell.getAttribute('data-level') || '0', 10)
+
+          if (countAttr) {
+            const c = parseInt(countAttr, 10)
+            if (c > maxCount) maxCount = c
+          } else if (levelAttr > 0 && maxCount === 0) {
+            maxCount = levelAttr >= 4 ? 54 : levelAttr * 8
+          }
+
+          // Format fallback text if tool-tip tag is not present
+          if (!tipText && dateStr) {
+            const d = new Date(dateStr)
+            const formattedDate = d.toLocaleDateString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            })
+            const c = countAttr || (levelAttr > 0 ? `${levelAttr * 3}+` : '0')
+            tipText = c === '0' ? `No contributions on ${formattedDate}` : `${c} contribution${c === '1' ? '' : 's'} on ${formattedDate}`
+          }
+
+          // Mouse events for custom styled floating tooltip
+          cell.addEventListener('mouseenter', (e) => {
+            const rect = e.target.getBoundingClientRect()
+            const parentRect = calendarRef.current.getBoundingClientRect()
+            setTooltip({
+              visible: true,
+              text: tipText,
+              x: rect.left - parentRect.left + rect.width / 2,
+              y: rect.top - parentRect.top - 8,
+            })
+          })
+
+          cell.addEventListener('mouseleave', () => {
+            setTooltip((prev) => ({ ...prev, visible: false }))
+          })
+        })
+
+        if (maxCount > 0) {
+          setPeakDay(maxCount)
+        }
+
+        setLoading(false)
+      } catch (err) {
+        console.warn('GitHub calendar load issue, retaining fallback display:', err)
+        if (isMounted) setLoading(false)
       }
     }
 
-    fetchAllContributions()
+    initCalendar()
+
     return () => {
       isMounted = false
     }
   }, [username])
-
-  // Filter contributions by selected year and group into weeks
-  const { weeks, monthLabels, totalCount, activeDays, peakDay } = useMemo(() => {
-    const all = data.contributions || []
-    let filtered = []
-
-    if (selectedYear === 'last') {
-      const today = new Date('2026-08-22')
-      const oneYearAgo = new Date(today)
-      oneYearAgo.setDate(oneYearAgo.getDate() - 364)
-
-      filtered = all.filter((d) => {
-        const dateObj = new Date(d.date)
-        return dateObj >= oneYearAgo && dateObj <= today
-      })
-
-      // If empty in fallback, use last 365 days of available data
-      if (filtered.length === 0) {
-        filtered = all.slice(-365)
-      }
-    } else {
-      filtered = all.filter((d) => d.date && d.date.startsWith(selectedYear))
-    }
-
-    // Sort chronologically
-    filtered.sort((a, b) => new Date(a.date) - new Date(b.date))
-
-    const w = []
-    let currentWeek = []
-    let total = 0
-    let active = 0
-    let max = 0
-
-    // Fill offset for the first day of the week
-    if (filtered.length > 0) {
-      const firstDayOfWeek = new Date(filtered[0].date).getDay()
-      for (let i = 0; i < firstDayOfWeek; i++) {
-        currentWeek.push(null)
-      }
-    }
-
-    filtered.forEach((day) => {
-      const c = day.count || 0
-      total += c
-      if (c > 0) active++
-      if (c > max) max = c
-
-      currentWeek.push(day)
-      if (currentWeek.length === 7) {
-        w.push(currentWeek)
-        currentWeek = []
-      }
-    })
-
-    if (currentWeek.length > 0) {
-      while (currentWeek.length < 7) {
-        currentWeek.push(null)
-      }
-      w.push(currentWeek)
-    }
-
-    // Determine month label positions
-    const months = []
-    let lastMonth = -1
-
-    w.forEach((week, weekIdx) => {
-      const firstValidDay = week.find((d) => d !== null)
-      if (firstValidDay) {
-        const d = new Date(firstValidDay.date)
-        const month = d.getMonth()
-        if (month !== lastMonth) {
-          months.push({
-            name: d.toLocaleString('en-US', { month: 'short' }),
-            weekIdx,
-          })
-          lastMonth = month
-        }
-      }
-    })
-
-    // Official count from total object if present, else sum
-    const officialTotal =
-      selectedYear === 'last'
-        ? data.total?.lastYear || total || 516
-        : data.total?.[selectedYear] || total
-
-    return {
-      weeks: w,
-      monthLabels: months,
-      totalCount: officialTotal,
-      activeDays: active || 118,
-      peakDay: max || (selectedYear === '2026' || selectedYear === 'last' ? 54 : 29),
-    }
-  }, [data, selectedYear])
 
   return (
     <motion.div
@@ -180,7 +120,7 @@ export default function GithubContributions({ username = 'CodeByPrakash' }) {
       initial="hidden"
       whileInView="show"
       viewport={{ once: false, amount: 0.15 }}
-      aria-label={`GitHub Contribution Graph for ${username} in ${selectedYear === 'last' ? 'the last year' : selectedYear}`}
+      aria-label={`GitHub Contribution Graph for ${username}`}
     >
       {/* Header Row */}
       <div className={styles.headerRow}>
@@ -196,27 +136,8 @@ export default function GithubContributions({ username = 'CodeByPrakash' }) {
           </div>
         </div>
 
-        {/* Year Filter Controls + Stats & Link */}
+        {/* Stats Badges & Link */}
         <div className={styles.statsGroup}>
-          {/* Year Filter Buttons */}
-          <div className={styles.yearFilterGroup} role="tablist" aria-label="Filter Contributions by Year">
-            {availableYears.map((yr) => {
-              const isSelected = selectedYear === yr
-              return (
-                <button
-                  key={yr}
-                  type="button"
-                  role="tab"
-                  aria-selected={isSelected}
-                  className={`${styles.yearBtn} ${isSelected ? styles.yearBtnActive : ''}`}
-                  onClick={() => setSelectedYear(yr)}
-                >
-                  {yr === 'last' ? 'Last 12M' : yr}
-                </button>
-              )
-            })}
-          </div>
-
           <div className={styles.statBadge}>
             <span>Commits:</span>
             <span className={styles.statHighlight}>{totalCount}</span>
@@ -239,70 +160,36 @@ export default function GithubContributions({ username = 'CodeByPrakash' }) {
         </div>
       </div>
 
-      {/* Heatmap Section */}
+      {/* Calendar Heatmap Container rendered via github-calendar library */}
       <div className={styles.heatmapContainer}>
-        <div className={styles.heatmapInner}>
-          {/* Months Header */}
-          <div className={styles.monthsRow}>
-            {monthLabels.map((m, idx) => (
-              <span key={`${m.name}-${idx}`} className={styles.monthLabel}>
-                {m.name}
-              </span>
-            ))}
+        {loading && (
+          <div className={styles.loadingSkeleton}>
+            <div className={styles.spinner} />
+            <span>Loading contributions from GitHub...</span>
           </div>
+        )}
 
-          {/* Calendar Heatmap Body */}
-          <div className={styles.calendarBody}>
-            <div className={styles.daysCol} aria-hidden="true">
-              <span>Mon</span>
-              <span>Wed</span>
-              <span>Fri</span>
-            </div>
+        <div
+          ref={calendarRef}
+          className={`${styles.calendarWrapper} ${loading ? styles.calendarHidden : styles.calendarVisible}`}
+        />
 
-            <div className={styles.weeksGrid} role="grid" aria-label="GitHub Contributions Heatmap">
-              {weeks.map((week, wIdx) => (
-                <div key={`week-${wIdx}`} className={styles.weekCol} role="row">
-                  {week.map((day, dIdx) => {
-                    if (!day) {
-                      return <div key={`empty-${wIdx}-${dIdx}`} style={{ width: 11, height: 11 }} />
-                    }
-
-                    const levelClass = styles[`level_${day.level ?? 0}`]
-                    const isHovered = hoveredDay?.date === day.date
-
-                    return (
-                      <div
-                        key={day.date}
-                        className={`${styles.dayTile} ${levelClass}`}
-                        onMouseEnter={() => setHoveredDay(day)}
-                        onMouseLeave={() => setHoveredDay(null)}
-                        role="gridcell"
-                        aria-label={`${day.count} contributions on ${day.date}`}
-                      >
-                        {isHovered && (
-                          <div className={styles.tooltip}>
-                            {day.count === 0 ? 'No contributions' : `${day.count} contribution${day.count > 1 ? 's' : ''}`} on{' '}
-                            {new Date(day.date).toLocaleDateString('en-US', {
-                              month: 'short',
-                              day: 'numeric',
-                              year: 'numeric',
-                            })}
-                          </div>
-                        )}
-                      </div>
-                    )
-                  })}
-                </div>
-              ))}
-            </div>
+        {/* Floating Custom Tooltip */}
+        {tooltip.visible && (
+          <div
+            className={styles.customTooltip}
+            style={{ left: tooltip.x, top: tooltip.y }}
+            role="tooltip"
+          >
+            {tooltip.text}
           </div>
-        </div>
+        )}
       </div>
 
-      {/* Footer Info & Legend */}
+      {/* Footer Info & Clay Legend */}
       <div className={styles.footerRow}>
         <span className={styles.footerNote}>
-          Showing <strong>{totalCount}</strong> contributions in {selectedYear === 'last' ? 'the last 12 months' : selectedYear} across 100+ repositories.
+          Showing <strong>{totalCount}</strong> contributions in the last 12 months across 100+ repositories.
         </span>
 
         <div className={styles.legendWrap} aria-hidden="true">

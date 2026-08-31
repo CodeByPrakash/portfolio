@@ -1,4 +1,6 @@
 import { ImageResponse } from 'next/og'
+import fs from 'node:fs'
+import path from 'node:path'
 import { BLOG_POSTS } from '../../../data/blogPosts'
 
 export const alt = 'Om Prakash Behera — Technical Article Preview'
@@ -8,15 +10,41 @@ export const size = {
 }
 export const contentType = 'image/png'
 
+// Category color mappings
+const CATEGORY_COLORS = {
+  'Artificial Intelligence': { bg: 'rgba(255, 107, 0, 0.18)', border: '#FF6B00', text: '#FF8C33' },
+  'Computer Vision': { bg: 'rgba(16, 185, 129, 0.18)', border: '#10B981', text: '#34D399' },
+  'Systems': { bg: 'rgba(139, 92, 246, 0.18)', border: '#8B5CF6', text: '#A78BFA' },
+  'Web Development': { bg: 'rgba(59, 130, 246, 0.18)', border: '#3B82F6', text: '#60A5FA' },
+  'Security & Infrastructure': { bg: 'rgba(239, 68, 68, 0.18)', border: '#EF4444', text: '#F87171' },
+}
+
 export default async function Image({ params }) {
   const { slug } = await params
   const post = BLOG_POSTS.find((p) => p.slug === slug) || {
     title: 'Technical Article Deep Dive',
-    category: 'Engineering',
+    excerpt: 'Comprehensive engineering article and architecture breakdown by Om Prakash Behera.',
+    category: 'Artificial Intelligence',
     date: '2026',
     readTime: '7 min read',
-    tags: ['AI', 'Engineering'],
+    tags: ['AI', 'Engineering', 'FullStack'],
   }
+
+  // Load avatar image as base64 data URI for 100% reliable offline / build-time rendering in Satori
+  let avatarDataUri = ''
+  try {
+    const avatarPath = path.join(process.cwd(), 'public', 'omprakash.png')
+    if (fs.existsSync(avatarPath)) {
+      const avatarBuffer = fs.readFileSync(avatarPath)
+      avatarDataUri = `data:image/png;base64,${avatarBuffer.toString('base64')}`
+    }
+  } catch (e) {
+    // Fallback to absolute URL if filesystem read fails
+    avatarDataUri = 'https://omprakashbehera.me/omprakash.png'
+  }
+
+  const catStyle = CATEGORY_COLORS[post.category] || CATEGORY_COLORS['Artificial Intelligence']
+  const wordCount = post.content ? post.content.split(/\s+/).length + post.title.split(/\s+/).length : 1200
 
   return new ImageResponse(
     (
@@ -27,8 +55,8 @@ export default async function Image({ params }) {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          padding: '60px 70px',
-          background: 'linear-gradient(135deg, #090B0E 0%, #151921 50%, #0D1117 100%)',
+          padding: '54px 64px',
+          background: 'linear-gradient(135deg, #090B0E 0%, #12161F 45%, #0B0E14 100%)',
           color: '#ffffff',
           fontFamily: 'sans-serif',
           position: 'relative',
@@ -40,25 +68,25 @@ export default async function Image({ params }) {
             position: 'absolute',
             top: '-100px',
             right: '-100px',
-            width: '450px',
-            height: '450px',
+            width: '500px',
+            height: '500px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(255, 107, 0, 0.25) 0%, rgba(255, 107, 0, 0) 70%)',
+            background: 'radial-gradient(circle, rgba(255, 107, 0, 0.28) 0%, rgba(255, 107, 0, 0) 70%)',
           }}
         />
         <div
           style={{
             position: 'absolute',
             bottom: '-120px',
-            left: '300px',
-            width: '400px',
-            height: '400px',
+            left: '250px',
+            width: '450px',
+            height: '450px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, rgba(168, 85, 247, 0) 70%)',
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.22) 0%, rgba(59, 130, 246, 0) 70%)',
           }}
         />
 
-        {/* Top Bar: Brand & Category Badge */}
+        {/* Top Bar: Author Avatar, Identity & Category Badge */}
         <div
           style={{
             display: 'flex',
@@ -67,67 +95,87 @@ export default async function Image({ params }) {
             zIndex: 2,
           }}
         >
+          {/* Author Identity with Photo */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '14px',
+              gap: '16px',
             }}
           >
-            <div
-              style={{
-                width: '42px',
-                height: '42px',
-                borderRadius: '10px',
-                background: '#FF6B00',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 800,
-                fontSize: '18px',
-                color: '#ffffff',
-                letterSpacing: '1px',
-              }}
-            >
-              OPB
-            </div>
+            {avatarDataUri ? (
+              <img
+                src={avatarDataUri}
+                alt="Om Prakash Behera"
+                width="64"
+                height="64"
+                style={{
+                  width: '64px',
+                  height: '64px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  border: '2.5px solid #FF6B00',
+                  boxShadow: '0 0 16px rgba(255, 107, 0, 0.5)',
+                }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '50%',
+                  background: '#FF6B00',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 800,
+                  fontSize: '20px',
+                  color: '#ffffff',
+                }}
+              >
+                OPB
+              </div>
+            )}
+
             <div
               style={{
                 display: 'flex',
                 flexDirection: 'column',
+                gap: '2px',
               }}
             >
               <span
                 style={{
-                  fontSize: '18px',
-                  fontWeight: 700,
-                  letterSpacing: '1px',
+                  fontSize: '22px',
+                  fontWeight: 800,
+                  letterSpacing: '0.5px',
                   color: '#ffffff',
                 }}
               >
-                OMPRAKASH BEHERA
+                Om Prakash Behera
               </span>
               <span
                 style={{
                   fontSize: '13px',
                   color: '#9CA3AF',
-                  letterSpacing: '0.5px',
+                  letterSpacing: '0.3px',
                 }}
               >
-                CodeByPrakash • Engineering Deep Dive
+                BTech CSE @ GCEK • Full-Stack &amp; AI Developer (@CodeByPrakash)
               </span>
             </div>
           </div>
 
+          {/* Category Pill */}
           <div
             style={{
-              padding: '8px 20px',
+              padding: '8px 22px',
               borderRadius: '9999px',
-              background: 'rgba(255, 107, 0, 0.15)',
-              border: '1.5px solid rgba(255, 107, 0, 0.4)',
-              color: '#FF8C33',
-              fontSize: '16px',
-              fontWeight: 700,
+              background: catStyle.bg,
+              border: `1.5px solid ${catStyle.border}`,
+              color: catStyle.text,
+              fontSize: '15px',
+              fontWeight: 800,
               textTransform: 'uppercase',
               letterSpacing: '1px',
             }}
@@ -136,54 +184,69 @@ export default async function Image({ params }) {
           </div>
         </div>
 
-        {/* Center: Article Title */}
+        {/* Center: Article Title & Excerpt */}
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '16px',
+            gap: '14px',
             zIndex: 2,
-            maxWidth: '1060px',
+            maxWidth: '1070px',
           }}
         >
           <h1
             style={{
-              fontSize: post.title.length > 60 ? '42px' : '48px',
-              fontWeight: 800,
-              lineHeight: 1.22,
+              fontSize: post.title.length > 55 ? '40px' : '46px',
+              fontWeight: 900,
+              lineHeight: 1.2,
               color: '#F9FAFB',
               margin: 0,
-              letterSpacing: '-0.02em',
+              letterSpacing: '-0.025em',
             }}
           >
             {post.title}
           </h1>
 
+          <p
+            style={{
+              fontSize: '18px',
+              color: '#D1D5DB',
+              lineHeight: 1.45,
+              margin: 0,
+              maxWidth: '1000px',
+            }}
+          >
+            {post.excerpt}
+          </p>
+
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '16px',
-              fontSize: '17px',
+              gap: '14px',
+              fontSize: '15px',
               color: '#9CA3AF',
+              marginTop: '4px',
             }}
           >
             <span>{post.date}</span>
             <span>•</span>
             <span>{post.readTime}</span>
             <span>•</span>
-            <span>omprakashbehera.me</span>
+            <span>{wordCount.toLocaleString()} words</span>
+            <span>•</span>
+            <span style={{ color: '#FF8C33' }}>omprakashbehera.me</span>
           </div>
         </div>
 
-        {/* Bottom Bar: Tags & Author Footer */}
+        {/* Bottom Bar: Tags & Read CTA */}
         <div
           style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-            paddingTop: '20px',
+            borderTop: '1px solid rgba(255, 255, 255, 0.12)',
+            paddingTop: '18px',
             zIndex: 2,
           }}
         >
@@ -199,10 +262,11 @@ export default async function Image({ params }) {
                 style={{
                   padding: '6px 14px',
                   borderRadius: '8px',
-                  background: 'rgba(255, 255, 255, 0.06)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  border: '1px solid rgba(255, 255, 255, 0.14)',
                   fontSize: '14px',
-                  color: '#D1D5DB',
+                  color: '#E5E7EB',
+                  fontWeight: 600,
                 }}
               >
                 #{tag}
@@ -217,7 +281,7 @@ export default async function Image({ params }) {
               gap: '8px',
               color: '#FF6B00',
               fontSize: '16px',
-              fontWeight: 600,
+              fontWeight: 700,
             }}
           >
             <span>Read on omprakashbehera.me</span>

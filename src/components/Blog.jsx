@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { fadeIn, staggerContainer } from '../utils/motion'
+import ShareButton from './ShareButton'
 import { BLOG_POSTS } from '../data/blogPosts'
 import styles from './Blog.module.css'
 
@@ -337,21 +338,31 @@ export default function Blog({ isStandalone = false }) {
 
                 <div className={styles.cardFoot}>
                   <div className={styles.tagsList}>
-                    {post.tags.slice(0, 3).map((tag) => (
+                    {post.tags.slice(0, 2).map((tag) => (
                       <span key={tag} className={styles.tagItem}>
                         #{tag}
                       </span>
                     ))}
                   </div>
 
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className={styles.readBtn}
-                    aria-label={`Read article: ${post.title}`}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    Read Article <span>↗</span>
-                  </Link>
+                  <div className={styles.cardActions}>
+                    <ShareButton
+                      url={`/blog/${post.slug}`}
+                      title={post.title}
+                      excerpt={post.excerpt}
+                      category={post.category}
+                      variant="compact"
+                    />
+
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className={styles.readBtn}
+                      aria-label={`Read article: ${post.title}`}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Read Article <span>↗</span>
+                    </Link>
+                  </div>
                 </div>
               </motion.article>
             ))
@@ -504,6 +515,13 @@ export default function Blog({ isStandalone = false }) {
                 >
                   Close Reader
                 </button>
+                <ShareButton
+                  url={`/blog/${selectedPost.slug}`}
+                  title={selectedPost.title}
+                  excerpt={selectedPost.excerpt}
+                  category={selectedPost.category}
+                  variant="full"
+                />
                 <Link
                   href={`/blog/${selectedPost.slug}`}
                   className={styles.modalFullPageBtn}

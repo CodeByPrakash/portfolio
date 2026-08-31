@@ -98,12 +98,12 @@ function MilestoneCard({ m, active, isCurrent, touchRef, onClick }) {
             background: active ? `var(--${m.color})` : 'var(--bg-secondary)',
             borderColor: active ? 'var(--text-primary)' : 'var(--border-light)',
             boxShadow: active
-              ? `0 0 0 4px var(--${m.color}-pale), 0 2px 8px rgba(0,0,0,0.12)`
+              ? `0 0 0 5px var(--${m.color}-pale), 0 3px 10px rgba(0,0,0,0.15)`
               : 'none',
           }}
         >
           {isCurrent && <span className={styles.currentPing} style={{ backgroundColor: `var(--${m.color})` }} />}
-          <span className={styles.touchInnerDot} style={{ background: active ? 'var(--text-primary)' : 'var(--border)' }} />
+          <span className={styles.touchInnerDot} style={{ background: active ? '#FFFFFF' : 'var(--border)' }} />
         </div>
       </div>
 
@@ -113,7 +113,7 @@ function MilestoneCard({ m, active, isCurrent, touchRef, onClick }) {
         style={{
           borderColor: active ? `var(--${m.color})` : 'var(--border)',
           boxShadow: isCurrent
-            ? `0 8px 24px rgba(0,0,0,0.08), 0 0 0 2px var(--${m.color})`
+            ? `0 12px 32px rgba(0,0,0,0.09), 0 0 0 2px var(--${m.color})`
             : active
               ? 'var(--shadow-md)'
               : 'none',
@@ -122,7 +122,7 @@ function MilestoneCard({ m, active, isCurrent, touchRef, onClick }) {
         <div className={styles.cardHeader}>
           <span className={styles.year}>{m.year}</span>
           <span className={`${styles.statusBadge} ${styles[`badge_${m.color}`]}`}>
-            {isCurrent ? '✦ CURRENT' : active ? '✓ PASSED' : `STEP ${m.step}`}
+            {isCurrent ? '✦ ACTIVE CHAPTER' : active ? '✓ PASSED' : `STAGE ${m.step}`}
           </span>
         </div>
         <h3 className={styles.cardTitle}>{m.title}</h3>
@@ -152,7 +152,7 @@ export default function Journey() {
     offset: ['start 75%', 'end 25%'],
   })
 
-  // Calculate SVG Path connecting all milestone touch points with curly S-curves
+  // Calculate mathematically smooth C1-continuous cubic Bézier S-curves connecting all milestones
   const updateCurve = useCallback(() => {
     if (!containerRef.current) return
 
@@ -178,61 +178,57 @@ export default function Journey() {
       .filter(Boolean)
 
     if (points.length < 2) {
-      // Fallback straight path if points not yet rendered
       setCurlyPathD(`M ${width / 2} 0 L ${width / 2} ${height}`)
       return
     }
 
     const isMobile = width < 768
-    const startX = isMobile ? points[0].x : width / 2
-    const startY = Math.max(0, points[0].y - 70)
+    const startX = points[0].x
+    const startY = Math.max(0, points[0].y - 80)
 
     let d = `M ${startX} ${startY}`
 
-    // Lead-in curve to first point
-    if (isMobile) {
-      d += ` Q ${startX} ${(startY + points[0].y) / 2}, ${points[0].x} ${points[0].y}`
-    } else {
-      const midY0 = (startY + points[0].y) / 2
-      d += ` C ${startX} ${midY0}, ${points[0].x} ${midY0}, ${points[0].x} ${points[0].y}`
-    }
+    // 1. Lead-in curve to first milestone
+    const midY0 = (startY + points[0].y) / 2
+    d += ` C ${startX} ${midY0}, ${points[0].x} ${midY0}, ${points[0].x} ${points[0].y}`
 
-    // Winding curly curves between each consecutive pair of milestones
+    // 2. Fluid, professional harmonic S-curves connecting milestones
     for (let i = 0; i < points.length - 1; i++) {
       const p1 = points[i]
       const p2 = points[i + 1]
       const dy = p2.y - p1.y
-      const dx = p2.x - p1.x
 
       if (isMobile) {
-        // Playful wavy curly descent down the mobile margin track
-        const waveOffset = (i % 2 === 0 ? 28 : -28)
-        const cp1x = p1.x + waveOffset
+        // Subtle, elegant vertical breathing curve along mobile spine
+        const waveX = (i % 2 === 0 ? 8 : -8)
+        const cp1x = p1.x + waveX
         const cp1y = p1.y + dy * 0.35
-        const cp2x = p2.x - waveOffset
+        const cp2x = p2.x - waveX
         const cp2y = p2.y - dy * 0.35
         d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`
       } else {
-        // Desktop alternating left-to-right curly serpentine S-curves
-        // Calculate dynamic wave excursions to produce a lively energetic curve
-        const waveX = Math.abs(dx) > 20 ? dx * 0.35 : 70 * (i % 2 === 0 ? 1 : -1)
-        const cp1x = p1.x + (p1.side === 'left' ? -waveX * 0.6 : waveX * 0.6)
-        const cp1y = p1.y + dy * 0.45
-        const cp2x = p2.x + (p2.side === 'left' ? -waveX * 0.6 : waveX * 0.6)
-        const cp2y = p2.y - dy * 0.45
+        // Desktop: Harmonic wave weaving gracefully through the central timeline
+        // Curves arc gently outwards towards the milestone's card side and ease back into the node
+        const curveSign = p1.side === 'left' ? -1 : 1
+        const waveAmp = Math.min(width * 0.085, 75) // Adaptive proportional wave amplitude
+
+        // Control point 1 exits p1 with outward curve tension
+        const cp1x = p1.x + curveSign * waveAmp
+        const cp1y = p1.y + dy * 0.38
+
+        // Control point 2 enters p2 smoothly in alignment with incoming tangent
+        const cp2x = p2.x - curveSign * waveAmp
+        const cp2y = p2.y - dy * 0.38
+
         d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`
       }
     }
 
-    // Lead-out tail with arrow flourish
+    // 3. Lead-out tail at the bottom
     const lastP = points[points.length - 1]
-    const tailY = Math.min(height, lastP.y + 80)
-    if (isMobile) {
-      d += ` Q ${lastP.x} ${lastP.y + 40}, ${lastP.x} ${tailY}`
-    } else {
-      const tailX = width / 2
-      d += ` C ${lastP.x} ${lastP.y + 40}, ${tailX} ${lastP.y + 50}, ${tailX} ${tailY}`
-    }
+    const tailY = Math.min(height, lastP.y + 90)
+    const midTailY = (lastP.y + tailY) / 2
+    d += ` C ${lastP.x} ${midTailY}, ${lastP.x} ${midTailY}, ${lastP.x} ${tailY}`
 
     setCurlyPathD(d)
   }, [])
@@ -257,7 +253,7 @@ export default function Journey() {
     }
   }, [updateCurve])
 
-  // Track arrow position and angle dynamically as user scrolls
+  // Track arrow position and tangent angle dynamically as user scrolls
   useMotionValueEvent(scrollYProgress, 'change', (v) => {
     if (!pathRef.current) return
 
@@ -268,7 +264,7 @@ export default function Journey() {
     const pt = pathRef.current.getPointAtLength(curLen)
 
     // Calculate tangent angle for directional arrow orientation
-    const delta = 4
+    const delta = 3
     const ptNext = pathRef.current.getPointAtLength(Math.min(curLen + delta, totalLen))
     const angleRad = Math.atan2(ptNext.y - pt.y, ptNext.x - pt.x)
     const angleDeg = angleRad * (180 / Math.PI)
@@ -290,7 +286,7 @@ export default function Journey() {
         if (el) {
           const r = el.getBoundingClientRect()
           const nodeY = r.top - containerRect.top + r.height / 2
-          if (pt.y >= nodeY - 24) {
+          if (pt.y >= nodeY - 20) {
             reached = idx + 1
             curIdx = idx
           }
@@ -329,7 +325,7 @@ export default function Journey() {
           </div>
 
           {/* Current Step Tracker Display */}
-          <motion.div className={styles.stepTracker} variants={fadeIn('left', 0.2)}>
+          {/* <motion.div className={styles.stepTracker} variants={fadeIn('left', 0.2)}>
             <div className={styles.trackerBadge}>
               <span className={styles.trackerDot} />
               <span className={styles.trackerLabel}>ACTIVE CHAPTER</span>
@@ -341,15 +337,15 @@ export default function Journey() {
               <span className={styles.trackerYear}>{milestones[currentStepIdx]?.year}</span>
             </div>
             <span className={styles.trackerTitle}>{milestones[currentStepIdx]?.title}</span>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         <motion.p className={styles.sub} variants={fadeIn('up', 0.1)}>
-          Scroll to trace the journey — follow the curly arrow as it navigates through milestones from my
+          Scroll to trace the journey — follow the navigational energy beam as it flows through milestones from my
           first lines of code to building production AI systems.
         </motion.p>
 
-        {/* Timeline Container with Dynamic Curly SVG & Arrow Layer */}
+        {/* Timeline Container with Layered Roadbed & Glowing Beam */}
         <div className={styles.timelineContainer} ref={containerRef}>
           {/* Background Floating Geometric Shapes */}
           <motion.div
@@ -368,7 +364,7 @@ export default function Journey() {
             transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
           />
 
-          {/* Curly SVG Path & Moving Arrow Layer */}
+          {/* SVG Roadbed & Connector Layer */}
           <svg
             className={styles.curlySvg}
             width={svgSize.width}
@@ -377,31 +373,53 @@ export default function Journey() {
             fill="none"
           >
             <defs>
-              {/* Dynamic Gradient for the Active Journey Path */}
-              <linearGradient id="curlyJourneyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#3B5FCF" />
-                <stop offset="20%" stopColor="#FF6B00" />
-                <stop offset="40%" stopColor="#2DB77B" />
-                <stop offset="60%" stopColor="#7C3AED" />
-                <stop offset="80%" stopColor="#E53E3E" />
+              {/* Vibrant Multi-stop Linear Gradient */}
+              <linearGradient id="journeyBeamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#3B82F6" />
+                <stop offset="22%" stopColor="#FF6B00" />
+                <stop offset="45%" stopColor="#10B981" />
+                <stop offset="68%" stopColor="#8B5CF6" />
+                <stop offset="88%" stopColor="#EF4444" />
                 <stop offset="100%" stopColor="#FF6B00" />
               </linearGradient>
 
-              {/* Subtle Filter for Traveling Arrow */}
-              <filter id="arrowDropGlow" x="-50%" y="-50%" width="200%" height="200%">
-                <feDropShadow dx="0" dy="2" stdDeviation="2.5" floodColor="#FF6B00" floodOpacity="0.25" />
+              {/* Roadbed Ambient Glow Filter */}
+              <filter id="roadAuraGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="6" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+
+              {/* Beacon Shadow */}
+              <filter id="beaconGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#FF6B00" floodOpacity="0.45" />
               </filter>
             </defs>
 
-            {/* 1. Background Dotted Curly Guide Track */}
+            {/* Layer 1: Ambient Road Glow Aura */}
             {curlyPathD && (
               <path
                 d={curlyPathD}
-                className={styles.pathGuide}
+                className={styles.pathGlow}
               />
             )}
 
-            {/* 2. Active Scrolling Filled Curly Path (Driven by Framer Motion) */}
+            {/* Layer 2: Roadbed Base Conduit Track */}
+            {curlyPathD && (
+              <path
+                d={curlyPathD}
+                className={styles.pathRoadbed}
+              />
+            )}
+
+            {/* Layer 3: Dashed Highway Centerline Track */}
+            {curlyPathD && (
+              <path
+                d={curlyPathD}
+                className={styles.pathDashes}
+              />
+            )}
+
+            {/* Layer 4: Active Scroll Flow Beam */}
             {curlyPathD && (
               <motion.path
                 ref={pathRef}
@@ -413,39 +431,39 @@ export default function Journey() {
               />
             )}
 
-            {/* 3. The Animated Moving Curly Arrow Marker */}
+            {/* Layer 5: Traveling Navigation Beacon */}
             {arrowState.visible && (
               <g
-                className={styles.travelingArrowGroup}
+                className={styles.travelingBeaconGroup}
                 transform={`translate(${arrowState.x}, ${arrowState.y}) rotate(${arrowState.angle})`}
-                filter="url(#arrowDropGlow)"
+                filter="url(#beaconGlow)"
               >
-                {/* Pulsing Outer Energy Wave */}
-                <circle r="14" className={styles.arrowPulseCircle} />
+                {/* Outer Energy Halo */}
+                <circle r="16" className={styles.beaconPulseRing} />
 
-                {/* Arrow Head Core Disc */}
-                <circle r="8" className={styles.arrowCenterDisc} />
+                {/* Inner Core Disc */}
+                <circle r="9" className={styles.beaconCenterDisc} />
 
-                {/* Stylized Sharp Arrow Head */}
+                {/* Directional Chevron Pointer */}
                 <path
-                  d="M -5 -6 L 10 0 L -5 6 L -2 0 Z"
-                  className={styles.arrowHeadPath}
+                  d="M -3 -4.5 L 4 0 L -3 4.5"
+                  className={styles.beaconChevron}
                 />
               </g>
             )}
           </svg>
 
-          {/* Floating Floating Step Tooltip above Arrow */}
+          {/* Floating dynamic year tag following the beacon */}
           {arrowState.visible && (
             <div
               className={styles.floatingArrowTag}
               style={{
                 left: `${arrowState.x}px`,
-                top: `${arrowState.y - 34}px`,
+                top: `${arrowState.y - 38}px`,
               }}
             >
               <span>{milestones[currentStepIdx]?.year}</span>
-              <span className={styles.arrowTagArrow}>▶</span>
+              <span className={styles.arrowTagArrow}>●</span>
             </div>
           )}
 

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import ShareButton from '../../../components/ShareButton'
 import { BLOG_POSTS } from '../../../data/blogPosts'
 import { getBlogPostSeo } from '../../../utils/seoKeywords'
 import styles from './ArticleView.module.css'
@@ -353,12 +354,16 @@ export default async function BlogPostPage({ params }) {
     <>
       {/* Dynamic Server-Rendered JSON-LD for Crawlers & Discover */}
       <script
+        id="article-schema-ldjson"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        suppressHydrationWarning
       />
       <script
+        id="breadcrumb-schema-ldjson"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        suppressHydrationWarning
       />
 
       <Navbar />
@@ -414,6 +419,13 @@ export default async function BlogPostPage({ params }) {
                 </div>
 
                 <div className={styles.authorActions}>
+                  <ShareButton
+                    url={`/blog/${post.slug}`}
+                    title={post.title}
+                    excerpt={post.excerpt}
+                    category={post.category}
+                    variant="full"
+                  />
                   <a
                     href="https://github.com/CodeByPrakash"
                     target="_blank"
@@ -527,6 +539,13 @@ export default async function BlogPostPage({ params }) {
                 <Link href="/blog" className={styles.backBtn}>
                   ← Back to All Articles
                 </Link>
+                <ShareButton
+                  url={`/blog/${post.slug}`}
+                  title={post.title}
+                  excerpt={post.excerpt}
+                  category={post.category}
+                  variant="full"
+                />
                 <Link href="/#projects" className={styles.socialBtn}>
                   Explore Featured Projects ↗
                 </Link>

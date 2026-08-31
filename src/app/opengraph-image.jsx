@@ -1,4 +1,6 @@
 import { ImageResponse } from 'next/og'
+import fs from 'node:fs'
+import path from 'node:path'
 
 export const alt = 'Om Prakash Behera — Computer Science Engineer & Full-Stack AI Developer'
 export const size = {
@@ -8,6 +10,18 @@ export const size = {
 export const contentType = 'image/png'
 
 export default async function Image() {
+  // Load avatar image as base64 data URI
+  let avatarDataUri = ''
+  try {
+    const avatarPath = path.join(process.cwd(), 'public', 'omprakash.png')
+    if (fs.existsSync(avatarPath)) {
+      const avatarBuffer = fs.readFileSync(avatarPath)
+      avatarDataUri = `data:image/png;base64,${avatarBuffer.toString('base64')}`
+    }
+  } catch (e) {
+    avatarDataUri = 'https://omprakashbehera.me/omprakash.png'
+  }
+
   return new ImageResponse(
     (
       <div
@@ -17,8 +31,8 @@ export default async function Image() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          padding: '60px 70px',
-          background: 'linear-gradient(135deg, #090B0E 0%, #151921 50%, #0D1117 100%)',
+          padding: '54px 64px',
+          background: 'linear-gradient(135deg, #090B0E 0%, #12161F 45%, #0B0E14 100%)',
           color: '#ffffff',
           fontFamily: 'sans-serif',
           position: 'relative',
@@ -48,7 +62,7 @@ export default async function Image() {
           }}
         />
 
-        {/* Top Bar */}
+        {/* Top Bar: Author Photo & Badge */}
         <div
           style={{
             display: 'flex',
@@ -61,41 +75,59 @@ export default async function Image() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '14px',
+              gap: '16px',
             }}
           >
-            <div
-              style={{
-                width: '46px',
-                height: '46px',
-                borderRadius: '12px',
-                background: '#FF6B00',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 800,
-                fontSize: '20px',
-                color: '#ffffff',
-                letterSpacing: '1px',
-              }}
-            >
-              OPB
-            </div>
+            {avatarDataUri ? (
+              <img
+                src={avatarDataUri}
+                alt="Om Prakash Behera"
+                width="64"
+                height="64"
+                style={{
+                  width: '64px',
+                  height: '64px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  border: '2.5px solid #FF6B00',
+                  boxShadow: '0 0 16px rgba(255, 107, 0, 0.5)',
+                }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '50%',
+                  background: '#FF6B00',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 800,
+                  fontSize: '20px',
+                  color: '#ffffff',
+                }}
+              >
+                OPB
+              </div>
+            )}
+
             <div
               style={{
                 display: 'flex',
                 flexDirection: 'column',
+                gap: '2px',
               }}
             >
               <span
                 style={{
-                  fontSize: '20px',
-                  fontWeight: 700,
-                  letterSpacing: '1.2px',
+                  fontSize: '22px',
+                  fontWeight: 800,
+                  letterSpacing: '0.5px',
                   color: '#ffffff',
                 }}
               >
-                OMPRAKASH BEHERA
+                Om Prakash Behera
               </span>
               <span
                 style={{
@@ -130,7 +162,7 @@ export default async function Image() {
                 background: '#4ADE80',
               }}
             />
-            <span>Available for Work &amp; Collaborations</span>
+            <span>Open for Work &amp; Collabs</span>
           </div>
         </div>
 
@@ -146,7 +178,7 @@ export default async function Image() {
           <span
             style={{
               fontSize: '18px',
-              fontWeight: 600,
+              fontWeight: 700,
               color: '#FF6B00',
               textTransform: 'uppercase',
               letterSpacing: '2px',
@@ -156,12 +188,12 @@ export default async function Image() {
           </span>
           <h1
             style={{
-              fontSize: '52px',
-              fontWeight: 800,
+              fontSize: '50px',
+              fontWeight: 900,
               lineHeight: 1.15,
               color: '#F9FAFB',
               margin: 0,
-              letterSpacing: '-0.02em',
+              letterSpacing: '-0.025em',
               maxWidth: '960px',
             }}
           >
@@ -169,7 +201,7 @@ export default async function Image() {
           </h1>
           <p
             style={{
-              fontSize: '20px',
+              fontSize: '18px',
               color: '#9CA3AF',
               margin: 0,
               maxWidth: '850px',
@@ -186,8 +218,8 @@ export default async function Image() {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-            paddingTop: '20px',
+            borderTop: '1px solid rgba(255, 255, 255, 0.12)',
+            paddingTop: '18px',
             zIndex: 2,
           }}
         >
@@ -199,7 +231,7 @@ export default async function Image() {
           >
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <span style={{ fontSize: '24px', fontWeight: 800, color: '#FF6B00' }}>3+</span>
-              <span style={{ fontSize: '13px', color: '#9CA3AF' }}>Years Experience</span>
+              <span style={{ fontSize: '13px', color: '#9CA3AF' }}>Years Exp</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <span style={{ fontSize: '24px', fontWeight: 800, color: '#3B82F6' }}>30+</span>
@@ -219,7 +251,7 @@ export default async function Image() {
             style={{
               fontSize: '18px',
               fontWeight: 700,
-              color: '#F3F4F6',
+              color: '#FF8C33',
             }}
           >
             https://omprakashbehera.me

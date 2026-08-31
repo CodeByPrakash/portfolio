@@ -136,54 +136,99 @@
   overflow: visible;
 }
 
-/* Background Dotted Curly Guide Track */
-.pathGuide {
-  stroke: var(--border-light);
-  stroke-width: 2.5;
-  stroke-dasharray: 8 8;
-  fill: none;
-  stroke-linecap: round;
-  opacity: 0.85;
-}
+/* ─── Layered Roadbed & Curved Conduit Track ─────── */
 
-/* Active Gradient Curly Path (Animated with Scroll) */
-.pathActive {
-  stroke: url(#curlyJourneyGrad);
-  stroke-width: 4.5;
+/* 1. Ambient Glow Underlay */
+.pathGlow {
+  stroke: var(--accent);
+  stroke-width: 16;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  filter: drop-shadow(0 2px 4px rgba(255, 107, 0, 0.25));
+  opacity: 0.08;
+  filter: blur(8px);
 }
 
-/* ─── Traveling Arrowhead & Energy Marker ───────── */
-.travelingArrowGroup {
+:global([data-theme="dark"]) .pathGlow {
+  stroke: var(--accent);
+  opacity: 0.15;
+  filter: blur(10px);
+}
+
+/* 2. Solid Roadbed Conduit */
+.pathRoadbed {
+  stroke: var(--bg-secondary);
+  stroke-width: 8;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.95;
+}
+
+:global([data-theme="dark"]) .pathRoadbed {
+  stroke: #182218;
+}
+
+/* 3. Centerline Highway Dashes */
+.pathDashes {
+  stroke: var(--border);
+  stroke-width: 2;
+  stroke-dasharray: 6 9;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.85;
+}
+
+:global([data-theme="dark"]) .pathDashes {
+  stroke: #2e442e;
+  opacity: 0.9;
+}
+
+/* 4. Active Traveling Gradient Stream (Driven by Scroll) */
+.pathActive {
+  stroke: url(#journeyBeamGrad);
+  stroke-width: 4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 6px rgba(255, 107, 0, 0.45));
+}
+
+/* ─── Traveling Navigation Beacon ───────────────── */
+.travelingBeaconGroup {
   pointer-events: none;
   transition: transform 0.05s linear;
 }
 
-.arrowPulseCircle {
-  fill: rgba(255, 107, 0, 0.22);
+.beaconPulseRing {
+  fill: rgba(255, 107, 0, 0.18);
   stroke: var(--accent);
   stroke-width: 1.5;
-  animation: pulseArrowCircle 1.6s infinite ease-out;
+  animation: pulseBeaconRing 1.8s infinite cubic-bezier(0.25, 1, 0.5, 1);
   transform-origin: center;
 }
 
-.arrowCenterDisc {
-  fill: var(--text-primary);
+.beaconCenterDisc {
+  fill: #FFFFFF;
   stroke: var(--accent);
-  stroke-width: 2;
+  stroke-width: 3;
 }
 
-.arrowHeadPath {
-  fill: var(--accent);
-  stroke: var(--border);
-  stroke-width: 1.5;
+:global([data-theme="dark"]) .beaconCenterDisc {
+  fill: #0F172A;
+  stroke: var(--accent);
+}
+
+.beaconChevron {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-/* Floating dynamic year tag following arrow */
+/* Floating dynamic year tag following beacon */
 .floatingArrowTag {
   position: absolute;
   transform: translate(-50%, -100%);
@@ -197,19 +242,26 @@
   border-radius: 999px;
   border: 1.5px solid var(--accent);
   box-shadow: 
-    0 4px 14px rgba(0, 0, 0, 0.35),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.1);
+    0 6px 18px rgba(0, 0, 0, 0.18),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   pointer-events: none;
   z-index: 10;
   transition: opacity 0.2s ease;
 }
 
+:global([data-theme="dark"]) .floatingArrowTag {
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.6),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.08);
+}
+
 .arrowTagArrow {
   color: var(--accent);
   font-size: 0.55rem;
+  animation: pulseDot 1.2s infinite ease-in-out;
 }
 
 /* ─── Milestones Stack ─────────────────────────── */
@@ -267,16 +319,16 @@
 
 /* ─── Connector Touch Point — 3D Tactile Disc ─── */
 .touchPoint {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   display: grid;
   place-items: center;
   z-index: 4;
 }
 
 .touchRect {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   border: 2px solid var(--border);
   background: var(--bg-secondary);
@@ -549,17 +601,17 @@
   }
 }
 
-@keyframes pulseArrowCircle {
+@keyframes pulseBeaconRing {
   0% {
-    r: 8px;
+    r: 10px;
     opacity: 0.9;
   }
-  70% {
-    r: 18px;
-    opacity: 0.15;
+  60% {
+    r: 22px;
+    opacity: 0.2;
   }
   100% {
-    r: 22px;
+    r: 28px;
     opacity: 0;
   }
 }
@@ -648,18 +700,9 @@
     padding: 1.25rem 1rem;
     border-radius: 18px;
   }
-
-  .role {
-    font-size: 1.15rem;
-  }
-
-  .desc {
-    font-size: 0.85rem;
-    line-height: 1.5;
-  }
 }
 
-/* ─── Dark Mode 3D Clay Polish (ZERO White Glow) ─── */
+/* ─── Dark Mode 3D Clay Polish ─────────────────── */
 :global([data-theme="dark"]) .card,
 :global([data-theme="dark"]) .stepTracker {
   box-shadow: 
@@ -678,25 +721,6 @@
     inset -1px -1px 3px rgba(0, 0, 0, 0.4);
 }
 
-:global([data-theme="dark"]) .touchPoint,
-:global([data-theme="dark"]) .stepSegment,
-:global([data-theme="dark"]) .typePill,
-:global([data-theme="dark"]) .tag {
-  box-shadow: 
-    inset 2px 2px 5px rgba(0, 0, 0, 0.4),
-    inset -1px -1px 2px rgba(255, 255, 255, 0.04),
-    0 2px 6px rgba(0, 0, 0, 0.25);
-}
-
-:global([data-theme="dark"]) .clayShapeOrb,
-:global([data-theme="dark"]) .clayShapeCone,
-:global([data-theme="dark"]) .clayShapeTorus,
-:global([data-theme="dark"]) .clayShapePyramid {
-  box-shadow: 
-    0 14px 34px rgba(0, 0, 0, 0.65),
-    0 4px 10px rgba(0, 0, 0, 0.4),
-    inset 1.5px 1.5px 4px rgba(255, 255, 255, 0.12),
-    inset -3px -3px 8px rgba(0, 0, 0, 0.55);
-  opacity: 0.75;
-  filter: brightness(0.92);
+:global([data-theme="dark"]) .touchPoint {
+  box-shadow: none;
 }

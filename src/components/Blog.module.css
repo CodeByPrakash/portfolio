@@ -300,6 +300,12 @@
     inset 1px 1px 2px rgba(255,255,255,0.8);
 }
 
+.cardActions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
 .readBtn {
   font-family: var(--font-body);
   font-size: .88rem;
