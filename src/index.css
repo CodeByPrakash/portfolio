@@ -105,7 +105,6 @@
 }
 
 /* ─── Dark Mode Card & 3D Clay Refinements (Precise container targeting) ─── */
-[data-theme="dark"] article,
 [data-theme="dark"] [class*="_card_"],
 [data-theme="dark"] [class*="_cardTop_"],
 [data-theme="dark"] [class*="_stepCard_"],
@@ -137,7 +136,11 @@
     inset -1px -1px 3px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* Explicitly ensure flex/grid wrappers in dark mode never render box-shadow or background */
+/* Explicitly ensure article content containers and flex/grid wrappers in dark mode never render box-shadow or background */
+[data-theme="dark"] article,
+[data-theme="dark"] [class*="_content_"],
+[data-theme="dark"] [class*="articleBody"],
+[data-theme="dark"] [class*="articleContent"],
 [data-theme="dark"] [class*="rightCol"],
 [data-theme="dark"] [class*="RightCol"],
 [data-theme="dark"] [class*="cellRow"],
@@ -361,17 +364,26 @@ a {
   border-color: var(--border);
 }
 
+.btn-primary,
 .btn-accent {
-  background: var(--accent);
-  color: #1A1A1A;
+  background: linear-gradient(135deg, #FF6B00 0%, #FF8533 100%);
+  color: #FFFFFF !important;
   font-weight: 700;
+  border-color: var(--border);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-primary:hover,
+.btn-accent:hover {
+  background: linear-gradient(135deg, #FF7A1A 0%, #FFA04D 100%);
+  color: #FFFFFF !important;
+  transform: translateY(-3px) scale(1.02);
   border-color: var(--border);
 }
 
-.btn-accent:hover {
-  background: var(--ink);
-  color: #FFFFFF;
-  border-color: var(--border);
+.btn-primary:active,
+.btn-accent:active {
+  transform: translateY(0) scale(0.97);
 }
 
 /* ─── Dark Mode Buttons Refinements ───────────────────── */
@@ -383,7 +395,7 @@ a {
 
 [data-theme="dark"] .btn:hover {
   background: var(--accent);
-  color: #1A1A1A;
+  color: #FFFFFF;
   border-color: var(--accent);
 }
 
@@ -401,17 +413,18 @@ a {
 
 [data-theme="dark"] .btn-primary,
 [data-theme="dark"] .btn-accent {
-  background: var(--accent);
-  color: #1A1A1A;
+  background: linear-gradient(135deg, #FF6B00 0%, #FF8533 100%);
+  color: #FFFFFF !important;
   font-weight: 700;
-  border-color: var(--accent);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 [data-theme="dark"] .btn-primary:hover,
 [data-theme="dark"] .btn-accent:hover {
-  background: #FF8533;
-  color: #1A1A1A;
-  border-color: #FF8533;
+  background: linear-gradient(135deg, #FF8024 0%, #FFA25E 100%);
+  color: #FFFFFF !important;
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* ─── Card Base ───────────────────────────────────────── */

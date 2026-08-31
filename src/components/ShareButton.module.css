@@ -300,3 +300,17 @@
   color: #000000;
   border-color: #FFFFFF;
 }
+
+/* ─── Mobile Viewport Guards ──────────────────── */
+@media (max-width: 480px) {
+  .sharePopover {
+    width: min(270px, calc(100vw - 2rem));
+    right: 0;
+    left: auto;
+  }
+
+  .shareTriggerFull {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.78rem;
+  }
+}

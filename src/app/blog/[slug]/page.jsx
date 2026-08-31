@@ -184,7 +184,35 @@ export async function generateMetadata({ params }) {
   }
 }
 
-// Inline Markdown Parser helper for high-performance server rendering
+// Clean LaTeX math to readable Unicode text
+function formatMathString(mathStr) {
+  if (!mathStr) return ''
+  return mathStr
+    .replace(/\\text\{([^}]+)\}/g, '$1')
+    .replace(/\\le/g, '≤')
+    .replace(/\\ge/g, '≥')
+    .replace(/\\delta/g, 'δ')
+    .replace(/\\alpha/g, 'α')
+    .replace(/\\cdot/g, ' · ')
+    .replace(/\\sqrt\{([^}]+)\}/g, '√($1)')
+    .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '($1 / $2)')
+    .replace(/\\%/g, '%')
+    .replace(/T_0/g, 'T₀')
+    .replace(/x_8/g, 'x₈')
+    .replace(/x_4/g, 'x₄')
+    .replace(/y_8/g, 'y₈')
+    .replace(/y_4/g, 'y₄')
+    .replace(/L_8/g, 'L₈')
+    .replace(/L_4/g, 'L₄')
+    .replace(/P_\{?smoothed\}?/g, 'P_smoothed')
+    .replace(/P_\{?current\}?/g, 'P_current')
+    .replace(/P_\{?previous\}?/g, 'P_previous')
+    .replace(/\\([a-zA-Z]+)/g, '$1')
+    .replace(/[{}]/g, '')
+    .trim()
+}
+
+// Inline Markdown & Math Parser helper for high-performance server rendering
 function renderMarkdownContent(content) {
   if (!content) return null
 
@@ -202,8 +230,8 @@ function renderMarkdownContent(content) {
     let parts = []
     let lastIndex = 0
 
-    // Combine matches for links, bold text, and inline code
-    const tokenRegex = /(\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*|`([^`]+)`)/g
+    // Combine matches for math ($...$ / $$...$$), links, bold, and inline code
+    const tokenRegex = /(\$\$([^\$]+)\$\$|\$([^\$]+)\$|\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*|`([^`]+)`)/g
     let match
 
     while ((match = tokenRegex.exec(text)) !== null) {
@@ -211,26 +239,40 @@ function renderMarkdownContent(content) {
         parts.push(text.substring(lastIndex, match.index))
       }
 
-      if (match[0].startsWith('[')) {
+      if (match[0].startsWith('$$')) {
+        // Block math
+        parts.push(
+          <span key={`math-block-${match.index}`} className={styles.mathBlock}>
+            {formatMathString(match[2])}
+          </span>
+        )
+      } else if (match[0].startsWith('$')) {
+        // Inline math
+        parts.push(
+          <span key={`math-inline-${match.index}`} className={styles.mathInline}>
+            {formatMathString(match[3])}
+          </span>
+        )
+      } else if (match[0].startsWith('[')) {
         // Link
         parts.push(
           <a
             key={`link-${match.index}`}
-            href={match[3]}
-            target={match[3].startsWith('http') ? '_blank' : undefined}
-            rel={match[3].startsWith('http') ? 'noopener noreferrer' : undefined}
+            href={match[5]}
+            target={match[5].startsWith('http') ? '_blank' : undefined}
+            rel={match[5].startsWith('http') ? 'noopener noreferrer' : undefined}
           >
-            {match[2]}
+            {match[4]}
           </a>
         )
       } else if (match[0].startsWith('**')) {
         // Bold
-        parts.push(<strong key={`bold-${match.index}`}>{match[4]}</strong>)
+        parts.push(<strong key={`bold-${match.index}`}>{renderInline(match[6])}</strong>)
       } else if (match[0].startsWith('`')) {
         // Inline code
         parts.push(
           <code key={`code-${match.index}`} className={styles.inlineCode}>
-            {match[5]}
+            {match[7]}
           </code>
         )
       }
@@ -299,12 +341,24 @@ function renderMarkdownContent(content) {
       return
     }
 
-    if (line.startsWith('- ')) {
+    // Display standalone math blocks ($$ ... $$)
+    if (line.startsWith('$$') && line.endsWith('$$') && line.length > 4) {
+      flushList()
+      const mathContent = line.slice(2, -2).trim()
+      elements.push(
+        <div key={`mathblock-${idx}`} className={styles.mathBlockWrapper}>
+          <span className={styles.mathBlock}>{formatMathString(mathContent)}</span>
+        </div>
+      )
+      return
+    }
+
+    if (line.startsWith('- ') || line.startsWith('* ')) {
       if (listType && listType !== 'bullet') {
         flushList()
       }
       listType = 'bullet'
-      listBuffer.push(line.replace('- ', ''))
+      listBuffer.push(line.replace(/^[-*]\s+/, ''))
       return
     }
 
@@ -313,7 +367,7 @@ function renderMarkdownContent(content) {
         flushList()
       }
       listType = 'number'
-      listBuffer.push(line.replace(/^\d+\.\s/, ''))
+      listBuffer.push(line.replace(/^\d+\.\s+/, ''))
       return
     }
 
@@ -321,19 +375,35 @@ function renderMarkdownContent(content) {
     flushList()
 
     if (line.startsWith('#### ')) {
-      elements.push(<h4 key={`h4-${idx}`}>{renderInline(line.replace('#### ', ''))}</h4>)
+      elements.push(
+        <h4 key={`h4-${idx}`} className={styles.articleH4}>
+          {renderInline(line.replace('#### ', ''))}
+        </h4>
+      )
     } else if (line.startsWith('### ')) {
-      elements.push(<h3 key={`h3-${idx}`}>{renderInline(line.replace('### ', ''))}</h3>)
+      elements.push(
+        <h3 key={`h3-${idx}`} className={styles.articleH3}>
+          {renderInline(line.replace('### ', ''))}
+        </h3>
+      )
     } else if (line.startsWith('## ')) {
-      elements.push(<h2 key={`h2-${idx}`}>{renderInline(line.replace('## ', ''))}</h2>)
+      elements.push(
+        <h2 key={`h2-${idx}`} className={styles.articleH2}>
+          {renderInline(line.replace('## ', ''))}
+        </h2>
+      )
     } else if (line.startsWith('> ')) {
       elements.push(
-        <blockquote key={`quote-${idx}`}>
+        <blockquote key={`quote-${idx}`} className={styles.articleQuote}>
           {renderInline(line.replace('> ', ''))}
         </blockquote>
       )
     } else if (line.trim().length > 0) {
-      elements.push(<p key={`p-${idx}`}>{renderInline(line)}</p>)
+      elements.push(
+        <p key={`p-${idx}`} className={styles.articleP}>
+          {renderInline(line)}
+        </p>
+      )
     }
   })
 
@@ -527,7 +597,7 @@ export default async function BlogPostPage({ params }) {
                     variant="full"
                   />
                   <a
-                    href="https://github.com/CodeByPrakash"
+                    href="https://github.com/CodeByPrakash/ISRO_PS07"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.socialBtn}

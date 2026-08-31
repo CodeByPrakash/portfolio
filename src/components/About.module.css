@@ -11,10 +11,23 @@
   font-size: clamp(2.6rem, 5.5vw, 4.8rem);
   font-weight: 400;
   letter-spacing: .02em;
-  line-height: 1;
+  line-height: 1.08;
   text-transform: uppercase;
+  margin-top: 0.75rem;
   margin-bottom: 2.2rem;
-  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 52%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  width: fit-content;
+}
+
+:global([data-theme="dark"]) .sectionHeading {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FF8024 50%, #A78BFA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ─── 3D Clay Bento Grid ──────────────────────── */
@@ -110,6 +123,15 @@
     inset 2px 2px 4px rgba(0,0,0,0.05),
     inset -1.5px -1.5px 3px rgba(255,255,255,0.9);
   flex-shrink: 0;
+}
+
+.ctaBtn {
+  margin-top: auto;
+  align-self: flex-start;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.65rem;
+  border-radius: 14px;
+  text-decoration: none;
 }
 
 /* ─── Row 1: Right Column with Separate Cards ─────────── */

@@ -84,7 +84,7 @@ export default function About() {
                 </div>
               ))}
             </div>
-            <a href="#contact" className="btn btn-accent" style={{ marginTop: 'auto', alignSelf: 'flex-start' }}>
+            <a href="#contact" className={`btn btn-accent ${styles.ctaBtn}`}>
               Let's work together ↗
             </a>
           </motion.div>
