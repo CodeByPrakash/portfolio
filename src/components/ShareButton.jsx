@@ -28,11 +28,11 @@ export default function ShareButton({
     e.preventDefault()
     e.stopPropagation()
 
+    // Web Share API: passing url directly triggers rich native OpenGraph attachment in iOS & Android
     if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
       try {
         await navigator.share({
           title,
-          text: excerpt || shareText,
           url: shareUrl,
         })
         return
@@ -75,18 +75,17 @@ export default function ShareButton({
     }
   }
 
-  // Social share URLs
-  const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-    `"${title}" by @quasar_om #CodeByPrakash\n\n${shareUrl}`
-  )}`
+  // Social share URLs engineered for instantaneous OpenGraph card generation
+  const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+    shareUrl
+  )}&text=${encodeURIComponent(title)}&via=quasar_om&hashtags=CodeByPrakash,Engineering`
 
   const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
     shareUrl
   )}`
 
-  const whatsappShareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
-    `*${title}*\n${excerpt ? `${excerpt}\n\n` : ''}Read here: ${shareUrl}`
-  )}`
+  // WhatsApp: Sending the direct URL triggers WhatsApp's OpenGraph scraper to fetch og:image & og:title
+  const whatsappShareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareUrl)}`
 
   const telegramShareUrl = `https://t.me/share/url?url=${encodeURIComponent(
     shareUrl

@@ -15,6 +15,91 @@ export async function generateStaticParams() {
   }))
 }
 
+// Optimized SEO & Social Metadata Mappings (Strictly within Google / 𝕏 / LinkedIn character limits)
+const OPTIMIZED_BLOG_META = {
+  'isro-bah-2026-exoplanet-detection-ml': {
+    pageTitle: 'ISRO BAH 2026 Exoplanet ML | Om Prakash Behera',
+    socialTitle: 'Exoplanet Detection with ML: ISRO BAH 2026',
+    metaDesc: 'Machine learning transit photometry and 1D-CNN pipeline for ISRO Bharatiya Antariksh Hackathon PS-07 exoplanet detection.',
+    socialDesc: '1D-CNN & Random Forest transit photometry pipeline for ISRO BAH 2026 exoplanet detection.',
+  },
+  'sih-2025-attendtrue-analytic': {
+    pageTitle: 'AttendTrue Analytics SIH 2025 | Om Prakash Behera',
+    socialTitle: 'AttendTrue Analytics: AI Attendance (SIH 2025)',
+    metaDesc: 'Smart India Hackathon 2025 AI attendance platform with computer vision biometric verification and student analytics by Team CodeNova.',
+    socialDesc: 'Computer vision attendance verification and student behavioral analytics for SIH 2025.',
+  },
+  'mrs-ai-medicine-recommender-system': {
+    pageTitle: 'MRS-AI Medicine Recommender | Om Prakash Behera',
+    socialTitle: 'MRS-AI: 1st Prize ML Medicine Recommender',
+    metaDesc: '1st Prize winning ML medicine recommender system with multi-class SVC disease classification and verified precautions.',
+    socialDesc: '1st Prize winning ML healthcare engine with 98.2% SVC disease classification and clinical regimens.',
+  },
+  'ar-hand-gesture-canvas-mediapipe': {
+    pageTitle: 'AR Hand Gesture Canvas | Om Prakash Behera',
+    socialTitle: 'Touchless AR Hand Gesture Canvas (MediaPipe)',
+    metaDesc: 'Zero-latency virtual air-drawing canvas with Google MediaPipe 21-landmark hand tracking and Bézier curves in React.',
+    socialDesc: 'Real-time touchless air-drawing canvas using MediaPipe hand tracking and React.',
+  },
+  'unvoiced-sign-language-translator-opencv': {
+    pageTitle: 'UnVoiced ISL AI Translator | Om Prakash Behera',
+    socialTitle: 'UnVoiced: Indian Sign Language AI Translator',
+    metaDesc: 'Real-time Indian Sign Language translator converting hand gestures to speech using OpenCV contour analysis and AI.',
+    socialDesc: 'Convert Indian Sign Language gestures into real-time speech and text with OpenCV.',
+  },
+  'stadium-ai-vision-crowd-density-monitoring': {
+    pageTitle: 'StadiumAI Crowd Monitoring | Om Prakash Behera',
+    socialTitle: 'StadiumAI: YOLOv8 Crowd Density Monitoring',
+    metaDesc: 'Real-time pedestrian crowd density monitoring system with homography bird’s-eye mapping and YOLOv8 surge tracking.',
+    socialDesc: 'Real-time pedestrian surge tracking and bird’s-eye crowd density mapping with YOLOv8.',
+  },
+  'local-llm-chatui-ollama-execution-layer': {
+    pageTitle: 'Local LLM ChatUI with Ollama | Om Prakash Behera',
+    socialTitle: 'Local LLM ChatUI: Private AI Execution',
+    metaDesc: 'High-throughput private LLM execution interface with GGUF quantization, VRAM layer offloading, and streaming web UI.',
+    socialDesc: 'Private high-speed LLM interface with GGUF quantization and GPU layer offloading.',
+  },
+  'lstm-stock-price-predictor-time-series': {
+    pageTitle: 'LSTM Stock Price Predictor | Om Prakash Behera',
+    socialTitle: 'Stock Price Prediction with Bi-LSTM Networks',
+    metaDesc: 'Bidirectional LSTM neural network for financial time-series forecasting with technical indicators (RSI, MACD).',
+    socialDesc: 'Financial time-series forecasting using Bidirectional LSTM neural networks and MACD.',
+  },
+  'smartplacement-campus-readiness-predictor': {
+    pageTitle: 'SmartPlacement AI Predictor | Om Prakash Behera',
+    socialTitle: 'SmartPlacement: Campus Readiness AI Engine',
+    metaDesc: 'Machine learning readiness engine predicting campus placement probabilities and generating personalized roadmaps.',
+    socialDesc: 'Predict campus placement probabilities and identify student skill gaps with ML.',
+  },
+  'public-dns-switcher-network-orchestration': {
+    pageTitle: 'Public DNS Switcher CLI | Om Prakash Behera',
+    socialTitle: 'Public DNS Switcher: Windows Network Tool',
+    metaDesc: 'Fast Windows network orchestrator for benchmarking DNS server latency and switching DNS via PowerShell netsh.',
+    socialDesc: 'Benchmark DNS latency and switch network adapters instantly with PowerShell.',
+  },
+  'biometric-face-recognition-sqlite-haar': {
+    pageTitle: 'Biometric Face Attendance | Om Prakash Behera',
+    socialTitle: 'Biometric Face Recognition with SQLite & Haar',
+    metaDesc: 'Contactless face recognition attendance system using Haar cascades, 128D deep embeddings, and SQLite database.',
+    socialDesc: 'Contactless attendance verification using Haar cascades, 128D face embeddings, and SQLite.',
+  },
+  'cyberterminal-os-retro-modern-web-os': {
+    pageTitle: 'CyberTerminal OS Web Portfolio | Om Prakash',
+    socialTitle: 'CyberTerminal OS: Retro-Modern CLI Portfolio',
+    metaDesc: 'Retro-modern terminal web OS with interactive BASH console, live HTOP telemetry, and CRT shaders in Next.js.',
+    socialDesc: 'Interactive retro-modern CLI web OS with live BASH terminal and HTOP telemetry.',
+  },
+}
+
+// Smart word-boundary truncation helper
+function trimToLimit(text, limit) {
+  if (!text) return ''
+  if (text.length <= limit) return text
+  const trimmed = text.slice(0, limit - 1)
+  const lastSpace = trimmed.lastIndexOf(' ')
+  return (lastSpace > 15 ? trimmed.slice(0, lastSpace) : trimmed) + '…'
+}
+
 // 2. Dynamic Metadata Generation for Googlebot, Google Discover & Social Networks
 export async function generateMetadata({ params }) {
   const { slug } = await params
@@ -22,7 +107,7 @@ export async function generateMetadata({ params }) {
 
   if (!post) {
     return {
-      title: 'Article Not Found — Om Prakash Behera',
+      title: 'Article Not Found | Om Prakash Behera',
       description: 'The requested technical article could not be found.',
     }
   }
@@ -31,9 +116,23 @@ export async function generateMetadata({ params }) {
   const canonicalUrl = seoData.canonicalUrl
   const ogImageUrl = `https://omprakashbehera.me/blog/${post.slug}/opengraph-image`
 
+  const metaOverride = OPTIMIZED_BLOG_META[post.slug]
+
+  // Google Search Title (Target <= 58 chars)
+  const pageTitle = metaOverride?.pageTitle || trimToLimit(`${post.title} | Om Prakash`, 58)
+  
+  // Google Search Meta Description (Target <= 150 chars)
+  const metaDescription = metaOverride?.metaDesc || trimToLimit(post.excerpt, 150)
+  
+  // Social Title (Target <= 58 chars for 𝕏 / LinkedIn / Facebook / WhatsApp)
+  const socialTitle = metaOverride?.socialTitle || trimToLimit(post.title, 58)
+  
+  // Social Description (Target <= 120 chars for clean mobile social cards)
+  const socialDescription = metaOverride?.socialDesc || trimToLimit(post.excerpt, 120)
+
   return {
-    title: `${post.title} — Om Prakash Behera`,
-    description: post.excerpt,
+    title: pageTitle,
+    description: metaDescription,
     keywords: seoData.keywords,
     authors: [{ name: 'Om Prakash Behera', url: 'https://omprakashbehera.me' }],
     creator: 'Om Prakash Behera',
@@ -53,10 +152,10 @@ export async function generateMetadata({ params }) {
       },
     },
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: socialTitle,
+      description: socialDescription,
       url: canonicalUrl,
-      siteName: 'Om Prakash Behera — Technical Blog',
+      siteName: 'Om Prakash Behera',
       locale: 'en_IN',
       type: 'article',
       publishedTime: new Date(post.date).toISOString(),
@@ -69,14 +168,15 @@ export async function generateMetadata({ params }) {
           url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: `${post.title} — Om Prakash Behera`,
+          alt: `${socialTitle} — Om Prakash Behera`,
+          type: 'image/png',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
+      title: socialTitle,
+      description: socialDescription,
       creator: '@quasar_om',
       site: '@quasar_om',
       images: [ogImageUrl],
