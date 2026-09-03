@@ -597,7 +597,7 @@ export default async function BlogPostPage({ params }) {
                     variant="full"
                   />
                   <a
-                    href="https://github.com/CodeByPrakash/ISRO_PS07"
+                    href="https://github.com/CodeByPrakash/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.socialBtn}
