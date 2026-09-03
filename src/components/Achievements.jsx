@@ -26,6 +26,22 @@ const achievementsList = [
   },
   {
     id: 2,
+    title: '7-Day IDE Bootcamp — IIM Sambalpur',
+    issuer: 'MoE Innovation Cell (MIC), AICTE & IIM Sambalpur',
+    year: '2024',
+    desc: 'Completed the intensive 7-day residential Innovation, Design & Entrepreneurship (IDE) Bootcamp Edition 2 Phase 1 at IIM Sambalpur. Mastered design thinking, BMC business modeling, product prototyping, and venture pitch scaling.',
+    color: 'orange',
+    tags: ['IIM Sambalpur', 'IDE Bootcamp', 'Edition 2 Phase 1', 'Design Thinking', 'Entrepreneurship', 'AICTE & MIC'],
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+        <path d="M9 18h6" />
+        <path d="M10 22h4" />
+      </svg>
+    ),
+  },
+  {
+    id: 3,
     title: 'ISRO BAH 2026 — Exoplanet Detection',
     issuer: 'Bharatiya Antariksh Hackathon — Problem Statement PS-07',
     year: '2026',
@@ -41,7 +57,7 @@ const achievementsList = [
     ),
   },
   {
-    id: 3,
+    id: 4,
     title: 'Smart India Hackathon (SIH) 2025',
     issuer: 'Ministry of Education & AICTE — Team CodeNova',
     year: '2025',
@@ -55,12 +71,12 @@ const achievementsList = [
     ),
   },
   {
-    id: 4,
+    id: 5,
     title: 'B.Tech CSE — Lateral Entry',
     issuer: 'Government College of Engineering, Kalahandi',
     year: '2025 - Present',
     desc: 'Secured admission into B.Tech Computer Science & Engineering at GCEK through state-level Lateral Entry based on academic excellence.',
-    color: 'orange',
+    color: 'red',
     tags: ['Academics', 'B.Tech', 'GCEK', 'CSE'],
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -70,7 +86,7 @@ const achievementsList = [
     ),
   },
   {
-    id: 5,
+    id: 6,
     title: 'Diploma in CSE — Distinction',
     issuer: 'State Council for Technical Education',
     year: '2022 - 2025',
@@ -85,12 +101,12 @@ const achievementsList = [
     ),
   },
   {
-    id: 6,
+    id: 7,
     title: '30+ Open-Source Projects Built',
     issuer: 'GitHub Creator & Open Source Community',
     year: '2023 - 2026',
     desc: 'Engineered and published 30+ public repositories across AI/ML, computer vision, web applications, and system utilities.',
-    color: 'red',
+    color: 'purple',
     tags: ['Open Source', '100+ Repos', 'GitHub', 'Builder'],
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -140,7 +156,7 @@ export default function Achievements() {
             <span className={styles.bannerTag}>*Verified Milestones</span>
             <h3 className={styles.bannerHeadline}>Building with Distinction</h3>
             <p className={styles.bannerDesc}>
-              Combining strong engineering fundamentals with practical project execution.
+              Honored at IIM Sambalpur 7-Day IDE Bootcamp, 1st Prize at YOUTH@2050, ISRO BAH 2026, and Smart India Hackathon.
             </p>
           </div>
           <div className={styles.statRow}>
@@ -149,8 +165,8 @@ export default function Achievements() {
               <span className={styles.statLabel}>GitHub Repos</span>
             </div>
             <div className={styles.statItem}>
-              <span className={styles.statNum}>3+</span>
-              <span className={styles.statLabel}>Years Coding</span>
+              <span className={styles.statNum}>7 Days</span>
+              <span className={styles.statLabel}>IIM Sambalpur</span>
             </div>
             <div className={styles.statItem}>
               <span className={styles.statNum}>B.Tech</span>

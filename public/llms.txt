@@ -30,6 +30,7 @@ Om Prakash Behera is an Indian Computer Science Engineer and Full-Stack Develope
 ## Notable Achievements & Hackathons
 
 - 🥇 **1st Prize Winner (7000 Rs Prize Pool)**: YOUTH@2050 District Level Project Software Exhibition for MRS-AI (AI Medicine Recommender System).
+- 💡 **IIM Sambalpur 7-Day IDE Bootcamp (Edition 2 Phase 1)**: Selected & completed 7-day residential Innovation, Design & Entrepreneurship (IDE) Bootcamp at IIM Sambalpur, organized by MoE Innovation Cell (MIC) & AICTE. Mastered design thinking, prototyping, and investor pitch decks.
 - 🚀 **ISRO BAH 2026 PS-07**: Bharatiya Antariksh Hackathon — Exoplanet Transit Detection using 1D-CNN Deep Learning.
 - 🇮🇳 **Smart India Hackathon (SIH 2025)**: Selected with Team CodeNova for AttendTrue Analytics (AI Smart Attendance & Behavioral Analytics).
 - 🌟 **Diploma CSE Distinction**: Graduated First Class with Distinction from SCTE&VT Odisha.

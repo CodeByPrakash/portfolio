@@ -111,6 +111,15 @@ export default function Hero() {
               </button>
             </div>
 
+            {/* IIM Sambalpur IDE Bootcamp Highlight Badge */}
+            <a href="#achievements" className={styles.highlightBadge} title="View IIM Sambalpur 7-Day IDE Bootcamp Milestone">
+              <span className={styles.highlightBadgeIcon}>✦</span>
+              <span className={styles.highlightBadgeText}>
+                <strong>IIM Sambalpur</strong> 7-Day IDE Bootcamp (Edition 2 Phase 1)
+              </span>
+              <span className={styles.highlightBadgeArrow}>↗</span>
+            </a>
+
             {/* Bold Futuristic Headline */}
             <div className={styles.headlineWrapper}>
               <h1 className={styles.headline}>
@@ -283,15 +292,15 @@ export default function Hero() {
               <span key={i} className={styles.tapeBlock}>
                 <span>AI ENGINEERING</span>
                 <span className={styles.tapeDot}>◆</span>
+                <span>IIM SAMBALPUR IDE BOOTCAMP</span>
+                <span className={styles.tapeDot}>◆</span>
                 <span>FULL STACK</span>
                 <span className={styles.tapeDot}>◆</span>
                 <span>MACHINE LEARNING</span>
                 <span className={styles.tapeDot}>◆</span>
                 <span>SYSTEM DESIGN</span>
                 <span className={styles.tapeDot}>◆</span>
-                <span>CLOUD</span>
-                <span className={styles.tapeDot}>◆</span>
-                <span>COMPUTER SCIENCE</span>
+                <span>YOUTH@2050 1ST PRIZE</span>
                 <span className={styles.tapeDot}>◆</span>
                 <span>30+ PROJECTS</span>
                 <span className={styles.tapeDot}>◆</span>

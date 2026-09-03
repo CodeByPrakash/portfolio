@@ -94,8 +94,7 @@ export default function About() {
               <span className={styles.cellTag}>*About Me</span>
               <p className={styles.cellBody}>
                 My core interests lie in AI, automation, and intelligent system design.
-                I have worked on multi-factor secure attendance systems, face recognition apps,
-                management systems, and AI-driven tools using Python, React, PHP, Flask, SQL, and ML.
+                Completed the 7-Day Residential IDE Bootcamp at <strong>IIM Sambalpur</strong> (MoE &amp; AICTE), and engineered multi-factor secure attendance systems, face recognition apps, and AI tools using Python, React, and ML.
               </p>
             </motion.div>
 

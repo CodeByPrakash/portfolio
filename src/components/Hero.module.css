@@ -133,6 +133,69 @@
   display: block;
 }
 
+/* ─── IIM Sambalpur Milestone Highlight Badge ─────────────────────────────── */
+.highlightBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  text-decoration: none;
+  width: fit-content;
+  box-shadow: 
+    2px 4px 12px rgba(0, 0, 0, 0.04),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.highlightBadge:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 
+    4px 8px 18px rgba(255, 107, 0, 0.15),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.highlightBadgeIcon {
+  color: var(--accent);
+  font-size: 0.85rem;
+  animation: pulseLocation 2s ease-in-out infinite;
+}
+
+.highlightBadgeText {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+}
+
+.highlightBadgeText strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.highlightBadgeArrow {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.highlightBadge:hover .highlightBadgeArrow {
+  transform: translate(2px, -2px);
+}
+
+:global([data-theme="dark"]) .highlightBadge {
+  background: var(--bg-tertiary);
+  border-color: var(--border-light);
+  box-shadow: 
+    0 4px 14px rgba(0, 0, 0, 0.45),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+}
+
 .headlineWrapper {
   margin-top: -0.25rem;
 }

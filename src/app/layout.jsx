@@ -28,7 +28,7 @@ export const metadata = {
   metadataBase: new URL('https://omprakashbehera.me'),
   title: 'Om Prakash Behera — Computer Science Engineer | Full-Stack Developer, AI & Cyber Security',
   description:
-    'Official portfolio of Om Prakash Behera (CodeByPrakash) — Computer Science & Engineering (CSE) student at Government College of Engineering Kalahandi (GCEK), Odisha, India. Diploma in CSE with First Class Distinction. Building AI/ML systems, full-stack web applications, computer vision, and secure architectures. Winner of YOUTH@2050 1st Prize, ISRO BAH 2026 PS-07, SIH 2025 Team CodeNova. 30+ projects, 100+ GitHub repositories.',
+    'Official portfolio of Om Prakash Behera (CodeByPrakash) — Computer Science & Engineering (CSE) student at Government College of Engineering Kalahandi (GCEK), Odisha, India. Diploma in CSE with First Class Distinction. Building AI/ML systems, full-stack web applications, computer vision, and secure architectures. Winner of YOUTH@2050 1st Prize, ISRO BAH 2026 PS-07, SIH 2025 Team CodeNova, IIM Sambalpur 7-Day IDE Bootcamp Edition 2 Phase 1. 30+ projects, 100+ GitHub repositories.',
   keywords: [
     'Om Prakash Behera',
     'OmPrakash Behera',
@@ -45,6 +45,18 @@ export const metadata = {
     'OP Behera',
     'O.P. Behera',
     'OPB',
+    'IIM Sambalpur Boot Camp',
+    'IIM Sambalpur Bootcamp',
+    'iim sambalpur bootcamp',
+    'iim sambalpur boot camp',
+    'IIM Sambalpur IDE Bootcamp',
+    'IDE Bootcamp IIM Sambalpur',
+    'IDE Bootcamp Edition 2 Phase 1',
+    'Innovation Design & Entrepreneurship Bootcamp',
+    'Innovation Design and Entrepreneurship IIM Sambalpur',
+    '7 Days Residential IDE Bootcamp IIM Sambalpur',
+    'AICTE MIC IDE Bootcamp IIM Sambalpur',
+    'MoE Innovation Cell IDE Bootcamp',
     'omprakash gamer',
     'Om Prakash Gamer',
     'OmPrakash Gamer',
@@ -377,6 +389,8 @@ const jsonLd = {
         'PyTorch',
         'Scikit-learn',
         'Pandas',
+        'Innovation, Design & Entrepreneurship (IDE)',
+        'Design Thinking',
       ],
       knowsLanguage: [
         { '@type': 'Language', name: 'English' },
@@ -402,6 +416,16 @@ const jsonLd = {
           recognizedBy: {
             '@type': 'EducationalOrganization',
             name: 'State Council for Technical Education & Vocational Training (SCTE&VT Odisha)',
+          },
+        },
+        {
+          '@type': 'EducationalOccupationalCredential',
+          credentialCategory: 'certificate',
+          name: '7-Day Residential Innovation, Design & Entrepreneurship (IDE) Bootcamp Edition 2 Phase 1',
+          educationalLevel: 'Executive Bootcamp / Professional Training',
+          recognizedBy: {
+            '@type': 'EducationalOrganization',
+            name: 'Indian Institute of Management (IIM) Sambalpur, Ministry of Education Innovation Cell (MIC) & AICTE',
           },
         },
       ],
@@ -440,9 +464,15 @@ const jsonLd = {
           name: 'State Council for Technical Education & Vocational Training (SCTE&VT Odisha)',
           url: 'https://sctevtodisha.nic.in/',
         },
+        {
+          '@type': 'EducationalOrganization',
+          name: 'Indian Institute of Management (IIM) Sambalpur — IDE Bootcamp (MIC & AICTE)',
+          url: 'https://iimsambalpur.ac.in/',
+        },
       ],
       award: [
         '1st Prize with 7000 Rs Prize Pool — YOUTH@2050 District Level Software Exhibition (MRS-AI Medicine Recommender System)',
+        '7-Day Residential IDE Bootcamp (Innovation, Design & Entrepreneurship) Edition 2 Phase 1 — IIM Sambalpur (MoE Innovation Cell & AICTE)',
         'Smart India Hackathon 2025 — Team CodeNova Selection (AttendTrue Analytics)',
         'ISRO BAH 2026 PS-07 — Exoplanet Transit Detection using Machine Learning (1D-CNN)',
         'Diploma in Computer Science Engineering — First Class with Distinction (Honours)',
@@ -733,7 +763,7 @@ const jsonLd = {
           name: "What are Om Prakash Behera's major awards and hackathon achievements?",
           acceptedAnswer: {
             '@type': 'Answer',
-            text: '1) 1st Prize Winner (7000 Rs Prize Pool) at YOUTH@2050 District Level Project Software Exhibition for MRS-AI Medicine Recommender System. 2) Selected for Smart India Hackathon (SIH 2025) Internal Hackathon with Team CodeNova for AttendTrue Analytics. 3) ISRO BAH 2026 PS-07 Participant for Exoplanet Transit Detection using Deep Learning. 4) First Class Honours with Distinction in Diploma CSE. 5) 100+ GitHub repositories milestone.',
+            text: '1) 1st Prize Winner (7000 Rs Prize Pool) at YOUTH@2050 District Level Project Software Exhibition for MRS-AI Medicine Recommender System. 2) Completed 7-Day Residential IDE Bootcamp (Innovation, Design & Entrepreneurship) Edition 2 Phase 1 at IIM Sambalpur organized by MoE Innovation Cell (MIC) and AICTE. 3) Selected for Smart India Hackathon (SIH 2025) Internal Hackathon with Team CodeNova for AttendTrue Analytics. 4) ISRO BAH 2026 PS-07 Participant for Exoplanet Transit Detection using Deep Learning. 5) First Class Honours with Distinction in Diploma CSE. 6) 100+ GitHub repositories milestone.',
           },
         },
         {

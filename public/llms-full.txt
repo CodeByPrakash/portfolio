@@ -10,6 +10,7 @@
 - **Institution**: Government College of Engineering Kalahandi (GCEK), Bhawanipatna, Odisha
 - **Affiliation**: Biju Patnaik University of Technology (BPUT Odisha) & SCTE&VT Odisha
 - **Degree**: Bachelor of Technology in Computer Science & Engineering (BTech CSE, 2025–2028); Diploma in Computer Science & Engineering (Diploma in CSE) with First Class Distinction (2022–2025 from SCTE&VT Odisha).
+- **Key Credentials & Honors**: Winner of 1st Prize (7000 Rs) at YOUTH@2050 Software Expo for MRS-AI; Selected & completed 7-day residential Innovation, Design & Entrepreneurship (IDE) Bootcamp Edition 2 Phase 1 at IIM Sambalpur (joint initiative of MoE Innovation Cell & AICTE); ISRO BAH 2026 PS-07 Participant (Exoplanet Detection 1D-CNN); SIH 2025 Team CodeNova (AttendTrue Analytics).
 - **Core Focus**: Artificial Intelligence, Deep Learning (1D-CNN, LSTM), Computer Vision (MediaPipe, OpenCV, YOLOv8), Full-Stack Web Development (Next.js, React, Node.js, Python), and Cyber Security.
 
 ## 2. Technical Articles Corpus
