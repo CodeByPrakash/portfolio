@@ -12,6 +12,34 @@
  */
 
 export const EASY_WORDS = [
+  // ─── CODEBREAKERS GCEK & HACKVERSE FLAGSHIP TECH FEST ───
+  'CodeBreakers',
+  'CodeBreakers GCEK',
+  'CodeBreakers Kalahandi',
+  'CodeBreakers Government College of Engineering Kalahandi',
+  'Coding Club Of Government College Of Engineering Kalahandi',
+  'Official Coding Club GCEK',
+  'Tech Head at CodeBreakers',
+  'Tech Head CodeBreakers',
+  'Technical Lead CodeBreakers',
+  'CodeBreakers Tech Head',
+  'codebreakersgcek.tech',
+  'https://codebreakersgcek.tech',
+  'codebreakersgcek',
+  'CodeBreakers Leads',
+  'CodeBreakers Executive Council',
+  'HackVerse',
+  'HackVerse 26',
+  'HackVerse CodeBreakers',
+  'hackverse.codebreakersgcek.tech',
+  'https://hackverse.codebreakersgcek.tech',
+  'HackVerse GCEK',
+  'HackVerse Kalahandi',
+  '24H State Hackathon GCEK',
+  'Central and Eastern India Hackathon GCEK',
+  'Om Prakash CodeBreakers',
+  'CodeByPrakash CodeBreakers',
+
   // ─── IIM SAMBALPUR BOOTCAMP & IDE SEARCH COMBINATIONS ───
   'IIM Sambalpur Boot Camp',
   'IIM Sambalpur Bootcamp',
@@ -781,6 +809,17 @@ export const EDUCATION_KEYWORDS = [
 // 3. Professional Titles & Roles
 // Covers both formal titles AND informal terms people actually search
 export const ROLE_KEYWORDS = [
+  // Leadership & Organization Roles
+  'Tech Head at CodeBreakers',
+  'Tech Head CodeBreakers',
+  'Technical Lead CodeBreakers',
+  'Technical Head CodeBreakers GCEK',
+  'CodeBreakers Tech Head',
+  'Technical Lead GCEK',
+  'Coding Club Lead',
+  'Hackathon Organizer',
+  'HackVerse Lead Architect',
+
   // Formal titles
   'Full-Stack Developer',
   'Full Stack Developer',
@@ -1417,6 +1456,9 @@ export const LOCATION_FREELANCE_KEYWORDS = [
 
 // 8. Featured Projects
 export const PROJECT_KEYWORDS = [
+  'HackVerse 26 Portal',
+  'HackVerse CodeBreakers GCEK',
+  'CodeBreakers GCEK Portal',
   'AR Hand Gesture Canvas',
   'MRS-AI Healthcare',
   'Movie Recommender System',
@@ -1438,6 +1480,68 @@ export const PROJECT_KEYWORDS = [
   'SmartPlacement',
   'Biometric Face Attendance',
   'EmoSense Face Emotion Detector',
+]
+
+// 8b. CodeBreakers GCEK & HackVerse Flagship Tech Fest
+export const CODEBREAKERS_KEYWORDS = [
+  'CodeBreakers',
+  'CodeBreakers GCEK',
+  'CodeBreakers Kalahandi',
+  'CodeBreakers GCE Kalahandi',
+  'CodeBreakers Government College of Engineering Kalahandi',
+  'CodeBreakers Coding Club',
+  'Coding Club Of Government College Of Engineering Kalahandi',
+  'Official Coding Club GCEK',
+  'Official Technical Society GCEK',
+  'CodeBreakers Tech Head',
+  'Tech Head at CodeBreakers',
+  'Technical Lead CodeBreakers',
+  'Technical Head CodeBreakers GCEK',
+  'Tech Head CodeBreakers GCEK',
+  'CodeBreakers Leads',
+  'CodeBreakers Executive Council',
+  'CodeBreakers Core Team',
+  'codebreakersgcek.tech',
+  'https://codebreakersgcek.tech',
+  'codebreakersgcek.tech/developers/leads',
+  'codebreakersgcek',
+  'codebreakers',
+  'codebreakers club',
+  'codebreakers gcek tech',
+  'codebreakers technical lead',
+  'codebreakers tech lead',
+  'codebreakers omprakash',
+  'codebreakers omprakash behera',
+  'codebreakers codebyprakash',
+  'omprakash codebreakers',
+  'omprakash behera codebreakers',
+  'codebyprakash codebreakers',
+  'HackVerse',
+  'HackVerse 26',
+  'HackVerse 2026',
+  'HackVerse CodeBreakers',
+  'HackVerse CodeBreakers GCEK',
+  'hackverse.codebreakersgcek.tech',
+  'https://hackverse.codebreakersgcek.tech',
+  'HackVerse GCEK',
+  'HackVerse Kalahandi',
+  'HackVerse Hackathon',
+  'HackVerse State Tech Fest',
+  'Central & Eastern India Hackathon GCEK',
+  'Central and Eastern India Hackathon GCEK',
+  'Flagship 24H State Tech Fest & Hackathon',
+  'Flagship 24H State Hackathon',
+  'GCEK Kalahandi Hackathon',
+  'Bhawanipatna Hackathon',
+  'Odisha State Hackathon 2026',
+  'GCEK Coding Club Kalahandi',
+  'GCEK CodeBreakers',
+  'CodeBreakers INSPRANO',
+  'CodeBreakers UDAAN',
+  'CodeBreakers 9-Lock Challenges',
+  'CodeBreakers CodeChef',
+  'CodeBreakers Ideathon',
+  'CodeBreakers Hack Nova',
 ]
 
 // 9. Long-Tail SEO & Question-Based Keywords
@@ -1571,6 +1675,7 @@ export const LONG_TAIL_KEYWORDS = [
 export const ALL_KEYWORDS = Array.from(
   new Set([
     ...EASY_WORDS,
+    ...CODEBREAKERS_KEYWORDS,
     ...IDENTITY_KEYWORDS,
     ...GAMING_PC_KEYWORDS,
     ...EDUCATION_KEYWORDS,
@@ -1593,6 +1698,7 @@ export const HOME_PAGE_KEYWORDS = ALL_KEYWORDS
 export const PROJECTS_PAGE_KEYWORDS = Array.from(
   new Set([
     ...EASY_WORDS,
+    ...CODEBREAKERS_KEYWORDS,
     ...PROJECT_KEYWORDS,
     ...AI_ML_KEYWORDS,
     ...TECH_STACK_KEYWORDS,
@@ -1606,10 +1712,15 @@ export const PROJECTS_PAGE_KEYWORDS = Array.from(
 export const ABOUT_PAGE_KEYWORDS = Array.from(
   new Set([
     ...EASY_WORDS,
+    ...CODEBREAKERS_KEYWORDS,
     ...IDENTITY_KEYWORDS,
     ...EDUCATION_KEYWORDS,
     ...ROLE_KEYWORDS,
     ...LOCATION_FREELANCE_KEYWORDS,
+    'Tech Head CodeBreakers',
+    'CodeBreakers GCEK Tech Head',
+    'Coding Club Of Government College Of Engineering Kalahandi',
+    'HackVerse Builder',
     'About Om Prakash Behera',
     'Who is Om Prakash Behera',
     'Om Prakash Behera Biography',
@@ -1659,11 +1770,14 @@ export const CONTACT_PAGE_KEYWORDS = Array.from(
 export const BLOG_PAGE_KEYWORDS = Array.from(
   new Set([
     ...EASY_WORDS,
+    ...CODEBREAKERS_KEYWORDS,
     ...AI_ML_KEYWORDS,
     ...TECH_STACK_KEYWORDS,
     ...CS_SECURITY_KEYWORDS,
     'Technical Blog',
     'AI Articles',
+    'CodeBreakers Tech Articles',
+    'HackVerse 26 Architecture',
     'Machine Learning Engineering Blog',
     'Computer Vision Tutorials',
     'MediaPipe Real-Time Canvas',
@@ -1909,6 +2023,28 @@ export const BLOG_POSTS_SEO = {
       'CodeByPrakash.github.io',
     ],
   },
+  'architecting-hackverse-2026-hackathon-platform': {
+    slug: 'architecting-hackverse-2026-hackathon-platform',
+    canonicalUrl: 'https://omprakashbehera.me/blog/architecting-hackverse-2026-hackathon-platform',
+    liveUrl: 'https://hackverse.codebreakersgcek.tech',
+    category: 'Web Architecture',
+    primaryKeywords: [
+      'CodeBreakers',
+      'CodeBreakers GCEK',
+      'HackVerse 26',
+      'hackverse.codebreakersgcek.tech',
+      'codebreakersgcek.tech',
+      'Tech Head at CodeBreakers',
+      'Coding Club Of Government College Of Engineering Kalahandi',
+      'Central and Eastern India Hackathon GCEK',
+      'Flagship 24H State Tech Fest Hackathon',
+      'Hackathon platform Next.js architecture',
+      'problem statement embargo system',
+      'live countdown telemetry',
+      'CodeByPrakash HackVerse',
+      'GCEK Kalahandi Hackathon',
+    ],
+  },
 }
 
 /**
@@ -2029,6 +2165,7 @@ export function formatKeywords(customKeywords = [], includeEasyWords = true) {
 export default {
   EASY_WORDS,
   ALL_KEYWORDS,
+  CODEBREAKERS_KEYWORDS,
   GAMING_PC_KEYWORDS,
   HOME_PAGE_KEYWORDS,
   PROJECTS_PAGE_KEYWORDS,

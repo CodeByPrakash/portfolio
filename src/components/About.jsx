@@ -51,7 +51,7 @@ const highlights = [
 
 export default function About() {
   return (
-    <section id="about" className={styles.about} aria-label="About Om Prakash Behera — Computer Science Engineer, Full-Stack Developer and AI Enthusiast from Odisha, India">
+    <section id="about" className={styles.about} aria-label="About Om Prakash Behera — Tech Head at CodeBreakers, Coding Club of Government College of Engineering Kalahandi, Full-Stack Developer and AI Enthusiast">
       <motion.div
         className="section-wrap"
         variants={staggerContainer(0.1, 0)}
@@ -73,8 +73,7 @@ export default function About() {
             <span className={styles.cellTag}>*Supercharging Ideas into Reality</span>
             <h3 className={styles.cellTitle}>Think, Learn<br />Work..</h3>
             <p className={styles.cellBody}>
-              I am a Computer Science diploma graduate and a hands-on developer who believes in building real,
-              working systems rather than just learning theory.
+              Serving as <strong>Tech Head at CodeBreakers</strong> (<a href="https://codebreakersgcek.tech" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>codebreakersgcek.tech</a>), the official Coding Club of Government College of Engineering Kalahandi. Hands-on system builder and lead architect currently engineering <a href="https://hackverse.codebreakersgcek.tech" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>HackVerse &apos;26</a>.
             </p>
             <div className={styles.bulletList}>
               {highlights.map(h => (
@@ -93,21 +92,21 @@ export default function About() {
             <motion.div className={styles.cellDesc} variants={fadeIn('right', 0.2)}>
               <span className={styles.cellTag}>*About Me</span>
               <p className={styles.cellBody}>
-                My core interests lie in AI, automation, and intelligent system design.
-                Completed the 7-Day Residential IDE Bootcamp at <strong>IIM Sambalpur</strong> (MoE &amp; AICTE), and engineered multi-factor secure attendance systems, face recognition apps, and AI tools using Python, React, and ML.
+                As <strong>Tech Head at CodeBreakers</strong>, I drive engineering roadmaps, conduct technical sprints, and manage digital platforms for institute tech fests and 500+ active student developers.
+                Completed the 7-Day Residential IDE Bootcamp at <strong>IIM Sambalpur</strong> (MoE &amp; AICTE), and engineered full-stack AI, computer vision, and secure system architectures.
               </p>
             </motion.div>
 
             <div className={styles.cellRow}>
               <motion.div className={styles.cellSmall} variants={fadeIn('up', 0.3)}>
-                <span className={styles.cellSmallLabel}>Education</span>
-                <span className={styles.cellSmallValue}>BTech CSE</span>
-                <span className={styles.cellSmallSub}>Computer Science</span>
+                <span className={styles.cellSmallLabel}>Designation</span>
+                <span className={styles.cellSmallValue} style={{ fontSize: '1.05rem', lineHeight: '1.2' }}>Tech Head</span>
+                <span className={styles.cellSmallSub}>CodeBreakers GCEK</span>
               </motion.div>
               <motion.div className={styles.cellSmall} variants={fadeIn('up', 0.35)}>
-                <span className={styles.cellSmallLabel}>Experience</span>
-                <span className={styles.cellSmallValue}>3+ Years</span>
-                <span className={styles.cellSmallSub}>Building & Shipping</span>
+                <span className={styles.cellSmallLabel}>Currently Building</span>
+                <span className={styles.cellSmallValue} style={{ fontSize: '1.05rem', lineHeight: '1.2' }}>HackVerse &apos;26</span>
+                <span className={styles.cellSmallSub}>hackverse.codebreakersgcek.tech</span>
               </motion.div>
             </div>
           </div>
@@ -116,7 +115,7 @@ export default function About() {
           <motion.div className={styles.cellAvatar} variants={fadeIn('up', 0.2)}>
             <Image
               src="/omprakash.webp"
-              alt="Om Prakash Behera - Computer Science Engineer (CSE) and Full-Stack AI Developer"
+              alt="Om Prakash Behera - Tech Head at CodeBreakers GCEK, Computer Science Engineer and Full-Stack AI Developer"
               className={styles.avatarImg}
               width={320}
               height={320}
@@ -126,7 +125,7 @@ export default function About() {
             />
             <div className={styles.avatarMeta}>
               <span className={styles.avatarName}>Om Prakash Behera</span>
-              <span className={styles.avatarRole}>Full-Stack Developer & AI Enthusiast</span>
+              <span className={styles.avatarRole}>Tech Head @ CodeBreakers &amp; Full-Stack AI Dev</span>
             </div>
           </motion.div>
 
@@ -164,8 +163,12 @@ export default function About() {
                   </svg>
                 </span>
                 <div>
-                  <span className={styles.infoLabel}>Status</span>
-                  <span className={styles.infoVal}>Open to freelance</span>
+                  <span className={styles.infoLabel}>Coding Club</span>
+                  <span className={styles.infoVal}>
+                    <a href="https://codebreakersgcek.tech" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                      CodeBreakers GCEK ↗
+                    </a>
+                  </span>
                 </div>
               </div>
               <div className={styles.infoItem}>
@@ -175,8 +178,12 @@ export default function About() {
                   </svg>
                 </span>
                 <div>
-                  <span className={styles.infoLabel}>Currently</span>
-                  <span className={styles.infoVal}>A Student</span>
+                  <span className={styles.infoLabel}>Designation</span>
+                  <span className={styles.infoVal}>
+                    <a href="https://hackverse.codebreakersgcek.tech" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                      Tech Head &bull; HackVerse ↗
+                    </a>
+                  </span>
                 </div>
               </div>
             </div>

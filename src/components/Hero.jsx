@@ -111,14 +111,29 @@ export default function Hero() {
               </button>
             </div>
 
-            {/* IIM Sambalpur IDE Bootcamp Highlight Badge */}
-            <a href="#achievements" className={styles.highlightBadge} title="View IIM Sambalpur 7-Day IDE Bootcamp Milestone">
-              <span className={styles.highlightBadgeIcon}>✦</span>
-              <span className={styles.highlightBadgeText}>
-                <strong>IIM Sambalpur</strong> 7-Day IDE Bootcamp (Edition 2 Phase 1)
-              </span>
-              <span className={styles.highlightBadgeArrow}>↗</span>
-            </a>
+            {/* Badges: Tech Head & IIM Sambalpur Milestone */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.25rem' }}>
+              <a
+                href="https://hackverse.codebreakersgcek.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.highlightBadge}
+                title="Tech Head at CodeBreakers — Building HackVerse '26 Flagship 24H Fest"
+              >
+                <span className={styles.highlightBadgeIcon}>⚡</span>
+                <span className={styles.highlightBadgeText}>
+                  <strong>Tech Head @ CodeBreakers</strong> • Building HackVerse '26
+                </span>
+                <span className={styles.highlightBadgeArrow}>↗</span>
+              </a>
+              <a href="#achievements" className={styles.highlightBadge} title="View IIM Sambalpur 7-Day IDE Bootcamp Milestone">
+                <span className={styles.highlightBadgeIcon}>✦</span>
+                <span className={styles.highlightBadgeText}>
+                  <strong>IIM Sambalpur</strong> IDE Bootcamp
+                </span>
+                <span className={styles.highlightBadgeArrow}>↗</span>
+              </a>
+            </div>
 
             {/* Bold Futuristic Headline */}
             <div className={styles.headlineWrapper}>
@@ -132,7 +147,7 @@ export default function Hero() {
 
             {/* Concise 2-Line Description */}
             <p className={styles.bioText}>
-              Building AI-driven systems and resilient full-stack platforms that solve real-world problems.
+              Tech Head at CodeBreakers GCEK building HackVerse &apos;26. Engineering AI-driven systems and resilient full-stack platforms that solve real-world problems.
             </p>
 
             {/* 4 Social/Contact Buttons */}
@@ -290,6 +305,10 @@ export default function Hero() {
           <div className={styles.tapeTrack}>
             {[0, 1, 2, 3].map(i => (
               <span key={i} className={styles.tapeBlock}>
+                <span>TECH HEAD @ CODEBREAKERS</span>
+                <span className={styles.tapeDot}>◆</span>
+                <span>BUILDING HACKVERSE &apos;26</span>
+                <span className={styles.tapeDot}>◆</span>
                 <span>AI ENGINEERING</span>
                 <span className={styles.tapeDot}>◆</span>
                 <span>IIM SAMBALPUR IDE BOOTCAMP</span>

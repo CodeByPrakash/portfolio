@@ -297,7 +297,7 @@
 /* ─── Stats Row — Clay Compartment ─────────────── */
 .statsRow {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   border-top: var(--bw) solid var(--border-light);
   background: rgba(0, 0, 0, 0.015);
 }

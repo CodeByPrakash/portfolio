@@ -15,6 +15,59 @@ export const ACTIVITY_CATEGORIES = [
 
 export const ACTIVITIES = [
   {
+    id: 'act-2026-09-08-hackverse-portal',
+    title: 'Architecting & Building HackVerse \'26: Flagship 24H State Tech Fest & Hackathon Platform',
+    category: 'Projects & Builds',
+    timestamp: '2026-09-08T18:00:00+05:30',
+    displayDate: 'Sep 08, 2026',
+    time: '18:00 IST',
+    year: '2026',
+    status: 'In Active Development',
+    color: 'orange',
+    type: 'Release',
+    summary:
+      'Currently serving as lead architect building hackverse.codebreakersgcek.tech — the official digital platform for HACKVERSE \'26, Central & Eastern India\'s premier 24-hour state tech festival and hackathon organized by CodeBreakers at Government College of Engineering Kalahandi with ₹1,50,000+ in total bounty and rewards.',
+    details: [
+      'Engineered high-concurrency squad registration engine with real-time slot verification, team code generation, and discord webhooks.',
+      'Designed responsive cyberpunk/terminal HUD theme with real-time countdown telemetry and animated loot chest embargo reveal mechanics.',
+      'Constructed modular Next.js architecture with zero-shift layout performance, server-side caching, and strict responsive fidelity.',
+      'Integrated problem statement release pipeline with cryptographic embargo countdown for fair, simultaneous state-wide hackathon kickoff.',
+    ],
+    tags: ['Next.js', 'CodeBreakers', 'HackVerse', 'Hackathon Platform', 'State Tech Fest', 'GCEK Kalahandi', 'Web Architecture'],
+    stats: { metric: '₹1.5L+', label: 'Bounty & Swag' },
+    links: [
+      { label: 'Live Portal', url: 'https://hackverse.codebreakersgcek.tech', type: 'external' },
+      { label: 'CodeBreakers GCEK', url: 'https://codebreakersgcek.tech', type: 'external' },
+      { label: 'Technical Article', url: '/blog/architecting-hackverse-2026-hackathon-platform', type: 'internal' },
+    ],
+  },
+  {
+    id: 'act-2026-08-28-codebreakers-tech-head',
+    title: 'Appointed as Tech Head at CodeBreakers — Coding Club of Government College of Engineering Kalahandi',
+    category: 'Hackathons & Wins',
+    timestamp: '2026-08-28T10:00:00+05:30',
+    displayDate: 'Aug 28, 2026',
+    time: '10:00 IST',
+    year: '2026',
+    status: 'Current Leadership',
+    color: 'green',
+    type: 'Leadership',
+    summary:
+      'Appointed as the Technical Head / Lead of CodeBreakers (codebreakersgcek.tech), the premier student-led coding society and technical body at Government College of Engineering Kalahandi (GCEK). Leading technical roadmaps, conducting developer sprints, and managing digital infrastructure for 500+ active student builders.',
+    details: [
+      'Directing core software engineering initiatives, code review practices, and full-stack workshops across the college.',
+      'Overseeing digital platforms for flagship institute events including INSPRANO, UDAAN, and campus coding competitions.',
+      'Spearheading competitive programming challenges (9-Lock Challenges, CodeChef contests) and state-wide hackathons.',
+      'Mentoring junior student developers in modern web frameworks, AI/ML models, system administration, and cloud deployment.',
+    ],
+    tags: ['CodeBreakers', 'GCEK', 'Tech Head', 'Coding Club', 'Technical Lead', 'Leadership', 'Mentorship'],
+    stats: { metric: '500+ Devs', label: 'Active Community' },
+    links: [
+      { label: 'Club Portal', url: 'https://codebreakersgcek.tech', type: 'external' },
+      { label: 'Executive Council', url: 'https://codebreakersgcek.tech/developers/leads', type: 'external' },
+    ],
+  },
+  {
     id: 'act-2026-08-24-3d-portfolio',
     title: 'Shipped 3D GSAP Portfolio: Immersive Interactive Web Experience',
     category: 'Projects & Builds',

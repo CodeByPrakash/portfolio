@@ -17,6 +17,12 @@ export async function generateStaticParams() {
 
 // Optimized SEO & Social Metadata Mappings (Strictly within Google / 𝕏 / LinkedIn character limits)
 const OPTIMIZED_BLOG_META = {
+  'architecting-hackverse-2026-hackathon-platform': {
+    pageTitle: "HackVerse '26 Architecture | Om Prakash Behera",
+    socialTitle: "Architecting HackVerse '26: 24H State Hackathon Platform",
+    metaDesc: "Engineering the digital platform for HackVerse '26 by CodeBreakers GCEK with real-time countdown telemetry and registration pipelines.",
+    socialDesc: "Behind the scenes of building hackverse.codebreakersgcek.tech for CodeBreakers GCEK.",
+  },
   'isro-bah-2026-exoplanet-detection-ml': {
     pageTitle: 'ISRO BAH 2026 Exoplanet ML | Om Prakash Behera',
     socialTitle: 'Exoplanet Detection with ML: ISRO BAH 2026',

@@ -1,6 +1,137 @@
 
 export const BLOG_POSTS = [
   {
+    id: '14',
+    slug: 'architecting-hackverse-2026-hackathon-platform',
+    title: 'Architecting HackVerse \'26 as Tech Head at CodeBreakers: Engineering Central & Eastern India\'s Flagship 24H Hackathon Platform',
+    excerpt: 'Behind the scenes of building hackverse.codebreakersgcek.tech — high-concurrency registration pipelines, cryptographic problem statement embargo systems, and cybernetic HUD interfaces for CodeBreakers, the official coding club of Government College of Engineering Kalahandi.',
+    category: 'Web Architecture',
+    color: 'orange',
+    date: 'Sep 08, 2026',
+    readTime: '9 min read',
+    tags: ['CodeBreakers', 'HackVerse', 'Next.js', 'Tech Head', 'GCEK', 'Hackathon Platform', 'System Design'],
+    content: `
+### The Mission: Central & Eastern India's Premier 24H Hackathon
+
+When developers across Odisha and neighboring states look for an authentic, high-octane engineering battleground, **HACKVERSE '26** represents the pinnacle. As the **Tech Head at CodeBreakers** ([codebreakersgcek.tech](https://codebreakersgcek.tech))—the official Coding Club and Technical Society of **Government College of Engineering Kalahandi (GCEK)**—my mandate was clear: engineer a rock-solid, visually electrifying, and scalable digital infrastructure at [hackverse.codebreakersgcek.tech](https://hackverse.codebreakersgcek.tech).
+
+Featuring a **₹1,50,000+ total prize pool**, industry mentorship sprints, and developer participation across universities, HackVerse demands zero downtime, instantaneous registration processing, and an unyielding competitive atmosphere.
+
+---
+
+### Digital Architecture: From Terminal OS to Production Platform
+
+To match the grit and adrenaline of an overnight coding marathon, we designed the HackVerse digital portal around a high-contrast cybernetic terminal aesthetic, integrated with modern full-stack web standards:
+
+1. **Next.js Reactive Core**: Server-side rendering (SSR) and Incremental Static Regeneration (ISR) guaranteeing sub-second Largest Contentful Paint (LCP) across spotty mobile campus Wi-Fi networks.
+2. **Squad Registration State Machine**: Form validations that manage multi-member team compositions, discord webhook notifications, and automated squad registration code dispatching.
+3. **Problem Statement Embargo Engine**: A synchronized client/server cryptographic unlock countdown that securely conceals problem track descriptions until the official competition whistle blows.
+4. **Live Telemetry & Countdown Grid**: Real-time ticker and countdown telemetry tracking the seconds until the hacking window opens in GCEK's Main Computing Lab Complex.
+
+---
+
+### Engineering the Problem Statement Embargo System
+
+In competitive hackathons, leaking problem statements early ruins fair play. To guarantee absolute integrity while maintaining a high-fidelity user experience, we engineered a time-gated client-side embargo system backed by immutable timestamp verification:
+
+\`\`\`typescript
+// HackVerse '26: Cryptographic Embargo & Reveal State Engine
+import { useState, useEffect } from 'react'
+
+interface EmbargoStatus {
+  isUnlocked: boolean
+  remainingMs: number
+  releaseEpoch: number
+}
+
+export function useProblemEmbargo(unlockTimestamp: number): EmbargoStatus {
+  const [status, setStatus] = useState<EmbargoStatus>({
+    isUnlocked: Date.now() >= unlockTimestamp,
+    remainingMs: Math.max(0, unlockTimestamp - Date.now()),
+    releaseEpoch: unlockTimestamp,
+  })
+
+  useEffect(() => {
+    if (status.isUnlocked) return
+
+    const interval = setInterval(() => {
+      const now = Date.now()
+      const diff = unlockTimestamp - now
+
+      if (diff <= 0) {
+        setStatus({ isUnlocked: true, remainingMs: 0, releaseEpoch: unlockTimestamp })
+        clearInterval(interval)
+      } else {
+        setStatus(prev => ({ ...prev, remainingMs: diff }))
+      }
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [unlockTimestamp, status.isUnlocked])
+
+  return status
+}
+\`\`\`
+
+---
+
+### High-Concurrency Squad Registration Pipeline
+
+With hundreds of developers registering simultaneously, registration forms must handle edge cases gracefully—team size limits (2–4 members), college verification, GitHub handle validations, and immediate confirmation receipts:
+
+\`\`\`typescript
+// Registration Payload & Squad Verification
+export interface SquadRegistrationPayload {
+  teamName: string
+  leaderName: string
+  leaderEmail: string
+  leaderPhone: string
+  college: string
+  squadSize: number
+  trackInterest: 'AI/ML' | 'Cybersecurity' | 'Web3' | 'Open Innovation'
+  githubOrg?: string
+}
+
+export async function submitSquadRegistration(data: SquadRegistrationPayload) {
+  const response = await fetch('/api/squad/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      ...data,
+      registeredAt: new Date().toISOString(),
+      status: 'CONFIRMED_STANDBY',
+    }),
+  })
+
+  if (!response.ok) {
+    throw new Error('Squad slot allocation failed. Please retry.')
+  }
+
+  return response.json()
+}
+\`\`\`
+
+---
+
+### CodeBreakers GCEK: Fostering Builder Culture in Kalahandi
+
+Founded as the premier coding club of Government College of Engineering Kalahandi, **CodeBreakers** has grown into an authentic student developer community of 500+ passionate engineers. Beyond hackathons like HackVerse and Hack Nova, our club:
+- Manages GCEK's institutional web portals and the digital backbone for flagship college fests (**INSPRANO** and **UDAAN**).
+- Runs weekly **9-Lock Challenges**, CodeChef algorithm contests, and hands-on system administration workshops.
+- Provides daily mentorship where seniors guide juniors in Git workflows, full-stack development, and AI research.
+
+As Tech Head, my vision is to turn our campus into an innovation powerhouse where students don't just learn concepts from textbooks—they build, deploy, and ship real products.
+
+---
+
+### Experience the Platform Live
+
+- **Official HackVerse Portal**: [hackverse.codebreakersgcek.tech](https://hackverse.codebreakersgcek.tech)
+- **Official CodeBreakers Club**: [codebreakersgcek.tech](https://codebreakersgcek.tech)
+- **Executive Council & Leads**: [codebreakersgcek.tech/developers/leads](https://codebreakersgcek.tech/developers/leads)
+    `
+  },
+  {
     id: '1',
     slug: 'isro-bah-2026-exoplanet-detection-ml',
     title: 'Detecting Exoplanets with Machine Learning: My Approach for ISRO BAH 2026 (PS-07)',

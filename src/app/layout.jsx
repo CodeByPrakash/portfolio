@@ -26,10 +26,32 @@ export const viewport = {
 
 export const metadata = {
   metadataBase: new URL('https://omprakashbehera.me'),
-  title: 'Om Prakash Behera — Computer Science Engineer | Full-Stack Developer, AI & Cyber Security',
+  title: 'Om Prakash Behera — Tech Head at CodeBreakers | Full-Stack Developer & AI Systems',
   description:
-    'Official portfolio of Om Prakash Behera (CodeByPrakash) — Computer Science & Engineering (CSE) student at Government College of Engineering Kalahandi (GCEK), Odisha, India. Diploma in CSE with First Class Distinction. Building AI/ML systems, full-stack web applications, computer vision, and secure architectures. Winner of YOUTH@2050 1st Prize, ISRO BAH 2026 PS-07, SIH 2025 Team CodeNova, IIM Sambalpur 7-Day IDE Bootcamp Edition 2 Phase 1. 30+ projects, 100+ GitHub repositories.',
+    'Official portfolio of Om Prakash Behera (CodeByPrakash) — Tech Head at CodeBreakers (codebreakersgcek.tech), the official Coding Club of Government College of Engineering Kalahandi (GCEK). Lead architect building HackVerse 26 (hackverse.codebreakersgcek.tech), Central & Eastern India flagship 24H state tech fest. BTech CSE student, Diploma in CSE with Distinction. Building AI/ML systems, computer vision, and secure web architectures. Winner of YOUTH@2050 1st Prize, ISRO BAH 2026 PS-07, SIH 2025 Team CodeNova, IIM Sambalpur 7-Day IDE Bootcamp. 30+ projects, 100+ GitHub repos.',
   keywords: [
+    'CodeBreakers',
+    'CodeBreakers GCEK',
+    'CodeBreakers Kalahandi',
+    'CodeBreakers Government College of Engineering Kalahandi',
+    'Coding Club Of Government College Of Engineering Kalahandi',
+    'Official Coding Club GCEK',
+    'Tech Head at CodeBreakers',
+    'Tech Head CodeBreakers',
+    'Technical Lead CodeBreakers',
+    'CodeBreakers Tech Head',
+    'CodeBreakers Leads',
+    'CodeBreakers Executive Council',
+    'codebreakersgcek.tech',
+    'https://codebreakersgcek.tech',
+    'codebreakersgcek',
+    'HackVerse',
+    'HackVerse 26',
+    'HackVerse CodeBreakers',
+    'hackverse.codebreakersgcek.tech',
+    'HackVerse GCEK',
+    'Central and Eastern India Hackathon GCEK',
+    'Flagship 24H State Tech Fest Hackathon',
     'Om Prakash Behera',
     'OmPrakash Behera',
     'Om Prakash',
@@ -218,9 +240,9 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Om Prakash Behera — Computer Science Engineer (CSE) | Full-Stack & AI Developer',
+    title: 'Om Prakash Behera — Tech Head at CodeBreakers | Full-Stack & AI Developer',
     description:
-      'Computer Science Engineering student & Full-Stack Developer from Odisha. Building AI-driven systems, ML models, computer vision apps & secure web architectures. 30+ projects, 100+ GitHub repos. Open for freelance.',
+      'Tech Head at CodeBreakers (codebreakersgcek.tech), Coding Club of GCE Kalahandi. Creator of HackVerse 26 (hackverse.codebreakersgcek.tech). Building AI systems, ML models, computer vision & full-stack web applications. Open for freelance.',
     url: 'https://omprakashbehera.me/',
     siteName: 'Om Prakash Behera — CSE Portfolio',
     locale: 'en_IN',
@@ -235,15 +257,15 @@ export const metadata = {
         url: 'https://omprakashbehera.me/omprakash.png',
         width: 1200,
         height: 630,
-        alt: 'Om Prakash Behera — Computer Science Engineer Portfolio Preview',
+        alt: 'Om Prakash Behera — Tech Head at CodeBreakers & Full-Stack Developer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Om Prakash Behera — Computer Science Engineer | AI & Full-Stack Developer',
+    title: 'Om Prakash Behera — Tech Head at CodeBreakers | AI & Full-Stack Developer',
     description:
-      'CSE student & developer from Odisha building AI systems, ML models, and full-stack applications. 30+ projects, 100+ repos on GitHub. Open for work.',
+      'Tech Head at CodeBreakers (GCEK) & builder of HackVerse 26. Full-stack AI developer from Odisha building intelligent systems and scalable web platforms. Open for work.',
     creator: '@quasar_om',
     site: '@quasar_om',
     images: ['https://omprakashbehera.me/omprakash.png'],
@@ -329,9 +351,27 @@ const jsonLd = {
         caption: 'Om Prakash Behera — Computer Science Engineer and Full-Stack AI Developer',
       },
       email: 'omprakashbehera.cse@gmail.com',
-      jobTitle: 'Computer Science Engineer & Full-Stack Developer',
+      jobTitle: 'Tech Head at CodeBreakers & Full-Stack AI Engineer',
       description:
-        'Computer Science & Engineering (CSE) student at Government College of Engineering Kalahandi (GCEK) and Full-Stack Developer from Odisha, India. Diploma in CSE with First Class Distinction from SCTE&VT Odisha. Creator of 30+ engineering projects with 100+ GitHub repositories.',
+        'Tech Head at CodeBreakers (codebreakersgcek.tech), the official Coding Club of Government College of Engineering Kalahandi (GCEK), and lead architect building HackVerse 26 (hackverse.codebreakersgcek.tech). Computer Science & Engineering (CSE) student and Full-Stack Developer from Odisha, India. Diploma in CSE with First Class Distinction. Creator of 30+ engineering projects with 100+ GitHub repositories.',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'CodeBreakers — Coding Club of Government College of Engineering Kalahandi',
+        alternateName: ['CodeBreakers GCEK', 'CodeBreakers', 'GCEK Coding Club'],
+        url: 'https://codebreakersgcek.tech',
+        sameAs: [
+          'https://codebreakersgcek.tech',
+          'https://hackverse.codebreakersgcek.tech',
+          'https://codebreakersgcek.tech/developers/leads',
+        ],
+      },
+      memberOf: [
+        {
+          '@type': 'Organization',
+          name: 'CodeBreakers — Coding Club of Government College of Engineering Kalahandi',
+          url: 'https://codebreakersgcek.tech',
+        },
+      ],
       birthPlace: {
         '@type': 'Place',
         name: 'Bhadrak, Odisha, India',
@@ -345,6 +385,8 @@ const jsonLd = {
         name: 'Bhawanipatna, Kalahandi, Odisha, India',
       },
       knowsAbout: [
+        'CodeBreakers Coding Club',
+        'HackVerse Hackathon Architecture',
         'Computer Science and Engineering (CSE)',
         'Software Engineering',
         'Artificial Intelligence (AI)',
@@ -432,6 +474,12 @@ const jsonLd = {
       hasOccupation: [
         {
           '@type': 'Occupation',
+          name: 'Tech Head / Technical Lead',
+          occupationLocation: { '@type': 'Country', name: 'India' },
+          skills: 'Technical Leadership, Next.js, Hackathon Architecture, System Design, Full-Stack Development',
+        },
+        {
+          '@type': 'Occupation',
           name: 'Full-Stack Developer',
           occupationLocation: { '@type': 'Country', name: 'India' },
           skills: 'React.js, Node.js, Python, Flask, MongoDB, PostgreSQL, REST API, TypeScript',
@@ -471,6 +519,8 @@ const jsonLd = {
         },
       ],
       award: [
+        'Tech Head at CodeBreakers — Official Coding Club of Government College of Engineering Kalahandi',
+        'Lead Architect of HackVerse \'26 Flagship State Tech Fest & Hackathon Platform',
         '1st Prize with 7000 Rs Prize Pool — YOUTH@2050 District Level Software Exhibition (MRS-AI Medicine Recommender System)',
         '7-Day Residential IDE Bootcamp (Innovation, Design & Entrepreneurship) Edition 2 Phase 1 — IIM Sambalpur (MoE Innovation Cell & AICTE)',
         'Smart India Hackathon 2025 — Team CodeNova Selection (AttendTrue Analytics)',
@@ -481,6 +531,9 @@ const jsonLd = {
       sameAs: [
         'https://github.com/CodeByPrakash',
         'https://linkedin.com/in/omprakash-cse',
+        'https://codebreakersgcek.tech/developers/leads',
+        'https://hackverse.codebreakersgcek.tech',
+        'https://codebreakersgcek.tech',
         'https://orcid.org/0009-0002-2403-2907',
         'https://instagram.com/quasar_om',
         'https://open-ecommerce.vercel.app',
@@ -567,11 +620,19 @@ const jsonLd = {
       '@type': 'ItemList',
       name: 'Featured Engineering Projects by Om Prakash Behera',
       description: 'Selected software engineering, AI/ML, and full-stack development projects',
-      numberOfItems: 19,
+      numberOfItems: 20,
       itemListElement: [
         {
           '@type': 'ListItem',
           position: 1,
+          name: 'HackVerse \'26 Flagship Portal — State Tech Fest & Hackathon',
+          description:
+            'Official digital platform, live countdown telemetry, team registration engine, and embargo system for HackVerse \'26 (hackverse.codebreakersgcek.tech) by CodeBreakers GCEK',
+          url: 'https://hackverse.codebreakersgcek.tech',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
           name: 'CyberTerminal OS — Command Line Interface (CLI) Web Portfolio',
           description:
             'Interactive cybernetic command terminal & biometric HUD interface with live BASH console, HTOP telemetry, and CRT shaders',
@@ -579,7 +640,7 @@ const jsonLd = {
         },
         {
           '@type': 'ListItem',
-          position: 2,
+          position: 3,
           name: 'ISRO Exoplanet ML — BAH 2026 PS-07',
           description:
             'Exoplanet transit detection engine using 1D-CNN, Kepler photometry and BLS for ISRO BAH 2026 Problem Statement 07',
@@ -587,7 +648,7 @@ const jsonLd = {
         },
         {
           '@type': 'ListItem',
-          position: 2,
+          position: 4,
           name: 'AttendTrue Analytics — Smart India Hackathon',
           description:
             'AI-driven smart automated attendance tracking and institutional behavioral analytics platform engineered for Smart India Hackathon 2025 by Team CodeNova',
@@ -728,10 +789,26 @@ const jsonLd = {
       mainEntity: [
         {
           '@type': 'Question',
+          name: 'What is Om Prakash Behera\'s designation and role at CodeBreakers GCEK?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Om Prakash Behera serves as the Tech Head (Technical Lead) at CodeBreakers (codebreakersgcek.tech), the official Coding Club of Government College of Engineering Kalahandi (GCEK). He directs technical initiatives, leads hands-on developer sprints, mentors 500+ student coders, manages college fest digital platforms (INSPRANO, UDAAN), and is actively architecting HackVerse \'26 (hackverse.codebreakersgcek.tech), the flagship 24-hour state tech festival.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What is HackVerse \'26 and what is Om Prakash Behera\'s role in building it?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'HackVerse \'26 (hackverse.codebreakersgcek.tech) is the premier annual 24-hour state tech festival and hackathon organized by CodeBreakers at Government College of Engineering Kalahandi. Featuring ₹1,50,000+ in prizes, compute credits, and participants across Central & Eastern India, its web platform, live registration pipelines, and problem statement embargo system are architected and developed by Tech Head Om Prakash Behera.',
+          },
+        },
+        {
+          '@type': 'Question',
           name: 'Who is Om Prakash Behera (CodeByPrakash)?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Om Prakash Behera (also known as CodeByPrakash and Quasar Om) is a Computer Science & Engineering (CSE) student, Full-Stack Developer, and AI/ML Engineer from Bhadrak, Odisha, India. He builds production-grade web applications, AI models, computer vision systems, and cybersecurity tools with 30+ engineering projects and 100+ GitHub repositories.',
+            text: 'Om Prakash Behera (also known as CodeByPrakash and Quasar Om) is the Tech Head at CodeBreakers (codebreakersgcek.tech), a Computer Science & Engineering (CSE) student at GCEK Kalahandi, and a Full-Stack & AI/ML Engineer. He builds production-grade web applications, AI models, computer vision systems, and cybersecurity tools with 30+ engineering projects and 100+ GitHub repositories.',
           },
         },
         {
@@ -747,7 +824,7 @@ const jsonLd = {
           name: 'Where is Om Prakash Behera from and where is he based?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: "Om Prakash Behera's hometown is Bhadrak, Odisha, India. He is currently based in Bhawanipatna, Kalahandi, Odisha, where he attends Government College of Engineering, Kalahandi (GCEK). He works remotely with clients and teams worldwide.",
+            text: "Om Prakash Behera's hometown is Bhadrak, Odisha, India. He is currently based in Bhawanipatna, Kalahandi, Odisha, where he attends Government College of Engineering, Kalahandi (GCEK) and leads CodeBreakers. He works remotely with clients and teams worldwide.",
           },
         },
         {
@@ -763,7 +840,7 @@ const jsonLd = {
           name: "What are Om Prakash Behera's major awards and hackathon achievements?",
           acceptedAnswer: {
             '@type': 'Answer',
-            text: '1) 1st Prize Winner (7000 Rs Prize Pool) at YOUTH@2050 District Level Project Software Exhibition for MRS-AI Medicine Recommender System. 2) Completed 7-Day Residential IDE Bootcamp (Innovation, Design & Entrepreneurship) Edition 2 Phase 1 at IIM Sambalpur organized by MoE Innovation Cell (MIC) and AICTE. 3) Selected for Smart India Hackathon (SIH 2025) Internal Hackathon with Team CodeNova for AttendTrue Analytics. 4) ISRO BAH 2026 PS-07 Participant for Exoplanet Transit Detection using Deep Learning. 5) First Class Honours with Distinction in Diploma CSE. 6) 100+ GitHub repositories milestone.',
+            text: '1) Tech Head at CodeBreakers (codebreakersgcek.tech) & Builder of HackVerse \'26 (hackverse.codebreakersgcek.tech). 2) 1st Prize Winner (7000 Rs Prize Pool) at YOUTH@2050 District Level Project Software Exhibition for MRS-AI Medicine Recommender System. 3) Completed 7-Day Residential IDE Bootcamp Edition 2 Phase 1 at IIM Sambalpur organized by MoE Innovation Cell (MIC) and AICTE. 4) Selected for Smart India Hackathon (SIH 2025) Internal Hackathon with Team CodeNova for AttendTrue Analytics. 5) ISRO BAH 2026 PS-07 Participant for Exoplanet Transit Detection using Deep Learning. 6) First Class Honours with Distinction in Diploma CSE. 7) 100+ GitHub repositories milestone.',
           },
         },
         {
@@ -824,14 +901,15 @@ export default function RootLayout({ children }) {
         {/* Noscript fallback for SEO crawlers and text browsers */}
         <noscript>
           <header>
-            <h1>Om Prakash Behera — Computer Science Engineer, Full-Stack Developer &amp; AI Innovator</h1>
-            <p><strong>BTech CSE Student at GCEK Kalahandi | Diploma in CSE with Distinction | Developer &amp; Open-Source Creator</strong></p>
+            <h1>Om Prakash Behera — Tech Head at CodeBreakers | Full-Stack Developer &amp; AI Innovator</h1>
+            <p><strong>Tech Head at CodeBreakers (<a href="https://codebreakersgcek.tech">codebreakersgcek.tech</a>) — Official Coding Club of Government College of Engineering Kalahandi (GCEK)</strong></p>
+            <p><strong>Lead Architect building HackVerse &apos;26 (<a href="https://hackverse.codebreakersgcek.tech">hackverse.codebreakersgcek.tech</a>) | BTech CSE Student | Diploma with Distinction</strong></p>
             <p><em>Also known as: CodeByPrakash | Quasar Om | ଓମ ପ୍ରକାଶ ବେହେରା | ओम प्रकाश बेहरा</em></p>
           </header>
           <main>
             <section>
               <h2>About &amp; Biography</h2>
-              <p>Om Prakash Behera is a passionate Computer Science &amp; Engineering (CSE) student, full-stack developer, and artificial intelligence researcher from Bhadrak, Odisha, India. With over 3 years of hands-on software development experience since 2022, he has engineered 30+ comprehensive software projects and maintains 100+ open-source GitHub repositories under the handle <strong>CodeByPrakash</strong>.</p>
+              <p>Om Prakash Behera is the Tech Head at <strong>CodeBreakers</strong> (<a href="https://codebreakersgcek.tech">codebreakersgcek.tech</a>), the official Coding Club of Government College of Engineering Kalahandi (GCEK). He is currently serving as lead architect building <strong>HackVerse &apos;26</strong> (<a href="https://hackverse.codebreakersgcek.tech">hackverse.codebreakersgcek.tech</a>), Central &amp; Eastern India&apos;s premier 24-hour state tech fest and hackathon. A passionate Computer Science &amp; Engineering student, full-stack developer, and artificial intelligence researcher from Bhadrak, Odisha, India, he maintains 100+ open-source GitHub repositories under the handle <strong>CodeByPrakash</strong>.</p>
             </section>
             <section>
               <h2>Education &amp; Academic Background</h2>
@@ -841,8 +919,10 @@ export default function RootLayout({ children }) {
               </ul>
             </section>
             <section>
-              <h2>Featured Engineering Projects</h2>
+              <h2>Featured Engineering Projects &amp; Platforms</h2>
               <ul>
+                <li><a href="https://hackverse.codebreakersgcek.tech">HackVerse &apos;26 Flagship Portal</a> — 24H State Tech Fest &amp; Hackathon platform with countdown telemetry, registration pipelines, and embargo system</li>
+                <li><a href="https://codebreakersgcek.tech">CodeBreakers GCEK Club Portal</a> — Official coding club platform serving 500+ active student developers at GCE Kalahandi</li>
                 <li><a href="https://vintageprixu.vercel.app">CyberTerminal OS (CLI Web Portfolio)</a> — Interactive retro-modern terminal OS with live BASH shell, HTOP monitor &amp; CRT shaders</li>
                 <li><a href="https://github.com/CodeByPrakash/ISRO_PS07">ISRO Exoplanet ML</a> — 1D-CNN exoplanet transit detection for ISRO BAH 2026</li>
                 <li><a href="https://github.com/CodeByPrakash/AttendTrue-Analytic">AttendTrue Analytics</a> — AI-powered smart attendance and institutional analytics for Smart India Hackathon</li>

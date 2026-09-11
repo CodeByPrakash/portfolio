@@ -6,6 +6,20 @@ import styles from './Achievements.module.css'
 
 const achievementsList = [
   {
+    id: 0,
+    title: 'Tech Head @ CodeBreakers & HackVerse Lead',
+    issuer: 'CodeBreakers — Coding Club of Government College of Engineering Kalahandi',
+    year: '2026',
+    desc: 'Appointed Technical Lead at CodeBreakers (codebreakersgcek.tech). Architecting the digital infrastructure and platform for HackVerse 2026 (hackverse.codebreakersgcek.tech) — Central & Eastern India’s flagship 24H state tech fest & hackathon.',
+    color: 'orange',
+    tags: ['Tech Head', 'CodeBreakers', 'GCEK', 'HackVerse', 'Platform Lead', 'Coding Club'],
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
+    ),
+  },
+  {
     id: 1,
     title: '1st Prize — YOUTH@2050 Software Expo',
     issuer: 'District Level Science & Tech Innovation',
