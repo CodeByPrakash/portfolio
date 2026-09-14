@@ -3,14 +3,45 @@
   padding-top: 100px;
   padding-bottom: 120px;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: clip;
   background: var(--bg-primary);
 }
 
 .container {
-  max-width: 960px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 1.5rem;
+}
+
+/* ─── 2-Column Responsive Layout: Left Article Bento Card + Right Fixed/Sticky TOC ── */
+.blogMainLayout {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.25rem;
+  position: relative;
+}
+
+.tocSidebar {
+  width: 280px;
+  min-width: 280px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 110px;
+  align-self: flex-start;
+  max-height: calc(100vh - 130px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-light) transparent;
+  z-index: 20;
+}
+
+.tocSidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.tocSidebar::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 4px;
 }
 
 /* ─── Breadcrumb Navigation ─────────────────────── */
@@ -47,6 +78,8 @@
 
 /* ─── Main 3D Clay Article Card ─────────────────────────── */
 .articleCardWrapper {
+  flex: 1;
+  min-width: 0;
   background: var(--bg-tertiary);
   border: var(--bw) solid var(--border);
   border-radius: 32px;
@@ -274,6 +307,25 @@
   letter-spacing: -0.02em;
   text-transform: none !important;
   word-break: break-word;
+  scroll-margin-top: 110px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content :global(.headingPulse),
+.articleCardWrapper :global(.headingPulse) {
+  animation: headingPulseGlow 1.8s ease-out;
+}
+
+@keyframes headingPulseGlow {
+  0% {
+    background-color: rgba(245, 158, 11, 0.22);
+    box-shadow: 0 0 0 8px rgba(245, 158, 11, 0.22);
+    border-radius: 6px;
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: 0 0 0 0 transparent;
+  }
 }
 
 .articleH2,
@@ -754,6 +806,22 @@
 }
 
 /* ─── Responsive Media Queries ──────────────────── */
+@media (max-width: 1024px) {
+  .blogMainLayout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .tocSidebar {
+    order: -1;
+    width: 100%;
+    min-width: 100%;
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
 @media (max-width: 860px) {
   .container {
     padding: 0 1.25rem;

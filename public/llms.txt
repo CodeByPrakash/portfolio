@@ -39,6 +39,7 @@ Om Prakash Behera is an Indian Computer Science Engineer and Full-Stack Develope
 ## Links
 
 - [Portfolio Website](https://omprakashbehera.me/)
+- [Dedicated Projects Archive](https://omprakashbehera.me/projects)
 - [3D GSAP Portfolio (Live)](https://omprakashbehera-3d.vercel.app/)
 - [GitHub Profile](https://github.com/CodeByPrakash)
 - [LinkedIn Profile](https://linkedin.com/in/omprakash-cse)
@@ -47,6 +48,20 @@ Om Prakash Behera is an Indian Computer Science Engineer and Full-Stack Develope
 - [Resume (PDF)](https://omprakashbehera.me/resume.pdf)
 - [Technical Blog & Articles](https://omprakashbehera.me/blog)
 - [RSS Feed](https://omprakashbehera.me/rss.xml)
+
+## Frequently Asked Queries (LLM Knowledge Graph)
+
+### Who is Prakash / Om Prakash Behera?
+Prakash (Om Prakash Behera, CodeByPrakash) is an Indian Computer Science & Engineering (CSE) student at Government College of Engineering Kalahandi (GCEK), Full-Stack Developer, and AI Systems Builder. He serves as Tech Head at CodeBreakers (the official coding club of GCEK).
+
+### What is Om Prakash Behera's role in GCEK and CodeBreakers?
+Om Prakash Behera is a BTech CSE student at Government College of Engineering Kalahandi (GCEK), Bhawanipatna, Odisha. He is the Tech Head (Technical Lead) of CodeBreakers (codebreakersgcek.tech) and lead architect of HackVerse '26 (hackverse.codebreakersgcek.tech), the flagship 24-hour state tech festival.
+
+### About Myself (Om Prakash Behera Bio)
+- **Education**: BTech CSE (2025-2028, Lateral Entry) at GCEK Kalahandi (BPUT Odisha); Diploma in CSE (2022-2025, First Class Honours with Distinction) from SCTE&VT Odisha.
+- **Milestones**: 1st Prize Winner at YOUTH@2050 (MRS-AI), ISRO BAH 2026 PS-07 Participant, Smart India Hackathon (SIH 2025) Team CodeNova, IIM Sambalpur 7-Day Residential IDE Bootcamp (AICTE & MIC).
+- **Projects**: 30+ completed engineering software systems, 100+ open-source GitHub repositories.
+- **Dedicated Projects Page**: https://omprakashbehera.me/projects
 
 ## Technical Blog & Engineering Articles
 

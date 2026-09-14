@@ -42,14 +42,13 @@ export default function ScrollConnectingPath() {
   // Generate a mathematically smooth, radiused serpentine S-curve across the entire page height
   const generateSpinePath = (h) => {
     const w = 1200 // virtual coordinate width
-    // Waypoints distributed across all sections (Hero -> About -> Skills -> Projects -> Journey -> Achievements -> Blog -> Contact)
+    // Waypoints distributed across all sections (Hero -> About -> Skills -> Projects -> Achievements -> Blog -> Contact)
     const points = [
       { x: w * 0.82, y: 80 },          // Hero origin
       { x: w * 0.18, y: 460 },         // Hero headline loop
       { x: w * 0.88, y: h * 0.14 },    // About section entrance
       { x: w * 0.12, y: h * 0.28 },    // Skills section
       { x: w * 0.86, y: h * 0.42 },    // Projects / Incubations
-      { x: w * 0.14, y: h * 0.56 },    // Journey milestones
       { x: w * 0.84, y: h * 0.70 },    // Achievements & Credentials
       { x: w * 0.16, y: h * 0.84 },    // Technical Blog / Articles
       { x: w * 0.50, y: h * 0.96 },    // Contact / Let's work together

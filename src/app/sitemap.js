@@ -1,4 +1,5 @@
 import { BLOG_POSTS } from '../data/blogPosts'
+import { PROJECTS_DATA } from '../data/projectsData'
 
 export default function sitemap() {
   const baseUrl = 'https://omprakashbehera.me'
@@ -15,6 +16,13 @@ export default function sitemap() {
         `${baseUrl}/omprakash.png`,
         `${baseUrl}/logo.svg`,
       ],
+    },
+    {
+      url: `${baseUrl}/projects`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.95,
+      images: [`${baseUrl}/omprakash.png`],
     },
     {
       url: `${baseUrl}/blog`,
@@ -38,9 +46,20 @@ export default function sitemap() {
     },
   ]
 
-  // 2. Dynamic Blog Article Pages (All 12 Technical Articles)
+  // 2. Dynamic Project Detail Pages (All 21 Engineering Projects)
+  const projectRoutes = PROJECTS_DATA.map((p) => ({
+    url: `${baseUrl}/projects/${p.id}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly',
+    priority: 0.88,
+    images: [
+      `${baseUrl}${p.image}`,
+      `${baseUrl}/omprakash.png`,
+    ],
+  }))
+
+  // 3. Dynamic Blog Article Pages (All Technical Articles)
   const blogRoutes = BLOG_POSTS.map((post) => {
-    // Parse date into ISO timestamp
     let postDate = currentDate
     try {
       postDate = new Date(post.date).toISOString()
@@ -60,5 +79,5 @@ export default function sitemap() {
     }
   })
 
-  return [...staticRoutes, ...blogRoutes]
+  return [...staticRoutes, ...projectRoutes, ...blogRoutes]
 }

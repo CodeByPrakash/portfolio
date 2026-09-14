@@ -1,4 +1,3 @@
-
 .projects {
   padding: 6.5rem 0 6rem;
   position: relative;
@@ -31,70 +30,62 @@
   flex-shrink: 0;
 }
 
-.headRight {
-  display: flex;
-  align-items: flex-end;
-}
-
-/* Clay Count Card */
-.countCard {
-  display: flex;
-  flex-direction: column;
+.viewAllTopBtn {
+  display: inline-flex;
   align-items: center;
-  gap: .25rem;
-  padding: 1.25rem 2rem;
-  border: var(--bw) solid var(--border);
-  border-radius: 22px;
+  gap: 0.5rem;
+  padding: 0.7rem 1.35rem;
+  border-radius: 9999px;
   background: var(--bg-tertiary);
-  box-shadow:
-    8px 12px 24px rgba(0, 0, 0, 0.05),
-    -6px -6px 18px rgba(255, 255, 255, 0.95),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.8);
-  transition: transform 0.2s ease;
-}
-
-.countCard:hover {
-  transform: translateY(-2px);
-}
-
-.countLabel {
+  border: var(--bw) solid var(--border);
+  color: var(--text-primary);
   font-family: var(--font-mono);
-  font-size: .62rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  color: var(--text-secondary);
+  text-decoration: none;
+  box-shadow:
+    6px 8px 18px rgba(0, 0, 0, 0.05),
+    -4px -4px 14px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.countNum {
-  font-family: var(--font-head);
-  font-size: 2.4rem;
+.viewAllTopBtn:hover {
+  transform: translateY(-2px);
   color: var(--accent);
-  line-height: 1;
-  letter-spacing: .02em;
-  display: flex;
-  align-items: baseline;
-  gap: 0.35rem;
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(255, 107, 0, 0.25);
 }
 
-.countSub {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* ─── 3D Clay Projects Grid — 3 columns with gap ── */
+/* ─── 3D Clay Projects Grid — Horizontal 4-column row ── */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
   background: transparent;
 }
 
-/* 3D Clay Project Card */
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+
+  .headRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+}
+
+/* 3D Clay Project Card — Minimized with Image, Heading, and Button Details */
 .card {
   display: flex;
   flex-direction: column;
@@ -102,133 +93,26 @@
   text-decoration: none;
   color: var(--text-primary);
   border: var(--bw) solid var(--border);
-  border-radius: 26px;
+  border-radius: 22px;
   box-shadow:
     12px 16px 32px rgba(0, 0, 0, 0.06),
     -8px -8px 24px rgba(255, 255, 255, 0.95),
     inset 2px 2px 4px rgba(255, 255, 255, 0.8),
     inset -2px -2px 5px rgba(0, 0, 0, 0.03);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background-color 0.2s ease;
-  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background-color 0.2s ease, border-color 0.2s ease;
   position: relative;
   overflow: hidden;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
   background: var(--bg-secondary);
   box-shadow:
     16px 24px 44px rgba(0, 0, 0, 0.09),
     -10px -10px 28px rgba(255, 255, 255, 0.95);
 }
 
-.card:hover .arrow {
-  transform: translate(3px, -3px);
-  color: var(--accent);
-}
-
-/* ─── Card Top ────────────────────────────────── */
-.cardTop {
-  display: flex;
-  align-items: center;
-  gap: .85rem;
-  padding: 1.25rem 1.4rem;
-  border-bottom: var(--bw) solid var(--border-light);
-}
-
-/* Clay Logo Circle Badge */
-.logoCircle {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  border: var(--bw) solid var(--border);
-  box-shadow:
-    3px 4px 10px rgba(0, 0, 0, 0.06),
-    -2px -2px 6px rgba(255, 255, 255, 0.9),
-    inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.8),
-    inset -1.5px -1.5px 3px rgba(0, 0, 0, 0.05);
-}
-
-.logo_blue {
-  background: var(--blue-pale);
-}
-
-.logo_orange {
-  background: var(--orange-pale);
-}
-
-.logo_red {
-  background: var(--red-pale);
-}
-
-.logo_green {
-  background: var(--green-pale);
-}
-
-.logo_purple {
-  background: var(--purple-pale);
-}
-
-.logo_ink {
-  background: var(--cream-dark);
-}
-
-.logoCli {
-  background: #0b150b;
-  border-color: #1e4d1e;
-  box-shadow:
-    0 0 10px rgba(51, 255, 0, 0.18),
-    inset 1px 1px 2px rgba(51, 255, 0, 0.25);
-}
-
-.logoLetter {
-  font-family: var(--font-head);
-  font-size: 1.15rem;
-  color: var(--text-primary);
-  letter-spacing: .02em;
-}
-
-.logoCliLetter {
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #33ff00;
-  text-shadow: 0 0 6px rgba(51, 255, 0, 0.5);
-}
-
-.nameWrap {
-  display: flex;
-  flex-direction: column;
-  gap: .2rem;
-  flex: 1;
-}
-
-.projName {
-  font-family: var(--font-body);
-  font-size: .95rem;
-  font-weight: 700;
-}
-
-.terminalBadge {
-  align-self: flex-start;
-  font-family: var(--font-mono);
-  font-size: .62rem;
-  font-weight: 800;
-  letter-spacing: .06em;
-  background: #081508;
-  color: #33ff00;
-  padding: .15rem .45rem;
-  border-radius: 6px;
-  border: 1px solid #1e4d1e;
-  box-shadow: 0 0 8px rgba(51, 255, 0, 0.15);
-  display: inline-flex;
-  align-items: center;
-}
-
-/* ─── Featured CLI Project Card ───────────────── */
+/* Featured CLI Project Card */
 .cardCliFeatured {
   border-color: #235d23;
   box-shadow:
@@ -238,15 +122,6 @@
     inset 2px 2px 4px rgba(255, 255, 255, 0.8);
 }
 
-:global([data-theme="dark"]) .cardCliFeatured {
-  border-color: #1e4d1e;
-  box-shadow:
-    0 16px 36px rgba(0, 0, 0, 0.7),
-    0 0 20px rgba(51, 255, 0, 0.1),
-    inset 1px 1px 3px rgba(255, 255, 255, 0.12),
-    inset -2px -2px 6px rgba(0, 0, 0, 0.6);
-}
-
 .cardCliFeatured:hover {
   border-color: #33ff00;
   box-shadow:
@@ -254,82 +129,141 @@
     0 0 24px rgba(51, 255, 0, 0.25);
 }
 
-.arrow {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  flex-shrink: 0;
-  transition: transform .2s ease, color .2s ease;
+/* 1. Image Container */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9.8;
+  background: #0d0f15;
+  border-bottom: var(--bw) solid var(--border-light);
+  overflow: hidden;
 }
 
-/* ─── Description ─────────────────────────────── */
-.desc {
-  font-size: .84rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  padding: 1rem 1.4rem;
+.projectImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card:hover .projectImg {
+  transform: scale(1.04);
+}
+
+/* 2. Card Info: Heading & 3. Button Details */
+.cardInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  padding: 0.95rem 1.15rem;
+  background: var(--bg-tertiary);
+  margin-top: auto;
+  border-top: var(--bw) solid var(--border-light);
+  transition: background-color 0.2s ease;
+}
+
+.headingWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
   flex: 1;
 }
 
-/* ─── Tags ────────────────────────────────────── */
-.tagRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .4rem;
-  padding: 0 1.4rem 1.1rem;
-}
-
-/* Clay Tag Capsule */
-.tag {
+.categorySub {
   font-family: var(--font-mono);
-  font-size: .62rem;
-  font-weight: 600;
-  padding: .22rem .55rem;
-  border: var(--bw) solid var(--border-light);
-  border-radius: 999px;
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  box-shadow:
-    1.5px 2px 5px rgba(0, 0, 0, 0.03),
-    -1.5px -1.5px 4px rgba(255, 255, 255, 0.9),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
-}
-
-/* ─── Stats Row — Clay Compartment ─────────────── */
-.statsRow {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  border-top: var(--bw) solid var(--border-light);
-  background: rgba(0, 0, 0, 0.015);
-}
-
-.statCell {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .15rem;
-  padding: .75rem .35rem;
-  border-right: var(--bw) solid var(--border-light);
-}
-
-.statCell:last-child {
-  border-right: none;
-}
-
-.statVal {
-  font-family: var(--font-head);
-  font-size: .95rem;
-  color: var(--text-primary);
-  letter-spacing: .02em;
-  line-height: 1;
-}
-
-.statKey {
-  font-family: var(--font-mono);
-  font-size: .52rem;
+  font-size: 0.62rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: .06em;
-  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  line-height: 1.2;
+}
+
+.projectHeading {
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin: 0;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.titleLink {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.titleLink:hover {
+  color: var(--accent);
+}
+
+/* 3. Details Button */
+.detailsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.82rem;
+  border-radius: 9999px;
+  background: var(--bg-secondary);
+  border: var(--bw) solid var(--border);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-decoration: none;
+  flex-shrink: 0;
+  box-shadow:
+    2px 3px 8px rgba(0, 0, 0, 0.04),
+    -2px -2px 6px rgba(255, 255, 255, 0.8),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.7);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover .detailsBtn {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.35);
+  transform: translateX(2px);
+}
+
+/* View All Projects Button Wrap */
+.viewAllWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.75rem;
+}
+
+.viewAllMainBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 2.2rem;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.38);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.viewAllMainBtn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 28px rgba(255, 107, 0, 0.5);
+  color: #ffffff;
 }
 
 /* ─── 3D Clay Morphism Floating Edge Geometrics ───────── */
@@ -340,7 +274,6 @@
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.08));
 }
 
-/* 1. Clay Torus / Ring (Top-Left Edge) */
 .clayShapeTorus {
   width: 130px;
   height: 130px;
@@ -357,7 +290,6 @@
   opacity: 0.88;
 }
 
-/* 2. Clay Orange Orb (Bottom-Right Edge) */
 .clayShapeOrb {
   width: 95px;
   height: 95px;
@@ -373,7 +305,6 @@
   opacity: 0.92;
 }
 
-/* 3. Clay Mint Pill (Top-Right Edge) */
 .clayShapePill {
   width: 55px;
   height: 110px;
@@ -389,161 +320,68 @@
   opacity: 0.85;
 }
 
-/* ─── Pagination Controls ─────────────────────── */
-.paginationRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-  margin-top: 3.5rem;
-  padding-top: 1rem;
-}
-
-.pageBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.4rem;
-  border-radius: 999px;
-  background: var(--bg-tertiary);
-  border: var(--bw) solid var(--border);
-  color: var(--text-primary);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow:
-    6px 8px 16px rgba(0, 0, 0, 0.04),
-    -4px -4px 12px rgba(255, 255, 255, 0.9),
-    inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.8);
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-  user-select: none;
-}
-
-.pageBtn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  border-color: var(--accent);
+/* ─── Dark Mode Specific Overrides ─── */
+:global([data-theme="dark"]) .card {
   background: var(--bg-secondary);
-  box-shadow:
-    8px 12px 20px rgba(0, 0, 0, 0.08),
-    -6px -6px 14px rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), inset 1px 1px 1px rgba(255, 255, 255, 0.04) !important;
 }
 
-.pageBtn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-  box-shadow: none;
-  transform: none;
-}
-
-.pageNumbers {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.pageNumberBtn {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--bg-tertiary);
-  border: var(--bw) solid var(--border);
-  color: var(--text-secondary);
-  font-family: var(--font-mono);
-  font-size: 0.88rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow:
-    4px 6px 12px rgba(0, 0, 0, 0.04),
-    -3px -3px 8px rgba(255, 255, 255, 0.9);
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.pageNumberBtn:hover:not(.pageNumberActive) {
-  transform: translateY(-2px);
-  color: var(--text-primary);
+:global([data-theme="dark"]) .card:hover {
   border-color: var(--accent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 107, 0, 0.16) !important;
 }
 
-.pageNumberActive {
-  background: var(--accent) !important;
-  color: #FFFFFF !important;
-  border-color: var(--accent) !important;
+:global([data-theme="dark"]) .cardCliFeatured {
+  border-color: #1e4d1e;
   box-shadow:
-    0 6px 18px rgba(255, 107, 0, 0.35),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.4) !important;
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    0 0 18px rgba(51, 255, 0, 0.08),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.04) !important;
 }
 
-/* ─── Responsive ──────────────────────────────── */
-@media (max-width: 1080px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
+:global([data-theme="dark"]) .cardCliFeatured:hover {
+  border-color: #33ff00;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.65),
+    0 0 22px rgba(51, 255, 0, 0.2) !important;
 }
 
-@media (max-width: 680px) {
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .headRow {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
-  }
-
-  .paginationRow {
-    gap: 0.5rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .pageBtn {
-    padding: 0.55rem 0.95rem;
-    font-size: 0.78rem;
-  }
-
-  .pageNumberBtn {
-    width: 36px;
-    height: 36px;
-    font-size: 0.8rem;
-  }
-
-  .clayShape {
-    opacity: 0.4;
-    transform: scale(0.65);
-  }
+:global([data-theme="dark"]) .cardInfo {
+  background: var(--bg-tertiary);
+  border-top: 1px solid var(--border-light);
 }
 
-/* ─── Dark Mode (ZERO Glowing Effects — Feature active ONLY in White Mode) ─── */
-:global([data-theme="dark"]) .logoCircle {
-  box-shadow: none !important;
-  border-color: var(--border);
+:global([data-theme="dark"]) .detailsBtn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45), inset 1px 1px 2px rgba(255, 255, 255, 0.04) !important;
 }
 
-:global([data-theme="dark"]) .tag {
-  box-shadow: none !important;
-  border-color: var(--border);
+:global([data-theme="dark"]) .detailsBtn:hover,
+:global([data-theme="dark"]) .card:hover .detailsBtn {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.4) !important;
 }
 
-:global([data-theme="dark"]) .card,
-:global([data-theme="dark"]) .countCard,
-:global([data-theme="dark"]) .pageBtn,
-:global([data-theme="dark"]) .pageNumberBtn {
-  box-shadow: none !important;
+:global([data-theme="dark"]) .viewAllTopBtn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
 }
 
-:global([data-theme="dark"]) .card:hover,
-:global([data-theme="dark"]) .countCard:hover,
-:global([data-theme="dark"]) .pageBtn:hover:not(:disabled),
-:global([data-theme="dark"]) .pageNumberBtn:hover:not(.pageNumberActive) {
-  box-shadow: none !important;
+:global([data-theme="dark"]) .viewAllTopBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.25) !important;
+}
+
+:global([data-theme="dark"]) .viewAllMainBtn {
+  box-shadow: 0 4px 16px rgba(255, 107, 0, 0.3) !important;
 }
 
 :global([data-theme="dark"]) .clayShapeTorus,
@@ -553,4 +391,3 @@
   opacity: 0.35;
   filter: brightness(0.85);
 }
-

@@ -2,6 +2,7 @@ import '../index.css'
 import { Space_Grotesk, Space_Mono } from 'next/font/google'
 import { ThemeProvider } from '../context/ThemeContext'
 import ScrollManager from '../components/ScrollManager'
+import ScrollProgress from '../components/ScrollProgress'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -30,6 +31,61 @@ export const metadata = {
   description:
     'Official portfolio of Om Prakash Behera (CodeByPrakash) — Tech Head at CodeBreakers (codebreakersgcek.tech), the official Coding Club of Government College of Engineering Kalahandi (GCEK). Lead architect building HackVerse 26 (hackverse.codebreakersgcek.tech), Central & Eastern India flagship 24H state tech fest. BTech CSE student, Diploma in CSE with Distinction. Building AI/ML systems, computer vision, and secure web architectures. Winner of YOUTH@2050 1st Prize, ISRO BAH 2026 PS-07, SIH 2025 Team CodeNova, IIM Sambalpur 7-Day IDE Bootcamp. 30+ projects, 100+ GitHub repos.',
   keywords: [
+    'about my self',
+    'about myself',
+    'who is prakash',
+    'who is omprakash',
+    'who is omprakash behera',
+    'who is om prakash',
+    'who is om prakash behera',
+    'who is codebyprakash',
+    'who is quasar om',
+    'who is prakash behera',
+    'gcek',
+    'GCEK',
+    'GCEK Kalahandi',
+    'gcek kalahandi',
+    'codebreakers',
+    'CodeBreakers',
+    'codebreakers gcek',
+    'CodeBreakers GCEK',
+    'who is the developer omprakash',
+    'who is coder prakash',
+    'who is coder omprakash',
+    'who is omprakash from gcek',
+    'who is omprakash behera from odisha',
+    'who is omprakash from bhadrak',
+    'who is full stack developer omprakash',
+    'who is ai developer omprakash',
+    'who is tech head of codebreakers',
+    'who is technical lead codebreakers',
+    'who is leading codebreakers gcek',
+    'who built hackverse 26',
+    'tell me about myself',
+    'tell me about omprakash',
+    'tell me about om prakash',
+    'tell me about omprakash behera',
+    'tell me about prakash',
+    'tell me about codebyprakash',
+    'all about omprakash',
+    'all about omprakash behera',
+    'biography of omprakash behera',
+    'bio of omprakash behera',
+    'profile of omprakash behera',
+    'portfolio about myself',
+    'developer about myself',
+    'student developer about myself',
+    'cse student about myself',
+    'full stack developer about myself',
+    'where does omprakash behera study',
+    'where is omprakash behera from',
+    'which college is omprakash behera in',
+    'what college does omprakash behera attend',
+    'what does omprakash behera do',
+    'what are omprakash behera skills',
+    'what projects did omprakash behera make',
+    'how to contact omprakash behera',
+    'how to hire omprakash behera',
     'CodeBreakers',
     'CodeBreakers GCEK',
     'CodeBreakers Kalahandi',
@@ -789,6 +845,38 @@ const jsonLd = {
       mainEntity: [
         {
           '@type': 'Question',
+          name: 'Who is Prakash?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Prakash (full name Om Prakash Behera, known online as CodeByPrakash and Quasar Om) is a Computer Science Engineer, Full-Stack Developer, and AI Systems Builder from Bhadrak, Odisha, India. He currently studies BTech CSE at Government College of Engineering Kalahandi (GCEK) and serves as the Tech Head of CodeBreakers, the official coding club.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Who is Omprakash (Om Prakash Behera)?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Omprakash (Om Prakash Behera) is an award-winning Indian software engineer, AI researcher, and Tech Head at CodeBreakers GCEK. With 30+ engineering projects, 100+ GitHub repositories, and First Class Distinction in Diploma CSE, he has won 1st Prize at YOUTH@2050 for MRS-AI and was selected for ISRO BAH 2026 PS-07 and Smart India Hackathon (SIH 2025).',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What is Om Prakash Behera\'s role at GCEK and CodeBreakers?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Om Prakash Behera is a BTech Computer Science & Engineering student at Government College of Engineering Kalahandi (GCEK) and the Tech Head (Technical Lead) of CodeBreakers (codebreakersgcek.tech). He directs developer initiatives, mentors 500+ students, and is the lead architect of HackVerse \'26 (hackverse.codebreakersgcek.tech), Central & Eastern India\'s flagship 24-hour state tech fest.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'About Myself: Tell me about Om Prakash Behera',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Om Prakash Behera is a passionate technologist specializing in full-stack web applications, AI/ML models, computer vision with MediaPipe and OpenCV, and cyber security. Born in Bhadrak, Odisha, he has 3+ years of building production code with credentials from SCTE&VT Odisha (Distinction), GCEK Kalahandi, and the 7-day IDE Bootcamp at IIM Sambalpur.',
+          },
+        },
+        {
+          '@type': 'Question',
           name: 'What is Om Prakash Behera\'s designation and role at CodeBreakers GCEK?',
           acceptedAnswer: {
             '@type': 'Answer',
@@ -898,6 +986,14 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body suppressHydrationWarning>
+        {/* Instant Theme Detection Script (Immune to Chrome Extension Head Injections) */}
+        <script
+          id="theme-initializer"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t;}}catch(e){}})();`,
+          }}
+        />
         {/* Noscript fallback for SEO crawlers and text browsers */}
         <noscript>
           <header>
@@ -952,6 +1048,7 @@ export default function RootLayout({ children }) {
         </noscript>
         <ThemeProvider>
           <ScrollManager />
+          <ScrollProgress />
           {children}
         </ThemeProvider>
       </body>

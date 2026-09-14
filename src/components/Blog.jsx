@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import { ArrowRight, Sparkles, BookOpen } from 'lucide-react'
 import { fadeIn, staggerContainer } from '../utils/motion'
 import ShareButton from './ShareButton'
 import { BLOG_POSTS } from '../data/blogPosts'
@@ -77,6 +78,14 @@ export default function Blog({ isStandalone = false }) {
     const startIdx = (safeCurrentPage - 1) * postsPerPage
     return filteredPosts.slice(startIdx, startIdx + postsPerPage)
   }, [filteredPosts, safeCurrentPage, postsPerPage])
+
+  // On homepage: show top 4 articles in horizontal row; on standalone /blog: show paginated search results
+  const displayPosts = useMemo(() => {
+    if (isStandalone) {
+      return paginatedPosts
+    }
+    return BLOG_POSTS.slice(0, 4)
+  }, [isStandalone, paginatedPosts])
 
   // Smooth page change handler with auto-scroll
   const handlePageChange = (newPage) => {
@@ -232,75 +241,95 @@ export default function Blog({ isStandalone = false }) {
           </nav>
         )}
 
-        <motion.span className="section-tag" variants={fadeIn('down', 0)}>
-          ✦ Articles &amp; Insights
-        </motion.span>
+        <div className={styles.headRow}>
+          <div>
+            <motion.span className="section-tag" variants={fadeIn('down', 0)}>
+              ✦ Articles &amp; Insights
+            </motion.span>
 
-        <motion.h2 className={styles.heading} variants={fadeIn('up', 0)}>
-          Technical <span className={styles.accent}>Articles.</span>
-        </motion.h2>
+            <motion.h2 className={styles.heading} variants={fadeIn('up', 0)}>
+              Technical <span className={styles.accent}>Articles.</span>
+            </motion.h2>
 
-        <motion.p className={styles.sub} variants={fadeIn('up', 0.1)}>
-          Engineering writeups on artificial intelligence, computer vision, web architecture, and systems development.
-        </motion.p>
+            <motion.p className={styles.sub} variants={fadeIn('up', 0.1)}>
+              Engineering writeups on artificial intelligence, computer vision, web architecture, and systems development.
+            </motion.p>
+          </div>
 
-        {/* Controls: Search & Category Pills */}
-        <motion.div className={styles.controls} variants={fadeIn('up', 0.15)}>
-          <div className={styles.searchBar}>
-            <span className={styles.searchIcon}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.3-4.3" />
-              </svg>
-            </span>
-            <input
-              type="text"
-              placeholder="Search articles by title, topic, or tech..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className={styles.searchInput}
-              aria-label="Search articles"
-            />
-            {searchQuery && (
-              <button
-                type="button"
-                className={styles.clearSearchBtn}
-                onClick={() => setSearchQuery('')}
-                aria-label="Clear search"
+          {!isStandalone && (
+            <motion.div variants={fadeIn('right', 0.1)} className={styles.headRight}>
+              <Link
+                href="/blog"
+                className={styles.viewAllTopBtn}
+                aria-label="View all technical articles"
               >
-                ✕
-              </button>
-            )}
-          </div>
+                <BookOpen size={15} />
+                <span>View All ({BLOG_POSTS.length})</span>
+                <ArrowRight size={14} />
+              </Link>
+            </motion.div>
+          )}
+        </div>
 
-          <div className={styles.categories}>
-            {CATEGORIES.map((cat) => {
-              const isActive = activeCategory === cat
-              return (
+        {/* Controls: Search & Category Pills (Only on standalone /blog page) */}
+        {isStandalone && (
+          <motion.div className={styles.controls} variants={fadeIn('up', 0.15)}>
+            <div className={styles.searchBar}>
+              <span className={styles.searchIcon}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+              </span>
+              <input
+                type="text"
+                placeholder="Search articles by title, topic, or tech..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className={styles.searchInput}
+                aria-label="Search articles"
+              />
+              {searchQuery && (
                 <button
-                  key={cat}
                   type="button"
-                  onClick={() => setActiveCategory(cat)}
-                  className={`${styles.categoryBtn} ${isActive ? styles.categoryBtnActive : ''}`}
+                  className={styles.clearSearchBtn}
+                  onClick={() => setSearchQuery('')}
+                  aria-label="Clear search"
                 >
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeCategoryPill"
-                      className={styles.activeCategoryPill}
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  <span className={styles.categoryText}>{cat}</span>
+                  ✕
                 </button>
-              )
-            })}
-          </div>
-        </motion.div>
+              )}
+            </div>
 
-        {/* Dynamic Articles Grid with Smooth Motion Cards */}
-        <div className={styles.grid}>
-          {paginatedPosts.length > 0 ? (
-            paginatedPosts.map((post) => (
+            <div className={styles.categories}>
+              {CATEGORIES.map((cat) => {
+                const isActive = activeCategory === cat
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => setActiveCategory(cat)}
+                    className={`${styles.categoryBtn} ${isActive ? styles.categoryBtnActive : ''}`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeCategoryPill"
+                        className={styles.activeCategoryPill}
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                    <span className={styles.categoryText}>{cat}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Dynamic Articles Grid: Horizontal row on home page, multi-column grid on standalone */}
+        <div className={isStandalone ? styles.grid : styles.horizontalGrid}>
+          {displayPosts.length > 0 ? (
+            displayPosts.map((post) => (
               <motion.article
                 key={post.id}
                 className={styles.articleCard}
@@ -386,8 +415,8 @@ export default function Blog({ isStandalone = false }) {
           )}
         </div>
 
-        {/* Responsive Pagination Controls */}
-        {filteredPosts.length > 0 && totalPages > 1 && (
+        {/* Responsive Pagination Controls — ONLY rendered on standalone /blog page */}
+        {isStandalone && filteredPosts.length > 0 && totalPages > 1 && (
           <div className={styles.paginationContainer}>
             <div className={styles.paginationInfo}>
               Showing <span className={styles.pageHighlight}>{(safeCurrentPage - 1) * postsPerPage + 1}–{Math.min(safeCurrentPage * postsPerPage, filteredPosts.length)}</span> of <span className={styles.pageHighlight}>{filteredPosts.length}</span> articles
@@ -450,14 +479,21 @@ export default function Blog({ isStandalone = false }) {
           </div>
         )}
 
-        {/* View Full Blog Archive Link (On Home Page) */}
+        {/* View Full Blog Archive Button (On Home Page) */}
         {!isStandalone && (
-          <div className={styles.exploreAllWrap}>
-            <Link href="/blog" className={styles.exploreAllBtn}>
-              <span>Explore All 12 Technical Articles &amp; Archives</span>
-              <span>↗</span>
+          <motion.div
+            className={styles.viewAllWrap}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.35 }}
+          >
+            <Link href="/blog" className={styles.viewAllMainBtn} aria-label="Explore all articles in dedicated archive">
+              <Sparkles size={16} />
+              <span>View All Articles ({BLOG_POSTS.length})</span>
+              <ArrowRight size={16} />
             </Link>
-          </div>
+          </motion.div>
         )}
       </motion.div>
 

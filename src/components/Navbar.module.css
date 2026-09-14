@@ -30,18 +30,6 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* ─── Scroll Progress Bar Indicator ───────────── */
-.scrollProgressBar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #FF6B00 0%, #3B5FCF 50%, #2DB77B 100%);
-  transform-origin: 0%;
-  z-index: 101;
-}
-
 .inner {
   max-width: 1320px;
   margin: 0 auto;

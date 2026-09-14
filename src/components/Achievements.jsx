@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { fadeIn, staggerContainer, scaleIn } from '../utils/motion'
 import styles from './Achievements.module.css'
 
@@ -131,6 +132,28 @@ const achievementsList = [
 ]
 
 export default function Achievements() {
+  const [expandedItems, setExpandedItems] = useState({})
+
+  const toggleItem = (id) => {
+    setExpandedItems((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }))
+  }
+
+  const allExpanded = achievementsList.every((item) => expandedItems[item.id])
+  const toggleAll = () => {
+    if (allExpanded) {
+      setExpandedItems({})
+    } else {
+      const nextState = {}
+      achievementsList.forEach((item) => {
+        nextState[item.id] = true
+      })
+      setExpandedItems(nextState)
+    }
+  }
+
   return (
     <section id="achievements" className={styles.achievements}>
       {/* Floating 3D Clay Shapes */}
@@ -152,17 +175,41 @@ export default function Achievements() {
         whileInView="show"
         viewport={{ once: false, amount: 0.1 }}
       >
-        <motion.span className="section-tag" variants={fadeIn('down', 0)}>
-          ✦ Honors &amp; Milestones
-        </motion.span>
+        <div className={styles.headerRow}>
+          <div>
+            <motion.span className="section-tag" variants={fadeIn('down', 0)}>
+              ✦ Honors &amp; Milestones
+            </motion.span>
 
-        <motion.h2 className={styles.heading} variants={fadeIn('up', 0)}>
-          Achievements &amp; <span className={styles.accent}>Credentials.</span>
-        </motion.h2>
+            <motion.h2 className={styles.heading} variants={fadeIn('up', 0)}>
+              Achievements &amp; <span className={styles.accent}>Credentials.</span>
+            </motion.h2>
+          </div>
 
-        <motion.p className={styles.sub} variants={fadeIn('up', 0.1)}>
-          A track record of consistent hands-on building, academic discipline, and open-source contributions.
-        </motion.p>
+          <motion.div variants={fadeIn('left', 0.15)} className={styles.headerActions}>
+            <button
+              type="button"
+              onClick={toggleAll}
+              className={styles.toggleAllBtn}
+              aria-label={allExpanded ? 'Collapse all achievement descriptions' : 'Expand all achievement descriptions'}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                {allExpanded ? (
+                  <>
+                    <polyline points="4 14 12 6 20 14" />
+                    <polyline points="4 20 12 12 20 20" />
+                  </>
+                ) : (
+                  <>
+                    <polyline points="4 6 12 14 20 6" />
+                    <polyline points="4 12 12 20 20 12" />
+                  </>
+                )}
+              </svg>
+              <span>{allExpanded ? 'Collapse All' : 'Expand All'}</span>
+            </button>
+          </motion.div>
+        </div>
 
         {/* Overview Stats Banner */}
         <motion.div className={styles.overviewBanner} variants={fadeIn('up', 0.15)}>
@@ -191,32 +238,81 @@ export default function Achievements() {
 
         {/* 3D Clay Achievements Grid */}
         <motion.div className={styles.grid} variants={staggerContainer(0.1, 0.2)}>
-          {achievementsList.map((item) => (
-            <motion.div
-              key={item.id}
-              className={styles.card}
-              variants={scaleIn(0)}
-            >
-              <div className={styles.cardHead}>
-                <div className={`${styles.iconBadge} ${styles[`icon_${item.color}`]}`}>
-                  {item.icon}
+          {achievementsList.map((item) => {
+            const isExpanded = !!expandedItems[item.id]
+
+            return (
+              <motion.div
+                key={item.id}
+                className={`${styles.card} ${isExpanded ? styles.cardExpanded : ''}`}
+                variants={scaleIn(0)}
+                onClick={() => toggleItem(item.id)}
+                role="button"
+                tabIndex={0}
+                aria-expanded={isExpanded}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    toggleItem(item.id)
+                  }
+                }}
+              >
+                <div className={styles.cardHead}>
+                  <div className={`${styles.iconBadge} ${styles[`icon_${item.color}`]}`}>
+                    {item.icon}
+                  </div>
+                  <span className={styles.yearPill}>{item.year}</span>
                 </div>
-                <span className={styles.yearPill}>{item.year}</span>
-              </div>
 
-              <h3 className={styles.cardTitle}>{item.title}</h3>
-              <span className={styles.issuer}>{item.issuer}</span>
-              <p className={styles.cardDesc}>{item.desc}</p>
+                <h3 className={styles.cardTitle}>{item.title}</h3>
+                <span className={styles.issuer}>{item.issuer}</span>
 
-              <div className={styles.cardTags}>
-                {item.tags.map((tag) => (
-                  <span key={tag} className={styles.tagPill}>
-                    #{tag}
+                <div className={styles.toggleRow}>
+                  <span className={styles.toggleActionText}>
+                    {isExpanded ? 'Hide description' : 'View description'}
                   </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                  <div className={`${styles.chevronWrapper} ${isExpanded ? styles.chevronRotated : ''}`}>
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </div>
+                </div>
+
+                <AnimatePresence initial={false}>
+                  {isExpanded && (
+                    <motion.div
+                      className={styles.expandableContent}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <div className={styles.contentInner}>
+                        <p className={styles.cardDesc}>{item.desc}</p>
+
+                        <div className={styles.cardTags}>
+                          {item.tags.map((tag) => (
+                            <span key={tag} className={styles.tagPill}>
+                              #{tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            )
+          })}
         </motion.div>
       </motion.div>
     </section>

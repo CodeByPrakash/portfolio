@@ -9,9 +9,6 @@ import Skills from '../components/Skills'
 import Projects from '../components/Projects'
 import LoadingScreen from '../components/LoadingScreen'
 
-const Journey = dynamic(() => import('../components/Journey'), {
-  ssr: true,
-})
 const Achievements = dynamic(() => import('../components/Achievements'), {
   ssr: true,
 })
@@ -45,7 +42,6 @@ export default function HomePage() {
         <About />
         <Skills />
         <Projects />
-        <Journey />
         <Achievements />
         <Blog />
         <Contact />

@@ -1,0 +1,355 @@
+/* ─── Table of Contents Container (Geometric Card Style) ──── */
+.tocWrapper {
+  background: var(--bg-tertiary);
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  padding: 1.35rem 1.15rem 1.15rem;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.04),
+    0 2px 6px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+  position: relative;
+  font-family: var(--font-body, 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+}
+
+/* ─── Mobile Accordion Bar ──────────────────────────── */
+.mobileBar {
+  display: none;
+}
+
+.mobileToggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg-secondary);
+  border: var(--bw) solid var(--border);
+  border-radius: 14px;
+  color: var(--text-primary);
+  font-family: var(--font-body, 'Space Grotesk', sans-serif);
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.mobileToggleBtn:hover {
+  border-color: var(--accent);
+}
+
+.mobileToggleIcon {
+  display: flex;
+  align-items: center;
+  color: var(--accent);
+  margin-right: 0.6rem;
+}
+
+.mobileToggleText {
+  flex: 1;
+  text-align: left;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+}
+
+.mobileChevron {
+  font-size: 0.75rem;
+  transition: transform 0.25s ease;
+  color: var(--text-muted);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* ─── TOC Body Content ──────────────────────────────── */
+.tocBody {
+  display: block;
+}
+
+/* ─── Track Container with SVG Canvas ───────────────── */
+.trackContainer {
+  position: relative;
+  padding-left: 24px; /* Space for the geometric SVG track on left */
+}
+
+/* Dynamic SVG Canvas Overlay */
+.svgCanvas {
+  position: absolute;
+  top: 0;
+  left: 6px;
+  width: 26px;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 3;
+}
+
+/* Continuous Guide Track with S-Curves */
+.bgPath {
+  stroke: #E2E8F0;
+  stroke-width: 1.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.2s ease;
+}
+
+/* Glowing Upward Active Stem matching Image 2 */
+.activeStem {
+  stroke: #D97706;
+  stroke-width: 2.2px;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 3px rgba(217, 119, 6, 0.45));
+  transition: d 0.22s ease-out;
+}
+
+/* Glowing Active Dot & Halo */
+.activeDotGroup {
+  pointer-events: none;
+}
+
+.activeHalo {
+  fill: rgba(217, 119, 6, 0.16);
+  transition: cx 0.25s cubic-bezier(0.16, 1, 0.3, 1), cy 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.activeDot {
+  fill: #D97706;
+  filter: drop-shadow(0 0 4px rgba(217, 119, 6, 0.6));
+  transition: cx 0.25s cubic-bezier(0.16, 1, 0.3, 1), cy 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Headings List ─────────────────────────────────── */
+.headingsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  max-height: calc(100vh - 170px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-light) transparent;
+}
+
+.headingsList::-webkit-scrollbar {
+  width: 3px;
+}
+
+.headingsList::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 3px;
+}
+
+.headingItem {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.indentedItem {
+  padding-left: 0.95rem;
+}
+
+/* Heading Link Default (Inactive) */
+.headingLink {
+  display: block;
+  width: 100%;
+  padding: 0.48rem 0.72rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #475569; /* Slate matching user screenshots */
+  transition: all 0.18s ease;
+  word-break: break-word;
+}
+
+.headingLink:hover {
+  color: #0F172A;
+  background: rgba(0, 0, 0, 0.035);
+}
+
+.indentedItem .headingLink {
+  font-size: 0.81rem;
+  font-weight: 500;
+  color: #64748B;
+  padding: 0.38rem 0.65rem;
+}
+
+.indentedItem .headingLink:hover {
+  color: #1E293B;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* ─── Active Pill Styling (Matches Attached Image 1) ─── */
+.activeLink {
+  background: #FEF3C7 !important; /* Soft warm amber cream pill */
+  color: #92400E !important; /* Dark amber text */
+  font-weight: 700 !important;
+  box-shadow: 0 1px 2px rgba(217, 119, 6, 0.08);
+}
+
+.indentedItem .activeLink {
+  background: #FEF3C7 !important;
+  color: #92400E !important;
+  font-weight: 700 !important;
+}
+
+/* ─── TOC Footer & Back to Top ──────────────────────── */
+.tocFooter {
+  margin-top: 0.95rem;
+}
+
+.footerDivider {
+  height: 1px;
+  background: #E2E8F0;
+  margin-bottom: 0.75rem;
+  border: none;
+}
+
+.backToTopBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: transparent;
+  border: none;
+  padding: 0.3rem 0.45rem;
+  color: #64748B;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.18s ease;
+}
+
+.backToTopBtn:hover {
+  color: #92400E;
+  background: rgba(217, 119, 6, 0.08);
+  transform: translateY(-1px);
+}
+
+.upChevron {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #64748B;
+  transition: transform 0.18s ease;
+}
+
+.backToTopBtn:hover .upChevron {
+  transform: translateY(-2px);
+  color: #D97706;
+}
+
+/* ─── Dark Mode Adaptations ─────────────────────────── */
+:global([data-theme="dark"]) .tocWrapper {
+  background: var(--bg-tertiary);
+  border-color: var(--border);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+:global([data-theme="dark"]) .bgPath {
+  stroke: rgba(255, 255, 255, 0.12);
+}
+
+:global([data-theme="dark"]) .activeStem {
+  stroke: #F59E0B;
+  filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.6));
+}
+
+:global([data-theme="dark"]) .activeHalo {
+  fill: rgba(245, 158, 11, 0.22);
+}
+
+:global([data-theme="dark"]) .activeDot {
+  fill: #F59E0B;
+  filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.8));
+}
+
+:global([data-theme="dark"]) .headingLink {
+  color: #94A3B8;
+}
+
+:global([data-theme="dark"]) .headingLink:hover {
+  color: #F8FAFC;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+:global([data-theme="dark"]) .indentedItem .headingLink {
+  color: #64748B;
+}
+
+:global([data-theme="dark"]) .indentedItem .headingLink:hover {
+  color: #CBD5E1;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+:global([data-theme="dark"]) .activeLink {
+  background: rgba(245, 158, 11, 0.18) !important;
+  color: #FDE68A !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+:global([data-theme="dark"]) .footerDivider {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+:global([data-theme="dark"]) .backToTopBtn {
+  color: #94A3B8;
+}
+
+:global([data-theme="dark"]) .backToTopBtn:hover {
+  color: #FDE68A;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+:global([data-theme="dark"]) .backToTopBtn:hover .upChevron {
+  color: #F59E0B;
+}
+
+:global([data-theme="dark"]) .mobileToggleBtn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+/* ─── Responsive Adjustments (< 1024px) ─────────────── */
+@media (max-width: 1024px) {
+  .mobileBar {
+    display: block;
+  }
+
+  .tocBody {
+    display: none;
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .tocBodyMobileOpen {
+    display: block;
+    animation: slideDown 0.25s ease-out;
+  }
+
+  .tocWrapper {
+    padding: 0.75rem 1rem;
+    border-radius: 18px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

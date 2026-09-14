@@ -365,3 +365,109 @@
     font-size: clamp(3.4rem, 14vw, 5rem);
   }
 }
+
+/* ─── Dark Mode Support for Loading Screen ─── */
+:global([data-theme="dark"]) .loaderWrap,
+.loaderWrap.loaderDark {
+  background-color: #0E0D12;
+  color: #F7F6FB;
+}
+
+:global([data-theme="dark"]) .loaderWrap::before,
+.loaderWrap.loaderDark::before {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  opacity: 0.55;
+}
+
+:global([data-theme="dark"]) .loaderWrap::after,
+.loaderWrap.loaderDark::after {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global([data-theme="dark"]) .topBar,
+.loaderDark .topBar {
+  color: #F7F6FB;
+}
+
+:global([data-theme="dark"]) .brandBadge,
+.loaderDark .brandBadge {
+  background: var(--accent);
+  color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(255, 107, 0, 0.45);
+}
+
+:global([data-theme="dark"]) .greetingBox,
+.loaderDark .greetingBox {
+  background: #1C1B24;
+  border-color: #3C3A4E;
+  box-shadow: 
+    0 10px 28px rgba(0, 0, 0, 0.55),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.06),
+    inset -1px -1px 3px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .greetingText,
+.loaderDark .greetingText {
+  color: #F7F6FB;
+}
+
+:global([data-theme="dark"]) .greetingLangBadge,
+.loaderDark .greetingLangBadge {
+  color: #FFA866;
+  background: rgba(255, 107, 0, 0.16);
+  border-color: rgba(255, 107, 0, 0.35);
+  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.06);
+}
+
+:global([data-theme="dark"]) .nameTitle,
+.loaderDark .nameTitle {
+  color: #F7F6FB;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+}
+
+:global([data-theme="dark"]) .roleTag,
+.loaderDark .roleTag {
+  color: #B6B4C7;
+  border-color: #3C3A4E;
+  background: rgba(28, 27, 36, 0.85);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+:global([data-theme="dark"]) .skipHint,
+.loaderDark .skipHint {
+  color: rgba(247, 246, 251, 0.4);
+}
+
+:global([data-theme="dark"]) .skipHint:hover,
+.loaderDark .skipHint:hover {
+  color: #FF6B00;
+}
+
+:global([data-theme="dark"]) .statusMessage,
+.loaderDark .statusMessage {
+  color: #F7F6FB;
+}
+
+:global([data-theme="dark"]) .percentNumber,
+.loaderDark .percentNumber {
+  color: #F7F6FB;
+}
+
+:global([data-theme="dark"]) .percentSymbol,
+.loaderDark .percentSymbol {
+  color: #FF6B00;
+}
+
+:global([data-theme="dark"]) .progressBarTrack,
+.loaderDark .progressBarTrack {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+:global([data-theme="dark"]) .progressBarFill,
+.loaderDark .progressBarFill {
+  background: linear-gradient(90deg, #FF6B00 0%, #FFA866 100%);
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.65);
+}

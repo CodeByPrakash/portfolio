@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import ShareButton from '../../../components/ShareButton'
+import TableOfContents from '../../../components/TableOfContents'
 import { BLOG_POSTS } from '../../../data/blogPosts'
 import { getBlogPostSeo } from '../../../utils/seoKeywords'
 import styles from './ArticleView.module.css'
@@ -218,6 +219,61 @@ function formatMathString(mathStr) {
     .trim()
 }
 
+// Helper to generate URL-safe, DOM-valid ID slugs from heading text
+function slugifyHeading(text) {
+  if (!text) return ''
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+}
+
+// Extract hierarchical headings structure for Table of Contents
+export function extractHeadings(content) {
+  if (!content) return []
+  const lines = content.trim().split('\n')
+  const headings = []
+  let inCodeBlock = false
+
+  lines.forEach((line, index) => {
+    if (line.startsWith('```')) {
+      inCodeBlock = !inCodeBlock
+      return
+    }
+    if (inCodeBlock) return
+
+    let level = 0
+    let rawText = ''
+
+    if (line.startsWith('#### ')) {
+      level = 4
+      rawText = line.replace('#### ', '').trim()
+    } else if (line.startsWith('### ')) {
+      level = 3
+      rawText = line.replace('### ', '').trim()
+    } else if (line.startsWith('## ')) {
+      level = 2
+      rawText = line.replace('## ', '').trim()
+    }
+
+    if (level > 0 && rawText) {
+      const cleanTitle = rawText
+        .replace(/\*\*([^*]+)\*\*/g, '$1')
+        .replace(/\*([^*]+)\*/g, '$1')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .trim()
+      const id = slugifyHeading(cleanTitle) || `heading-${index}`
+      headings.push({ id, title: cleanTitle, level })
+    }
+  })
+
+  return headings
+}
+
 // Inline Markdown & Math Parser helper for high-performance server rendering
 function renderMarkdownContent(content) {
   if (!content) return null
@@ -381,21 +437,45 @@ function renderMarkdownContent(content) {
     flushList()
 
     if (line.startsWith('#### ')) {
+      const raw = line.replace('#### ', '').trim()
+      const clean = raw
+        .replace(/\*\*([^*]+)\*\*/g, '$1')
+        .replace(/\*([^*]+)\*/g, '$1')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .trim()
+      const id = slugifyHeading(clean) || `h4-${idx}`
       elements.push(
-        <h4 key={`h4-${idx}`} className={styles.articleH4}>
-          {renderInline(line.replace('#### ', ''))}
+        <h4 key={`h4-${idx}`} id={id} className={styles.articleH4}>
+          {renderInline(raw)}
         </h4>
       )
     } else if (line.startsWith('### ')) {
+      const raw = line.replace('### ', '').trim()
+      const clean = raw
+        .replace(/\*\*([^*]+)\*\*/g, '$1')
+        .replace(/\*([^*]+)\*/g, '$1')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .trim()
+      const id = slugifyHeading(clean) || `h3-${idx}`
       elements.push(
-        <h3 key={`h3-${idx}`} className={styles.articleH3}>
-          {renderInline(line.replace('### ', ''))}
+        <h3 key={`h3-${idx}`} id={id} className={styles.articleH3}>
+          {renderInline(raw)}
         </h3>
       )
     } else if (line.startsWith('## ')) {
+      const raw = line.replace('## ', '').trim()
+      const clean = raw
+        .replace(/\*\*([^*]+)\*\*/g, '$1')
+        .replace(/\*([^*]+)\*/g, '$1')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .trim()
+      const id = slugifyHeading(clean) || `h2-${idx}`
       elements.push(
-        <h2 key={`h2-${idx}`} className={styles.articleH2}>
-          {renderInline(line.replace('## ', ''))}
+        <h2 key={`h2-${idx}`} id={id} className={styles.articleH2}>
+          {renderInline(raw)}
         </h2>
       )
     } else if (line.startsWith('> ')) {
@@ -436,6 +516,7 @@ export default async function BlogPostPage({ params }) {
     (p) => p.slug !== post.slug && (p.category === post.category || p.tags.some((t) => post.tags.includes(t)))
   ).slice(0, 3)
 
+  const headings = extractHeadings(post.content)
   const seoData = getBlogPostSeo(post.slug)
   const wordCount = post.content.split(/\s+/).length + post.title.split(/\s+/).length
   const canonicalUrl = seoData.canonicalUrl
@@ -555,8 +636,10 @@ export default async function BlogPostPage({ params }) {
             <span className={styles.breadcrumbCurrent}>{post.category}</span>
           </nav>
 
-          {/* Main 3D Clay Article Bento Card */}
-          <div className={styles.articleCardWrapper}>
+          {/* 2-Column Responsive Layout: Left Article Bento Card + Right Fixed/Sticky TOC */}
+          <div className={styles.blogMainLayout}>
+            {/* Main 3D Clay Article Bento Card */}
+            <div className={styles.articleCardWrapper}>
             {/* Article Header */}
             <header className={styles.header}>
               <div className={styles.metaRow}>
@@ -728,8 +811,16 @@ export default async function BlogPostPage({ params }) {
               </div>
             </footer>
           </div>
+
+          {/* Right Side: Fixed/Sticky Table of Contents (Article Outline) */}
+          {headings.length > 0 && (
+            <aside className={styles.tocSidebar} aria-label="Table of Contents">
+              <TableOfContents headings={headings} />
+            </aside>
+          )}
         </div>
-      </main>
+      </div>
+    </main>
 
       <Footer />
     </>

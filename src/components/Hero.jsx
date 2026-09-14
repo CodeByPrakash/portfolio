@@ -238,35 +238,6 @@ export default function Hero() {
 
               {/* Sculpted Left Cutout Notch with 3 Stacked Preview Circles (Reference Design) */}
               <div className={styles.sculptedNotch}>
-                {/* 1. Top Preview Circle (Camera / Hand Gadget) */}
-                <a
-                  href="#journey"
-                  className={`${styles.notchCircle} ${styles.notchActionBtn}`}
-                  title="Explore Journey"
-                  aria-label="Explore Journey"
-                >
-                  <svg width="64" height="64" style={{ padding: "0.4rem" }} viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M133 58H99
-       C76 58 59 74 59 96
-       C59 118 76 134 99 134
-       H185
-       C208 134 221 150 221 170
-       C221 192 207 211 183 211
-       H134"
-                      stroke="#ffffffff"
-                      strokeWidth="20"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-
-                    <circle cx="198" cy="57" r="32" fill="#ffffffff" />
-                    <circle cx="198" cy="57" r="11" fill="#FFFFFF" />
-
-                    <circle cx="70" cy="207" r="32" fill="#ffffffff" />
-                    <circle cx="70" cy="207" r="11" fill="#FFFFFF" />
-                  </svg>
-                </a>
 
                 {/* 2. Middle Preview Circle (Developer Portrait Thumbnail) */}
                 <div className={`${styles.notchCircle} ${styles.notchCircle2}`} title="Om Prakash">

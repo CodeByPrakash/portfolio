@@ -86,17 +86,17 @@ export default function Skills() {
   return (
     <section id="skills" className={styles.skills}>
       {/* Floating 3D Clay Morphism Edge Geometrics */}
-      <motion.div 
+      <motion.div
         className={`${styles.clayShape} ${styles.clayShapeTorus}`}
         animate={{ y: [0, -32, 0], rotate: [0, 360] }}
         transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
       />
-      <motion.div 
+      <motion.div
         className={`${styles.clayShape} ${styles.clayShapeOrb}`}
         animate={{ y: [0, 28, 0], scale: [1, 1.05, 1] }}
         transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
       />
-      <motion.div 
+      <motion.div
         className={`${styles.clayShape} ${styles.clayShapeCapsule}`}
         animate={{ y: [0, -22, 0], rotate: [-15, 15, -15] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
@@ -113,19 +113,11 @@ export default function Skills() {
 
         {/* Section heading — like reference */}
         <motion.h2 className={styles.sectionHeading} variants={fadeIn('up', 0)}>
-          Character Stats
+          <span className={styles.accent}>Character</span> Stats
         </motion.h2>
 
         {/* Bento wrapper */}
         <div className={styles.bentoWrap}>
-          {/* Top banner cell */}
-          <motion.div className={styles.bannerCell} variants={fadeIn('up', 0)}>
-            <span className={styles.bannerTag}>*Skill Overview</span>
-            <p className={styles.bannerText}>
-              Every project levels up my abilities. Here's the current skill tree — built through 3+ years
-              of hands-on experience across design, frontend, backend, and strategy.
-            </p>
-          </motion.div>
 
           {/* Skills grid */}
           <motion.div

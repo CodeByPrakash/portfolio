@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 // import GoogleTranslate from './GoogleTranslate'
@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { name: 'About', href: '#about', target: '/#about' },
   { name: 'Skills', href: '#skills', target: '/#skills' },
   { name: 'Projects', href: '#projects', target: '/#projects' },
-  { name: 'Journey', href: '#journey', target: '/#journey' },
   { name: 'Achievements', href: '#achievements', target: '/#achievements' },
   { name: 'Blog', href: '#blog', target: '/blog' },
   { name: 'Activity', href: '/activity', target: '/activity' },
@@ -23,13 +22,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const pathname = usePathname()
-
-  const { scrollYProgress } = useScroll()
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  })
 
   // Detect scroll state for glassmorphic navbar background
   useEffect(() => {
@@ -47,6 +39,11 @@ export default function Navbar() {
       return
     }
 
+    if (pathname.startsWith('/projects')) {
+      setActiveSection('projects')
+      return
+    }
+
     if (pathname.startsWith('/activity')) {
       setActiveSection('activity')
       return
@@ -57,7 +54,7 @@ export default function Navbar() {
       return
     }
 
-    const sectionIds = ['about', 'skills', 'projects', 'journey', 'achievements', 'blog', 'contact']
+    const sectionIds = ['about', 'skills', 'projects', 'achievements', 'blog', 'contact']
     const sectionElements = sectionIds
       .map((id) => document.getElementById(id))
       .filter(Boolean)
@@ -149,9 +146,6 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
-      {/* Top Animated Scroll Progress Indicator */}
-      <motion.div className={styles.scrollProgressBar} style={{ scaleX }} />
-
       <div className={styles.inner}>
         {/* Logo */}
         <Link
@@ -185,8 +179,8 @@ export default function Navbar() {
             const isActive = isBlogLink
               ? pathname.startsWith('/blog') || activeSection === 'blog'
               : isActivityLink
-              ? pathname.startsWith('/activity') || activeSection === 'activity'
-              : activeSection === link.href.substring(1)
+                ? pathname.startsWith('/activity') || activeSection === 'activity'
+                : activeSection === link.href.substring(1)
 
             return (
               <li key={link.name} className={styles.linkItem}>
@@ -268,8 +262,8 @@ export default function Navbar() {
                 const isActive = isBlogLink
                   ? pathname.startsWith('/blog') || activeSection === 'blog'
                   : isActivityLink
-                  ? pathname.startsWith('/activity') || activeSection === 'activity'
-                  : activeSection === link.href.substring(1)
+                    ? pathname.startsWith('/activity') || activeSection === 'activity'
+                    : activeSection === link.href.substring(1)
 
                 return (
                   <motion.div

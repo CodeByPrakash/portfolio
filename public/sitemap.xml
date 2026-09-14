@@ -20,6 +20,19 @@
     </image:image>
   </url>
 
+  <!-- Dedicated Projects Archive -->
+  <url>
+    <loc>https://omprakashbehera.me/projects</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/omprakash.png</image:loc>
+      <image:title>Om Prakash Behera Engineering Projects Archive</image:title>
+      <image:caption>Comprehensive showcase of 21+ engineering projects by Om Prakash Behera.</image:caption>
+    </image:image>
+  </url>
+
   <!-- Technical Blog Index -->
   <url>
     <loc>https://omprakashbehera.me/blog</loc>
