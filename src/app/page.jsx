@@ -8,6 +8,8 @@ import About from '../components/About'
 import Skills from '../components/Skills'
 import Projects from '../components/Projects'
 import LoadingScreen from '../components/LoadingScreen'
+import ClickSpark from '../components/ClickSpark';
+
 
 const Achievements = dynamic(() => import('../components/Achievements'), {
   ssr: true,
@@ -35,18 +37,25 @@ export default function HomePage() {
 
   return (
     <>
-      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
-      <Navbar />
-      <main id="main-content">
-        <Hero isLoading={isLoading} />
-        <About />
-        <Skills />
-        <Projects />
-        <Achievements />
-        <Blog />
-        <Contact />
-      </main>
-      <Footer />
+      <ClickSpark sparkColor="#ff6600ff"
+        sparkSize={10}
+        sparkRadius={15}
+        sparkCount={8}
+        duration={400}
+      >
+        {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+        <Navbar />
+        <main id="main-content">
+          <Hero isLoading={isLoading} />
+          <About />
+          <Skills />
+          <Projects />
+          <Achievements />
+          <Blog />
+          <Contact />
+        </main>
+        <Footer />
+      </ClickSpark>
     </>
   )
 }

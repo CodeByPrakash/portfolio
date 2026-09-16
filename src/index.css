@@ -481,3 +481,25 @@ iframe.goog-te-banner-frame,
 body > .skiptranslate:first-child {
   display: none !important;
 }
+
+/* ─── Mobile & Tablet Smooth Performance Boosts ─────────────────── */
+@media (max-width: 1024px), (pointer: coarse), (hover: none) {
+  html, body {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Remove 300ms tap delay and tap highlights on touch devices */
+  a, button, [role="button"], input, select, textarea {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Hardware accelerate animated containers on mobile & tablets */
+  [class*="_card_"], [class*="_inner_"], section {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+}
+
