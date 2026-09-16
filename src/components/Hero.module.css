@@ -12,6 +12,20 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* ─── Interactive Cursor Grid Canvas Background ─────────────────────────── */
+.cursorGridBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
 .inner {
   width: 100%;
   max-width: 1380px;
@@ -21,6 +35,8 @@
   flex-direction: column;
   justify-content: center;
   flex: 1;
+  position: relative;
+  z-index: 2;
 }
 
 /* ─── 2-Column Main Hero Grid ─────────────────────────────────────────────── */
@@ -572,6 +588,9 @@
   font-size: 0.7rem;
   opacity: 0.85;
 }
+
+
+
 
 @keyframes tapeMarquee {
   0% {

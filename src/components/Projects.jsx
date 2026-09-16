@@ -6,6 +6,7 @@ import { ArrowRight, Sparkles, Layers } from 'lucide-react'
 import { fadeIn, staggerContainer } from '../utils/motion'
 import { PROJECTS_DATA } from '../data/projectsData'
 import styles from './Projects.module.css'
+import Antigravity from './Antigravity';
 
 export default function Projects() {
   // Showcase only top 4 flagship projects on homepage
@@ -17,24 +18,28 @@ export default function Projects() {
       className={styles.projects}
       aria-label="Portfolio — Engineering Projects Showcase"
     >
-      {/* Floating 3D Clay Morphism Edge Geometrics */}
-      <motion.div
-        className={`${styles.clayShape} ${styles.clayShapeTorus}`}
-        animate={{ y: [0, 36, 0], rotate: [0, 360] }}
-        transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
-      />
-      <motion.div
-        className={`${styles.clayShape} ${styles.clayShapeOrb}`}
-        animate={{ y: [0, -30, 0], scale: [1, 1.06, 1] }}
-        transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-      />
-      <motion.div
-        className={`${styles.clayShape} ${styles.clayShapePill}`}
-        animate={{ y: [0, 24, 0], rotate: [-15, 20, -15] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-      />
+      {/* Interactive 3D Antigravity Particle Field Background */}
+      <div className={styles.antigravityBg} aria-hidden="true">
+        <Antigravity
+          count={300}
+          magnetRadius={6}
+          ringRadius={7}
+          waveSpeed={0.4}
+          waveAmplitude={1}
+          particleSize={1.5}
+          lerpSpeed={0.05}
+          color="#F97316"
+          autoAnimate
+          particleVariance={1}
+          rotationSpeed={0}
+          depthFactor={1}
+          pulseSpeed={3}
+          particleShape="capsule"
+          fieldStrength={10}
+        />
+      </div>
 
-      <div className="section-wrap">
+      <div className={`section-wrap ${styles.sectionWrap}`}>
         <motion.span
           className="section-tag"
           initial={{ opacity: 0, y: 20 }}

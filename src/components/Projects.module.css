@@ -5,6 +5,25 @@
   overflow: hidden;
 }
 
+/* ─── Interactive Antigravity 3D Particle Field Background ─── */
+.antigravityBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sectionWrap {
+  position: relative;
+  z-index: 2;
+}
+
 .accent {
   color: var(--accent);
 }

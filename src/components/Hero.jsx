@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
 import styles from './Hero.module.css'
+import CursorGrid from './CursorGrid';
 
 const techLogos = ['React', 'Next.js', 'Python', 'Node.js', 'TensorFlow', 'PostgreSQL', 'FastAPI', 'Docker']
 
@@ -174,6 +175,26 @@ export default function Hero({ isLoading = false }) {
       ref={heroRef}
       aria-label="Hero — Om Prakash Behera, Computer Science Engineer building intelligent systems"
     >
+      {/* Interactive Cursor Grid Background */}
+      <div className={styles.cursorGridBg} aria-hidden="true">
+        <CursorGrid
+          cellSize={70}
+          color="#F97316"
+          radius={140}
+          falloff="smooth"
+          holdTime={400}
+          fadeDuration={800}
+          lineWidth={1.2}
+          maxOpacity={1}
+          fillOpacity={0}
+          gridOpacity={0}
+          cellRadius={0}
+          clickPulse
+          pulseSpeed={600}
+          zIndex={100}
+        />
+      </div>
+
       <div className={`section-wrap ${styles.inner}`}>
         {/* 2-Column Minimal Editorial Hero Grid */}
         <div className={styles.heroGrid}>
