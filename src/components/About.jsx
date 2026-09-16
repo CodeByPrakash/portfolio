@@ -207,7 +207,7 @@ export default function About() {
           </motion.div>
 
           {/* Row 3: 3D Clay Morphism Showcase Cells */}
-          <motion.div className={styles.cellClay1} variants={fadeIn('up', 0.35)}>
+          {/* <motion.div className={styles.cellClay1} variants={fadeIn('up', 0.35)}>
             <motion.div
               className={styles.clayInnerOrb}
               animate={{ y: [0, -12, 0], rotate: [0, 20, 0] }}
@@ -232,7 +232,7 @@ export default function About() {
               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
             />
             <span className={styles.clayCellLabel}>Secure Systems</span>
-          </motion.div>
+          </motion.div> */}
 
           {/* Row 4: GitHub Contributions Graph (Full Width Bento Cell) */}
           <GithubContributions username="CodeByPrakash" />

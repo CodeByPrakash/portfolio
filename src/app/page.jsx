@@ -38,7 +38,7 @@ export default function HomePage() {
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       <Navbar />
       <main id="main-content">
-        <Hero />
+        <Hero isLoading={isLoading} />
         <About />
         <Skills />
         <Projects />

@@ -56,7 +56,97 @@ const socialLinks = [
   },
 ]
 
-export default function Hero() {
+// ── Motion variants for text entrance after loading ─────────
+// Starts larger & higher up, then scales down to original size while gliding down into position
+const headlineVariants = {
+  loading: {
+    scale: 1.28,
+    y: -36,
+    opacity: 0,
+  },
+  loaded: {
+    scale: 1,
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1.15,
+      ease: [0.16, 1, 0.3, 1],
+      delay: 0.08,
+    },
+  },
+}
+
+const bioVariants = {
+  loading: {
+    scale: 1.12,
+    y: -22,
+    opacity: 0,
+  },
+  loaded: {
+    scale: 1,
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1.05,
+      ease: [0.16, 1, 0.3, 1],
+      delay: 0.22,
+    },
+  },
+}
+
+const eyebrowVariants = {
+  loading: {
+    scale: 1.08,
+    y: -16,
+    opacity: 0,
+  },
+  loaded: {
+    scale: 1,
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.95,
+      ease: [0.16, 1, 0.3, 1],
+      delay: 0.04,
+    },
+  },
+}
+
+const badgeVariants = {
+  loading: {
+    scale: 1.08,
+    y: -18,
+    opacity: 0,
+  },
+  loaded: {
+    scale: 1,
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.95,
+      ease: [0.16, 1, 0.3, 1],
+      delay: 0.12,
+    },
+  },
+}
+
+const actionVariants = {
+  loading: {
+    y: -16,
+    opacity: 0,
+  },
+  loaded: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.9,
+      ease: [0.16, 1, 0.3, 1],
+      delay: 0.32,
+    },
+  },
+}
+
+export default function Hero({ isLoading = false }) {
   const { isDark, toggleTheme } = useTheme()
   const heroRef = useRef(null)
 
@@ -90,7 +180,13 @@ export default function Hero() {
           {/* Left Column — 55-60% width */}
           <div className={styles.leftCol}>
             {/* Understated Eyebrow with Location & Bat Theme Switcher */}
-            <div className={styles.eyebrow}>
+            <motion.div
+              className={styles.eyebrow}
+              variants={eyebrowVariants}
+              initial="loading"
+              animate={isLoading ? "loading" : "loaded"}
+              style={{ transformOrigin: 'left top' }}
+            >
               <span className={styles.eyebrowLine} />
               <span className={styles.eyebrowText}>COMPUTER SCIENCE ENGINEER</span>
               <span className={styles.locationTag}>
@@ -109,10 +205,15 @@ export default function Hero() {
               >
                 <span className={styles.palmEmoji}>🦇</span>
               </button>
-            </div>
+            </motion.div>
 
             {/* Badges: Tech Head & IIM Sambalpur Milestone */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.25rem' }}>
+            <motion.div
+              style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.25rem', transformOrigin: 'left top' }}
+              variants={badgeVariants}
+              initial="loading"
+              animate={isLoading ? "loading" : "loaded"}
+            >
               <a
                 href="https://hackverse.codebreakersgcek.tech"
                 target="_blank"
@@ -133,25 +234,42 @@ export default function Hero() {
                 </span>
                 <span className={styles.highlightBadgeArrow}>↗</span>
               </a>
-            </div>
+            </motion.div>
 
-            {/* Bold Futuristic Headline */}
-            <div className={styles.headlineWrapper}>
+            {/* Bold Futuristic Headline: scales down from larger to original size while gliding down to position */}
+            <motion.div
+              className={styles.headlineWrapper}
+              style={{ transformOrigin: 'left top' }}
+              variants={headlineVariants}
+              initial="loading"
+              animate={isLoading ? "loading" : "loaded"}
+            >
               <h1 className={styles.headline}>
                 <span className={styles.headLine1}>INTELLIGENT</span>
                 <span className={styles.headLine2}>
                   SYSTEMS<span className={styles.dotAccent}>.</span>
                 </span>
               </h1>
-            </div>
+            </motion.div>
 
-            {/* Concise 2-Line Description */}
-            <p className={styles.bioText}>
+            {/* Concise 2-Line Description: scales down slightly while gliding down into position */}
+            <motion.p
+              className={styles.bioText}
+              style={{ transformOrigin: 'left top' }}
+              variants={bioVariants}
+              initial="loading"
+              animate={isLoading ? "loading" : "loaded"}
+            >
               Tech Head at CodeBreakers GCEK building HackVerse &apos;26. Engineering AI-driven systems and resilient full-stack platforms that solve real-world problems.
-            </p>
+            </motion.p>
 
             {/* 4 Social/Contact Buttons */}
-            <div className={styles.socialRow}>
+            <motion.div
+              className={styles.socialRow}
+              variants={actionVariants}
+              initial="loading"
+              animate={isLoading ? "loading" : "loaded"}
+            >
               {socialLinks.map(s => (
                 <a
                   key={s.name}
@@ -166,10 +284,15 @@ export default function Hero() {
                   <span className={styles.socialLabel}>{s.short}</span>
                 </a>
               ))}
-            </div>
+            </motion.div>
 
             {/* Two Primary Statistics Maximum */}
-            <div className={styles.statsContainer}>
+            <motion.div
+              className={styles.statsContainer}
+              variants={actionVariants}
+              initial="loading"
+              animate={isLoading ? "loading" : "loaded"}
+            >
               <div className={styles.statItem}>
                 <span className={styles.statNumber}>30+</span>
                 <span className={styles.statLabel}>Projects Built</span>
@@ -179,10 +302,15 @@ export default function Hero() {
                 <span className={styles.statNumber}>3+</span>
                 <span className={styles.statLabel}>Years Building</span>
               </div>
-            </div>
+            </motion.div>
 
             {/* Primary & Secondary CTAs */}
-            <div className={styles.ctaRow}>
+            <motion.div
+              className={styles.ctaRow}
+              variants={actionVariants}
+              initial="loading"
+              animate={isLoading ? "loading" : "loaded"}
+            >
               <a href="#projects" className="btn btn-accent">Explore Work ↓</a>
               <a href="/resume.pdf" download className="btn btn-outline">Resume ↓</a>
               <a
@@ -194,7 +322,7 @@ export default function Hero() {
               >
                 <span className={styles.cliPrompt}>&gt;_</span> 3D ↗
               </a>
-            </div>
+            </motion.div>
           </div>
 
           {/* Right Column: Dominant Portrait in Rounded Frame with Sculpted 3-Circle Notch */}
@@ -243,10 +371,10 @@ export default function Hero() {
                 <div className={`${styles.notchCircle} ${styles.notchCircle2}`} title="Om Prakash">
                   <div className={styles.notchCircleInner}>
                     <Image
-                      src="/omprakash.webp"
+                      src="/omprakash_mn.webp"
                       alt="Om Prakash"
-                      width={48}
-                      height={48}
+                      width={200}
+                      height={200}
                       className={styles.notchThumbImg}
                     />
                   </div>
