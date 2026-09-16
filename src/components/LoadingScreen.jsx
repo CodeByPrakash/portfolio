@@ -175,24 +175,20 @@ export default function LoadingScreen({ onComplete }) {
               </span>
             </motion.div>
 
-            {/* Bold Name with Animated Characters */}
+            {/* Bold Name with Animated Characters — pure CSS for compositor-thread smoothness */}
             <div className={styles.nameTitle} role="heading" aria-level={2} aria-label="OMPRAKASH BEHERA">
               {NAME_WORDS.map((word, wordIndex) => (
                 <span key={wordIndex} className={styles.nameWord}>
                   {word.split('').map((char, charIndex) => (
-                    <motion.span
+                    <span
                       key={charIndex}
                       className={styles.nameChar}
-                      initial={{ y: '110%', opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{
-                        duration: 0.6,
-                        delay: 0.15 + (wordIndex * 0.12) + (charIndex * 0.035),
-                        ease: [0.22, 1, 0.36, 1],
+                      style={{
+                        animationDelay: `${0.15 + wordIndex * 0.12 + charIndex * 0.038}s`,
                       }}
                     >
                       {char}
-                    </motion.span>
+                    </span>
                   ))}
                 </span>
               ))}

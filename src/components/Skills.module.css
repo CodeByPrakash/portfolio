@@ -301,6 +301,31 @@
   opacity: 0.85;
 }
 
+/* ─── CSS Float Animations (compositor-thread, zero JS cost) ─ */
+.clayFloat1 {
+  animation: clayFloat1 14s linear infinite;
+}
+.clayFloat2 {
+  animation: clayFloat2 7s ease-in-out infinite 1s;
+}
+.clayFloat3 {
+  animation: clayFloat3 8s ease-in-out infinite 0.5s;
+}
+
+@keyframes clayFloat1 {
+  0%   { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(-32px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+@keyframes clayFloat2 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(28px) scale(1.05); }
+}
+@keyframes clayFloat3 {
+  0%, 100% { transform: translateY(0) rotate(-15deg); }
+  50%       { transform: translateY(-22px) rotate(15deg); }
+}
+
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
