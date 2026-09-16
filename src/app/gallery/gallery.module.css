@@ -6,66 +6,87 @@
   position: fixed;
   inset: 0;
   width: 100vw;
+  width: 100dvw;
   height: 100vh;
+  height: 100dvh;
   background: #0a0a0a;
   overflow: hidden;
+  touch-action: none;
 }
 
 /* ─── Floating Back Button ───────────────────────────────── */
 .backBtn {
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: max(20px, env(safe-area-inset-top, 20px));
+  left: max(20px, env(safe-area-inset-left, 20px));
   z-index: 100;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 10px 20px;
+  min-height: 44px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px) saturate(1.6);
-  -webkit-backdrop-filter: blur(16px) saturate(1.6);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: all 0.3s ease;
+  background: rgba(18, 18, 18, 0.65);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .backBtn:hover {
-  background: rgba(255, 107, 0, 0.9);
+  background: rgba(255, 107, 0, 0.92);
   color: #fff;
-  border-color: rgba(255, 107, 0, 0.6);
+  border-color: rgba(255, 107, 0, 0.8);
   transform: translateX(-3px);
-  box-shadow: 0 4px 20px rgba(255, 107, 0, 0.3);
+  box-shadow: 0 6px 25px rgba(255, 107, 0, 0.35);
+}
+
+.backBtn:active {
+  transform: scale(0.96) translateX(-2px);
+  background: rgba(255, 107, 0, 1);
 }
 
 /* ─── Glass Info Card (bottom-right) ─────────────────────── */
 .glassCard {
   position: fixed;
-  bottom: 28px;
-  right: 28px;
+  bottom: max(28px, env(safe-area-inset-bottom, 28px));
+  right: max(28px, env(safe-area-inset-right, 28px));
   z-index: 100;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 16px 24px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px) saturate(1.8);
-  -webkit-backdrop-filter: blur(20px) saturate(1.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 26px;
+  border-radius: 16px;
+  background: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   user-select: none;
+  pointer-events: auto;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glassCard:hover {
+  border-color: rgba(255, 107, 0, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 107, 0, 0.15);
 }
 
 .glassAccent {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 400;
-  letter-spacing: 0.14em;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent, #FF6B00);
 }
@@ -75,19 +96,113 @@
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.1;
   margin: 0;
 }
 
-@media (max-width: 480px) {
+/* ─── Tablet Styles (max-width: 1024px) ──────────────────── */
+@media (max-width: 1024px) {
+  .backBtn {
+    top: max(18px, env(safe-area-inset-top, 18px));
+    left: max(18px, env(safe-area-inset-left, 18px));
+    padding: 9px 18px;
+    font-size: 0.82rem;
+    min-height: 42px;
+  }
+
   .glassCard {
-    bottom: 16px;
-    right: 16px;
-    padding: 12px 18px;
+    bottom: max(22px, env(safe-area-inset-bottom, 22px));
+    right: max(22px, env(safe-area-inset-right, 22px));
+    padding: 14px 22px;
+    border-radius: 14px;
   }
 
   .glassName {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
+  }
+}
+
+/* ─── Mobile Styles (max-width: 768px) ───────────────────── */
+@media (max-width: 768px) {
+  .backBtn {
+    top: max(16px, env(safe-area-inset-top, 16px));
+    left: max(16px, env(safe-area-inset-left, 16px));
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    gap: 6px;
+    min-height: 40px;
+    background: rgba(14, 14, 14, 0.72);
+  }
+
+  .glassCard {
+    bottom: max(18px, env(safe-area-inset-bottom, 18px));
+    right: max(18px, env(safe-area-inset-right, 18px));
+    padding: 12px 18px;
+    border-radius: 14px;
+    background: rgba(14, 14, 14, 0.68);
+  }
+
+  .glassAccent {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+  }
+
+  .glassName {
+    font-size: 1.15rem;
+  }
+}
+
+/* ─── Small Mobile Devices (max-width: 480px) ────────────── */
+@media (max-width: 480px) {
+  .backBtn {
+    top: max(14px, env(safe-area-inset-top, 14px));
+    left: max(14px, env(safe-area-inset-left, 14px));
+    padding: 8px 14px;
+    font-size: 0.76rem;
+    gap: 5px;
+    min-height: 38px;
+    background: rgba(12, 12, 12, 0.8);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .glassCard {
+    bottom: max(14px, env(safe-area-inset-bottom, 14px));
+    right: max(14px, env(safe-area-inset-right, 14px));
+    padding: 10px 15px;
+    border-radius: 12px;
+    background: rgba(12, 12, 12, 0.75);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .glassAccent {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+  }
+
+  .glassName {
+    font-size: 1.02rem;
+  }
+}
+
+/* ─── Mobile Landscape (max-height: 500px) ───────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .backBtn {
+    top: max(10px, env(safe-area-inset-top, 10px));
+    left: max(14px, env(safe-area-inset-left, 14px));
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    min-height: 34px;
+  }
+
+  .glassCard {
+    bottom: max(10px, env(safe-area-inset-bottom, 10px));
+    right: max(14px, env(safe-area-inset-right, 14px));
+    padding: 8px 14px;
+    border-radius: 10px;
+  }
+
+  .glassName {
+    font-size: 0.95rem;
   }
 }

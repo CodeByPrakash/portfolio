@@ -53,7 +53,7 @@ export default function GalleryPage() {
   return (
     <div className={styles.page}>
       {/* ── Back Button ──────────────────────────────────── */}
-      <Link href="/" className={styles.backBtn}>
+      <Link href="/" className={styles.backBtn} aria-label="Back to Portfolio">
         <ArrowLeft size={18} />
         <span>Back</span>
       </Link>

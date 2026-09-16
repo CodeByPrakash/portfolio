@@ -11,6 +11,10 @@
   justify-content: center;
   transform-style: preserve-3d;
   cursor: default;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
 /* ─── 3D Plane ───────────────────────────────────────────── */
@@ -20,6 +24,8 @@
   transform-style: preserve-3d;
   will-change: transform;
   transition: none; /* RAF controls this */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* ─── Column ─────────────────────────────────────────────── */
@@ -28,6 +34,8 @@
   min-width: 0;
   overflow: hidden;
   transform: translateY(var(--stagger, 0%));
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* ─── Infinite Scroll Track ──────────────────────────────── */
@@ -35,6 +43,11 @@
   display: flex;
   flex-direction: column;
   animation: scrollDown var(--duration, 25s) linear infinite;
+  will-change: transform;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .trackReverse {
@@ -47,19 +60,19 @@
 
 @keyframes scrollDown {
   0% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateY(-50%);
+    transform: translate3d(0, -50%, 0);
   }
 }
 
 @keyframes scrollUp {
   0% {
-    transform: translateY(-50%);
+    transform: translate3d(0, -50%, 0);
   }
   100% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -70,6 +83,10 @@
   overflow: hidden;
   position: relative;
   background: rgba(255, 255, 255, 0.04);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
 .tileImg {
@@ -79,4 +96,18 @@
   display: block;
   user-select: none;
   pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+/* ─── Tablet & Mobile Responsive Tweaks ──────────────────── */
+@media (max-width: 1024px) {
+  .tile {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media (max-width: 640px) {
+  .tile {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  }
 }
