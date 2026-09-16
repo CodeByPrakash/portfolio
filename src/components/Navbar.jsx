@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { name: 'Achievements', href: '#achievements', target: '/#achievements' },
   { name: 'Blog', href: '#blog', target: '/blog' },
   { name: 'Activity', href: '/activity', target: '/activity' },
+  { name: 'Gallery', href: '/gallery', target: '/gallery' },
   { name: 'Contact', href: '#contact', target: '/#contact' },
 ]
 
@@ -49,12 +50,17 @@ export default function Navbar() {
       return
     }
 
+    if (pathname.startsWith('/gallery')) {
+      setActiveSection('gallery')
+      return
+    }
+
     if (pathname !== '/') {
       setActiveSection('')
       return
     }
 
-    const sectionIds = ['about', 'skills', 'projects', 'achievements', 'blog', 'contact']
+    const sectionIds = ['about', 'skills', 'projects', 'achievements', 'blog', 'Gallery', 'contact']
     const sectionElements = sectionIds
       .map((id) => document.getElementById(id))
       .filter(Boolean)

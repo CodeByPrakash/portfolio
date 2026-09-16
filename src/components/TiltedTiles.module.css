@@ -1,0 +1,82 @@
+/* ═══════════════════════════════════════════════════════════
+   TiltedTiles.module.css — 3D scrolling image grid
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Container ──────────────────────────────────────────── */
+.container {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  cursor: default;
+}
+
+/* ─── 3D Plane ───────────────────────────────────────────── */
+.plane {
+  position: absolute;
+  display: flex;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: none; /* RAF controls this */
+}
+
+/* ─── Column ─────────────────────────────────────────────── */
+.column {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  transform: translateY(var(--stagger, 0%));
+}
+
+/* ─── Infinite Scroll Track ──────────────────────────────── */
+.track {
+  display: flex;
+  flex-direction: column;
+  animation: scrollDown var(--duration, 25s) linear infinite;
+}
+
+.trackReverse {
+  animation-name: scrollUp;
+}
+
+.trackPaused {
+  animation-play-state: paused;
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ─── Tile ───────────────────────────────────────────────── */
+.tile {
+  width: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}

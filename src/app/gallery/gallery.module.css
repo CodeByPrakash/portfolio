@@ -1,0 +1,93 @@
+/* ═══════════════════════════════════════════════════════════
+   gallery.module.css — Pure fullscreen tilted tiles
+   ═══════════════════════════════════════════════════════════ */
+
+.page {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+/* ─── Floating Back Button ───────────────────────────────── */
+.backBtn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px) saturate(1.6);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.backBtn:hover {
+  background: rgba(255, 107, 0, 0.9);
+  color: #fff;
+  border-color: rgba(255, 107, 0, 0.6);
+  transform: translateX(-3px);
+  box-shadow: 0 4px 20px rgba(255, 107, 0, 0.3);
+}
+
+/* ─── Glass Info Card (bottom-right) ─────────────────────── */
+.glassCard {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 24px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  user-select: none;
+}
+
+.glassAccent {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent, #FF6B00);
+}
+
+.glassName {
+  font-family: var(--font-head);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1;
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .glassCard {
+    bottom: 16px;
+    right: 16px;
+    padding: 12px 18px;
+  }
+
+  .glassName {
+    font-size: 1.1rem;
+  }
+}
