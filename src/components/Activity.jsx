@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { fadeIn, staggerContainer } from '../utils/motion'
 import { ACTIVITIES, ACTIVITY_CATEGORIES } from '../data/activities'
+import DotGrid from './DotGrid'
 import styles from './Activity.module.css'
 
 const YEARS = ['All Years', '2026', '2025', '2024', '2023']
@@ -84,6 +85,21 @@ export default function Activity() {
 
   return (
     <section className={styles.activitySection}>
+      {/* Interactive DotGrid Background */}
+      <div className={styles.dotGridBackground} aria-hidden="true">
+        <DotGrid
+          dotSize={3.5}
+          gap={18}
+          baseColor="#20222a"
+          activeColor="#ff5500"
+          proximity={130}
+          shockRadius={260}
+          shockStrength={5.5}
+          resistance={750}
+          returnDuration={1.5}
+        />
+      </div>
+
       {/* Ambient background clay shapes */}
       <div className={`${styles.clayShape} ${styles.clayShape1}`} aria-hidden="true" />
       <div className={`${styles.clayShape} ${styles.clayShape2}`} aria-hidden="true" />

@@ -39,46 +39,6 @@
   margin-bottom: 0;
 }
 
-.headerActions {
-  display: flex;
-  align-items: center;
-}
-
-.toggleAllBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 0.65rem 1.15rem;
-  border-radius: 999px;
-  background: var(--bg-tertiary);
-  border: var(--bw) solid var(--border);
-  color: var(--text-primary);
-  cursor: pointer;
-  box-shadow: 
-    6px 8px 18px rgba(0, 0, 0, 0.05),
-    -4px -4px 14px rgba(255, 255, 255, 0.9),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.8),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.03);
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-
-.toggleAllBtn:hover {
-  transform: translateY(-2px);
-  color: var(--accent);
-  border-color: var(--accent);
-  box-shadow: 
-    8px 12px 24px rgba(0, 0, 0, 0.08),
-    -5px -5px 16px rgba(255, 255, 255, 0.95);
-}
-
-.toggleAllBtn:active {
-  transform: translateY(0);
-}
-
 /* ─── Highlights Overview Banner ─────────────── */
 .overviewBanner {
   background: var(--bg-tertiary);
@@ -167,203 +127,282 @@
 }
 
 /* ─── 3D Clay Achievements Grid ──────────────── */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.35rem;
+/* Color Themes for Stack Cards (Minimal, Eye-Cared, High-Contrast) */
+.card_orange {
+  --card-accent: #FF7700;
+  --card-accent-rgb: 255, 119, 0;
+  --card-tint: rgba(255, 119, 0, 0.04);
+  --card-tint-dark: rgba(255, 119, 0, 0.08);
+}
+.card_emerald {
+  --card-accent: #10B981;
+  --card-accent-rgb: 16, 185, 129;
+  --card-tint: rgba(16, 185, 129, 0.04);
+  --card-tint-dark: rgba(16, 185, 129, 0.08);
+}
+.card_teal {
+  --card-accent: #06B6D4;
+  --card-accent-rgb: 6, 182, 212;
+  --card-tint: rgba(6, 182, 212, 0.04);
+  --card-tint-dark: rgba(6, 182, 212, 0.08);
+}
+.card_purple {
+  --card-accent: #A855F7;
+  --card-accent-rgb: 168, 85, 247;
+  --card-tint: rgba(168, 85, 247, 0.04);
+  --card-tint-dark: rgba(168, 85, 247, 0.08);
+}
+.card_blue {
+  --card-accent: #3B82F6;
+  --card-accent-rgb: 59, 130, 246;
+  --card-tint: rgba(59, 130, 246, 0.04);
+  --card-tint-dark: rgba(59, 130, 246, 0.08);
+}
+.card_rose {
+  --card-accent: #F43F5E;
+  --card-accent-rgb: 244, 63, 94;
+  --card-tint: rgba(244, 63, 94, 0.04);
+  --card-tint-dark: rgba(244, 63, 94, 0.08);
+}
+.card_mint {
+  --card-accent: #0D9488;
+  --card-accent-rgb: 13, 148, 136;
+  --card-tint: rgba(13, 148, 136, 0.04);
+  --card-tint-dark: rgba(13, 148, 136, 0.08);
+}
+.card_indigo {
+  --card-accent: #6366F1;
+  --card-accent-rgb: 99, 102, 241;
+  --card-tint: rgba(99, 102, 241, 0.04);
+  --card-tint-dark: rgba(99, 102, 241, 0.08);
+}
+
+.stackContainer {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.stackCardWrapper {
+  width: 100%;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: z-index 0.15s ease;
+}
+
+.stackCardWrapper:hover,
+.stackCardWrapper:focus-within {
+  z-index: 60 !important;
+}
+
+.stackCard {
+  width: 100%;
+  padding: 2.2rem 2.4rem;
+  border-radius: 28px;
+  background-color: var(--bg-tertiary);
+  background: var(--bg-tertiary);
+  border: 1.5px solid rgba(var(--card-accent-rgb, 255, 119, 0), 0.35);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease, border-color 0.25s ease !important;
+  box-shadow: 
+    0 16px 36px rgba(0, 0, 0, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.03),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.stackCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--card-accent, #FF7700);
+  box-shadow: 0 0 12px rgba(var(--card-accent-rgb, 255, 119, 0), 0.5);
+  opacity: 1;
+  z-index: 2;
+}
+
+.stackCard:hover,
+.stackCard:focus-visible {
+  transform: translateY(-20px) !important;
+  box-shadow: 
+    0 24px 54px rgba(0, 0, 0, 0.16),
+    0 8px 24px rgba(var(--card-accent-rgb, 255, 119, 0), 0.25) !important;
+  border-color: var(--card-accent, #FF7700) !important;
 }
 
 /* 3D Clay Achievement Card */
 .card {
-  background: var(--bg-tertiary);
-  border: var(--bw) solid var(--border);
   border-radius: 26px;
-  padding: 1.6rem 1.6rem;
-  box-shadow: 
-    12px 16px 32px rgba(0, 0, 0, 0.06),
-    -8px -8px 24px rgba(255, 255, 255, 0.95),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.8),
-    inset -2px -2px 5px rgba(0, 0, 0, 0.03);
+  padding: 1.6rem 1.8rem;
   display: flex;
   flex-direction: column;
   position: relative;
   cursor: pointer;
   user-select: none;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .card:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--card-accent, #FF7700);
   outline-offset: 3px;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 
-    16px 24px 44px rgba(0, 0, 0, 0.09),
-    -10px -10px 28px rgba(255, 255, 255, 0.95);
-  border-color: rgba(var(--accent-rgb, 255, 107, 0), 0.35);
-}
-
 .cardExpanded {
-  border-color: var(--accent);
+  border-color: var(--card-accent, #FF7700) !important;
 }
 
 /* Card Header */
 .cardHead {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 1.1rem;
+  gap: 1.25rem;
+}
+
+.headLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.titleGroup {
+  flex: 1;
+  min-width: 0;
 }
 
 .iconBadge {
   width: 48px;
   height: 48px;
   border-radius: 16px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
+  background: rgba(var(--card-accent-rgb, 255, 119, 0), 0.12);
+  border: 1px solid rgba(var(--card-accent-rgb, 255, 119, 0), 0.32);
+  color: var(--card-accent, #FF7700);
   display: grid;
   place-items: center;
   box-shadow: 
-    inset 2px 2px 4px rgba(0,0,0,0.05),
-    inset -1.5px -1.5px 3px rgba(255,255,255,0.9);
-  transition: transform 0.25s ease;
+    inset 1px 1px 3px rgba(255, 255, 255, 0.6),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, background 0.25s ease;
   flex-shrink: 0;
 }
 
 .card:hover .iconBadge {
-  transform: scale(1.08) rotate(4deg);
-}
-
-.icon_blue { color: var(--blue); }
-.icon_orange { color: var(--orange); }
-.icon_green { color: var(--green); }
-.icon_purple { color: var(--purple); }
-.icon_red { color: var(--red); }
-
-.card:hover .icon_blue { background: var(--blue-pale); border-color: var(--blue); }
-.card:hover .icon_orange { background: var(--orange-pale); border-color: var(--orange); }
-.card:hover .icon_green { background: var(--green-pale); border-color: var(--green); }
-.card:hover .icon_purple { background: var(--purple-pale); border-color: var(--purple); }
-.card:hover .icon_red { background: var(--red-pale); border-color: var(--red); }
-
-.yearPill {
-  font-family: var(--font-mono);
-  font-size: .65rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  padding: .3rem .75rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  box-shadow: 
-    2px 4px 8px rgba(0,0,0,0.04),
-    inset 1px 1px 2px rgba(255,255,255,0.8);
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
+  transform: scale(1.08) rotate(3deg);
+  background: rgba(var(--card-accent-rgb, 255, 119, 0), 0.2);
+  border-color: var(--card-accent, #FF7700);
 }
 
 .cardTitle {
   font-family: var(--font-body);
-  font-size: 1.22rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.25;
+  line-height: 1.28;
   letter-spacing: -0.015em;
   margin-bottom: .35rem;
+  word-break: break-word;
 }
 
 .issuer {
   font-family: var(--font-mono);
-  font-size: .75rem;
+  font-size: .78rem;
   font-weight: 700;
-  color: var(--accent);
-  margin-bottom: .5rem;
+  color: var(--card-accent, #FF7700);
+  margin-bottom: 0;
   display: block;
+  line-height: 1.4;
+  word-break: break-word;
 }
 
-/* Toggle Action Row */
-.toggleRow {
+.headRight {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 0.75rem;
-  padding-top: 0.65rem;
-  border-top: 1px dashed var(--border-light);
+  gap: 0.65rem;
+  flex-shrink: 0;
 }
 
-.toggleActionText {
+.yearPill {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: .68rem;
   font-weight: 700;
-  color: var(--accent);
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  transition: color 0.2s ease;
-}
-
-.card:hover .toggleActionText {
-  color: var(--text-primary);
-}
-
-.chevronWrapper {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
-  display: grid;
-  place-items: center;
-  color: var(--accent);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, color 0.2s ease;
-  box-shadow: 
-    inset 1px 1px 2px rgba(255, 255, 255, 0.8),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.04);
-}
-
-.card:hover .chevronWrapper {
-  border-color: var(--accent);
-}
-
-.chevronRotated {
-  transform: rotate(180deg);
-  background: var(--accent);
-  color: #ffffff;
-  border-color: var(--accent);
-}
-
-/* Expandable Content */
-.expandableContent {
-  overflow: hidden;
+  letter-spacing: .08em;
+  padding: .35rem .85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--card-accent-rgb, 255, 119, 0), 0.35);
+  background: rgba(var(--card-accent-rgb, 255, 119, 0), 0.08);
+  color: var(--card-accent, #FF7700);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 .contentInner {
-  padding-top: 0.85rem;
+  padding-top: 1.25rem;
+  margin-top: 1.1rem;
+  border-top: 1px dashed rgba(var(--card-accent-rgb, 255, 119, 0), 0.25);
+}
+
+.descBox {
+  padding: 0.85rem 1.15rem;
+  border-radius: 16px;
+  background: rgba(var(--card-accent-rgb, 255, 119, 0), 0.04);
+  border-left: 3px solid var(--card-accent, #FF7700);
+  margin-bottom: 1.15rem;
 }
 
 .cardDesc {
-  font-size: .88rem;
+  font-size: .94rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0;
 }
 
-/* Card Tags */
+.tagsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .cardTags {
   display: flex;
   flex-wrap: wrap;
-  gap: .45rem;
+  gap: .5rem;
 }
 
 .tagPill {
   font-family: var(--font-mono);
-  font-size: .65rem;
+  font-size: .68rem;
   font-weight: 600;
-  padding: .25rem .65rem;
-  border-radius: 8px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
-  color: var(--text-muted);
+  padding: .32rem .75rem;
+  border-radius: 10px;
+  background: rgba(var(--card-accent-rgb, 255, 119, 0), 0.08);
+  border: 1px solid rgba(var(--card-accent-rgb, 255, 119, 0), 0.28);
+  color: var(--card-accent, #FF7700);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.tagPill:hover {
+  transform: translateY(-2px);
+  background: rgba(var(--card-accent-rgb, 255, 119, 0), 0.18);
+}
+
+.verifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--card-accent, #FF7700);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.85;
 }
 
 /* ─── Floating 3D Clay Morphism Edge Geometrics ─── */
@@ -426,9 +465,24 @@
     margin-bottom: 1.75rem;
   }
 
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 1.15rem;
+  .stackCard {
+    padding: 1.5rem 1.35rem;
+    border-radius: 22px;
+  }
+
+  .cardHead {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.95rem;
+  }
+
+  .headLeft {
+    gap: 0.85rem;
+  }
+
+  .headRight {
+    justify-content: space-between;
+    width: 100%;
   }
 
   .card {
@@ -442,6 +496,12 @@
 
   .cardDesc {
     font-size: .88rem;
+  }
+
+  .tagsRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
 
   .overviewBanner {
@@ -513,6 +573,26 @@
     0 2px 8px rgba(0, 0, 0, 0.35),
     inset 1px 1px 2px rgba(255, 255, 255, 0.05),
     inset -1px -1px 3px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .stackCard {
+  background-color: #131419 !important;
+  background: linear-gradient(180deg, #181920 0%, #121317 100%) !important;
+  border: 1.5px solid rgba(var(--card-accent-rgb, 255, 119, 0), 0.38) !important;
+  box-shadow: 
+    0 16px 36px rgba(0, 0, 0, 0.8),
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+:global([data-theme="dark"]) .stackCard:hover,
+:global([data-theme="dark"]) .stackCard:focus-visible {
+  transform: translateY(-20px) !important;
+  border-color: var(--card-accent, #FF7700) !important;
+  box-shadow: 
+    0 24px 54px rgba(0, 0, 0, 0.95),
+    0 8px 24px rgba(var(--card-accent-rgb, 255, 119, 0), 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 
 :global([data-theme="dark"]) .card:hover {

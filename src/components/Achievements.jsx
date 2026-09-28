@@ -1,8 +1,7 @@
 'use client'
-
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { fadeIn, staggerContainer, scaleIn } from '../utils/motion'
+import { motion } from 'framer-motion'
+import { fadeIn, staggerContainer } from '../utils/motion'
+import ScrollStack, { ScrollStackItem } from './ScrollStack'
 import styles from './Achievements.module.css'
 
 const achievementsList = [
@@ -26,7 +25,7 @@ const achievementsList = [
     issuer: 'District Level Science & Tech Innovation',
     year: '2024',
     desc: 'Awarded 1st Prize with 7000 Rs. Prize Pool at the District Level Software Expo for developing MRS-AI — an AI-powered medicine recommender system with symptom prediction.',
-    color: 'green',
+    color: 'emerald',
     tags: ['1st Prize', '7000Rs', 'YOUTH@2050', 'Healthcare AI', 'Winner'],
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -45,7 +44,7 @@ const achievementsList = [
     issuer: 'MoE Innovation Cell (MIC), AICTE & IIM Sambalpur',
     year: '2024',
     desc: 'Completed the intensive 7-day residential Innovation, Design & Entrepreneurship (IDE) Bootcamp Edition 2 Phase 1 at IIM Sambalpur. Mastered design thinking, BMC business modeling, product prototyping, and venture pitch scaling.',
-    color: 'orange',
+    color: 'teal',
     tags: ['IIM Sambalpur', 'IDE Bootcamp', 'Edition 2 Phase 1', 'Design Thinking', 'Entrepreneurship', 'AICTE & MIC'],
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -91,7 +90,7 @@ const achievementsList = [
     issuer: 'Government College of Engineering, Kalahandi',
     year: '2025 - Present',
     desc: 'Secured admission into B.Tech Computer Science & Engineering at GCEK through state-level Lateral Entry based on academic excellence.',
-    color: 'red',
+    color: 'rose',
     tags: ['Academics', 'B.Tech', 'GCEK', 'CSE'],
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -106,7 +105,7 @@ const achievementsList = [
     issuer: 'State Council for Technical Education',
     year: '2022 - 2025',
     desc: 'Graduated with First Class Honours with Distinction in Computer Science & Engineering, mastering algorithms and core system architecture.',
-    color: 'green',
+    color: 'mint',
     tags: ['Diploma', 'Honours', 'Distinction', 'CSE Core'],
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -121,7 +120,7 @@ const achievementsList = [
     issuer: 'GitHub Creator & Open Source Community',
     year: '2023 - 2026',
     desc: 'Engineered and published 30+ public repositories across AI/ML, computer vision, web applications, and system utilities.',
-    color: 'purple',
+    color: 'indigo',
     tags: ['Open Source', '100+ Repos', 'GitHub', 'Builder'],
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -131,29 +130,18 @@ const achievementsList = [
   },
 ]
 
+const cardThemeMap = {
+  orange: { accent: '#FF7700', rgb: '255, 119, 0' },
+  emerald: { accent: '#10B981', rgb: '16, 185, 129' },
+  teal: { accent: '#06B6D4', rgb: '6, 182, 212' },
+  purple: { accent: '#A855F7', rgb: '168, 85, 247' },
+  blue: { accent: '#3B82F6', rgb: '59, 130, 246' },
+  rose: { accent: '#F43F5E', rgb: '244, 63, 94' },
+  mint: { accent: '#0D9488', rgb: '13, 148, 136' },
+  indigo: { accent: '#6366F1', rgb: '99, 102, 241' },
+}
+
 export default function Achievements() {
-  const [expandedItems, setExpandedItems] = useState({})
-
-  const toggleItem = (id) => {
-    setExpandedItems((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }))
-  }
-
-  const allExpanded = achievementsList.every((item) => expandedItems[item.id])
-  const toggleAll = () => {
-    if (allExpanded) {
-      setExpandedItems({})
-    } else {
-      const nextState = {}
-      achievementsList.forEach((item) => {
-        nextState[item.id] = true
-      })
-      setExpandedItems(nextState)
-    }
-  }
-
   return (
     <section id="achievements" className={styles.achievements}>
       {/* Floating 3D Clay Shapes */}
@@ -185,30 +173,6 @@ export default function Achievements() {
               Achievements &amp; <span className={styles.accent}>Credentials.</span>
             </motion.h2>
           </div>
-
-          <motion.div variants={fadeIn('left', 0.15)} className={styles.headerActions}>
-            <button
-              type="button"
-              onClick={toggleAll}
-              className={styles.toggleAllBtn}
-              aria-label={allExpanded ? 'Collapse all achievement descriptions' : 'Expand all achievement descriptions'}
-            >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                {allExpanded ? (
-                  <>
-                    <polyline points="4 14 12 6 20 14" />
-                    <polyline points="4 20 12 12 20 20" />
-                  </>
-                ) : (
-                  <>
-                    <polyline points="4 6 12 14 20 6" />
-                    <polyline points="4 12 12 20 20 12" />
-                  </>
-                )}
-              </svg>
-              <span>{allExpanded ? 'Collapse All' : 'Expand All'}</span>
-            </button>
-          </motion.div>
         </div>
 
         {/* Overview Stats Banner */}
@@ -236,69 +200,52 @@ export default function Achievements() {
           </div>
         </motion.div>
 
-        {/* 3D Clay Achievements Grid */}
-        <motion.div className={styles.grid} variants={staggerContainer(0.1, 0.2)}>
-          {achievementsList.map((item) => {
-            const isExpanded = !!expandedItems[item.id]
+        {/* ScrollStack Achievements Cards */}
+        <div className={styles.stackContainer}>
+          <ScrollStack
+            useWindowScroll={true}
+            itemDistance={75}
+            itemScale={0.038}
+            itemStackDistance={30}
+            stackPosition="18%"
+            scaleEndPosition="8%"
+            baseScale={0.88}
+            blurAmount={0}
+          >
+            {achievementsList.map((item) => {
+              const theme = cardThemeMap[item.color] || cardThemeMap.orange
 
-            return (
-              <motion.div
-                key={item.id}
-                className={`${styles.card} ${isExpanded ? styles.cardExpanded : ''}`}
-                variants={scaleIn(0)}
-                onClick={() => toggleItem(item.id)}
-                role="button"
-                tabIndex={0}
-                aria-expanded={isExpanded}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    toggleItem(item.id)
-                  }
-                }}
-              >
-                <div className={styles.cardHead}>
-                  <div className={`${styles.iconBadge} ${styles[`icon_${item.color}`]}`}>
-                    {item.icon}
-                  </div>
-                  <span className={styles.yearPill}>{item.year}</span>
-                </div>
+              return (
+                <ScrollStackItem key={item.id} itemClassName={styles.stackCardWrapper}>
+                  <div
+                    className={`${styles.card} ${styles.stackCard} ${styles[`card_${item.color}`] || ''}`}
+                    style={{
+                      '--card-accent': theme.accent,
+                      '--card-accent-rgb': theme.rgb,
+                    }}
+                  >
+                    <div className={styles.cardHead}>
+                      <div className={styles.headLeft}>
+                        <div className={`${styles.iconBadge} ${styles[`icon_${item.color}`]}`}>
+                          {item.icon}
+                        </div>
+                        <div className={styles.titleGroup}>
+                          <h3 className={styles.cardTitle}>{item.title}</h3>
+                          <span className={styles.issuer}>{item.issuer}</span>
+                        </div>
+                      </div>
 
-                <h3 className={styles.cardTitle}>{item.title}</h3>
-                <span className={styles.issuer}>{item.issuer}</span>
+                      <div className={styles.headRight}>
+                        <span className={styles.yearPill}>{item.year}</span>
+                      </div>
+                    </div>
 
-                <div className={styles.toggleRow}>
-                  <span className={styles.toggleActionText}>
-                    {isExpanded ? 'Hide description' : 'View description'}
-                  </span>
-                  <div className={`${styles.chevronWrapper} ${isExpanded ? styles.chevronRotated : ''}`}>
-                    <svg
-                      width="15"
-                      height="15"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </div>
-                </div>
-
-                <AnimatePresence initial={false}>
-                  {isExpanded && (
-                    <motion.div
-                      className={styles.expandableContent}
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <div className={styles.contentInner}>
+                    <div className={styles.contentInner}>
+                      <div className={styles.descBox}>
                         <p className={styles.cardDesc}>{item.desc}</p>
+                      </div>
 
+                      <div className={styles.tagsRow}>
                         <div className={styles.cardTags}>
                           {item.tags.map((tag) => (
                             <span key={tag} className={styles.tagPill}>
@@ -306,14 +253,21 @@ export default function Achievements() {
                             </span>
                           ))}
                         </div>
+
+                        <div className={styles.verifiedBadge}>
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                          <span>Verified Milestone</span>
+                        </div>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            )
-          })}
-        </motion.div>
+                    </div>
+                  </div>
+                </ScrollStackItem>
+              )
+            })}
+          </ScrollStack>
+        </div>
       </motion.div>
     </section>
   )

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { fadeIn, staggerContainer } from '../utils/motion'
+import TechText from './TechText'
 import styles from './Footer.module.css'
 
 export default function Footer() {
@@ -49,15 +50,36 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        {/* Big display text at bottom */}
+        {/* Big interactive TechText at bottom */}
         <motion.div
-          className={styles.bigText}
-          initial={{ opacity: 0, y: 30 }}
+          className={styles.bigTextContainer}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          PRAKASH
+          <TechText
+            text="PRAKASH"
+            fontWeight={400}
+            fontSize={240}
+            reveal="letter"
+            dashLength={5}
+            dashGap={3}
+            specks={20}
+            fontFamily="Amiga, sans-serif"
+            color="rgba(255, 255, 255, 0.2)"
+            accentColor="#fb6600"
+            letterSpacing={0.03}
+            reach={220}
+            softness={0.7}
+            strokeWidth={1.8}
+            speed={1}
+            lineStyle="dashed"
+            selection
+            labels
+            draggable
+            sweep
+          />
         </motion.div>
       </motion.div>
     </motion.footer>
