@@ -6,7 +6,8 @@ import Image from 'next/image'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
 import styles from './Hero.module.css'
-import CursorGrid from './CursorGrid';
+import PixelBlast from './PixelBlast'
+import TiltedCard from './TiltedCard'
 
 const techLogos = ['React', 'Next.js', 'Python', 'Node.js', 'TensorFlow', 'PostgreSQL', 'FastAPI', 'Docker']
 
@@ -175,23 +176,26 @@ export default function Hero({ isLoading = false }) {
       ref={heroRef}
       aria-label="Hero — Om Prakash Behera, Computer Science Engineer building intelligent systems"
     >
-      {/* Interactive Cursor Grid Background */}
+      {/* Interactive PixelBlast WebGL Background */}
       <div className={styles.cursorGridBg} aria-hidden="true">
-        <CursorGrid
-          cellSize={70}
-          color="#F97316"
-          radius={140}
-          falloff="smooth"
-          holdTime={400}
-          fadeDuration={800}
-          lineWidth={1.2}
-          maxOpacity={1}
-          fillOpacity={0}
-          gridOpacity={0}
-          cellRadius={0}
-          clickPulse
-          pulseSpeed={600}
-          zIndex={100}
+        <PixelBlast
+          variant="square"
+          pixelSize={4}
+          color="#ff8400"
+          patternScale={1.7}
+          patternDensity={0.75}
+          pixelSizeJitter={0}
+          enableRipples={false}
+          rippleSpeed={0.4}
+          rippleThickness={0.12}
+          rippleIntensityScale={1.5}
+          liquid={false}
+          liquidStrength={0.12}
+          liquidRadius={1.2}
+          liquidWobbleSpeed={5}
+          speed={0.5}
+          edgeFade={0.25}
+          transparent
         />
       </div>
 
@@ -211,7 +215,7 @@ export default function Hero({ isLoading = false }) {
               <span className={styles.eyebrowLine} />
               <span className={styles.eyebrowText}>COMPUTER SCIENCE ENGINEER</span>
               <span className={styles.locationTag}>
-                <span className={styles.locationPulse} />
+                <span className={styles.locationPulse} />x``
                 Bhawanipatna, IN
               </span>
 
@@ -352,38 +356,58 @@ export default function Hero({ isLoading = false }) {
               className={styles.photoStageWrap}
               style={{ y: photoFrameY }}
             >
-              {/* Main Photo Frame */}
-              <div className={styles.photoFrame}>
-                {/* Subtle Developer Background Art (Flipped to correct orientation) */}
-                <motion.div
-                  className={styles.layerBg}
-                  style={{ y: bgScrollY, scaleX: -1 }}
-                >
-                  <Image
-                    src="/hero/hero_bg.png"
-                    alt="Abstract Technical Blueprint Grid Background"
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 540px"
-                    className={styles.bgImage}
-                  />
-                </motion.div>
+              {/* Interactive 3D Tilted Card Container */}
+              <TiltedCard
+                altText="Om Prakash Behera — Computer Science Engineer"
+                captionText="Om Prakash Behera"
+                containerHeight="100%"
+                containerWidth="100%"
+                imageHeight="100%"
+                imageWidth="100%"
+                rotateAmplitude={4}
+                scaleOnHover={1.02}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+                overlayContent={
+                  <p className="tilted-card-demo-text">
+                    OMPRAKASH BEHERA
+                  </p>
+                }
+              >
+                {/* Main Photo Frame */}
+                <div className={styles.photoFrame}>
+                  {/* Subtle Developer Background Art (Flipped to correct orientation) */}
+                  <motion.div
+                    className={styles.layerBg}
+                    style={{ y: bgScrollY, scaleX: -1 }}
+                  >
+                    <Image
+                      src="/hero/hero_bg.png"
+                      alt="Abstract Technical Blueprint Grid Background"
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 540px"
+                      className={styles.bgImage}
+                    />
+                  </motion.div>
 
-                {/* Dominant Illustrated Portrait (Flipped to correct natural orientation) */}
-                <motion.div
-                  className={styles.layerPerson}
-                  style={{ y: personScrollY, scaleX: -1 }}
-                >
-                  <Image
-                    src="/hero/hero_person.png"
-                    alt="Om Prakash Behera — Computer Science Engineer"
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 540px"
-                    className={styles.personImage}
-                  />
-                </motion.div>
-              </div>
+                  {/* Dominant Illustrated Portrait (Flipped to correct natural orientation) */}
+                  <motion.div
+                    className={styles.layerPerson}
+                    style={{ y: personScrollY, scaleX: -1 }}
+                  >
+                    <Image
+                      src="/hero/hero_person.png"
+                      alt="Om Prakash Behera — Computer Science Engineer"
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 540px"
+                      className={styles.personImage}
+                    />
+                  </motion.div>
+                </div>
+              </TiltedCard>
 
               {/* Sculpted Left Cutout Notch with 3 Stacked Preview Circles (Reference Design) */}
               <div className={styles.sculptedNotch}>

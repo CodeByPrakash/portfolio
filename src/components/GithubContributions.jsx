@@ -40,6 +40,23 @@ export default function GithubContributions({ username = 'CodeByPrakash' }) {
           }
         }
 
+        // Remove duplicate/unwanted default footer and legend elements rendered by github-calendar
+        const unwantedSelectors = [
+          '.float-left',
+          '.float-right',
+          '.contrib-footer',
+          '.contrib-legend',
+          '.ContributionCalendar-footer',
+          'a[href*="count-contributions"]',
+          'a[href*="contributions"]',
+          '.text-small',
+          '.px-md-5',
+          '#user-activity-overview',
+        ]
+        unwantedSelectors.forEach((sel) => {
+          calendarRef.current?.querySelectorAll(sel).forEach((el) => el.remove())
+        })
+
         // Attach rich interactive tooltips to all day cells (both <td> and SVG <rect>)
         const dayCells = calendarRef.current.querySelectorAll('.ContributionCalendar-day')
         let maxCount = 0

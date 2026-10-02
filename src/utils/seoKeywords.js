@@ -1350,7 +1350,7 @@ export const TECH_STACK_KEYWORDS = [
   'Web Hosting',
 
   // Build Tools
-  'Vite',
+  'NextJS',
   'Webpack',
   'Babel',
   'ESLint',

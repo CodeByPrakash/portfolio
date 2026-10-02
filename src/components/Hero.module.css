@@ -12,7 +12,7 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* ─── Interactive Cursor Grid Canvas Background ─────────────────────────── */
+/* ─── Interactive WebGL Canvas Background ─────────────────────────── */
 .cursorGridBg {
   position: absolute;
   top: 0;
@@ -22,7 +22,7 @@
   width: 100%;
   height: 100%;
   z-index: 1;
-  pointer-events: none;
+  pointer-events: auto;
   overflow: hidden;
 }
 
