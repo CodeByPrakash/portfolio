@@ -1,256 +1,261 @@
 'use client'
 
-import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { fadeIn, staggerContainer, slideIn, popIn } from '../utils/motion'
-import GithubContributions from './GithubContributions'
+import React, { useEffect, useRef, useState } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { motion, AnimatePresence } from 'framer-motion'
 import styles from './About.module.css'
 
-const tools = ['Figma', 'React', 'TypeScript', 'Node.js', 'CSS/Sass', 'Framer', 'Git', 'Tailwind', 'PHP', 'Python', 'Flask', 'mongoDB', 'mySQL', 'Streamlit', 'CANVA', 'BLENDER']
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
-const highlights = [
+const TOTAL_FRAMES = 239
+
+const STEPS_DATA = [
   {
-    icon: (
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="4" y="4" width="16" height="16" rx="2" />
-        <rect x="9" y="9" width="6" height="6" />
-        <path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 15h2M2 9h2M20 15h2M20 9h2" />
-      </svg>
-    ),
-    text: 'AI-Driven Solutions',
+    step: '01',
+    name: 'THINK',
+    tag: '// SUPERCHARGING IDEAS INTO REALITY',
+    lines: ['THINK,', 'LEARN,', 'BUILD,', 'SHIP.'],
+    highlightIdx: 2,
+    body: 'Turning ideas into real-world solutions through code, creativity and continuous learning.',
+    cta: 'EXPLORE MY JOURNEY ↗',
+    ctaLink: '#projects',
   },
   {
-    icon: (
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="m9 12 2 2 4-4" />
-      </svg>
-    ),
-    text: 'Secure Architecture',
+    step: '02',
+    name: 'LEARN',
+    tag: '// CONTINUOUS ADAPTATION & INTELLIGENCE',
+    lines: ['EXPLORE,', 'MASTER,', 'REFINE,', 'EVOLVE.'],
+    highlightIdx: 2,
+    body: '7-Day Residential IDE Bootcamp Fellow at IIM Sambalpur. Engineering neural networks, computer vision, and distributed systems.',
+    cta: 'VIEW ACHIEVEMENTS ↗',
+    ctaLink: '#achievements',
   },
   {
-    icon: (
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 2 7 12 12 22 7 12 2" />
-        <polyline points="2 17 12 22 22 17" />
-        <polyline points="2 12 12 17 22 12" />
-      </svg>
-    ),
-    text: 'Full-Stack Builds',
+    step: '03',
+    name: 'BUILD',
+    tag: '// FULL-STACK SYSTEM ENGINEERING',
+    lines: ['DESIGN,', 'ARCHITECT,', 'SCALE,', 'SECURE.'],
+    highlightIdx: 2,
+    body: 'Tech Head at CodeBreakers GCEK. Lead architect engineering HackVerse \'26 and 30+ production systems.',
+    cta: 'EXPLORE PROJECTS ↗',
+    ctaLink: '#projects',
   },
   {
-    icon: (
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-        <polyline points="22 4 12 14.01 9 11.01" />
-      </svg>
-    ),
-    text: 'End-to-End Delivery',
+    step: '04',
+    name: 'SHIP',
+    tag: '// DELIVERING MEASURABLE IMPACT',
+    lines: ['DEPLOY,', 'MEASURE,', 'LEAD,', 'INSPIRE.'],
+    highlightIdx: 2,
+    body: 'Delivering resilient, high-performance platforms for 500+ developers, state tech fests, and real-world clients.',
+    cta: 'CONNECT WITH ME ↗',
+    ctaLink: '#contact',
   },
 ]
 
 export default function About() {
+  const containerRef = useRef(null)
+  const canvasRef = useRef(null)
+  const currentFrameRef = useRef(0)
+  const [activeStepIdx, setActiveStepIdx] = useState(0)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const container = containerRef.current
+    const canvas = canvasRef.current
+    if (!container) return
+
+    let gsapCtx
+    const images = []
+
+    // Fixed 1:1 Canvas buffer sizing & resize listener
+    const updateCanvasSize = () => {
+      if (!canvas || !container) return
+      const rect = container.getBoundingClientRect()
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      canvas.width = Math.round(rect.width * dpr)
+      canvas.height = Math.round(rect.height * dpr)
+      renderCanvasFrame(currentFrameRef.current)
+    }
+
+    // Full-Page Cover Frame Renderer (matching exact video studio background)
+    const renderCanvasFrame = (index) => {
+      currentFrameRef.current = index
+      if (!canvas) return
+      const ctx = canvas.getContext('2d', { alpha: false })
+      if (!ctx) return
+
+      const img = images[index]
+      if (img && img.complete && img.naturalWidth > 0) {
+        const cWidth = canvas.width
+        const cHeight = canvas.height
+
+        // Calculate aspect-ratio cover dimensions to fill the 100% canvas area
+        const scale = Math.max(cWidth / img.naturalWidth, cHeight / img.naturalHeight)
+        const drawWidth = img.naturalWidth * scale
+        const drawHeight = img.naturalHeight * scale
+
+        // Position: On desktop, anchor character toward right half; center on mobile
+        const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024
+        const drawX = isDesktop ? (cWidth - drawWidth) * 0.78 : (cWidth - drawWidth) / 2
+        const drawY = (cHeight - drawHeight) / 2
+
+        ctx.imageSmoothingEnabled = true
+        ctx.imageSmoothingQuality = 'high'
+
+        // Match base canvas fill to exact video background
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+        const bgHex = isDark ? '#0E0D12' : '#EEDECA'
+
+        ctx.fillStyle = bgHex
+        ctx.fillRect(0, 0, cWidth, cHeight)
+
+        // Draw full-page covering video frame
+        ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight)
+      }
+    }
+
+    updateCanvasSize()
+    window.addEventListener('resize', updateCanvasSize)
+
+    // Theme switch observer to immediately update canvas background
+    const themeObserver = new MutationObserver(() => {
+      renderCanvasFrame(currentFrameRef.current)
+    })
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    })
+
+    // Preload 239 frames
+    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+      const img = new Image()
+      const frameNum = String(i).padStart(4, '0')
+      img.src = `/about/frames/frame_${frameNum}.jpg`
+      img.onload = () => {
+        if (i === 1) renderCanvasFrame(0)
+      }
+      images.push(img)
+    }
+
+    // Master GSAP Timeline
+    gsapCtx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: container,
+        start: 'top top',
+        end: '+=300%',
+        pin: true,
+        pinSpacing: true,
+        scrub: 0.5,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const p = self.progress
+          const stepIdx = Math.min(Math.floor(p * 4), 3)
+          setActiveStepIdx(stepIdx)
+
+          const targetFrame = Math.min(Math.round(p * (TOTAL_FRAMES - 1)), TOTAL_FRAMES - 1)
+          renderCanvasFrame(targetFrame)
+        },
+      })
+    }, container)
+
+    return () => {
+      window.removeEventListener('resize', updateCanvasSize)
+      themeObserver.disconnect()
+      if (gsapCtx) gsapCtx.revert()
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.trigger === container) st.kill()
+      })
+    }
+  }, [])
+
+  const currentData = STEPS_DATA[activeStepIdx]
+
   return (
-    <section id="about" className={styles.about} aria-label="About Om Prakash Behera — Tech Head at CodeBreakers, Coding Club of Government College of Engineering Kalahandi, Full-Stack Developer and AI Enthusiast">
-      <motion.div
-        className="section-wrap"
-        variants={staggerContainer(0.1, 0)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: false, amount: 0.1 }}
-      >
-        <motion.span className="section-tag" variants={fadeIn('down', 0)}>◈ About me</motion.span>
+    <section ref={containerRef} id="about" className={styles.aboutSection} aria-label="About Om Prakash Behera">
+      {/* ── 100vh Full-Bleed Background Video Canvas ── */}
+      <canvas ref={canvasRef} className={styles.canvasBg} aria-hidden="true" />
+      <div className={styles.canvasFogOverlay} aria-hidden="true" />
 
-        {/* Section heading row */}
-        <motion.h2 className={styles.sectionHeading} variants={fadeIn('up', 0)}>
-          Beyond Code
-        </motion.h2>
 
-        {/* Main bento grid — like reference "BEYOND CAPITAL" */}
-        <div className={styles.bento}>
-          {/* Row 1: Left big cell + Right column */}
-          <motion.div className={styles.cellMain} variants={slideIn('left', 0.1)}>
-            <span className={styles.cellTag}>*Supercharging Ideas into Reality</span>
-            <h3 className={styles.cellTitle}>Think, Learn<br />Work..</h3>
-            <p className={styles.cellBody}>
-              Serving as <strong>Tech Head at CodeBreakers</strong> (<a href="https://codebreakersgcek.tech" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>codebreakersgcek.tech</a>), the official Coding Club of Government College of Engineering Kalahandi. Hands-on system builder and lead architect currently engineering <a href="https://hackverse.codebreakersgcek.tech" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>HackVerse &apos;26</a>.
-            </p>
-            <div className={styles.bulletList}>
-              {highlights.map(h => (
-                <div key={h.text} className={styles.bullet}>
-                  <span className={styles.bulletIcon}>{h.icon}</span>
-                  <span>{h.text}</span>
-                </div>
-              ))}
+      {/* Top Header Row */}
+      <div className={styles.topRow}>
+        <div className={styles.aboutMeBadge}>
+          <span className={styles.orangeDot} />
+          <span>ABOUT ME</span>
+        </div>
+        <div className={styles.stepCounter}>
+          <span className={styles.activeStepNum}>0{activeStepIdx + 1}</span>
+          <span className={styles.slash}>/</span>
+          <span>04</span>
+        </div>
+      </div>
+
+      {/* Left Vertical Step Indicator Timeline */}
+      <div className={styles.leftTimeline}>
+        {STEPS_DATA.map((s, idx) => {
+          const isActive = idx === activeStepIdx
+          return (
+            <div key={s.step} className={`${styles.timelineNode} ${isActive ? styles.nodeActive : ''}`}>
+              <span className={styles.timelineNum}>{s.step}</span>
+              <span className={styles.timelineCircle} />
+              {idx < STEPS_DATA.length - 1 && <span className={styles.timelineConnector} />}
             </div>
-            <a href="#contact" className={`btn btn-accent ${styles.ctaBtn}`}>
-              Let's work together ↗
+          )
+        })}
+      </div>
+
+      {/* Right Vertical Step Tracker Menu */}
+      <div className={styles.rightStepMenu}>
+        {STEPS_DATA.map((s, idx) => {
+          const isActive = idx === activeStepIdx
+          return (
+            <div key={s.name} className={`${styles.stepMenuItem} ${isActive ? styles.menuActive : ''}`}>
+              <span className={styles.menuName}>{s.name}</span>
+              <span className={styles.menuDash}>—</span>
+            </div>
+          )
+        })}
+      </div>
+
+      {/* Left-Side Minimized Overlayed Typography (Single Active Animated Card) */}
+      <div className={styles.leftOverlay}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentData.step}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className={styles.contentWrap}
+          >
+            <div className={styles.tagline}>{currentData.tag}</div>
+
+            <h2 className={styles.headline}>
+              {currentData.lines.map((line, lIdx) => (
+                <span
+                  key={line}
+                  className={`${styles.headlineWord} ${lIdx === currentData.highlightIdx ? styles.headlineHighlight : ''}`}
+                >
+                  {line}
+                </span>
+              ))}
+            </h2>
+
+            <div className={styles.accentLine} />
+
+            <p className={styles.description}>{currentData.body}</p>
+
+            <a href={currentData.ctaLink} className={styles.ctaButton}>
+              {currentData.cta}
             </a>
           </motion.div>
-
-          <div className={styles.rightCol}>
-            <motion.div className={styles.cellDesc} variants={fadeIn('right', 0.2)}>
-              <span className={styles.cellTag}>*About Me</span>
-              <p className={styles.cellBody}>
-                As <strong>Tech Head at CodeBreakers</strong>, I drive engineering roadmaps, conduct technical sprints, and manage digital platforms for institute tech fests and 500+ active student developers.
-                Completed the 7-Day Residential IDE Bootcamp at <strong>IIM Sambalpur</strong> (MoE &amp; AICTE), and engineered full-stack AI, computer vision, and secure system architectures.
-              </p>
-            </motion.div>
-
-            <div className={styles.cellRow}>
-              <motion.div className={styles.cellSmall} variants={fadeIn('up', 0.3)}>
-                <span className={styles.cellSmallLabel}>Designation</span>
-                <span className={styles.cellSmallValue} style={{ fontSize: '1.05rem', lineHeight: '1.2' }}>Tech Head</span>
-                <span className={styles.cellSmallSub}>CodeBreakers GCEK</span>
-              </motion.div>
-              <motion.div className={styles.cellSmall} variants={fadeIn('up', 0.35)}>
-                <span className={styles.cellSmallLabel}>Currently Building</span>
-                <span className={styles.cellSmallValue} style={{ fontSize: '1.05rem', lineHeight: '1.2' }}>HackVerse &apos;26</span>
-                <span className={styles.cellSmallSub}>hackverse.codebreakersgcek.tech</span>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Row 2: Avatar + Info cards + Toolkit */}
-          <motion.div className={styles.cellAvatar} variants={fadeIn('up', 0.2)}>
-            <Image
-              src="/omprakash.webp"
-              alt="Om Prakash Behera - Tech Head at CodeBreakers GCEK, Computer Science Engineer and Full-Stack AI Developer"
-              className={styles.avatarImg}
-              width={320}
-              height={320}
-              quality={85}
-              loading="lazy"
-              sizes="(max-width: 640px) 240px, 320px"
-            />
-            <div className={styles.avatarMeta}>
-              <span className={styles.avatarName}>Om Prakash Behera</span>
-              <span className={styles.avatarRole}>Tech Head @ CodeBreakers &amp; Full-Stack AI Dev</span>
-            </div>
-          </motion.div>
-
-          <motion.div className={styles.cellInfo} variants={fadeIn('up', 0.25)}>
-            <div className={styles.infoGrid}>
-              <div className={styles.infoItem}>
-                <span className={styles.infoIcon}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                </span>
-                <div>
-                  <span className={styles.infoLabel}>Location</span>
-                  <span className={styles.infoVal}>Bhawanipatna, Odisha</span>
-                </div>
-              </div>
-              <div className={styles.infoItem}>
-                <span className={styles.infoIcon}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                  </svg>
-                </span>
-                <div>
-                  <span className={styles.infoLabel}>Education</span>
-                  <span className={styles.infoVal}>BTech in CSE</span>
-                </div>
-              </div>
-              <div className={styles.infoItem}>
-                <span className={styles.infoIcon}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                  </svg>
-                </span>
-                <div>
-                  <span className={styles.infoLabel}>Coding Club</span>
-                  <span className={styles.infoVal}>
-                    <a href="https://codebreakersgcek.tech" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
-                      CodeBreakers GCEK ↗
-                    </a>
-                  </span>
-                </div>
-              </div>
-              <div className={styles.infoItem}>
-                <span className={styles.infoIcon}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
-                  </svg>
-                </span>
-                <div>
-                  <span className={styles.infoLabel}>Designation</span>
-                  <span className={styles.infoVal}>
-                    <a href="https://hackverse.codebreakersgcek.tech" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
-                      Tech Head &bull; HackVerse ↗
-                    </a>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div className={styles.cellToolkit} variants={fadeIn('up', 0.3)}>
-            <span className={styles.cellTag}>*Toolkit</span>
-            <motion.div
-              className={styles.toolList}
-              variants={staggerContainer(0.03, 0.3)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: false }}
-            >
-              {tools.map(t => (
-                <motion.span key={t} className={styles.tool} variants={popIn(0)}>
-                  {t}
-                </motion.span>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          {/* Row 3: 3D Clay Morphism Showcase Cells */}
-          {/* <motion.div className={styles.cellClay1} variants={fadeIn('up', 0.35)}>
-            <motion.div
-              className={styles.clayInnerOrb}
-              animate={{ y: [0, -12, 0], rotate: [0, 20, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            />
-            <span className={styles.clayCellLabel}>AI Architecture</span>
-          </motion.div>
-
-          <motion.div className={styles.cellClay2} variants={fadeIn('up', 0.4)}>
-            <motion.div
-              className={styles.clayInnerTorus}
-              animate={{ rotate: [0, 360], scale: [1, 1.06, 1] }}
-              transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
-            />
-            <span className={styles.clayCellLabel}>Full-Stack Core</span>
-          </motion.div>
-
-          <motion.div className={styles.cellClay3} variants={fadeIn('up', 0.45)}>
-            <motion.div
-              className={styles.clayInnerCapsule}
-              animate={{ y: [0, 10, 0], rotate: [-10, 15, -10] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            />
-            <span className={styles.clayCellLabel}>Secure Systems</span>
-          </motion.div> */}
-
-          {/* Row 4: GitHub Contributions Graph (Full Width Bento Cell) */}
-          <GithubContributions username="CodeByPrakash" />
-
-        </div>
-      </motion.div>
-
-      {/* Floating 3D Clay Morphism Edge Geometrics */}
-      <motion.div
-        className={`${styles.clayShape} ${styles.clayShapeOrb}`}
-        animate={{ y: [0, -26, 0], rotate: [0, 15, 0] }}
-        transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className={`${styles.clayShape} ${styles.clayShapePill}`}
-        animate={{ y: [0, 28, 0], rotate: [-15, 25, -15] }}
-        transition={{ duration: 8.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-      />
+        </AnimatePresence>
+      </div>
     </section>
   )
 }

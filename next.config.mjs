@@ -14,7 +14,15 @@ const nextConfig = {
     minimumCacheTTL: 31536000,
   },
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion', 'clsx'],
+    optimizePackageImports: [
+      'lucide-react',
+      'framer-motion',
+      'clsx',
+      'gsap',
+      'lenis',
+      'react-icons',
+      'tailwind-merge',
+    ],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,

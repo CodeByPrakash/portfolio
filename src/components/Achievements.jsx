@@ -1,12 +1,18 @@
 'use client'
-import { motion } from 'framer-motion'
-import { fadeIn, staggerContainer } from '../utils/motion'
-import ScrollStack, { ScrollStackItem } from './ScrollStack'
+
+import React, { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './Achievements.module.css'
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 const achievementsList = [
   {
     id: 0,
+    number: '01',
     title: 'Tech Head @ CodeBreakers & HackVerse Lead',
     issuer: 'CodeBreakers — Coding Club of Government College of Engineering Kalahandi',
     year: '2026',
@@ -21,6 +27,7 @@ const achievementsList = [
   },
   {
     id: 1,
+    number: '02',
     title: '1st Prize — YOUTH@2050 Software Expo',
     issuer: 'District Level Science & Tech Innovation',
     year: '2024',
@@ -40,6 +47,7 @@ const achievementsList = [
   },
   {
     id: 2,
+    number: '03',
     title: '7-Day IDE Bootcamp — IIM Sambalpur',
     issuer: 'MoE Innovation Cell (MIC), AICTE & IIM Sambalpur',
     year: '2024',
@@ -56,6 +64,7 @@ const achievementsList = [
   },
   {
     id: 3,
+    number: '04',
     title: 'ISRO BAH 2026 — Exoplanet Detection',
     issuer: 'Bharatiya Antariksh Hackathon — Problem Statement PS-07',
     year: '2026',
@@ -72,6 +81,7 @@ const achievementsList = [
   },
   {
     id: 4,
+    number: '05',
     title: 'Smart India Hackathon (SIH) 2025',
     issuer: 'Ministry of Education & AICTE — Team CodeNova',
     year: '2025',
@@ -86,6 +96,7 @@ const achievementsList = [
   },
   {
     id: 5,
+    number: '06',
     title: 'B.Tech CSE — Lateral Entry',
     issuer: 'Government College of Engineering, Kalahandi',
     year: '2025 - Present',
@@ -101,6 +112,7 @@ const achievementsList = [
   },
   {
     id: 6,
+    number: '07',
     title: 'Diploma in CSE — Distinction',
     issuer: 'State Council for Technical Education',
     year: '2022 - 2025',
@@ -116,6 +128,7 @@ const achievementsList = [
   },
   {
     id: 7,
+    number: '08',
     title: '30+ Open-Source Projects Built',
     issuer: 'GitHub Creator & Open Source Community',
     year: '2023 - 2026',
@@ -142,133 +155,216 @@ const cardThemeMap = {
 }
 
 export default function Achievements() {
+  const sectionRef = useRef(null)
+  const trackRef = useRef(null)
+  const cardsRef = useRef([])
+  const progressFillRef = useRef(null)
+  const counterNumRef = useRef(null)
+  const lastActiveIdxRef = useRef(0)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const section = sectionRef.current
+    const track = trackRef.current
+    if (!section || !track) return
+
+    let gsapCtx
+
+    gsapCtx = gsap.context(() => {
+      const cards = cardsRef.current.filter(Boolean)
+
+      // Total horizontal distance to travel
+      const totalScrollDistance = () => track.scrollWidth - window.innerWidth + 200
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: () => `+=${Math.max(totalScrollDistance() + 1400, 2800)}`,
+          pin: true,
+          pinSpacing: true,
+          scrub: 1.1,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const p = self.progress
+            const idx = Math.min(Math.floor(p * achievementsList.length), achievementsList.length - 1)
+
+            // Zero React re-renders: update DOM directly only when index changes
+            if (lastActiveIdxRef.current !== idx) {
+              lastActiveIdxRef.current = idx
+              if (counterNumRef.current) {
+                counterNumRef.current.textContent = String(idx + 1).padStart(2, '0')
+              }
+            }
+          },
+        },
+      })
+
+      // GPU-accelerated Progress Bar Fill
+      if (progressFillRef.current) {
+        tl.fromTo(
+          progressFillRef.current,
+          { scaleX: 0.04 },
+          { scaleX: 1, ease: 'none', duration: 3.0 },
+          0
+        )
+      }
+
+      // Phase 1 (Sketch Step 1): All cards swoop in from bottom-right on a curved arc with staggered flow
+      if (cards.length > 0) {
+        tl.fromTo(
+          cards,
+          {
+            x: 520,
+            y: 340,
+            rotation: 18,
+            scale: 0.75,
+            opacity: 0,
+          },
+          {
+            x: 0,
+            y: 0,
+            rotation: 0,
+            scale: 1,
+            opacity: 1,
+            ease: 'power2.out',
+            duration: 0.85,
+            stagger: 0.12,
+          },
+          0
+        )
+      }
+
+      // Phase 2 (Sketch Step 2 - "move"): Horizontal track translation from right to left
+      tl.to(
+        track,
+        {
+          x: () => -(track.scrollWidth - window.innerWidth + 140),
+          ease: 'none',
+          duration: 2.4,
+        },
+        0.55
+      )
+    }, section)
+
+    return () => {
+      if (gsapCtx) gsapCtx.revert()
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.trigger === section) st.kill()
+      })
+    }
+  }, [])
+
   return (
-    <section id="achievements" className={styles.achievements}>
-      {/* Floating 3D Clay Shapes */}
-      <motion.div
-        className={`${styles.clayShape} ${styles.clayShapeOrb}`}
-        animate={{ y: [0, -28, 0], scale: [1, 1.06, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className={`${styles.clayShape} ${styles.clayShapeTorus}`}
-        animate={{ rotate: [0, 360], y: [0, 24, 0] }}
-        transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
-      />
+    <section ref={sectionRef} id="achievements" className={styles.horizontalSection} aria-label="Achievements">
+      {/* Background Ambience Grid */}
+      <div className={styles.ambientGrid} />
 
-      <motion.div
-        className="section-wrap"
-        variants={staggerContainer(0.12, 0)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: false, amount: 0.1 }}
-      >
-        <div className={styles.headerRow}>
-          <div>
-            <motion.span className="section-tag" variants={fadeIn('down', 0)}>
-              ✦ Honors &amp; Milestones
-            </motion.span>
-
-            <motion.h2 className={styles.heading} variants={fadeIn('up', 0)}>
-              Achievements &amp; <span className={styles.accent}>Credentials.</span>
-            </motion.h2>
+      {/* Top Header Row */}
+      <div className={styles.topHeader}>
+        <div className={styles.headerLeft}>
+          <div className={styles.sectionBadge}>
+            <span className={styles.pulseDot} />
+            <span>HONORS & MILESTONES</span>
           </div>
+          <h2 className={styles.sectionTitle}>
+            Achievements & <span className={styles.accentText}>Credentials.</span>
+          </h2>
         </div>
 
-        {/* Overview Stats Banner */}
-        <motion.div className={styles.overviewBanner} variants={fadeIn('up', 0.15)}>
-          <div className={styles.overviewText}>
-            <span className={styles.bannerTag}>*Verified Milestones</span>
-            <h3 className={styles.bannerHeadline}>Building with Distinction</h3>
-            <p className={styles.bannerDesc}>
-              Honored at IIM Sambalpur 7-Day IDE Bootcamp, 1st Prize at YOUTH@2050, ISRO BAH 2026, and Smart India Hackathon.
-            </p>
+        <div className={styles.headerRight}>
+          <div className={styles.counterBox}>
+            <span ref={counterNumRef} className={styles.activeNum}>
+              01
+            </span>
+            <span className={styles.counterDivider}>/</span>
+            <span className={styles.totalNum}>
+              {String(achievementsList.length).padStart(2, '0')}
+            </span>
           </div>
-          <div className={styles.statRow}>
-            <div className={styles.statItem}>
-              <span className={styles.statNum}>100+</span>
-              <span className={styles.statLabel}>GitHub Repos</span>
-            </div>
-            <div className={styles.statItem}>
-              <span className={styles.statNum}>7 Days</span>
-              <span className={styles.statLabel}>IIM Sambalpur</span>
-            </div>
-            <div className={styles.statItem}>
-              <span className={styles.statNum}>B.Tech</span>
-              <span className={styles.statLabel}>CSE Degree</span>
-            </div>
+
+          <div className={styles.scrollIndicator}>
+            <span>SCROLL HORIZONTALLY</span>
+            <span className={styles.scrollArrow}>➔</span>
           </div>
-        </motion.div>
+        </div>
+      </div>
 
-        {/* ScrollStack Achievements Cards */}
-        <div className={styles.stackContainer}>
-          <ScrollStack
-            useWindowScroll={true}
-            itemDistance={75}
-            itemScale={0.038}
-            itemStackDistance={30}
-            stackPosition="18%"
-            scaleEndPosition="8%"
-            baseScale={0.88}
-            blurAmount={0}
-          >
-            {achievementsList.map((item) => {
-              const theme = cardThemeMap[item.color] || cardThemeMap.orange
+      {/* Horizontal Viewport Window (Showing ~3 Cards with Fogged/Masked Edges) */}
+      <div className={styles.viewportWindow}>
+        {/* Left and Right Fog / Vignette Gradients */}
+        <div className={styles.fogLeft} aria-hidden="true" />
+        <div className={styles.fogRight} aria-hidden="true" />
 
-              return (
-                <ScrollStackItem key={item.id} itemClassName={styles.stackCardWrapper}>
-                  <div
-                    className={`${styles.card} ${styles.stackCard} ${styles[`card_${item.color}`] || ''}`}
-                    style={{
-                      '--card-accent': theme.accent,
-                      '--card-accent-rgb': theme.rgb,
-                    }}
-                  >
-                    <div className={styles.cardHead}>
-                      <div className={styles.headLeft}>
-                        <div className={`${styles.iconBadge} ${styles[`icon_${item.color}`]}`}>
-                          {item.icon}
-                        </div>
-                        <div className={styles.titleGroup}>
-                          <h3 className={styles.cardTitle}>{item.title}</h3>
-                          <span className={styles.issuer}>{item.issuer}</span>
-                        </div>
-                      </div>
+        {/* Horizontal Moving Track */}
+        <div ref={trackRef} className={styles.horizontalTrack}>
+          {achievementsList.map((item, idx) => {
+            const theme = cardThemeMap[item.color] || cardThemeMap.orange
 
-                      <div className={styles.headRight}>
-                        <span className={styles.yearPill}>{item.year}</span>
-                      </div>
+            return (
+              <div
+                key={item.id}
+                ref={(el) => (cardsRef.current[idx] = el)}
+                className={styles.cardSlide}
+                style={{
+                  '--card-accent': theme.accent,
+                  '--card-accent-rgb': theme.rgb,
+                }}
+              >
+                <div className={`${styles.card} ${styles[`card_${item.color}`] || ''}`}>
+                  {/* Top Header */}
+                  <div className={styles.cardHeader}>
+                    <div className={styles.iconWrap}>
+                      <div className={styles.iconBadge}>{item.icon}</div>
+                      <span className={styles.cardIndex}>{item.number}</span>
                     </div>
 
-                    <div className={styles.contentInner}>
-                      <div className={styles.descBox}>
-                        <p className={styles.cardDesc}>{item.desc}</p>
-                      </div>
+                    <div className={styles.yearBadge}>{item.year}</div>
+                  </div>
 
-                      <div className={styles.tagsRow}>
-                        <div className={styles.cardTags}>
-                          {item.tags.map((tag) => (
-                            <span key={tag} className={styles.tagPill}>
-                              #{tag}
-                            </span>
-                          ))}
-                        </div>
+                  {/* Title & Issuer */}
+                  <div className={styles.titleSection}>
+                    <h3 className={styles.cardTitle}>{item.title}</h3>
+                    <span className={styles.issuerText}>{item.issuer}</span>
+                  </div>
 
-                        <div className={styles.verifiedBadge}>
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                          <span>Verified Milestone</span>
-                        </div>
-                      </div>
+                  {/* Description Box */}
+                  <div className={styles.descBox}>
+                    <p className={styles.cardDesc}>{item.desc}</p>
+                  </div>
+
+                  {/* Footer Tags & Verified Badge */}
+                  <div className={styles.cardFooter}>
+                    <div className={styles.tagList}>
+                      {item.tags.slice(0, 3).map((tag) => (
+                        <span key={tag} className={styles.tagPill}>
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className={styles.verifiedRow}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <span>VERIFIED</span>
                     </div>
                   </div>
-                </ScrollStackItem>
-              )
-            })}
-          </ScrollStack>
+                </div>
+              </div>
+            )
+          })}
         </div>
-      </motion.div>
+      </div>
+
+      {/* Bottom Progress Bar */}
+      <div className={styles.bottomBar}>
+        <div className={styles.progressBarTrack}>
+          <div ref={progressFillRef} className={styles.progressBarFill} />
+        </div>
+      </div>
     </section>
   )
 }

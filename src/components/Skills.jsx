@@ -1,8 +1,67 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiJavascript,
+  SiTailwindcss,
+  SiFramer,
+  SiHtml5,
+  SiCss,
+  SiFigma,
+  SiVercel,
+  SiPython,
+  SiTensorflow,
+  SiPytorch,
+  SiOpencv,
+  SiScikitlearn,
+  SiNodedotjs,
+  SiFastapi,
+  SiFlask,
+  SiPostgresql,
+  SiMongodb,
+  SiDocker,
+  SiGit,
+  SiLinux,
+  SiPostman,
+  SiBlender,
+} from 'react-icons/si'
 import { fadeIn, staggerContainer, scaleIn } from '../utils/motion'
+import LogoLoop from './LogoLoop'
 import styles from './Skills.module.css'
+
+const frontendStack = [
+  { node: <SiReact color="#61DAFB" />, title: 'React', href: 'https://react.dev' },
+  { node: <SiNextdotjs />, title: 'Next.js', href: 'https://nextjs.org' },
+  { node: <SiTypescript color="#3178C6" />, title: 'TypeScript', href: 'https://www.typescriptlang.org' },
+  { node: <SiJavascript color="#F7DF1E" />, title: 'JavaScript', href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+  { node: <SiTailwindcss color="#06B6D4" />, title: 'Tailwind CSS', href: 'https://tailwindcss.com' },
+  { node: <SiFramer color="#0055FF" />, title: 'Framer Motion', href: 'https://www.framer.com/motion/' },
+  { node: <SiHtml5 color="#E34F26" />, title: 'HTML5', href: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
+  { node: <SiCss color="#1572B6" />, title: 'CSS3', href: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+  { node: <SiFigma color="#F24E1E" />, title: 'Figma', href: 'https://www.figma.com' },
+  { node: <SiVercel />, title: 'Vercel', href: 'https://vercel.com' },
+]
+
+const backendAiStack = [
+  { node: <SiPython color="#3776AB" />, title: 'Python', href: 'https://www.python.org' },
+  { node: <SiTensorflow color="#FF6F00" />, title: 'TensorFlow', href: 'https://www.tensorflow.org' },
+  { node: <SiPytorch color="#EE4C2C" />, title: 'PyTorch', href: 'https://pytorch.org' },
+  { node: <SiOpencv color="#5C3EE8" />, title: 'OpenCV', href: 'https://opencv.org' },
+  { node: <SiScikitlearn color="#F7931E" />, title: 'Scikit-Learn', href: 'https://scikit-learn.org' },
+  { node: <SiNodedotjs color="#5FA04E" />, title: 'Node.js', href: 'https://nodejs.org' },
+  { node: <SiFastapi color="#009688" />, title: 'FastAPI', href: 'https://fastapi.tiangolo.com' },
+  { node: <SiFlask />, title: 'Flask', href: 'https://flask.palletsprojects.com' },
+  { node: <SiPostgresql color="#4169E1" />, title: 'PostgreSQL', href: 'https://www.postgresql.org' },
+  { node: <SiMongodb color="#47A248" />, title: 'MongoDB', href: 'https://www.mongodb.com' },
+  { node: <SiDocker color="#2496ED" />, title: 'Docker', href: 'https://www.docker.com' },
+  { node: <SiGit color="#F05032" />, title: 'Git', href: 'https://git-scm.com' },
+  { node: <SiLinux color="#FCC624" />, title: 'Linux', href: 'https://www.kernel.org' },
+  { node: <SiPostman color="#FF6C37" />, title: 'Postman', href: 'https://www.postman.com' },
+  { node: <SiBlender color="#EA7600" />, title: 'Blender', href: 'https://www.blender.org' },
+]
 
 const categories = [
   {
@@ -85,7 +144,7 @@ const categories = [
 export default function Skills() {
   return (
     <section id="skills" className={styles.skills}>
-      {/* Floating 3D Clay Morphism Edge Geometrics — CSS-animated for compositor smoothness */}
+      {/* Floating 3D Clay Morphism Edge Geometrics */}
       <div className={`${styles.clayShape} ${styles.clayShapeTorus} ${styles.clayFloat1}`} />
       <div className={`${styles.clayShape} ${styles.clayShapeOrb} ${styles.clayFloat2}`} />
       <div className={`${styles.clayShape} ${styles.clayShapeCapsule} ${styles.clayFloat3}`} />
@@ -97,17 +156,68 @@ export default function Skills() {
         whileInView="show"
         viewport={{ once: true, amount: 0.08 }}
       >
-        <motion.span className="section-tag" variants={fadeIn('down', 0)}>⚔ Skills &amp; Abilities</motion.span>
+        <motion.span className="section-tag" variants={fadeIn('down', 0)}>
+          ⚔ Skills &amp; Abilities
+        </motion.span>
 
-        {/* Section heading — like reference */}
+        {/* Section heading */}
         <motion.h2 className={styles.sectionHeading} variants={fadeIn('up', 0)}>
           <span className={styles.accent}>Character</span> Stats
         </motion.h2>
 
         {/* Bento wrapper */}
         <div className={styles.bentoWrap}>
+          {/* Dual-Row Infinite Tech Logo Marquee */}
+          <motion.div
+            className={styles.tickerContainer}
+            variants={scaleIn(0)}
+            aria-label="Core Technologies & Frameworks"
+          >
+            <div className={styles.tickerHeader}>
+              <span className={styles.tickerBadge}>*Interactive Tech Arsenal</span>
+              <span className={styles.tickerHint}>Hover to inspect • Click to explore docs</span>
+            </div>
 
-          {/* Skills grid */}
+            {/* Row 1: Frontend, Languages & UI (Flows Left) */}
+            <LogoLoop
+              logos={frontendStack}
+              speed={60}
+              direction="left"
+              logoHeight={24}
+              gap={32}
+              hoverSpeed={0}
+              scaleOnHover
+              fadeOut
+              ariaLabel="Frontend & UI Technologies"
+              renderItem={(item) => (
+                <div className={styles.techPill}>
+                  <span className={styles.techIcon}>{item.node}</span>
+                  <span className={styles.techTitle}>{item.title}</span>
+                </div>
+              )}
+            />
+
+            {/* Row 2: AI/ML, Backend, Databases & DevOps (Flows Right) */}
+            <LogoLoop
+              logos={backendAiStack}
+              speed={55}
+              direction="right"
+              logoHeight={24}
+              gap={32}
+              hoverSpeed={0}
+              scaleOnHover
+              fadeOut
+              ariaLabel="AI, Backend & Cloud Technologies"
+              renderItem={(item) => (
+                <div className={styles.techPill}>
+                  <span className={styles.techIcon}>{item.node}</span>
+                  <span className={styles.techTitle}>{item.title}</span>
+                </div>
+              )}
+            />
+          </motion.div>
+
+          {/* Character Skills Grid */}
           <motion.div
             className={styles.grid}
             variants={staggerContainer(0.15, 0.2)}

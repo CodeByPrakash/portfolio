@@ -9,8 +9,6 @@ import styles from './Hero.module.css'
 import PixelBlast from './PixelBlast'
 import TiltedCard from './TiltedCard'
 
-const techLogos = ['React', 'Next.js', 'Python', 'Node.js', 'TensorFlow', 'PostgreSQL', 'FastAPI', 'Docker']
-
 const socialLinks = [
   {
     name: 'GitHub',
@@ -215,7 +213,7 @@ export default function Hero({ isLoading = false }) {
               <span className={styles.eyebrowLine} />
               <span className={styles.eyebrowText}>COMPUTER SCIENCE ENGINEER</span>
               <span className={styles.locationTag}>
-                <span className={styles.locationPulse} />x``
+                <span className={styles.locationPulse} />
                 Bhawanipatna, IN
               </span>
 

@@ -10,7 +10,6 @@ import TargetCursor from './TargetCursor.jsx';
 
 const NAV_LINKS = [
   { name: 'About', href: '#about', target: '/#about' },
-  { name: 'Skills', href: '#skills', target: '/#skills' },
   { name: 'Projects', href: '#projects', target: '/#projects' },
   { name: 'Achievements', href: '#achievements', target: '/#achievements' },
   { name: 'Blog', href: '#blog', target: '/blog' },
@@ -61,7 +60,7 @@ export default function Navbar() {
       return
     }
 
-    const sectionIds = ['about', 'skills', 'projects', 'achievements', 'blog', 'Gallery', 'contact']
+    const sectionIds = ['about', 'projects', 'achievements', 'blog', 'Gallery', 'contact']
     const sectionElements = sectionIds
       .map((id) => document.getElementById(id))
       .filter(Boolean)
@@ -149,12 +148,12 @@ export default function Navbar() {
   return (
     <>
       <TargetCursor
-        spinDuration={2}
-        hideDefaultCursor
-        parallaxOn
-        hoverDuration={0.2}
-        cursorColor="#ffffff"
-        cursorColorOnTarget="#F97316"
+        dotColor="#FF6B00"
+        circleColor="rgba(255, 107, 0, 0.45)"
+        circleHoverColor="#FF6B00"
+        dotSize={6}
+        circleSize={34}
+        lerp={0.2}
       />
       <motion.nav
         className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${open ? styles.navOpen : ''}`}

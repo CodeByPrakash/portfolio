@@ -1,7 +1,7 @@
 import '../index.css'
 import { Space_Grotesk, Space_Mono } from 'next/font/google'
 import { ThemeProvider } from '../context/ThemeContext'
-import ScrollManager from '../components/ScrollManager'
+import SmoothScrollLayout from '../components/SmoothScrollLayout'
 import ScrollProgress from '../components/ScrollProgress'
 
 const spaceGrotesk = Space_Grotesk({
@@ -27,6 +27,7 @@ export const viewport = {
 
 export const metadata = {
   metadataBase: new URL('https://omprakashbehera.me'),
+  manifest: '/site.webmanifest',
   title: 'Om Prakash Behera — Tech Head at CodeBreakers | Full-Stack Developer & AI Systems',
   description:
     'Official portfolio of Om Prakash Behera (CodeByPrakash) — Tech Head at CodeBreakers (codebreakersgcek.tech), the official Coding Club of Government College of Engineering Kalahandi (GCEK). Lead architect building HackVerse 26 (hackverse.codebreakersgcek.tech), Central & Eastern India flagship 24H state tech fest. BTech CSE student, Diploma in CSE with Distinction. Building AI/ML systems, computer vision, and secure web architectures. Winner of YOUTH@2050 1st Prize, ISRO BAH 2026 PS-07, SIH 2025 Team CodeNova, IIM Sambalpur 7-Day IDE Bootcamp. 30+ projects, 100+ GitHub repos.',
@@ -334,7 +335,6 @@ export const metadata = {
     shortcut: '/favicon.ico',
     apple: '/apple-icon.png',
   },
-  manifest: '/site.webmanifest',
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || process.env.VITE_GOOGLE_SITE_VERIFICATION || '',
     other: {
@@ -1047,9 +1047,10 @@ export default function RootLayout({ children }) {
           </main>
         </noscript>
         <ThemeProvider>
-          <ScrollManager />
-          <ScrollProgress />
-          {children}
+          <SmoothScrollLayout>
+            <ScrollProgress />
+            {children}
+          </SmoothScrollLayout>
         </ThemeProvider>
       </body>
     </html>

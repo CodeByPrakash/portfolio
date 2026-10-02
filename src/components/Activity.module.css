@@ -9,25 +9,7 @@
   overflow: hidden;
 }
 
-/* Interactive DotGrid Background */
-.dotGridBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: auto;
-  z-index: 0;
-  opacity: 0.45;
-  mask-image: radial-gradient(circle at 50% 30%, black 50%, transparent 95%);
-  -webkit-mask-image: radial-gradient(circle at 50% 30%, black 50%, transparent 95%);
-}
 
-:global([data-theme="dark"]) .dotGridBackground {
-  opacity: 0.6;
-}
 
 /* Ambient 3D Clay Background Shapes */
 .clayShape {

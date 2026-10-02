@@ -293,7 +293,7 @@ function renderMarkdownContent(content) {
     let lastIndex = 0
 
     // Combine matches for math ($...$ / $$...$$), links, bold, and inline code
-    const tokenRegex = /(\$\$([^\$]+)\$\$|\$([^\$]+)\$|\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*|`([^`]+)`)/g
+    const tokenRegex = /(\$\$([^$]+)\$\$|\$([^$]+)\$|\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*|`([^`]+)`)/g
     let match
 
     while ((match = tokenRegex.exec(text)) !== null) {

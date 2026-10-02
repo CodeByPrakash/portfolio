@@ -1,0 +1,407 @@
+.videoScrubber {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: 100vh;
+  background: #0E0D12;
+  color: #FFFFFF;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* ─── 100vh Full Background Video ────────────────────────────────────────── */
+.videoBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ─── Ambient Vignette & Scanlines ───────────────────────────────────────── */
+.ambientVignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(14, 13, 18, 0.15) 0%, rgba(14, 13, 18, 0.65) 75%, rgba(14, 13, 18, 0.95) 100%),
+              linear-gradient(to bottom, rgba(14, 13, 18, 0.75) 0%, transparent 20%, transparent 80%, rgba(14, 13, 18, 0.85) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.35;
+}
+
+/* ─── Top Telemetry HUD ──────────────────────────────────────────────────── */
+.topHud {
+  position: absolute;
+  top: 2rem;
+  left: 2.5rem;
+  right: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.4rem;
+  background: rgba(20, 19, 26, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  z-index: 10;
+}
+
+.hudBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent, #FF6B00);
+}
+
+.hudPulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent, #FF6B00);
+  box-shadow: 0 0 10px var(--accent, #FF6B00);
+  animation: pulsePulse 2s ease-in-out infinite;
+}
+
+@keyframes pulsePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.8); }
+}
+
+.hudMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.72rem;
+}
+
+.hudDot {
+  opacity: 0.35;
+  color: var(--accent, #FF6B00);
+}
+
+/* ─── Frosted Glass Panels (Left & Right) ─────────────────────────────────── */
+.glassPanel {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+  background: rgba(20, 19, 26, 0.68);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 2rem 2.2rem;
+  box-shadow: 
+    0 24px 50px -10px rgba(0, 0, 0, 0.7),
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  pointer-events: auto;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glassPanel:hover {
+  border-color: rgba(255, 107, 0, 0.4);
+  box-shadow: 
+    0 28px 60px -10px rgba(255, 107, 0, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.18);
+}
+
+.panelLeft {
+  left: 3rem;
+}
+
+.panelRight {
+  right: 3rem;
+}
+
+.panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panelTag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent, #FF6B00);
+  letter-spacing: 0.1em;
+}
+
+.panelBadge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 107, 0, 0.15);
+  border: 1px solid rgba(255, 107, 0, 0.3);
+  color: var(--accent, #FF6B00);
+  letter-spacing: 0.08em;
+}
+
+.panelTitle {
+  font-family: var(--font-head, 'Space Grotesk', sans-serif);
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.panelBody {
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.accentLink {
+  color: var(--accent, #FF6B00);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+.panelDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 0.2rem 0;
+}
+
+.panelMeta {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.04em;
+}
+
+/* ─── Panel Stats ─────────────────────────────────────────────────────────── */
+.panelStats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.statValue {
+  font-family: var(--font-head, 'Space Grotesk', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.statLabel {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent, #FF6B00);
+  letter-spacing: 0.06em;
+}
+
+.statDividerVertical {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ─── Cinematic Center Dive Text ─────────────────────────────────────────── */
+.diveText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-family: var(--font-head, 'Space Grotesk', sans-serif);
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+  z-index: 8;
+  white-space: nowrap;
+}
+
+.diveWord {
+  display: inline-block;
+  background: linear-gradient(180deg, #FFFFFF 20%, rgba(255, 255, 255, 0.4) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.diveDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent, #FF6B00);
+  box-shadow: 0 0 20px var(--accent, #FF6B00);
+}
+
+/* ─── Bottom Scrubber Overlay & Telemetry ─────────────────────────────────── */
+.bottomOverlay {
+  position: absolute;
+  bottom: 2rem;
+  left: 2.5rem;
+  right: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  z-index: 10;
+}
+
+.telemetryBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1.25rem;
+  background: rgba(20, 19, 26, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+}
+
+.telemetryItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.telemetryLabel {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.telemetryVal {
+  color: var(--accent, #FF6B00);
+  font-weight: 700;
+}
+
+.scrollHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.scrollArrow {
+  color: var(--accent, #FF6B00);
+  animation: bounceDown 1.8s ease-in-out infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+.scrubberTrack {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.scrubberFill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #FFA834 0%, #FF6B00 100%);
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.8);
+  border-radius: 999px;
+  transition: width 0.05s linear;
+}
+
+/* ─── Responsive Breakpoints ──────────────────────────────────────────────── */
+@media (max-width: 1180px) {
+  .glassPanel {
+    width: 270px;
+    padding: 1.5rem 1.6rem;
+  }
+
+  .panelLeft {
+    left: 1.5rem;
+  }
+
+  .panelRight {
+    right: 1.5rem;
+  }
+
+  .panelTitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .glassPanel {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 360px;
+    margin: 0.5rem auto;
+  }
+
+  .videoScrubber {
+    height: auto;
+    min-height: 100vh;
+    padding: 6rem 1.25rem 4rem;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .topHud, .bottomOverlay {
+    position: static;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .diveText {
+    position: static;
+    transform: none;
+    margin: 1.5rem 0;
+    font-size: 2.5rem;
+  }
+}
