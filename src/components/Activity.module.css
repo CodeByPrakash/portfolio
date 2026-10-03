@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
    Activity.module.css — Video-Scrubbed GSAP + Lenis Spatial Experience
-   Complete Adaptive Light (White) & Dark Mode Styling
+   Adaptive Light (White) & Dark Mode Styling + Responsive Layout
    ═══════════════════════════════════════════════════════════ */
 
 .pageWrapper {
@@ -19,7 +19,7 @@
 
 /* ═══════════════════════════════════════════════════════════
    SECTION 1: GSAP & LENIS PINNED MINECRAFT VIDEO THEATER
-   (Always cinematic dark viewport with high-contrast HUD)
+   (Cinematic dark viewport with high-contrast HUD)
    ═══════════════════════════════════════════════════════════ */
 
 .videoTheaterSection {
@@ -387,16 +387,19 @@
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
-  overflow-x: auto;
   gap: 6px;
   width: 100%;
+  max-width: 100%;
   padding: 6px 12px;
-  background: rgba(18, 17, 24, 0.7);
+  background: rgba(18, 17, 24, 0.75);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 16px;
+  box-sizing: border-box;
+  overflow-x: auto;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .scrubberDotsContainer::-webkit-scrollbar {
@@ -411,10 +414,12 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px 8px;
+  padding: 4px 6px;
   border-radius: 8px;
   transition: all 0.25s ease;
-  min-width: 48px;
+  flex: 1 1 0px;
+  min-width: 0;
+  max-width: 86px;
 }
 
 .dotNum {
@@ -426,8 +431,8 @@
 }
 
 .dotIndicator {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.25);
   border: 2px solid rgba(18, 17, 24, 0.8);
@@ -436,9 +441,13 @@
 
 .dotDateLabel {
   font-family: var(--font-mono, monospace);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   color: rgba(255, 255, 255, 0.4);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
   transition: color 0.2s ease;
 }
 
@@ -455,7 +464,7 @@
 .scrubberDotActive .dotIndicator {
   background: var(--accent, #FF6B00);
   box-shadow: 0 0 12px var(--accent, #FF6B00);
-  transform: scale(1.4);
+  transform: scale(1.35);
 }
 
 .scrubberDotActive .dotNum,
@@ -1836,19 +1845,93 @@
 @media (max-width: 768px) {
   .theaterHeaderHud {
     margin-top: 3.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .theaterMainTitle {
+    font-size: 1.7rem;
+  }
+
+  .theaterSubTitle {
+    font-size: 0.82rem;
+  }
+
+  .centerFloatingSpace {
+    padding: 0 0.5rem;
   }
 
   .centerActivityCard {
-    padding: 18px 20px;
+    padding: 16px 18px;
     border-radius: 18px;
+    gap: 10px;
   }
 
   .centerMilestoneTitle {
     font-size: 1.15rem;
   }
 
+  .centerMilestoneSummary {
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
   .theaterBottomHud {
     gap: 8px;
+    width: 100%;
+    padding: 0 0.25rem;
+  }
+
+  .scrubberDotsContainer {
+    padding: 6px 6px;
+    gap: 2px;
+    justify-content: space-between;
+  }
+
+  .scrubberDotBtn {
+    padding: 3px 2px;
+    min-width: 0;
+    flex: 1;
+    gap: 2px;
+  }
+
+  .dotNum {
+    font-size: 0.65rem;
+  }
+
+  .dotIndicator {
+    width: 7px;
+    height: 7px;
+  }
+
+  /* Prevent dates from overlapping on mobile screens */
+  .dotDateLabel {
+    display: none;
+  }
+
+  .scrollDownBtn {
+    font-size: 0.72rem;
+    padding: 6px 12px;
+  }
+
+  .activitySection {
+    padding: 4rem 1rem 3.5rem;
+  }
+
+  .metricsBar {
+    padding: 1rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .metricValue {
+    font-size: 1.35rem;
+  }
+
+  .metricLabel {
+    font-size: 0.7rem;
+  }
+
+  .metricDivider {
+    height: 24px;
   }
 
   .timelineContainer {
@@ -1859,8 +1942,43 @@
     left: -1.25rem;
   }
 
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+
   .modalContent {
     padding: 22px 20px;
     border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .theaterHeaderHud {
+    margin-top: 3.2rem;
+  }
+
+  .theaterBadge {
+    padding: 4px 12px;
+  }
+
+  .theaterBadgeText {
+    font-size: 0.68rem;
+  }
+
+  .centerActivityCard {
+    padding: 14px 16px;
+  }
+
+  .centerMilestoneTitle {
+    font-size: 1.05rem;
+  }
+
+  .centerTagList {
+    display: none;
+  }
+
+  .openDetailsBtn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
   }
 }
