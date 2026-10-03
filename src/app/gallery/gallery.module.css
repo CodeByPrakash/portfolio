@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   gallery.module.css — Pure fullscreen tilted tiles
+   gallery.module.css — Interactive Liquid WebGL Gallery
    ═══════════════════════════════════════════════════════════ */
 
 .page {
@@ -9,9 +9,39 @@
   width: 100dvw;
   height: 100vh;
   height: 100dvh;
-  background: #0a0a0a;
+  background: #08070c;
   overflow: hidden;
-  touch-action: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* Background Ambient Radial Glow */
+.page::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 70vh;
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.09) 0%, rgba(124, 58, 237, 0.05) 50%, transparent 75%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Carousel Showcase Container ─────────────────────────── */
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1560px;
+  height: clamp(560px, 78vh, 800px);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ─── Floating Back Button ───────────────────────────────── */

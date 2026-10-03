@@ -24,14 +24,30 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('')
   const pathname = usePathname()
 
-  // Detect scroll state for glassmorphic navbar background
+  // Detect scroll state: transparent in hero section, glassmorphic when scrolled to About and beyond
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 30)
+    const handleScroll = () => {
+      if (pathname === '/') {
+        const aboutEl = document.getElementById('about')
+        if (aboutEl) {
+          const aboutTop = aboutEl.getBoundingClientRect().top + window.scrollY
+          setScrolled(window.scrollY >= aboutTop - 100)
+        } else {
+          setScrolled(window.scrollY > window.innerHeight * 0.8)
+        }
+      } else {
+        setScrolled(window.scrollY > 20)
+      }
     }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [pathname])
 
   // Active section tracking
   useEffect(() => {

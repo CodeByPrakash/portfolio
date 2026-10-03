@@ -5,29 +5,53 @@
   right: 0;
   z-index: 100;
   background: transparent;
-  transition: background .3s ease, border-bottom .3s ease, backdrop-filter .3s ease;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+  transition: background .35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color .35s cubic-bezier(0.16, 1, 0.3, 1), 
+              backdrop-filter .35s cubic-bezier(0.16, 1, 0.3, 1), 
+              -webkit-backdrop-filter .35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow .35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav.scrolled {
-  background: rgba(232, 230, 226, 0.88);
-  border-bottom: var(--bw) solid rgba(26, 26, 26, 0.12);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  background: rgba(232, 230, 226, 0.72);
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .nav.navOpen {
-  background: var(--bg-secondary);
-  border-bottom: var(--bw) solid var(--border-light);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(242, 240, 236, 0.92);
+  border-bottom: 1px solid rgba(26, 26, 26, 0.12);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
 }
 
-:global([data-theme="dark"]) .nav.scrolled,
+:global([data-theme="dark"]) .nav {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+}
+
+:global([data-theme="dark"]) .nav.scrolled {
+  background: rgba(20, 19, 26, 0.68);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
 :global([data-theme="dark"]) .nav.navOpen {
-  background: rgba(15, 14, 19, 0.95);
-  border-bottom: var(--bw) solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  background: rgba(20, 19, 26, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
 }
 
 .inner {
@@ -121,15 +145,17 @@
   font-weight: 700;
 }
 
-/* 3D Clay Sliding Active Pill */
+/* 3D Glass Sliding Active Pill */
 .activePill {
   position: absolute;
   inset: 0;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 999px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow: 
-    3px 4px 10px rgba(0, 0, 0, 0.05),
+    0 4px 14px rgba(0, 0, 0, 0.06),
     -2px -2px 6px rgba(255, 255, 255, 0.9),
     inset 1px 1px 2px rgba(255, 255, 255, 0.8);
   z-index: -1;
@@ -190,11 +216,13 @@
   min-height: 44px;
   gap: 5px;
   cursor: pointer;
-  background: var(--bg-tertiary);
-  border: var(--bw) solid var(--border-light);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(26, 26, 26, 0.1);
   border-radius: 12px;
   padding: .4rem;
-  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   transition: all 0.2s ease;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
@@ -225,13 +253,15 @@
 
 /* ─── Animated Mobile Drawer ──────────────────── */
 .drawer {
-  background: var(--bg-secondary);
-  border-top: var(--bw) solid var(--border-light);
-  border-bottom: var(--bw) solid var(--border);
+  background: rgba(242, 240, 236, 0.88);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+  border-bottom: 1px solid rgba(26, 26, 26, 0.12);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   max-height: calc(100dvh - 70px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
 }
 
 .drawerInner {
@@ -249,12 +279,14 @@
   text-decoration: none;
   padding: .75rem 1rem;
   border-radius: 14px;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 2px 3px 8px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   transition: all 0.18s ease;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
@@ -263,14 +295,14 @@
 
 .drawerLink:active {
   transform: scale(0.98);
-  background: var(--bg-secondary);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .drawerLinkActive {
-  background: var(--bg-tertiary);
+  background: rgba(255, 255, 255, 0.8);
   border-color: var(--accent);
   font-weight: 700;
-  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(255, 107, 0, 0.15);
 }
 
 .drawerIndex {
@@ -295,8 +327,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 0.9rem;
-  background: var(--bg-tertiary);
-  border: var(--bw) solid var(--border);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(26, 26, 26, 0.1);
   border-radius: 12px;
   margin-top: 0.5rem;
 }
@@ -328,9 +362,12 @@
 }
 
 .drawerResume {
-  background: var(--bg-tertiary);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--text-primary);
-  border: var(--bw) solid var(--border);
+  border: 1px solid rgba(26, 26, 26, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .drawerHire {
@@ -354,11 +391,13 @@
   }
 }
 
-/* ─── Dark Mode Adjustments (No Glows / White Shadows) ─── */
+/* ─── Dark Mode Adjustments ─── */
 :global([data-theme="dark"]) .activePill {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border);
-  box-shadow: none !important;
+  background: rgba(45, 43, 60, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
 }
 
 :global([data-theme="dark"]) .logoBox {
@@ -381,16 +420,41 @@
 }
 
 :global([data-theme="dark"]) .ham {
-  box-shadow: none !important;
+  background: rgba(36, 35, 48, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+:global([data-theme="dark"]) .drawer {
+  background: rgba(20, 19, 26, 0.88);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6);
 }
 
 :global([data-theme="dark"]) .drawerLink {
-  box-shadow: none !important;
+  background: rgba(36, 35, 48, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
 }
 
 :global([data-theme="dark"]) .drawerLinkActive {
-  box-shadow: none !important;
+  background: rgba(45, 43, 60, 0.75);
   border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(255, 107, 0, 0.25) !important;
+}
+
+:global([data-theme="dark"]) .drawerTranslateRow {
+  background: rgba(36, 35, 48, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 :global([data-theme="dark"]) .drawerHire {
@@ -400,7 +464,10 @@
 }
 
 :global([data-theme="dark"]) .drawerResume {
-  background: var(--bg-tertiary);
+  background: rgba(36, 35, 48, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--text-primary);
-  border-color: var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
 }
