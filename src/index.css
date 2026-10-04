@@ -17,6 +17,27 @@
   padding: 0;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  *,
+  *::before,
+  *::after,
+  html,
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  label,
+  summary,
+  [role="button"],
+  .btn,
+  [data-cursor],
+  [contenteditable="true"] {
+    cursor: none !important;
+  }
+}
+
 :root {
   /* Light Theme — ChainGPT Labs Inspired */
   --bg-primary: #E8E6E2;

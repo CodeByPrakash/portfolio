@@ -19,7 +19,7 @@ export default function Projects() {
       aria-label="Portfolio — Engineering Projects Showcase"
     >
       {/* Interactive 3D Antigravity Particle Field Background */}
-      <div className={styles.antigravityBg} aria-hidden="true">
+      {/* <div className={styles.antigravityBg} aria-hidden="true">
         <Antigravity
           count={300}
           magnetRadius={6}
@@ -37,7 +37,7 @@ export default function Projects() {
           particleShape="capsule"
           fieldStrength={10}
         />
-      </div>
+      </div> */}
 
       <div className={`section-wrap ${styles.sectionWrap}`}>
         <motion.span

@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 // import GoogleTranslate from './GoogleTranslate'
 import styles from './Navbar.module.css'
-import TargetCursor from './TargetCursor.jsx';
 
 const NAV_LINKS = [
   { name: 'About', href: '#about', target: '/#about' },
@@ -163,14 +162,14 @@ export default function Navbar() {
 
   return (
     <>
-      <TargetCursor
+      {/* <TargetCursor
         dotColor="#FF6B00"
         circleColor="rgba(255, 107, 0, 0.45)"
         circleHoverColor="#FF6B00"
         dotSize={6}
         circleSize={34}
         lerp={0.2}
-      />
+      /> */}
       <motion.nav
         className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${open ? styles.navOpen : ''}`}
         initial={{ y: -80, opacity: 0 }}

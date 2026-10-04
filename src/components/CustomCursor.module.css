@@ -1,0 +1,161 @@
+/* ─── Clean Matte Themed Cursor (Zero Glow, Zero Box Shadow) ──────── */
+
+.cursorWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999999;
+  transition: opacity 0.15s ease;
+  filter: none !important;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
+/* 1. Main Pointer Body (Completely Flat & Crisp, No Shadow/Glow) */
+.pointerBody {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-start;
+  transition: transform 0.08s ease-out;
+  will-change: transform;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+.lightTheme,
+.darkTheme {
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+.lightTheme.state_hover .pointerSvg,
+.lightTheme.state_pointer .pointerSvg,
+.darkTheme.state_hover .pointerSvg,
+.darkTheme.state_pointer .pointerSvg {
+  transform: scale(1.15) translateY(-2px);
+  filter: none !important;
+}
+
+.pointerSvg {
+  display: block;
+  overflow: visible;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+  filter: none !important;
+}
+
+.trianglePath,
+.tipCircle {
+  transition: fill 0.25s ease;
+}
+
+/* Click / Active state: Tactile snap */
+.pointerClicked .pointerSvg {
+  transform: scale(0.85) rotate(-6deg);
+  filter: none !important;
+}
+
+/* 2. Floating Action Badge (Flat & Clean) */
+.badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #0a0a0a;
+  border-radius: 6px;
+  padding: 3px 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: badgePop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.badgeDark {
+  background-color: #FF6B00;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.badge span {
+  font-family: var(--font-space-mono), 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #FF6B00;
+}
+
+.badgeDark span {
+  color: #000000;
+}
+
+@keyframes badgePop {
+  0% {
+    transform: scale(0.7) translateY(4px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 3. Click Ripple Ring (Flat Crisp 1px Ring) */
+.rippleContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999998;
+  filter: none !important;
+}
+
+.clickRipple {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  margin-left: -6px;
+  border-radius: 50%;
+  border: 1.5px solid #FF6B00;
+  background: transparent;
+  pointer-events: none;
+  box-shadow: none !important;
+  filter: none !important;
+  animation: rippleBurst 0.45s cubic-bezier(0.1, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes rippleBurst {
+  0% {
+    transform: scale(0.4);
+    opacity: 1;
+    border-width: 1.5px;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+/* 4. Mobile / Touch Fallback */
+@media (pointer: coarse), (hover: none), (max-width: 1024px) {
+  .cursorWrapper,
+  .rippleContainer {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
