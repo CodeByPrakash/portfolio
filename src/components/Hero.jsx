@@ -1,474 +1,592 @@
-
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useTheme } from '../context/ThemeContext'
 import styles from './Hero.module.css'
 import PixelBlast from './PixelBlast'
-import TiltedCard from './TiltedCard'
 
-const socialLinks = [
-  {
-    name: 'GitHub',
-    short: 'GitHub',
-    href: 'https://github.com/CodeByPrakash',
-    icon: (
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-        <path d="M9 18c-4.51 2-5-2-7-2" />
-      </svg>
-    ),
-  },
-  {
-    name: 'LinkedIn',
-    short: 'LinkedIn',
-    href: 'https://linkedin.com/in/omprakash-cse',
-    icon: (
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-        <rect width="4" height="12" x="2" y="9" />
-        <circle cx="4" cy="4" r="2" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Instagram',
-    short: 'Instagram',
-    href: 'https://instagram.com/quasar_om',
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-instagram" viewBox="0 0 16 16">
-        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Email',
-    short: 'Mail',
-    href: 'mailto:omprakashbehera.cse@gmail.com',
-    icon: (
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <rect width="20" height="16" x="2" y="4" rx="2" />
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-      </svg>
-    ),
-  },
-]
-
-// ── Motion variants for text entrance after loading ─────────
-// Starts larger & higher up, then scales down to original size while gliding down into position
-const headlineVariants = {
-  loading: {
-    scale: 1.28,
-    y: -36,
-    opacity: 0,
-  },
-  loaded: {
-    scale: 1,
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 1.15,
-      ease: [0.16, 1, 0.3, 1],
-      delay: 0.08,
-    },
-  },
-}
-
-const bioVariants = {
-  loading: {
-    scale: 1.12,
-    y: -22,
-    opacity: 0,
-  },
-  loaded: {
-    scale: 1,
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 1.05,
-      ease: [0.16, 1, 0.3, 1],
-      delay: 0.22,
-    },
-  },
-}
-
-const eyebrowVariants = {
-  loading: {
-    scale: 1.08,
-    y: -16,
-    opacity: 0,
-  },
-  loaded: {
-    scale: 1,
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.95,
-      ease: [0.16, 1, 0.3, 1],
-      delay: 0.04,
-    },
-  },
-}
-
-const badgeVariants = {
-  loading: {
-    scale: 1.08,
-    y: -18,
-    opacity: 0,
-  },
-  loaded: {
-    scale: 1,
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.95,
-      ease: [0.16, 1, 0.3, 1],
-      delay: 0.12,
-    },
-  },
-}
-
-const actionVariants = {
-  loading: {
-    y: -16,
-    opacity: 0,
-  },
-  loaded: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1],
-      delay: 0.32,
-    },
-  },
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger)
 }
 
 export default function Hero({ isLoading = false }) {
   const { isDark, toggleTheme } = useTheme()
-  const heroRef = useRef(null)
+  const sectionRef = useRef(null)
+  const pinContainerRef = useRef(null)
+  const timelineRef = useRef(null)
 
-  // Scroll Progress Physics
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start'],
-  })
+  // Background Parallax
+  const bgParallaxRef = useRef(null)
+  const geoLinesRef = useRef(null)
 
-  const smoothScrollProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 26,
-    restDelta: 0.001,
-  })
+  // Scene 1 Elements
+  const scene1ContainerRef = useRef(null)
+  const scene1ImgRef = useRef(null)
+  const scene1OverlayRef = useRef(null)
+  const scene1IntroCardRef = useRef(null)
+  const scene1ProfileCardRef = useRef(null)
 
-  // Subtle Scroll Parallax
-  const photoFrameY = useTransform(smoothScrollProgress, [0, 1], [0, 45])
-  const personScrollY = useTransform(smoothScrollProgress, [0, 1], [0, -25])
-  const bgScrollY = useTransform(smoothScrollProgress, [0, 1], [0, 20])
+  // Scene 2 Elements
+  const scene2ContainerRef = useRef(null)
+  const scene2ImgRef = useRef(null)
+  const scene2OverlayRef = useRef(null)
+  const scene2CardRef = useRef(null)
+
+  const [activeScene, setActiveScene] = useState(1)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const section = sectionRef.current
+    const pinContainer = pinContainerRef.current
+    if (!section || !pinContainer) return
+
+    const ctx = gsap.context(() => {
+      const isMobile = window.innerWidth < 1024
+
+      if (!isMobile) {
+        // Desktop Pinned Parallax Scroll Animation Timeline
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            pin: pinContainer,
+            start: 'top top',
+            end: '+=260%',
+            scrub: 1.15,
+            anticipatePin: 1,
+            onUpdate: (self) => {
+              if (self.progress < 0.48) {
+                setActiveScene(1)
+              } else {
+                setActiveScene(2)
+              }
+            },
+          },
+        })
+
+        timelineRef.current = tl
+
+        // 1. Background Mystic Mountains & Dots Parallax Glide
+        tl.to(
+          bgParallaxRef.current,
+          {
+            y: -110,
+            scale: 1.08,
+            ease: 'none',
+            duration: 3,
+          },
+          0
+        ).to(
+          geoLinesRef.current,
+          {
+            y: -50,
+            ease: 'none',
+            duration: 3,
+          },
+          0
+        )
+
+        // 2. Initial States for Desktop
+        gsap.set(scene1ImgRef.current, { scale: 1, filter: 'blur(0px)', opacity: 1, x: 0 })
+        gsap.set(scene1OverlayRef.current, { opacity: 0.08 })
+        gsap.set(scene1IntroCardRef.current, { opacity: 1, y: 0, scale: 1, pointerEvents: 'auto' })
+        gsap.set(scene1ProfileCardRef.current, { opacity: 0, y: 35, scale: 0.96, pointerEvents: 'none' })
+
+        gsap.set(scene2ContainerRef.current, { opacity: 0, pointerEvents: 'none' })
+        gsap.set(scene2ImgRef.current, { scale: 1.0, filter: 'blur(0px)', opacity: 0, x: 20 })
+        gsap.set(scene2OverlayRef.current, { opacity: 0.1 })
+        gsap.set(scene2CardRef.current, { x: -80, opacity: 0, scale: 0.95, pointerEvents: 'none' })
+
+        // ─── PHASE 1: Left Shrine Zooms & Blurs; Intro Card Morphs into Profile Card Overlaid on Image
+        tl.to(
+          scene1ImgRef.current,
+          {
+            scale: 1.07,
+            filter: 'blur(7px)',
+            x: 0,
+            ease: 'power2.inOut',
+            duration: 1.2,
+          },
+          0
+        )
+          .to(
+            scene1OverlayRef.current,
+            {
+              opacity: 0.35,
+              ease: 'power2.inOut',
+              duration: 1.2,
+            },
+            0
+          )
+          .to(
+            scene1IntroCardRef.current,
+            {
+              opacity: 0,
+              y: -30,
+              scale: 0.94,
+              pointerEvents: 'none',
+              ease: 'power2.inOut',
+              duration: 0.6,
+            },
+            0
+          )
+          .to(
+            scene1ProfileCardRef.current,
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              pointerEvents: 'auto',
+              ease: 'power3.out',
+              duration: 1.0,
+            },
+            0.3
+          )
+
+        // ─── PHASE 2: Transition from Scene 1 to Scene 2
+        tl.to(
+          scene1ContainerRef.current,
+          {
+            opacity: 0,
+            y: -40,
+            pointerEvents: 'none',
+            ease: 'power2.inOut',
+            duration: 0.8,
+          },
+          1.4
+        )
+          .to(
+            scene2ContainerRef.current,
+            {
+              opacity: 1,
+              pointerEvents: 'auto',
+              ease: 'power2.inOut',
+              duration: 0.6,
+            },
+            1.6
+          )
+          .fromTo(
+            scene2ImgRef.current,
+            { opacity: 0, scale: 0.95, filter: 'blur(0px)', x: 20 },
+            { opacity: 1, scale: 1.0, filter: 'blur(0px)', x: 0, ease: 'power2.out', duration: 0.8 },
+            1.6
+          )
+
+        // ─── PHASE 3: Right Samurai Torii Image Zooms Gently with Clean Fitting; Left Card Slides IN
+        tl.to(
+          scene2ImgRef.current,
+            {
+              scale: 1.04,
+              filter: 'blur(6px)',
+              x: 6,
+              ease: 'power2.inOut',
+              duration: 1.2,
+            },
+            2.2
+          )
+          .to(
+            scene2OverlayRef.current,
+            {
+              opacity: 0.45,
+              ease: 'power2.inOut',
+              duration: 1.2,
+            },
+            2.2
+          )
+          .to(
+            scene2CardRef.current,
+            {
+              x: 0,
+              opacity: 1,
+              scale: 1,
+              pointerEvents: 'auto',
+              ease: 'power3.out',
+              duration: 1.2,
+            },
+            2.4
+          )
+      } else {
+        // Mobile / Tablet: Fully visible natural layout, zero cutoffs
+        gsap.set(
+          [
+            scene1ContainerRef.current,
+            scene2ContainerRef.current,
+            scene1ImgRef.current,
+            scene2ImgRef.current,
+            scene1IntroCardRef.current,
+            scene1ProfileCardRef.current,
+            scene2CardRef.current,
+          ],
+          {
+            opacity: 1,
+            y: 0,
+            x: 0,
+            scale: 1,
+            clearProps: 'transform,opacity,filter',
+          }
+        )
+      }
+    }, section)
+
+    return () => ctx.revert()
+  }, [])
 
   return (
     <section
-      className={styles.hero}
+      className={styles.heroSection}
       id="hero"
-      ref={heroRef}
-      aria-label="Hero — Om Prakash Behera, Computer Science Engineer building intelligent systems"
+      ref={sectionRef}
+      aria-label="Hero — Om Prakash Behera, Computer Science Engineer"
     >
-      {/* Interactive PixelBlast WebGL Background */}
-      <div className={styles.cursorGridBg} aria-hidden="true">
-        <PixelBlast
-          variant="square"
-          pixelSize={4}
-          color="#ff8400"
-          patternScale={1.7}
-          patternDensity={0.75}
-          pixelSizeJitter={0}
-          enableRipples={true}
-          rippleSpeed={0.4}
-          rippleThickness={0.12}
-          rippleIntensityScale={1.5}
-          liquid={false}
-          liquidStrength={0.12}
-          liquidRadius={1.2}
-          liquidWobbleSpeed={5}
-          speed={0.5}
-          edgeFade={0.25}
-          transparent
-        />
-      </div>
-
-      <div className={`section-wrap ${styles.inner}`}>
-        {/* 2-Column Minimal Editorial Hero Grid */}
-        <div className={styles.heroGrid}>
-          {/* Left Column — 55-60% width */}
-          <div className={styles.leftCol}>
-            {/* Understated Eyebrow with Location & Bat Theme Switcher */}
-            <motion.div
-              className={styles.eyebrow}
-              variants={eyebrowVariants}
-              initial="loading"
-              animate={isLoading ? "loading" : "loaded"}
-              style={{ transformOrigin: 'left top' }}
-            >
-              <span className={styles.eyebrowLine} />
-              <span className={styles.eyebrowText}>COMPUTER SCIENCE ENGINEER</span>
-              <span className={styles.locationTag}>
-                <span className={styles.locationPulse} />
-                Bhawanipatna, IN
-              </span>
-
-              {/* Bat Emoji Theme Toggle */}
-              <button
-                type="button"
-                className={`${styles.themePalmBtn} ${isDark ? styles.themePalmDark : ''}`}
-                onClick={toggleTheme}
-                aria-label={`Toggle theme: currently ${isDark ? 'Dark Mode' : 'Light Mode'}`}
-                title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode (🦇)`}
-                suppressHydrationWarning
-              >
-                <span className={styles.palmEmoji}>🦇</span>
-              </button>
-            </motion.div>
-
-            {/* Badges: Tech Head & IIM Sambalpur Milestone */}
-            <motion.div
-              style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.25rem', transformOrigin: 'left top' }}
-              variants={badgeVariants}
-              initial="loading"
-              animate={isLoading ? "loading" : "loaded"}
-            >
-              <a
-                href="https://hackverse.codebreakersgcek.tech"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.highlightBadge}
-                title="Tech Head at CodeBreakers — Building HackVerse '26 Flagship 24H Fest"
-              >
-                <span className={styles.highlightBadgeIcon}>⚡</span>
-                <span className={styles.highlightBadgeText}>
-                  <strong>Tech Head @ CodeBreakers</strong> • Building HackVerse '26
-                </span>
-                <span className={styles.highlightBadgeArrow}>↗</span>
-              </a>
-              <a href="#achievements" className={styles.highlightBadge} title="View IIM Sambalpur 7-Day IDE Bootcamp Milestone">
-                <span className={styles.highlightBadgeIcon}>✦</span>
-                <span className={styles.highlightBadgeText}>
-                  <strong>IIM Sambalpur</strong> IDE Bootcamp
-                </span>
-                <span className={styles.highlightBadgeArrow}>↗</span>
-              </a>
-            </motion.div>
-
-            {/* Bold Futuristic Headline: scales down from larger to original size while gliding down to position */}
-            <motion.div
-              className={styles.headlineWrapper}
-              style={{ transformOrigin: 'left top' }}
-              variants={headlineVariants}
-              initial="loading"
-              animate={isLoading ? "loading" : "loaded"}
-            >
-              <h1 className={styles.headline}>
-                <span className={styles.headLine1}>INTELLIGENT</span>
-                <span className={styles.headLine2}>
-                  SYSTEMS<span className={styles.dotAccent}>.</span>
-                </span>
-              </h1>
-            </motion.div>
-
-            {/* Concise 2-Line Description: scales down slightly while gliding down into position */}
-            <motion.p
-              className={styles.bioText}
-              style={{ transformOrigin: 'left top' }}
-              variants={bioVariants}
-              initial="loading"
-              animate={isLoading ? "loading" : "loaded"}
-            >
-              Tech Head at CodeBreakers GCEK building HackVerse &apos;26. Engineering AI-driven systems and resilient full-stack platforms that solve real-world problems.
-            </motion.p>
-
-            {/* 4 Social/Contact Buttons */}
-            <motion.div
-              className={styles.socialRow}
-              variants={actionVariants}
-              initial="loading"
-              animate={isLoading ? "loading" : "loaded"}
-            >
-              {socialLinks.map(s => (
-                <a
-                  key={s.name}
-                  href={s.href}
-                  target={s.href.startsWith('http') ? '_blank' : '_self'}
-                  rel="noopener noreferrer"
-                  className={styles.socialBtn}
-                  title={s.name}
-                  aria-label={s.name}
-                >
-                  <span className={styles.socialIcon}>{s.icon}</span>
-                  <span className={styles.socialLabel}>{s.short}</span>
-                </a>
-              ))}
-            </motion.div>
-
-            {/* Two Primary Statistics Maximum */}
-            <motion.div
-              className={styles.statsContainer}
-              variants={actionVariants}
-              initial="loading"
-              animate={isLoading ? "loading" : "loaded"}
-            >
-              <div className={styles.statItem}>
-                <span className={styles.statNumber}>30+</span>
-                <span className={styles.statLabel}>Projects Built</span>
-              </div>
-              <div className={styles.statDivider} />
-              <div className={styles.statItem}>
-                <span className={styles.statNumber}>3+</span>
-                <span className={styles.statLabel}>Years Building</span>
-              </div>
-            </motion.div>
-
-            {/* Primary & Secondary CTAs */}
-            <motion.div
-              className={styles.ctaRow}
-              variants={actionVariants}
-              initial="loading"
-              animate={isLoading ? "loading" : "loaded"}
-            >
-              <a href="#projects" className="btn btn-accent">Explore Work ↓</a>
-              <a href="/resume.pdf" download className="btn btn-outline">Resume ↓</a>
-              <a
-                href="https://omprakashbehera-3d.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-outline"
-                title="Open 3D Web Portfolio"
-              >
-                <span className={styles.cliPrompt}>&gt;_</span> 3D ↗
-              </a>
-            </motion.div>
+      {/* Pinned Viewport Container (Normal flow on mobile/tablet) */}
+      <div className={styles.pinContainer} ref={pinContainerRef}>
+        {/* ─── 1. Parallax Matrix Background: Dim Blurry Mystic Mountains + WebGL + Dots Grid ─── */}
+        <div className={styles.bgMatrixLayer} ref={bgParallaxRef} aria-hidden="true">
+          <div className={styles.mysticBgWrapper}>
+            <Image
+              src="/hero/Mystic Mountains Beneath the Ember Moon.png"
+              alt="Mystic Mountains Beneath the Ember Moon"
+              fill
+              priority
+              className={styles.mysticBgImage}
+              sizes="100vw"
+            />
+            <div className={styles.mysticBgDimmer} />
           </div>
 
-          {/* Right Column: Dominant Portrait in Rounded Frame with Sculpted 3-Circle Notch */}
-          <div className={styles.rightCol}>
-            <motion.div
-              className={styles.photoStageWrap}
-              style={{ y: photoFrameY }}
+          <div className={styles.pixelBlastBg}>
+            <PixelBlast
+              variant="square"
+              pixelSize={4}
+              color="#FF6B00"
+              patternScale={1.8}
+              patternDensity={0.65}
+              pixelSizeJitter={0}
+              enableRipples={true}
+              rippleSpeed={0.4}
+              rippleThickness={0.12}
+              rippleIntensityScale={1.5}
+              liquid={false}
+              liquidStrength={0.12}
+              liquidRadius={1.2}
+              liquidWobbleSpeed={5}
+              speed={0.4}
+              edgeFade={0.28}
+              transparent
+            />
+          </div>
+
+          <div className={styles.dotsGridPattern} />
+        </div>
+
+        {/* Technical Geometries Lines & Crosshairs */}
+        <div className={styles.geoLinesContainer} ref={geoLinesRef} aria-hidden="true">
+          <div className={styles.geoLineH1} />
+          <div className={styles.geoLineH2} />
+          <div className={styles.geoLineV1} />
+          <div className={styles.geoLineV2} />
+
+          <span className={`${styles.cornerMark} ${styles.markTL}`}>+</span>
+          <span className={`${styles.cornerMark} ${styles.markTR}`}>+</span>
+          <span className={`${styles.cornerMark} ${styles.markBL}`}>+</span>
+          <span className={`${styles.cornerMark} ${styles.markBR}`}>+</span>
+        </div>
+
+        {/* Telemetry Coordinate HUD (Desktop) */}
+        <div className={styles.telemetryHUD}>
+
+          <div className={styles.telemetryTopRight}>
+            <button
+              type="button"
+              className={`${styles.themeToggleBtn} ${isDark ? styles.themeDark : ''}`}
+              onClick={toggleTheme}
+              aria-label="Toggle Dark/Light theme"
+              title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode (🦇)`}
             >
-              {/* Interactive 3D Tilted Card Container */}
-              <TiltedCard
-                altText="Om Prakash Behera — Computer Science Engineer"
-                captionText="Om Prakash Behera"
-                containerHeight="100%"
-                containerWidth="100%"
-                imageHeight="100%"
-                imageWidth="100%"
-                rotateAmplitude={4}
-                scaleOnHover={1.02}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-                overlayContent={
-                  <p className="tilted-card-demo-text">
-                    OMPRAKASH BEHERA
-                  </p>
-                }
-              >
-                {/* Main Photo Frame */}
-                <div className={styles.photoFrame}>
-                  {/* Subtle Developer Background Art (Flipped to correct orientation) */}
-                  <motion.div
-                    className={styles.layerBg}
-                    style={{ y: bgScrollY, scaleX: -1 }}
-                  >
-                    <Image
-                      src="/hero/hero_bg.png"
-                      alt="Abstract Technical Blueprint Grid Background"
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 540px"
-                      className={styles.bgImage}
-                    />
-                  </motion.div>
+              <span className={styles.themeEmoji}>🦇</span>
+              <span className={styles.themeLabel}>{isDark ? 'DARK_MODE' : 'LIGHT_MODE'}</span>
+            </button>
+          </div>
+        </div>
 
-                  {/* Dominant Illustrated Portrait (Flipped to correct natural orientation) */}
-                  <motion.div
-                    className={styles.layerPerson}
-                    style={{ y: personScrollY, scaleX: -1 }}
-                  >
-                    <Image
-                      src="/hero/hero_person.png"
-                      alt="Om Prakash Behera — Computer Science Engineer"
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 540px"
-                      className={styles.personImage}
-                    />
-                  </motion.div>
+        {/* ─── 2. SCENE 1: Left Autumn Shrine + Right Profile Cards ─── */}
+        <div className={styles.sceneWrapper} data-scene="1" ref={scene1ContainerRef}>
+          {/* Left-Anchored Image Canvas */}
+          <div className={styles.scene1ImageStage}>
+            <div className={styles.imageInnerRef} ref={scene1ImgRef}>
+              <Image
+                src="/hero/Autumn Shrine Contemplation Sticker.png"
+                alt="Glowing Autumn Shrine Under Blossoms"
+                fill
+                priority
+                className={styles.cinematicImageCover}
+                sizes="(max-width: 1024px) 100vw, 75vw"
+              />
+            </div>
+            <div className={styles.imageAtmosphereOverlay} ref={scene1OverlayRef} />
+            {/* Atmospheric Left Edge Mist / Fog */}
+            <div className={styles.scene1LeftFog} aria-hidden="true" />
+          </div>
+
+          {/* Right Side Card Stage */}
+          <div className={styles.scene1RightStage}>
+            {/* 1A. Initial "INTELLIGENT SYSTEMS" Card */}
+            <div className={styles.initialIntroCard} ref={scene1IntroCardRef}>
+              <div className={styles.cardHeader}>
+                <div className={styles.sceneEyebrow}>
+                  <span className={styles.eyebrowDash} />
+                  <span>EXPLORE THE ARCHITECT</span>
                 </div>
-              </TiltedCard>
+                <div className={styles.locationChip}>
+                  <span className={styles.locationDot}>•</span>
+                  <span>BHAWANIPATNA, IN</span>
+                </div>
+              </div>
 
-              {/* Sculpted Left Cutout Notch with 3 Stacked Preview Circles (Reference Design) */}
-              <div className={styles.sculptedNotch}>
+              <div className={styles.cardBody}>
+                <h1 className={styles.sceneMainHeadline}>
+                  <span>INTELLIGENT</span>
+                  <span className={styles.headlineAccent}>
+                    SYSTEMS<span className={styles.accentDot}>.</span>
+                  </span>
+                </h1>
+                <p className={styles.sceneSubcopy}>
+                  Building AI-driven platforms, resilient full-stack systems, and computer vision architectures for real-world impact.
+                </p>
 
-                {/* 2. Middle Preview Circle (Developer Portrait Thumbnail) */}
-                <div className={`${styles.notchCircle} ${styles.notchCircle2}`} title="Om Prakash">
-                  <div className={styles.notchCircleInner}>
-                    <Image
-                      src="/omprakash_mn.webp"
-                      alt="Om Prakash"
-                      width={200}
-                      height={200}
-                      className={styles.notchThumbImg}
-                    />
+                <div className={styles.scrollHintPill}>
+                  <span className={styles.scrollMouseIcon}>
+                    <span className={styles.scrollWheel} />
+                  </span>
+                  <span>SCROLL TO UNVEIL PROFILE</span>
+                  <span className={styles.scrollArrow}>↓</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 1B. Detailed Profile Card */}
+            <div className={styles.editorialCard} ref={scene1ProfileCardRef}>
+              <div className={styles.cardHeader}>
+                <div className={styles.cardIndexBadge}>
+                  <span className={styles.badgeNumber}>01</span>
+                  <span className={styles.badgeSlash}>/</span>
+                  <span className={styles.badgeTotal}>PROFILE</span>
+                </div>
+                <div className={styles.locationChip}>
+                  <span className={styles.locationDot}>•</span>
+                  <span>BHAWANIPATNA, IN</span>
+                </div>
+              </div>
+
+              <div className={styles.cardBody}>
+                <div className={styles.roleTagWrap}>
+                  <span className={styles.roleTag}>TECH HEAD @ CODEBREAKERS</span>
+                  <span className={styles.roleTagAccent}>• BTECH CSE</span>
+                </div>
+                <h2 className={styles.cardName}>OM PRAKASH BEHERA</h2>
+                <p className={styles.cardBio}>
+                  Lead architect building <strong>HackVerse &apos;26</strong> (flagship 24H state tech fest). Engineering high-performance AI/ML systems, computer vision pipelines, and resilient full-stack web architectures that solve real-world problems.
+                </p>
+
+                {/* Milestone Badges */}
+                <div className={styles.milestoneGrid}>
+                  <a
+                    href="https://hackverse.codebreakersgcek.tech"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.milestonePill}
+                    title="HackVerse '26 Flagship 24H Fest"
+                  >
+                    <span className={styles.milestoneIcon}>⚡</span>
+                    <span className={styles.milestoneText}>
+                      <strong>HackVerse &apos;26</strong> Lead
+                    </span>
+                    <span className={styles.milestoneArrow}>↗</span>
+                  </a>
+                  <a
+                    href="#achievements"
+                    className={styles.milestonePill}
+                    title="IIM Sambalpur 7-Day IDE Bootcamp"
+                  >
+                    <span className={styles.milestoneIcon}>✦</span>
+                    <span className={styles.milestoneText}>
+                      <strong>IIM Sambalpur</strong> IDE Fellow
+                    </span>
+                    <span className={styles.milestoneArrow}>↗</span>
+                  </a>
+                  <div className={styles.milestonePill}>
+                    <span className={styles.milestoneIcon}>🏆</span>
+                    <span className={styles.milestoneText}>
+                      <strong>ISRO BAH &apos;26</strong> PS-07
+                    </span>
                   </div>
                 </div>
 
-                {/* 3. Bottom Action Button (Diagonal Arrow ↗) */}
-                <a
-                  href="#projects"
-                  className={`${styles.notchCircle} ${styles.notchActionBtn}`}
-                  title="Explore Projects"
-                  aria-label="Explore Projects"
-                >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7" />
-                    <polyline points="7 7 17 7 17 17" />
-                  </svg>
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </div>
+                {/* Primary Action Buttons */}
+                <div className={styles.cardCtaRow}>
+                  <a href="#projects" className={styles.primaryCtaBtn}>
+                    <span>Explore Work</span>
+                    <span className={styles.btnArrow}>↓</span>
+                  </a>
+                  <a href="/resume.pdf" download className={styles.secondaryCtaBtn}>
+                    <span>Resume</span>
+                    <span className={styles.btnArrow}>↓</span>
+                  </a>
+                  <a
+                    href="https://omprakashbehera-3d.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.tertiaryCtaBtn}
+                    title="Experience 3D Terminal Portfolio"
+                  >
+                    <span>3D OS</span>
+                    <span className={styles.btnArrow}>↗</span>
+                  </a>
+                </div>
 
-      {/* Full-Width Horizontal Technical Industrial Ribbon / Ticker */}
-      <div className={styles.tapeRibbonWrap} aria-label="Core Engineering Disciplines">
-        <div className={styles.tapeRibbonInner}>
-          <div className={styles.tapeTrack}>
-            {[0, 1, 2, 3].map(i => (
-              <span key={i} className={styles.tapeBlock}>
-                <span>TECH HEAD @ CODEBREAKERS</span>
-                <span className={styles.tapeDot}>◆</span>
-                <span>BUILDING HACKVERSE &apos;26</span>
-                <span className={styles.tapeDot}>◆</span>
-                <span>AI ENGINEERING</span>
-                <span className={styles.tapeDot}>◆</span>
-                <span>IIM SAMBALPUR IDE BOOTCAMP</span>
-                <span className={styles.tapeDot}>◆</span>
-                <span>FULL STACK</span>
-                <span className={styles.tapeDot}>◆</span>
-                <span>MACHINE LEARNING</span>
-                <span className={styles.tapeDot}>◆</span>
-                <span>SYSTEM DESIGN</span>
-                <span className={styles.tapeDot}>◆</span>
-                <span>YOUTH@2050 1ST PRIZE</span>
-                <span className={styles.tapeDot}>◆</span>
-                <span>30+ PROJECTS</span>
-                <span className={styles.tapeDot}>◆</span>
-              </span>
-            ))}
+                {/* Quick Telemetry Counters */}
+                <div className={styles.cardFooterStats}>
+                  <div className={styles.miniStat}>
+                    <span className={styles.miniStatVal}>30+</span>
+                    <span className={styles.miniStatLbl}>PROJECTS</span>
+                  </div>
+                  <div className={styles.miniStatDivider} />
+                  <div className={styles.miniStat}>
+                    <span className={styles.miniStatVal}>3+</span>
+                    <span className={styles.miniStatLbl}>YEARS EXP</span>
+                  </div>
+                  <div className={styles.miniStatDivider} />
+                  <div className={styles.miniStat}>
+                    <span className={styles.miniStatVal}>100+</span>
+                    <span className={styles.miniStatLbl}>REPOSITORIES</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* ─── 3. SCENE 2: Right Fiery Autumn Samurai + Left Core Architecture Card ─── */}
+        <div className={styles.sceneWrapper} data-scene="2" ref={scene2ContainerRef}>
+          {/* Right-Anchored Image Canvas */}
+          <div className={styles.scene2ImageStage}>
+            <div className={styles.scene2ImageInnerRef} ref={scene2ImgRef}>
+              <Image
+                src="/hero/Fiery Autumn Samurai Selfie Overlay.png"
+                alt="Fiery Autumn Samurai Selfie Overlay"
+                fill
+                className={styles.scene2ImageCover}
+                sizes="(max-width: 1024px) 100vw, 75vw"
+              />
+            </div>
+            <div className={styles.imageAtmosphereOverlay} ref={scene2OverlayRef} />
+          </div>
+
+          {/* Left Card Stage */}
+          <div className={styles.scene2CardWrapper} ref={scene2CardRef}>
+            <div className={styles.editorialCard}>
+              <div className={styles.cardHeader}>
+                <div className={styles.cardIndexBadge}>
+                  <span className={styles.badgeNumber}>02</span>
+                  <span className={styles.badgeSlash}>/</span>
+                  <span className={styles.badgeTotal}>CAPABILITIES</span>
+                </div>
+                <div className={styles.locationChip}>
+                  <span className={styles.locationPulseGreen} />
+                  <span>OPEN FOR COLLABORATION</span>
+                </div>
+              </div>
+
+              <div className={styles.cardBody}>
+                <div className={styles.roleTagWrap}>
+                  <span className={styles.roleTag}>SYSTEMS & CAPABILITIES</span>
+                  <span className={styles.roleTagAccent}>• FULL SPECTRUM</span>
+                </div>
+                <h2 className={styles.cardName}>CORE ARCHITECTURE</h2>
+                <p className={styles.cardBio}>
+                  Specialized in architecting autonomous AI pipelines, real-time distributed applications, and high-security enterprise solutions.
+                </p>
+
+                {/* Capabilities Grid */}
+                <div className={styles.capabilitiesGrid}>
+                  <div className={styles.capabilityItem}>
+                    <div className={styles.capHead}>
+                      <span className={styles.capDot} />
+                      <strong>AI & Machine Learning</strong>
+                    </div>
+                    <span className={styles.capDesc}>
+                      PyTorch, OpenCV, Computer Vision, Gemini APIs, LLM Agents
+                    </span>
+                  </div>
+
+                  <div className={styles.capabilityItem}>
+                    <div className={styles.capHead}>
+                      <span className={styles.capDot} />
+                      <strong>Full-Stack Architecture</strong>
+                    </div>
+                    <span className={styles.capDesc}>
+                      Next.js 15, React 19, TypeScript, Node.js, Express, TailwindCSS
+                    </span>
+                  </div>
+
+                  <div className={styles.capabilityItem}>
+                    <div className={styles.capHead}>
+                      <span className={styles.capDot} />
+                      <strong>Cloud & Data Systems</strong>
+                    </div>
+                    <span className={styles.capDesc}>
+                      Docker, PostgreSQL, Cloud Firestore, REST APIs, Microservices
+                    </span>
+                  </div>
+
+                  <div className={styles.capabilityItem}>
+                    <div className={styles.capHead}>
+                      <span className={styles.capDot} />
+                      <strong>Engineering Leadership</strong>
+                    </div>
+                    <span className={styles.capDesc}>
+                      Tech Head CodeBreakers, HackVerse Organizer, Mentorship
+                    </span>
+                  </div>
+                </div>
+
+                {/* Action Buttons Row */}
+                <div className={styles.cardCtaRow}>
+                  <a href="#achievements" className={styles.primaryCtaBtn}>
+                    <span>View Achievements</span>
+                    <span className={styles.btnArrow}>→</span>
+                  </a>
+                  <a href="#contact" className={styles.secondaryCtaBtn}>
+                    <span>Get In Touch</span>
+                    <span className={styles.btnArrow}>↗</span>
+                  </a>
+                </div>
+
+                {/* Highlights Footer */}
+                <div className={styles.cardFooterStats}>
+                  <div className={styles.miniStat}>
+                    <span className={styles.miniStatVal}>1st</span>
+                    <span className={styles.miniStatLbl}>YOUTH@2050</span>
+                  </div>
+                  <div className={styles.miniStatDivider} />
+                  <div className={styles.miniStat}>
+                    <span className={styles.miniStatVal}>SIH &apos;25</span>
+                    <span className={styles.miniStatLbl}>TEAM CODENOVA</span>
+                  </div>
+                  <div className={styles.miniStatDivider} />
+                  <div className={styles.miniStat}>
+                    <span className={styles.miniStatVal}>GCEK</span>
+                    <span className={styles.miniStatLbl}>BHAWANIPATNA</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   )
