@@ -979,8 +979,8 @@
   .heroSection {
     height: auto !important;
     min-height: 100vh;
-    padding-top: calc(var(--nav-height, 68px) + 1.25rem);
-    padding-bottom: 3.5rem;
+    padding-top: calc(var(--nav-height, 68px) + 2rem);
+    padding-bottom: 4rem;
     overflow: visible !important;
   }
 
@@ -990,15 +990,21 @@
     min-height: auto !important;
     top: auto !important;
     left: auto !important;
-    padding: 0 1.25rem;
+    padding: 0 1.5rem;
     overflow: visible !important;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2.5rem;
+    max-width: 720px;
+    margin: 0 auto;
   }
 
   .telemetryHUD,
-  .bottomScrollTrack {
+  .bottomScrollTrack,
+  .scene1LeftFog,
+  .initialIntroCard,
+  .scene1ImageStage,
+  .scene2ImageStage {
     display: none !important;
   }
 
@@ -1006,55 +1012,17 @@
     position: relative !important;
     inset: auto !important;
     width: 100% !important;
+    max-width: 100% !important;
     height: auto !important;
     min-height: auto !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 1.5rem !important;
+    gap: 1.25rem !important;
     padding: 0 !important;
     margin: 0 !important;
     overflow: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
-  }
-
-  .scene1ImageStage,
-  .scene2ImageStage {
-    position: relative !important;
-    width: 100% !important;
-    height: 320px !important;
-    padding: 0 !important;
-    border-radius: 20px;
-    overflow: hidden;
-    mask-image: none !important;
-    -webkit-mask-image: none !important;
-    margin-bottom: 0.5rem;
-    display: block !important;
-  }
-
-  .scene2ImageInnerRef {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-height: none !important;
-    z-index: 2;
-  }
-
-  .scene2GlassHalo {
-    position: absolute !important;
-    width: 260px !important;
-    height: 260px !important;
-    top: 50% !important;
-    left: 50% !important;
-    right: auto !important;
-    transform: translate(-50%, -50%) !important;
-    z-index: 1 !important;
-  }
-
-  .scene2ImageCover {
-    object-fit: cover !important;
-    object-position: center top !important;
   }
 
   .scene1RightStage,
@@ -1070,12 +1038,11 @@
     margin: 0 !important;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
     opacity: 1 !important;
     pointer-events: auto !important;
   }
 
-  .initialIntroCard,
   .editorialCard {
     position: relative !important;
     top: auto !important;
@@ -1083,20 +1050,18 @@
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
-    padding: 1.8rem 1.6rem !important;
+    padding: clamp(1.6rem, 3.5vw, 2.4rem) clamp(1.4rem, 3vw, 2.2rem) !important;
     border-radius: 24px;
     margin: 0 !important;
     opacity: 1 !important;
     transform: none !important;
     pointer-events: auto !important;
-  }
-
-  .sceneMainHeadline {
-    font-size: clamp(2rem, 6vw, 2.8rem) !important;
+    background: rgba(254, 252, 248, 0.92) !important;
+    box-shadow: 0 16px 45px -8px rgba(0, 0, 0, 0.65), 0 0 35px -8px rgba(255, 107, 0, 0.2) !important;
   }
 
   .cardName {
-    font-size: clamp(1.6rem, 5.5vw, 2.2rem) !important;
+    font-size: clamp(1.6rem, 4.5vw, 2.2rem) !important;
   }
 
   .capabilitiesGrid {
@@ -1110,33 +1075,26 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
+  .heroSection {
+    padding-top: calc(var(--nav-height, 68px) + 1.25rem);
+    padding-bottom: 3rem;
+  }
+
   .pinContainer {
     padding: 0 1rem;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
-  .scene1ImageStage,
-  .scene2ImageStage {
-    height: 240px !important;
-    border-radius: 16px;
-  }
-
-  .initialIntroCard,
   .editorialCard {
-    padding: 1.5rem 1.2rem !important;
+    padding: 1.5rem 1.25rem !important;
     border-radius: 20px;
     gap: 1.15rem;
   }
 
-  .sceneMainHeadline {
-    font-size: clamp(1.75rem, 8vw, 2.4rem) !important;
-  }
-
   .cardName {
-    font-size: clamp(1.45rem, 7vw, 1.95rem) !important;
+    font-size: clamp(1.45rem, 6vw, 1.85rem) !important;
   }
 
-  .sceneSubcopy,
   .cardBio {
     font-size: 0.9rem;
     line-height: 1.5;
@@ -1148,8 +1106,11 @@
   }
 
   .cardCtaRow {
-    gap: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
     width: 100%;
+    flex-wrap: wrap;
   }
 
   .primaryCtaBtn,
@@ -1160,7 +1121,10 @@
   }
 
   .cardFooterStats {
-    gap: 0.85rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
     padding-top: 0.75rem;
   }
 
@@ -1175,24 +1139,17 @@
 
 @media (max-width: 480px) {
   .heroSection {
-    padding-top: calc(var(--nav-height, 68px) + 0.85rem);
+    padding-top: calc(var(--nav-height, 68px) + 1rem);
     padding-bottom: 2.5rem;
   }
 
   .pinContainer {
-    padding: 0 0.85rem;
-    gap: 2rem;
+    padding: 0 0.75rem;
+    gap: 1.75rem;
   }
 
-  .scene1ImageStage,
-  .scene2ImageStage {
-    height: 200px !important;
-    border-radius: 14px;
-  }
-
-  .initialIntroCard,
   .editorialCard {
-    padding: 1.35rem 1.05rem !important;
+    padding: 1.35rem 1.1rem !important;
     border-radius: 18px;
     gap: 1rem;
   }
@@ -1205,8 +1162,10 @@
   }
 
   .cardCtaRow {
+    display: flex;
     flex-direction: column;
     width: 100%;
+    gap: 0.5rem;
   }
 
   .primaryCtaBtn,
@@ -1223,6 +1182,6 @@
   .cardFooterStats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.65rem;
+    gap: 0.6rem 0.8rem;
   }
 }
