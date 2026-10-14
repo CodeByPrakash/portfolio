@@ -1,0 +1,310 @@
+.outerWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  position: relative;
+  width: 100%;
+  background: rgba(255, 248, 239, 0.88);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid #E8DCD0;
+  transition: all 0.3s ease;
+}
+
+.nav.scrolled {
+  background: rgba(255, 248, 239, 0.96);
+  border-bottom-color: rgba(232, 220, 208, 0.95);
+  box-shadow: 0 4px 20px rgba(23, 21, 18, 0.05);
+}
+
+.inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* ─── Logo ─── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: #171512;
+}
+
+.logoBadge {
+  width: 34px;
+  height: 34px;
+  background: #FF6A00;
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(255, 106, 0, 0.3);
+}
+
+.logoInitial {
+  font-family: var(--font-head, sans-serif);
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.logoTextGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoTitle {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #171512;
+  line-height: 1.1;
+}
+
+.logoSub {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #746C64;
+  font-weight: 500;
+}
+
+/* ─── Nav Links ─── */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #746C64;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.navLink:hover {
+  color: #171512;
+  background: rgba(232, 220, 208, 0.3);
+}
+
+.navLinkActive {
+  color: #FF6A00 !important;
+  font-weight: 700;
+}
+
+.activeIndicator {
+  position: absolute;
+  bottom: 0;
+  left: 0.9rem;
+  right: 0.9rem;
+  height: 2px;
+  background: #FF6A00;
+  border-radius: 2px;
+}
+
+/* ─── Right Actions ─── */
+.rightActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  background: #FFFCF8;
+  border: 1px solid #E8DCD0;
+  border-radius: 9999px;
+  font-size: 0.775rem;
+  color: #171512;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.statusDotPulse {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.startProjectBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #FF6A00;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.55rem 1.15rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 3px 12px rgba(255, 106, 0, 0.28);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.startProjectBtn:hover {
+  background: #E65300;
+  box-shadow: 0 5px 16px rgba(230, 83, 0, 0.36);
+  transform: translateY(-1px);
+}
+
+.btnArrow {
+  transition: transform 0.2s ease;
+}
+
+.startProjectBtn:hover .btnArrow {
+  transform: translateX(3px);
+}
+
+.hamburgerBtn {
+  display: none;
+  background: #FFFCF8;
+  border: 1px solid #E8DCD0;
+  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  color: #171512;
+  cursor: pointer;
+}
+
+/* ─── Mobile Drawer ─── */
+.mobileDrawer {
+  display: none;
+  background: #FFFCF8;
+  border-bottom: 1px solid #E8DCD0;
+  overflow: hidden;
+}
+
+.mobileDrawerInner {
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.mobileStatusRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #746C64;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #E8DCD0;
+}
+
+.mobileLinksList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobileLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.5rem;
+  color: #171512;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.mobileLinkActive {
+  color: #FF6A00;
+  background: #FFF0E3;
+}
+
+.mobileDrawerFooter {
+  padding-top: 0.5rem;
+}
+
+.mobileCtaBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #FF6A00;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 960px) {
+  .navLinks {
+    display: none;
+  }
+  .statusPill {
+    display: none;
+  }
+  .hamburgerBtn {
+    display: inline-flex;
+  }
+  .mobileDrawer {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .startProjectBtn {
+    display: none;
+  }
+}

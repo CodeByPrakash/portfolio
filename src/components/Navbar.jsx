@@ -6,10 +6,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 // import GoogleTranslate from './GoogleTranslate'
 import styles from './Navbar.module.css'
+import TopModeSwitcher from './TopModeSwitcher'
 
 const NAV_LINKS = [
   { name: 'About', href: '#about', target: '/#about' },
   { name: 'Projects', href: '#projects', target: '/#projects' },
+  { name: 'Services', href: '/services', target: '/services' },
   { name: 'Achievements', href: '#achievements', target: '/#achievements' },
   { name: 'Blog', href: '#blog', target: '/blog' },
   { name: 'Activity', href: '/activity', target: '/activity' },
@@ -50,6 +52,11 @@ export default function Navbar() {
 
   // Active section tracking
   useEffect(() => {
+    if (pathname.startsWith('/services')) {
+      setActiveSection('services')
+      return
+    }
+
     if (pathname.startsWith('/blog')) {
       setActiveSection('blog')
       return
@@ -123,7 +130,8 @@ export default function Navbar() {
       if (targetEl) {
         e.preventDefault()
         setTimeout(() => {
-          const navbarHeight = 75
+          const wrapper = document.querySelector('[class*="navbarOuterWrapper"]')
+          const navbarHeight = wrapper ? wrapper.offsetHeight + 10 : 115
           const elementPosition = targetEl.getBoundingClientRect().top + window.scrollY
           const offsetPosition = Math.max(0, elementPosition - navbarHeight)
 
@@ -146,7 +154,8 @@ export default function Navbar() {
       if (targetEl) {
         e.preventDefault()
         setTimeout(() => {
-          const navbarHeight = 75
+          const wrapper = document.querySelector('[class*="navbarOuterWrapper"]')
+          const navbarHeight = wrapper ? wrapper.offsetHeight + 10 : 115
           const elementPosition = targetEl.getBoundingClientRect().top + window.scrollY
           const offsetPosition = Math.max(0, elementPosition - navbarHeight)
           window.scrollTo({
@@ -162,20 +171,14 @@ export default function Navbar() {
 
   return (
     <>
-      {/* <TargetCursor
-        dotColor="#FF6B00"
-        circleColor="rgba(255, 107, 0, 0.45)"
-        circleHoverColor="#FF6B00"
-        dotSize={6}
-        circleSize={34}
-        lerp={0.2}
-      /> */}
-      <motion.nav
-        className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${open ? styles.navOpen : ''}`}
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <div className={styles.navbarOuterWrapper}>
+        <TopModeSwitcher />
+        <motion.nav
+          className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${open ? styles.navOpen : ''}`}
+          initial={{ y: -80, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
         <div className={styles.inner}>
           {/* Logo */}
           <Link
@@ -203,14 +206,17 @@ export default function Navbar() {
           {/* Desktop Animated Navigation Links */}
           <ul className={styles.links}>
             {NAV_LINKS.map((link) => {
+              const isServicesLink = link.name === 'Services'
               const isBlogLink = link.name === 'Blog'
               const isActivityLink = link.name === 'Activity'
               const destination = pathname === '/' ? link.href : link.target
-              const isActive = isBlogLink
-                ? pathname.startsWith('/blog') || activeSection === 'blog'
-                : isActivityLink
-                  ? pathname.startsWith('/activity') || activeSection === 'activity'
-                  : activeSection === link.href.substring(1)
+              const isActive = isServicesLink
+                ? pathname.startsWith('/services') || activeSection === 'services'
+                : isBlogLink
+                  ? pathname.startsWith('/blog') || activeSection === 'blog'
+                  : isActivityLink
+                    ? pathname.startsWith('/activity') || activeSection === 'activity'
+                    : activeSection === link.href.substring(1)
 
               return (
                 <li key={link.name} className={styles.linkItem}>
@@ -286,14 +292,17 @@ export default function Navbar() {
             >
               <div className={styles.drawerInner}>
                 {NAV_LINKS.map((link, idx) => {
+                  const isServicesLink = link.name === 'Services'
                   const isBlogLink = link.name === 'Blog'
                   const isActivityLink = link.name === 'Activity'
                   const destination = pathname === '/' ? link.href : link.target
-                  const isActive = isBlogLink
-                    ? pathname.startsWith('/blog') || activeSection === 'blog'
-                    : isActivityLink
-                      ? pathname.startsWith('/activity') || activeSection === 'activity'
-                      : activeSection === link.href.substring(1)
+                  const isActive = isServicesLink
+                    ? pathname.startsWith('/services') || activeSection === 'services'
+                    : isBlogLink
+                      ? pathname.startsWith('/blog') || activeSection === 'blog'
+                      : isActivityLink
+                        ? pathname.startsWith('/activity') || activeSection === 'activity'
+                        : activeSection === link.href.substring(1)
 
                   return (
                     <motion.div
@@ -342,7 +351,8 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.nav>
+        </motion.nav>
+      </div>
     </>
   )
 }

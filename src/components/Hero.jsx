@@ -47,16 +47,23 @@ export default function Hero({ isLoading = false }) {
     const ctx = gsap.context(() => {
       const isMobile = window.innerWidth < 1024
 
+      const getHeaderOffset = () => {
+        if (typeof document === 'undefined') return 112
+        const wrapper = document.querySelector('[class*="navbarOuterWrapper"]')
+        return wrapper ? wrapper.offsetHeight : 112
+      }
+
       if (!isMobile) {
         // Desktop Pinned Parallax Scroll Animation Timeline
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
             pin: pinContainer,
-            start: 'top top',
+            start: () => `top ${getHeaderOffset()}px`,
             end: '+=260%',
             scrub: 1.15,
             anticipatePin: 1,
+            invalidateOnRefresh: true,
             onUpdate: (self) => {
               if (self.progress < 0.48) {
                 setActiveScene(1)

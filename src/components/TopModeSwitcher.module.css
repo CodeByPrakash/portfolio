@@ -1,0 +1,203 @@
+.wrapper {
+  position: relative;
+  z-index: 101;
+  width: 100%;
+  background: #191714;
+  border-bottom: 1px solid rgba(232, 220, 208, 0.12);
+  color: #FFF8EF;
+  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-size: 0.8125rem;
+  line-height: 1.2;
+}
+
+.stickyWrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0.45rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* ─── Left Meta Badge ─── */
+.leftMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sparkleBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 106, 0, 0.15);
+  border: 1px solid rgba(255, 106, 0, 0.35);
+  color: #FF8533;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.sparkleIcon {
+  color: #FF6A00;
+}
+
+.metaText {
+  color: #B5ACA3;
+  font-size: 0.775rem;
+  font-weight: 400;
+}
+
+/* ─── Switch Control Segmented Pill ─── */
+.switchControl {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.switchLabel {
+  font-size: 0.75rem;
+  color: #8C847B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.pillGroup {
+  display: flex;
+  align-items: center;
+  background: #25221E;
+  padding: 3px;
+  border-radius: 9999px;
+  border: 1px solid rgba(232, 220, 208, 0.15);
+  position: relative;
+}
+
+.modeBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #B5ACA3;
+  transition: color 0.2s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.modeBtn:hover {
+  color: #FFF8EF;
+}
+
+.activeMode {
+  color: #171512 !important;
+  font-weight: 600;
+}
+
+.activeBackground {
+  position: absolute;
+  inset: 0;
+  background: #FFF8EF;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+
+.btnContent {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.btnIcon {
+  flex-shrink: 0;
+}
+
+.newBadge {
+  background: #FF6A00;
+  color: #FFFFFF;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  margin-left: 0.25rem;
+}
+
+.aiBadge {
+  background: linear-gradient(135deg, #7C3AED 0%, #6366F1 100%);
+  color: #FFFFFF;
+  font-size: 0.6rem;
+  font-weight: 800;
+  font-family: var(--font-mono, monospace);
+  padding: 1px 5px;
+  border-radius: 4px;
+  margin-left: 0.25rem;
+  box-shadow: 0 1px 6px rgba(99, 102, 241, 0.4);
+}
+
+/* ─── Right Quick Action ─── */
+.rightAction {
+  display: flex;
+  align-items: center;
+}
+
+.quickLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #FF8533;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.quickLink:hover {
+  color: #FFA366;
+  transform: translateX(2px);
+}
+
+/* ─── Responsive Adjustments ─── */
+@media (max-width: 900px) {
+  .metaText {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .leftMeta {
+    display: none;
+  }
+  .rightAction {
+    display: none;
+  }
+  .container {
+    justify-content: center;
+    padding: 0.4rem 0.75rem;
+  }
+  .switchLabel {
+    display: none;
+  }
+  .modeBtn {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.72rem;
+  }
+}

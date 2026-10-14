@@ -32,6 +32,10 @@ export default function SmoothScrollLayout({ children }) {
     lenisRef.current = lenis
     window.__lenis = lenis
 
+    if (pathname?.startsWith('/ai')) {
+      lenis.stop()
+    }
+
     // 2. Sync Lenis to GSAP Ticker for 120 FPS synchronized pinning and reveals
     lenis.on('scroll', ScrollTrigger.update)
 
@@ -78,6 +82,13 @@ export default function SmoothScrollLayout({ children }) {
     if (typeof window === 'undefined' || !lenisRef.current) return
 
     const lenis = lenisRef.current
+
+    if (pathname?.startsWith('/ai')) {
+      lenis.stop()
+      return
+    } else {
+      lenis.start()
+    }
 
     if (window.location.hash) {
       const targetId = window.location.hash.replace('#', '')

@@ -33,6 +33,19 @@
     </image:image>
   </url>
 
+  <!-- Web Development, AI & Digital Solutions Services -->
+  <url>
+    <loc>https://omprakashbehera.me/services</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://omprakashbehera.me/services/real-estate.jpg</image:loc>
+      <image:title>Web Development, AI &amp; Digital Solutions | Prakash</image:title>
+      <image:caption>Web development, AI engineering, business website digitalization, and digital design services by Prakash.</image:caption>
+    </image:image>
+  </url>
+
   <!-- Technical Blog Index -->
   <url>
     <loc>https://omprakashbehera.me/blog</loc>

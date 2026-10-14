@@ -1,0 +1,391 @@
+.section {
+  width: 100%;
+  background: #FFF8EF;
+  padding: 4.5rem 1.5rem 5rem;
+  color: #171512;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.twoColGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr;
+  gap: 3.5rem;
+  align-items: flex-start;
+}
+
+/* ─── Left Column: SEO ─── */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FF6A00;
+  margin-bottom: 0.75rem;
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  background: #FF6A00;
+  border-radius: 50%;
+}
+
+.heading {
+  font-family: var(--font-head, -apple-system, BlinkMacSystemFont, sans-serif);
+  font-size: 2.3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #171512;
+  margin-bottom: 0.85rem;
+}
+
+.highlight {
+  color: #FF6A00;
+}
+
+.subtext {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #746C64;
+  margin-bottom: 2rem;
+}
+
+.seoCardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.seoCard {
+  background: #FFFCF8;
+  border: 1px solid #E8DCD0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 2px 10px rgba(23, 21, 18, 0.03);
+}
+
+.seoCard:hover {
+  transform: translateY(-3px);
+  border-color: #FFD6B3;
+  box-shadow: 0 8px 24px rgba(23, 21, 18, 0.06);
+}
+
+.seoCardHead {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.seoIconBox {
+  width: 38px;
+  height: 38px;
+  background: #FFF0E3;
+  border: 1px solid #FFD6B3;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.seoIcon {
+  color: #FF6A00;
+}
+
+.seoTitleGroup {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.seoTitle {
+  font-family: var(--font-head, sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #171512;
+}
+
+.seoPrice {
+  font-family: var(--font-head, sans-serif);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #FF6A00;
+}
+
+.deliverablesList {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 0 0;
+  border-top: 1px solid #F0E6DC;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.deliverableItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.825rem;
+  color: #5A534B;
+  line-height: 1.4;
+}
+
+.checkIcon {
+  color: #FF6A00;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ─── Right Column: Estimator Card ─── */
+.rightCol {
+  position: relative;
+}
+
+.estimatorCard {
+  background: #FFFCF8;
+  border: 1.5px solid #E8DCD0;
+  border-radius: 20px;
+  padding: 2.5rem 2.25rem;
+  box-shadow: 0 12px 36px rgba(23, 21, 18, 0.07);
+}
+
+.estimatorHeader {
+  margin-bottom: 1.75rem;
+}
+
+.estimatorBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #FFF0E3;
+  border: 1px solid #FFD6B3;
+  color: #E65300;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.calcIcon {
+  color: #FF6A00;
+}
+
+.estimatorTitle {
+  font-family: var(--font-head, sans-serif);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #171512;
+  line-height: 1.2;
+  margin-bottom: 0.45rem;
+}
+
+.estimatorSub {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #746C64;
+  margin: 0;
+}
+
+/* Form Rows */
+.formRow {
+  margin-bottom: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.label {
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: #38332E;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.selectInput {
+  width: 100%;
+  background: #FFF8EF;
+  border: 1px solid #E8DCD0;
+  color: #171512;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF6A00' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.selectInput:focus {
+  border-color: #FF6A00;
+  box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.15);
+}
+
+/* Feature Chips */
+.chipsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.featureChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #FFF8EF;
+  border: 1px solid #E8DCD0;
+  color: #5A534B;
+  padding: 0.45rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.775rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chipCheck {
+  font-weight: 800;
+  color: #746C64;
+  display: flex;
+  align-items: center;
+}
+
+.featureChip:hover {
+  border-color: #CFC2B4;
+  color: #171512;
+}
+
+.chipSelected {
+  background: #FFF0E3 !important;
+  border-color: #FF6A00 !important;
+  color: #E65300 !important;
+  font-weight: 600;
+}
+
+.chipSelected .chipCheck {
+  color: #FF6A00;
+}
+
+/* Price Estimate Box */
+.priceEstimateBox {
+  background: #FFF0E3;
+  border: 1.5px solid #FFD6B3;
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.estimateLabelGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.estimateTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #746C64;
+}
+
+.scopeNotice {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #E65300;
+  background: rgba(255, 106, 0, 0.12);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.estimateAmount {
+  font-family: var(--font-head, sans-serif);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #FF6A00;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.65rem;
+}
+
+.estimateDisclaimer {
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: #746C64;
+  margin: 0 0 1.25rem 0;
+}
+
+.sendEstimateBtn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #FF6A00;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.85rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255, 106, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.sendEstimateBtn:hover {
+  background: #E65300;
+  box-shadow: 0 6px 20px rgba(230, 83, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .twoColGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .heading {
+    font-size: 1.95rem;
+  }
+  .estimatorCard {
+    padding: 1.75rem 1.25rem;
+  }
+  .estimateAmount {
+    font-size: 1.75rem;
+  }
+}

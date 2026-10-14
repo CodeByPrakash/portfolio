@@ -1,4 +1,3 @@
-
 /* AtAmiga TRIAL Display Font */
 @font-face {
   font-family: 'Amiga';
@@ -18,6 +17,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+
   *,
   *::before,
   *::after,
@@ -274,8 +274,10 @@ body {
 /* ─── Hide Default Browser Scrollbars (Replaced by Smooth Progress Path) ─── */
 html,
 body {
-  scrollbar-width: none !important; /* Firefox */
-  -ms-overflow-style: none !important; /* IE / Edge */
+  scrollbar-width: none !important;
+  /* Firefox */
+  -ms-overflow-style: none !important;
+  /* IE / Edge */
 }
 
 html::-webkit-scrollbar,
@@ -499,25 +501,36 @@ iframe.goog-te-banner-frame,
 }
 
 /* Hide the automatic Google Translate top iframe if injected */
-body > .skiptranslate:first-child {
+body>.skiptranslate:first-child {
   display: none !important;
 }
 
 /* ─── Mobile & Tablet Smooth Performance Boosts ─────────────────── */
-@media (max-width: 1024px), (pointer: coarse), (hover: none) {
-  html, body {
+@media (max-width: 1024px),
+(pointer: coarse),
+(hover: none) {
+
+  html,
+  body {
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
   }
 
   /* Remove 300ms tap delay and tap highlights on touch devices */
-  a, button, [role="button"], input, select, textarea {
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea {
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
 
   /* Hardware accelerate animated containers on mobile & tablets */
-  [class*="_card_"], [class*="_inner_"], section {
+  [class*="_card_"],
+  [class*="_inner_"],
+  section {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transform: translateZ(0);
@@ -546,5 +559,3 @@ body > .skiptranslate:first-child {
   letter-spacing: -0.01em;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
-
-

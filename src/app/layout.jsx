@@ -4,6 +4,7 @@ import { ThemeProvider } from '../context/ThemeContext'
 import SmoothScrollLayout from '../components/SmoothScrollLayout'
 import ScrollProgress from '../components/ScrollProgress'
 import CustomCursor from '../components/CustomCursor'
+import ServiceWorkerRegister from '../components/ServiceWorkerRegister'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -1052,6 +1053,7 @@ export default function RootLayout({ children }) {
             <CustomCursor />
             <ScrollProgress />
             {children}
+            <ServiceWorkerRegister />
           </SmoothScrollLayout>
         </ThemeProvider>
       </body>
