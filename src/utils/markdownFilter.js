@@ -46,5 +46,11 @@ export function filterMarkdownResponse(rawContent = '') {
   // 5. Clean up duplicate card tokens if model accidentally outputs multiple
   text = text.replace(/(\[card:[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+\])(\s*\1)+/g, '$1')
 
+  // 6. Security Defense: Strip any leaked programming code or algorithm blocks
+  text = text.replace(
+    /```(?:python|javascript|typescript|js|ts|jsx|tsx|bash|sh|c\+\+|cpp|c|java|sql|php|ruby|rust|go|html|css|json|pseudocode|algo|algorithm)?\s*[\r\n]+[\s\S]*?```/gi,
+    '\n*[Code and algorithm generation is restricted. Explore Om Prakash\'s [Projects](/projects) or hire him for development via [Services & Pricing](/services).]*\n'
+  )
+
   return text
 }
